@@ -1,19 +1,26 @@
-﻿using System;
+﻿using Catch.Backend.WebApi.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
-using System.Web.Security;
-using System.Web.SessionState;
-using Catch.Backend.WebApi.App_Start;
+using System.Web.Mvc;
+using System.Web.Optimization;
+using System.Web.Routing;
 
 namespace Catch.Backend.WebApi
 {
-    public class Global : System.Web.HttpApplication
+    public class WebApiApplication : System.Web.HttpApplication
     {
-        protected void Application_Start(object sender, EventArgs e)
+        protected void Application_Start()
         {
+            AreaRegistration.RegisterAllAreas();
+
             WebApiConfig.Register(GlobalConfiguration.Configuration);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            // add the ninject dependency resolver
+            
         }
     }
 }

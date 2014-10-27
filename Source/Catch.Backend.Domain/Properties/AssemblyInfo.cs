@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Yomie.BackEnd.WebApi.Test")]
+[assembly: AssemblyTitle("Catch.Backend.Domain")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Yomie.BackEnd.WebApi.Test")]
+[assembly: AssemblyProduct("Catch.Backend.Domain")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("aeccb41d-0409-472e-aa9e-d946016843bb")]
+[assembly: Guid("cdbfeba7-4c31-4b5d-8535-5323fb35d61d")]
 
 // Version information for an assembly consists of the following four values:
 //

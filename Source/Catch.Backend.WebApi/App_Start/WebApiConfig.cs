@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Http;
 
-namespace Catch.Backend.WebApi.App_Start
+namespace Catch.Backend.WebApi
 {
     public static class WebApiConfig
     {
@@ -23,8 +22,7 @@ namespace Catch.Backend.WebApi.App_Start
 
             // To disable tracing in your application, please comment out or remove the following line of code
             // For more information, refer to: http://www.asp.net/web-api
-            
-            //config.EnableSystemDiagnosticsTracing();
+            config.EnableSystemDiagnosticsTracing();
         }
     }
 }
