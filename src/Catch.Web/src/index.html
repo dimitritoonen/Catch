@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Yomie</title>
+    <title>Catch.me</title>
     <!-- build:css -->
       <link href="bower_modules/components-bootstrap/css/bootstrap.min.css" rel="stylesheet">
       <link href="css/styles.css" rel="stylesheet">
@@ -13,8 +14,33 @@
       <script data-main="app/startup" src="bower_modules/requirejs/require.js"></script>
     <!-- endbuild -->
   </head>
+
   <body>
-    <nav-bar params="route: route"></nav-bar>
-    <div id="page" class="container" data-bind="component: { name: route().page, params: route }"></div>
+    <!-- <nav-bar params="route: route"></nav-bar> -->
+    <div id="header">
+        <div id="logo"></div>
+        <div id="baselineComponents">
+            <div id="leftComponent" class="pull-left text-right">
+                <h2 class="you">You</h2>
+                <User-bar id="Userbar"></User-bar>
+            </div>
+            <div id="rightComponent" class="pull-right">
+                <h2>Login</h2>
+                <Login-bar id="loginBar"></Login-bar>
+            </div>
+        </div>
+    </div>
+    <div id="page">
+        <div id="beam-blue"></div>
+        <div id="beam-red"></div>
+
+        <div id="beginPage" class="text-center">
+               
+        </div>
+    </div>
+
+    <!--
+        <div id="page" class="container" data-bind="component: { name: route().page, params: route }"></div>
+        -->
   </body>
 </html>

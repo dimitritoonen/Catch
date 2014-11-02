@@ -13,5 +13,6 @@ var require = {
     },
     shim: {
         "bootstrap": { deps: ["jquery"] }
-    }
+    },
+    urlArgs: "bust=" + (new Date()).getTime()
 };

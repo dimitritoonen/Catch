@@ -9,6 +9,12 @@ define(['jquery', 'knockout', './router', 'bootstrap', 'knockout-projections'], 
     template: { require: 'text!components/about-page/about.html' }
   });
 
+  ko.components.register('login-bar', { require: 'components/login-bar/login-bar' });
+
+  ko.components.register('user-bar', { require: 'components/user-bar/user-bar' });
+
+  ko.components.register('intro-page', { require: 'components/intro-page/intro-page' });
+
   // [Scaffolded component registrations will be inserted here. To retain this feature, don't remove this comment.]
 
   // Start the application

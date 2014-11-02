@@ -1,3 +1,141 @@
+H2 {
+    color: white;
+}
+
+H2.you {
+    padding-right: 25px; 
+}
+
+BUTTON:focus {
+    outline: 0;
+} 
+
+/* the header of the page */
+#header {
+    margin: 0 auto;
+    background-color: #7b7b7b;
+    height: 400px;
+    width:100%;
+    position:relative;
+}
+
+/* logo on the header */
+#logo {
+    position: relative;
+    top: 30px;
+    padding-top: 50px;
+    background-image: url(/images/CatchLogo.jpg);
+    background-repeat: no-repeat;
+    width: 266px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+/* defines the base line on which the left and right "components" need to float */
+#baselineComponents {
+    position: absolute;
+    bottom: 15%;
+    width:100%;
+}
+
+#rightComponent {
+    width: 42%;
+}
+
+#leftComponent {
+    width: 43%;
+}
+
+#userComponent {
+    width:100%;
+    height:120px;
+    position:relative;
+}
+
+    #userComponent.right {
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 25px;
+    }
+
+    #userComponent.left {
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+    }
+
+.male-theme {
+}
+
+.female-theme {
+    background-color: #f75455;
+}
+
+.male-themeLeft {
+}
+
+.female-themeLeft {
+}
+
+#registration {
+    height: 50%;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+
+    #registerButton {
+        background-color: #bd0012;
+        color: white;
+        border:0px;
+        height:60px;
+        width:200px;
+        text-align: right;
+        padding-right:50px;
+        border-left: solid 40px #ee1730;
+        border-top-left-radius: 5px;
+    }
+
+        #registerButton:hover {
+            background-color: #ee1730;
+        }
+
+        #registerButton:active {
+            background-color: #79000c;
+        }
+
+.floatBottom {
+    margin: auto;
+    position: absolute;
+    top: 1; left: 0; bottom: 0; right: 0;
+    padding-bottom:5px;
+    padding-right:30px;
+    font-size:small;
+    color:white;
+}
+
+#beam-blue {
+    position: absolute;
+    left: 22%;
+    height:5px;
+    width: 40%;
+    background-color: #3c7d92;
+}
+
+#beam-red {
+    position:absolute;
+    left:67%;
+    height:5px;
+    width:20%;
+    background-color: #f75455;
+}
+
 #page {
-	margin-top: 80px;
+    background-image: url(/images/backgroundContent.jpg);
+    background-repeat: repeat;
+    height:100%;
+    width: 100%;
+    position:absolute;
+}
+
+#beginPage {
+    padding-top: 20px;
 }
