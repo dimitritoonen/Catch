@@ -1,0 +1,24 @@
+﻿using Catch.Web.Api.Data.Entities;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Catch.Web.Api.Data
+{
+    public class CatchInitializer : DropCreateDatabaseIfModelChanges<CatchContext>
+    {
+        protected override void Seed(CatchContext context)
+        {
+            var users = new List<UserEntity>
+            {
+                new UserEntity { Id = 1, Name = "John Doe", Age = "25 - 35", Email = "johndoe@catch.me", InterestedIn = "Female" }
+            };
+
+            users.ForEach(s => context.Users.Add(s));
+            context.SaveChanges();
+        }
+    }
+}
