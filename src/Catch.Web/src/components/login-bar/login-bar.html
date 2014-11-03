@@ -1,18 +1,23 @@
-<table>
+<table id="loginBar">
     <tr>
-        <td colspan="2">E-mail</td>
+        <td colspan="2">
+            <input class="form-control input-sm" type="text" id="emailTextbox"
+                placeholder="Enter Username" />
+        </td>
     </tr>
     <tr>
-        <td colspan="2"><input type="text" id="emailTextbox" /></td>
+        <td colspan="2">
+            <input class="form-control input-sm" type="password" id="passwordTextbox"
+                placeholder="Enter password" />
+        </td>
     </tr>
     <tr>
-        <td colspan="2">password</td>
-    </tr>
-    <tr>
-        <td colspan="2"><input type="password" id="passwordTextbox" /></td>
-    </tr>
-    <tr>
-        <td><input type="checkbox" id="keepMyLoggedInCheckBox" />Keep me logged in</td>
+        <td>
+            <label for="keepMyLoggedInCheckBox">
+                <input type="checkbox" id="keepMyLoggedInCheckBox" />
+                Keep me logged in
+            </label>
+        </td>
         <td><button id="okButton" type="button">Ok</button></td>
     </tr>
 </table>

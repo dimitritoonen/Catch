@@ -14,6 +14,9 @@ namespace Catch.Web.Api
     {
         protected void Application_Start(object sender, EventArgs e)
         {
+            // configure Cors
+            new CorsConfigurator().Config(GlobalConfiguration.Configuration);
+            
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
             new AutoMapperConfigurator().Config(

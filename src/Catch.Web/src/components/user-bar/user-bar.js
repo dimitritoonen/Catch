@@ -1,11 +1,14 @@
 define(['knockout', 'text!./user-bar.html'], function (ko, templateMarkup) {
 
     function UserBar(params) {
+            
+        var self = this;
 
-        this.message = ko.observable('Hello from the user-bar component!');
+        self.goToLocation = function (page) {
 
-        
+            window.location = '#' + page;
 
+        }
     }
 
     return { viewModel: UserBar, template: templateMarkup };

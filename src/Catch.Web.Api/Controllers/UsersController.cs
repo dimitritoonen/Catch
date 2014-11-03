@@ -30,7 +30,8 @@ namespace Catch.Web.Api.Controllers
                 newUser.Name, newUser.Email, newUser.Age, newUser.InterestedIn);
         }
 
-        public NewUser Get(HttpRequestMessage requestMessage, int id)
+        [HttpGet]
+        public NewUser GetExistingUser(HttpRequestMessage requestMessage, int id)
         {
             return new NewUser
             {

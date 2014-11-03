@@ -2587,17 +2587,29 @@
     <Content Include="src\components\intro-page\intro-page.html" />
     <Content Include="src\components\intro-page\intro-page.js" />
     <Content Include="src\components\about-page\about.html" />
-    <Content Include="src\components\home-page\home.html" />
-    <Content Include="src\components\home-page\home.js" />
     <Content Include="src\components\login-bar\login-bar.html" />
     <Content Include="src\components\login-bar\login-bar.js" />
     <Content Include="src\components\nav-bar\nav-bar.html" />
     <Content Include="src\components\nav-bar\nav-bar.js" />
+    <Content Include="src\components\registration-page\registration-page.html" />
+    <Content Include="src\components\registration-page\registration-page.js" />
     <Content Include="src\components\user-bar\user-bar.html" />
     <Content Include="src\components\user-bar\user-bar.js" />
+    <Content Include="src\components\registration-page\wizard-step1\wizard-step1.html" />
+    <Content Include="src\components\registration-page\wizard-step1\wizard-step1.js" />
+    <Content Include="src\components\registration-page\wizard-step2\wizard-step2.html" />
+    <Content Include="src\components\registration-page\wizard-step2\wizard-step2.js" />
+    <Content Include="src\components\registration-page\wizard-step3\wizard-step3.html" />
+    <Content Include="src\components\registration-page\wizard-step3\wizard-step3.js" />
     <Content Include="src\css\styles.css" />
     <Content Include="src\images\backgroundContent.jpg" />
     <Content Include="src\images\CatchLogo.jpg" />
+    <Content Include="src\images\facebookLogo.jpg" />
+    <Content Include="src\images\happycouple1.jpg" />
+    <Content Include="src\images\happycouple2.jpg" />
+    <Content Include="src\images\wizardStep1.jpg" />
+    <Content Include="src\images\wizardStep2.jpg" />
+    <Content Include="src\images\wizardStep3.jpg" />
     <Content Include="src\index.html" />
     <Content Include="test\bower_modules\jasmine\.gitignore" />
     <Content Include="test\bower_modules\jasmine\.gitmodules" />
@@ -4740,6 +4752,10 @@
     <Content Include="test\bower_modules\requirejs\README.md" />
     <Content Include="bower.json" />
     <Content Include="package.json" />
+    <Content Include="src\fonts\CaviarDreams.ttf" />
+    <Content Include="src\fonts\CaviarDreams_Bold.ttf" />
+    <Content Include="src\fonts\CaviarDreams_BoldItalic.ttf" />
+    <Content Include="src\fonts\CaviarDreams_Italic.ttf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
