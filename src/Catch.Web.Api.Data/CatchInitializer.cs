@@ -17,7 +17,7 @@ namespace Catch.Web.Api.Data
                 new UserEntity { Id = 1, Name = "John Doe", Age = "25 - 35", Email = "johndoe@catch.me", InterestedIn = "Female" }
             };
 
-            users.ForEach(s => context.Users.Add(s));
+            users.ForEach(s => context.Profiles.Add(s));
             context.SaveChanges();
         }
     }

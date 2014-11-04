@@ -19,7 +19,6 @@ namespace Catch.Web.Api
                 string origins = GetCorsOrigins();
 
                 var cors = new EnableCorsAttribute(origins, "*", "*");
-
                 config.EnableCors(cors);
             }
         }

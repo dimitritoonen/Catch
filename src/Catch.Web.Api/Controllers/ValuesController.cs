@@ -22,8 +22,17 @@ namespace Catch.Web.Api.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        //public void Post([FromBody]string value)
+        //{
+
+        //}
+
+        public HttpResponseMessage Post()
         {
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent("POST: Test message")
+            };
         }
 
         // PUT api/values/5

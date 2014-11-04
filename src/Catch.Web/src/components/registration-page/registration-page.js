@@ -1,7 +1,6 @@
 define(['knockout', 'text!./registration-page.html'], function(ko, templateMarkup) {
 
   function RegistrationPage(params) {
-    
 
 
   }
