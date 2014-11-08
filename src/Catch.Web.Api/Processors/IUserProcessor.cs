@@ -4,6 +4,7 @@ using Catch.Web.Api.Domain;
 using Catch.Web.Api.Models;
 
 using System;
+using System.Collections.Generic;
 
 #endregion
 
@@ -11,6 +12,6 @@ namespace Catch.Web.Api.Processors
 {
     public interface IUserProcessor
     {
-        void AddUser(NewUser newUser);
+        
     }
 }

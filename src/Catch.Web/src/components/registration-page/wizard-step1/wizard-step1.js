@@ -28,9 +28,12 @@ define(['knockout', 'text!./wizard-step1.html'], function(ko, templateMarkup) {
     this.registerUser = function () {
 
       var data = {
+        NickName: 'Dimitri',
         Email: self.emailAddress(),
+        ConfirmEmail: self.emailAddress(),
         Password: self.password(),
-        ConfirmPassword: self.password()
+        Age: '25 - 35',
+        InterestedIn: 'Female'
       };
       
       $.ajax({
@@ -59,6 +62,13 @@ define(['knockout', 'text!./wizard-step1.html'], function(ko, templateMarkup) {
       }).done(function (data) {
         self.result(data);
       }).fail(showError);
+
+    };
+
+
+    this.logOut = function () {
+
+      sessionStorage.removeItem(tokenKey);
 
     };
 

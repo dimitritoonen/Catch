@@ -1,10 +1,15 @@
-﻿using System.Threading.Tasks;
+﻿#region using directives
+
+using Catch.Web.Api.Data.Context;
+using Catch.Web.Api.Data.Entities;
+
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+
 using Microsoft.Owin;
-using Catch.Web.Api.Data.Entities;
-using Catch.Web.Api.Data;
+
+#endregion
 
 namespace Catch.Web.Api
 {

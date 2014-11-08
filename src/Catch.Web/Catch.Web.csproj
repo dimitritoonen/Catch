@@ -2611,6 +2611,7 @@
     <Content Include="src\images\wizardStep2.jpg" />
     <Content Include="src\images\wizardStep3.jpg" />
     <Content Include="src\index.html" />
+    <Content Include="src\app\authenticator.js" />
     <Content Include="test\bower_modules\jasmine\.gitignore" />
     <Content Include="test\bower_modules\jasmine\.gitmodules" />
     <Content Include="test\bower_modules\jasmine\Gruntfile.js" />
@@ -4763,6 +4764,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

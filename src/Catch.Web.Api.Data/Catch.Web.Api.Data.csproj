@@ -62,12 +62,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CatchContext.cs" />
-    <Compile Include="CatchInitializer.cs" />
-    <Compile Include="Entities\ApplicationUser.cs" />
+    <Compile Include="Context\CatchContext.cs" />
+    <Compile Include="Context\CatchContextInitializer.cs" />
+    <Compile Include="Entities\REMOVE_THIS_CLASS.cs" />
+    <Compile Include="Entities\UserAccountEntity.cs" />
     <Compile Include="Entities\UserEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Abstract\AbstractRepository.cs" />
+    <Compile Include="Repository\Authorization\IAccountRepository.cs" />
+    <Compile Include="Repository\Authorization\AccountRepository.cs" />
     <Compile Include="Repository\Abstract\IUserRepository.cs" />
     <Compile Include="Repository\Concrete\UserRepository.cs" />
   </ItemGroup>

@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Catch.Web.Api.Models
+namespace Catch.Web.Api.Common.Domain
 {
-    public class NewUser
+    public class User
     {
-        public string Name { get; set; }
         public string Email { get; set; }
+        public string Name { get; set; }
         public string Age { get; set; }
         public string InterestedIn { get; set; }
     }

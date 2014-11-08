@@ -50,6 +50,7 @@
       <HintPath>..\..\lib\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -59,8 +60,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\EntityModel.cs" />
+    <Compile Include="Domain\UserAccount.cs" />
     <Compile Include="DateTimeAdapter.cs" />
     <Compile Include="Domain\DomainModel.cs" />
+    <Compile Include="Domain\User.cs" />
     <Compile Include="IDateTime.cs" />
     <Compile Include="Logging\ILogManager.cs" />
     <Compile Include="Logging\LogManagerAdapter.cs" />
@@ -71,6 +74,7 @@
     <Compile Include="TypeMapping\IAutoMapperTypeConfigurator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

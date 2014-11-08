@@ -11,6 +11,5 @@ namespace Catch.Web.Api.Data.Repository
 {
     public interface IUserRepository : IRepository<User>
     {
-
     }
 }

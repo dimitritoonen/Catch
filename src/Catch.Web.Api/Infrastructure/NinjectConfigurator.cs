@@ -1,11 +1,12 @@
 ﻿#region using directives
 
-using Catch.Web.Api.AutoMappingConfiguration;
+using Catch.Web.Api.AutoMapperConfigurators;
 using Catch.Web.Api.Common;
 using Catch.Web.Api.Common.Logging;
 using Catch.Web.Api.Common.TypeMapping;
 using Catch.Web.Api.Data.Repository;
 using Catch.Web.Api.Processors;
+using Catch.Web.Api.Processors.Account;
 using log4net.Config;
 using Ninject;
 using Ninject.Web.Common;
@@ -26,9 +27,14 @@ namespace Catch.Web.Api.Infrastructure
             ConfigureLogging(kernel);
             ConfigureAutoMapper(kernel);
 
+            // repositories
             kernel.Bind<IDateTime>().To<DateTimeAdapter>().InSingletonScope();
             kernel.Bind<IUserRepository>().To<UserRepository>();
+            kernel.Bind<IAccountRepository>().To<AccountRepository>().InRequestScope();
+
+            // processors
             kernel.Bind<IUserProcessor>().To<UserProcessor>().InRequestScope();
+            kernel.Bind<IAccountProcessor>().To<AccountProcessor>().InRequestScope();
         }
 
         private void ConfigureLogging(IKernel kernel)
@@ -46,10 +52,14 @@ namespace Catch.Web.Api.Infrastructure
 
             // configure all AutoMapper type configurators
             kernel.Bind<IAutoMapperTypeConfigurator>()
-                .To<UserToNewUserAutoMapperTypeConfigurator>()
+                .To<UserToNewUserMapping>()
                 .InSingletonScope();
             kernel.Bind<IAutoMapperTypeConfigurator>()
-                .To<NewUserToUserAutoMapperTypeConfigurator>()
+                .To<NewUserToUserMapping>()
+                .InSingletonScope();
+
+            kernel.Bind<IAutoMapperTypeConfigurator>()
+                .To<RegisterUserToAccountUserMapping>()
                 .InSingletonScope();
         }
     }

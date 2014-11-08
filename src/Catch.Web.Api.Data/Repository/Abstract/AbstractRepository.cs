@@ -1,6 +1,7 @@
 ﻿using Catch.Web.Api.Common.Data;
 using Catch.Web.Api.Common.Domain;
 using Catch.Web.Api.Common.Repository;
+using Catch.Web.Api.Data.Context;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -17,32 +18,37 @@ namespace Catch.Web.Api.Data.Repository
     {
         #region Db context
 
-        private DbContext _context = new CatchContext();
+        public CatchContext Context { get; private set; }
+
+        public AbstractRepository()
+        {
+            Context = new CatchContext();
+        }
 
         #endregion
 
         public virtual TDomainModel Find(int id)
         {
-            var entity = _context.Set<TEntityModel>().Find(id);
+            var entity = Context.Set<TEntityModel>().Find(id);
 
             return ToDomainModel(entity);
         }
 
         public virtual void Add(TDomainModel item)
         {
-            _context.Set<TEntityModel>().Add(ToDataEntity(item));
-            _context.SaveChanges();
+            Context.Set<TEntityModel>().Add(ToDataEntity(item));
+            Context.SaveChanges();
         }
 
         public virtual void Update(TDomainModel item)
         {
             var entity = ToDataEntity(item);
 
-            DbEntityEntry dbEntity = _context.Entry<TEntityModel>(entity);
+            DbEntityEntry dbEntity = Context.Entry<TEntityModel>(entity);
 
             if (dbEntity.State == EntityState.Detached)
             {
-                _context.Set<TEntityModel>().Attach(entity);
+                Context.Set<TEntityModel>().Attach(entity);
                 dbEntity.State = EntityState.Modified;
             }
         }

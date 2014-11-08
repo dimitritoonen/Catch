@@ -4,8 +4,8 @@ using Catch.Web.Api.Common.TypeMapping;
 using Catch.Web.Api.Data.Repository;
 using Catch.Web.Api.Domain;
 using Catch.Web.Api.Models;
-
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 #endregion
@@ -23,11 +23,5 @@ namespace Catch.Web.Api.Processors
             this._mapper = autoMapper;
         }
 
-        public void AddUser(NewUser newUser)
-        {
-            var user = _mapper.Map<User>(newUser);
-
-            _repository.Add(user);
-        }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using Catch.Web.Api.Common.TypeMapping;
+using Catch.Web.Api.Data;
 using Catch.Web.Api.Infrastructure;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -14,9 +16,6 @@ namespace Catch.Web.Api
     {
         protected void Application_Start(object sender, EventArgs e)
         {
-            // configure Cors
-            new CorsConfigurator().Config(GlobalConfiguration.Configuration);
-            
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
             new AutoMapperConfigurator().Config(
