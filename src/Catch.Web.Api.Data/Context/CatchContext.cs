@@ -18,12 +18,14 @@ namespace Catch.Web.Api.Data.Context
         {
         }
 
+        public DbSet<ClientEntity> Clients { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<IdentityUser>().ToTable("User");
-            modelBuilder.Entity<UserAccountEntity>().ToTable("User");
+            //modelBuilder.Entity<IdentityUser>().ToTable("User");
+            //modelBuilder.Entity<UserAccountEntity>().ToTable("User");
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }

@@ -45,6 +45,7 @@ input[type=password] {
     z-index:99;
 }
 
+
 /* logo on the header */
 #logo {
     position: relative;
@@ -56,6 +57,14 @@ input[type=password] {
     height: 100px;
     margin: 0 auto;
 }
+
+
+/* defines the main page */
+
+#mainPage {
+    height:100%;
+}
+
 
 /* defines the base line on which the left and right "components" need to float */
 #baselineComponents {
@@ -150,6 +159,12 @@ input[type=password] {
     color:white;
 }
 
+#facebookButton {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
 
 /* defines the styles for the blue and red beams on the bottom the header */
 #beam-blue {
@@ -189,7 +204,7 @@ input[type=password] {
     top:400px;
     bottom:0px;
     width: 100%;
-    position:relative;
+    position:absolute;
     padding-top: 35px;
 }
 

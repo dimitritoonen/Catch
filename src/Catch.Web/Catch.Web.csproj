@@ -2373,6 +2373,7 @@
     <Content Include="src\app\require.config.js" />
     <Content Include="src\app\router.js" />
     <Content Include="src\app\startup.js" />
+    <Content Include="src\AuthCompleted.html" />
     <Content Include="src\bower_modules\components-bootstrap\.gitignore" />
     <Content Include="src\bower_modules\components-bootstrap\css\bootstrap-theme.css" />
     <Content Include="src\bower_modules\components-bootstrap\css\bootstrap-theme.min.css" />
@@ -2587,8 +2588,12 @@
     <Content Include="src\components\intro-page\intro-page.html" />
     <Content Include="src\components\intro-page\intro-page.js" />
     <Content Include="src\components\about-page\about.html" />
+    <Content Include="src\components\logged-in-page\logged-in-page.html" />
+    <Content Include="src\components\logged-in-page\logged-in-page.js" />
     <Content Include="src\components\login-bar\login-bar.html" />
     <Content Include="src\components\login-bar\login-bar.js" />
+    <Content Include="src\components\main-page\main-page.html" />
+    <Content Include="src\components\main-page\main-page.js" />
     <Content Include="src\components\nav-bar\nav-bar.html" />
     <Content Include="src\components\nav-bar\nav-bar.js" />
     <Content Include="src\components\registration-page\registration-page.html" />
@@ -2612,6 +2617,9 @@
     <Content Include="src\images\wizardStep3.jpg" />
     <Content Include="src\index.html" />
     <Content Include="src\app\authenticator.js" />
+    <Content Include="src\services\ajax-service.js" />
+    <Content Include="src\services\auth-service.js" />
+    <Content Include="src\services\auth-storage.js" />
     <Content Include="test\bower_modules\jasmine\.gitignore" />
     <Content Include="test\bower_modules\jasmine\.gitmodules" />
     <Content Include="test\bower_modules\jasmine\Gruntfile.js" />

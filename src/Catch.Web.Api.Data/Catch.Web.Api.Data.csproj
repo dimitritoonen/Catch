@@ -64,7 +64,7 @@
   <ItemGroup>
     <Compile Include="Context\CatchContext.cs" />
     <Compile Include="Context\CatchContextInitializer.cs" />
-    <Compile Include="Entities\REMOVE_THIS_CLASS.cs" />
+    <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\UserAccountEntity.cs" />
     <Compile Include="Entities\UserEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

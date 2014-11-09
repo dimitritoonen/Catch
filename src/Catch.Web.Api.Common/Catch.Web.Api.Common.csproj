@@ -59,7 +59,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\ApplicationTypes.cs" />
     <Compile Include="Data\EntityModel.cs" />
+    <Compile Include="Domain\Client.cs" />
     <Compile Include="Domain\UserAccount.cs" />
     <Compile Include="DateTimeAdapter.cs" />
     <Compile Include="Domain\DomainModel.cs" />

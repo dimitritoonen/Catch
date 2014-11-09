@@ -46,6 +46,25 @@ define(['knockout', 'text!./wizard-step1.html'], function(ko, templateMarkup) {
       }).fail(showError);
     };
 
+    this.registerViaFacebook = function () {
+      /*
+        var redirectUri = location.protocol + '//' + location.host + '/authcomplete.html';
+
+        var externalProviderUrl = ngAuthSettings.apiServiceBaseUri + "api/Account/ExternalLogin?provider=" + provider
+                                                                    + "&response_type=token&client_id=" + ngAuthSettings.clientId
+                                                                    + "&redirect_uri=" + redirectUri;
+        window.$windowScope = $scope;
+
+        var oauthWindow = window.open(externalProviderUrl, "Authenticate Account", "location=0,status=0,width=600,height=750");
+      */
+
+      var redirectUri = 'http://localhost:8080';
+      var externalProviderUrl = 'http://localhost:4421/api/Account/ExternalLogin?provider=Facebook'
+                              + '&response_type=token&client_id=ChirpingWeb&redirect_uri=' + redirectUri;
+
+      var oauthWindows = window.open(externalProviderUrl, "Authenticate Account", "location=0,status=0,width=600,height=750");
+    }
+
     this.callApi = function () {
 
       // If we already have a bearer token, set the Authorization header.

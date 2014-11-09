@@ -7,7 +7,7 @@ define(['jquery'], function ($) {
     baseUrl: 'http://localhost:4421',
     result: 'sfdsfds',
 
-    loginUser: function (data) {
+    loginUser: function (data) {  
 
       $.ajax({
         type: 'POST',

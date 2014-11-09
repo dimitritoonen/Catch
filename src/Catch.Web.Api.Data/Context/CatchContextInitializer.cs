@@ -1,4 +1,5 @@
-﻿using Catch.Web.Api.Data.Entities;
+﻿using Catch.Web.Api.Common.Account;
+using Catch.Web.Api.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,13 +13,22 @@ namespace Catch.Web.Api.Data.Context
     {
         protected override void Seed(CatchContext context)
         {
-            //var users = new List<UserEntity>
-            //{
-            //    new UserEntity { Id = 1, Name = "John Doe", Age = "25 - 35", Email = "johndoe@catch.me", InterestedIn = "Female" }
-            //};
+            var clients = new List<ClientEntity>
+            {
+                new ClientEntity
+                {
+                    Id = "ChirpingWeb",
+                    Secret = Guid.NewGuid().ToString(),
+                    Name = "Chirping front-end application",
+                    ApplicationType = ApplicationTypes.JavaScript,
+                    Active = true,
+                    RefreshTokenLifeTime = 0,
+                    AllowedOrigin = "*"
+                }
+            };
 
-            //users.ForEach(s => context.Profiles.Add(s));
-            //context.SaveChanges();
+            clients.ForEach(s => context.Clients.Add(s));
+            context.SaveChanges();
 
             base.Seed(context);
         }
