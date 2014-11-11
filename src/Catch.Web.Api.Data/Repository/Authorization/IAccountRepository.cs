@@ -14,9 +14,10 @@ namespace Catch.Web.Api.Data.Repository
     public interface IAccountRepository : IDisposable
     {
         Task<IdentityResult> RegisterUser(UserAccount user);
-        Task<UserAccountEntity> FindUser(string email, string password);
 
+        Task<UserAccountEntity> FindUser(string email, string password);
         Client FindClient(string clientId);
+        bool EmailAddressInUse(string emailAddress);
 
         #region operations for external logon (Facebook, Google, etc)
 

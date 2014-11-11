@@ -1,12 +1,16 @@
 define(['knockout', 'text!./wizard-step3.html'], function(ko, templateMarkup) {
 
   function WizardStep3(params) {
-    this.message = ko.observable('Hello from the wizard-step3 component!');
-  }
+    
+    var self = this;
 
-  // This runs when the component is torn down. Put here any logic necessary to clean up,
-  // for example cancelling setTimeouts or disposing Knockout subscriptions/computeds.
-  WizardStep3.prototype.dispose = function() { };
+    self.mottoList = ko.observableArray([
+      'When you only look right, you unable to see left',
+      'The intelligent man finds almost everything ridiculous, the ...',
+      'I have an enormous... ',
+      'I swear to drunk, I am not god'
+    ]);
+  }
   
   return { viewModel: WizardStep3, template: templateMarkup };
 

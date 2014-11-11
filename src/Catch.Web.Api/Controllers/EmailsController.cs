@@ -1,18 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Web;
+﻿#region using directives
+
+using Catch.Web.Api.BindingModels.Account;
+using Catch.Web.Api.Processors;
+
 using System.Web.Http;
+using System;
+using System.Net.Mail;
+
+#endregion
 
 namespace Catch.Web.Api.Controllers
 {
+    [Authorize]
     public class EmailsController : ApiController
     {
-        [HttpGet]
-        public bool IsEmailAlreadyUsed([FromUri] string emailAddress)
+        #region constructor
+
+        private IUserProcessor _processor;
+        
+        public EmailsController(IUserProcessor processor)
         {
-            return false;
+            this._processor = processor;
+        }
+
+        #endregion
+        
+        [AllowAnonymous]
+        [HttpGet]
+        public bool EmailAdressAvailable(string emailAddress)
+        {
+            if (!IsValidEmail(emailAddress))
+                return false;
+
+            return _processor.EmailAddressInUse(emailAddress);
+        }
+
+        private bool IsValidEmail(string emailAddress)
+        {
+            try
+            {
+                var address = new MailAddress(emailAddress);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

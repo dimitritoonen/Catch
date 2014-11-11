@@ -158,12 +158,13 @@
     <Compile Include="App_Start\AutoMapperConfigurator.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="BindingModels\Account\ChangePasswordBindingModel.cs" />
+    <Compile Include="BindingModels\Account\EmailAddressInUseBindingModel.cs" />
     <Compile Include="BindingModels\Account\ExternalLoginViewModel.cs" />
     <Compile Include="BindingModels\Account\ParsedExternalAccessToken.cs" />
     <Compile Include="BindingModels\Account\RegisterExternalBindingModel.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Providers\FacebookAuthProvider.cs" />
     <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="AutoMapperConfigurators\NewUserToUserMapping.cs" />
     <Compile Include="AutoMapperConfigurators\RegisterUserToAccountUserMapping.cs" />

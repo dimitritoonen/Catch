@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Chirping.nl</title>
+        
         <!-- build:css -->
             <link href="bower_modules/components-bootstrap/css/bootstrap.min.css" rel="stylesheet">
             <link href="css/styles.css" rel="stylesheet">
@@ -16,6 +17,23 @@
     </head>
 
     <body>
-        <div id="mainPage" data-bind="component: { name: 'main-page', params: route() }"></div>
+        <div id="header">
+            <div id="logo"></div>
+            <div id="baselineComponents">
+                <div id="leftComponent" class="pull-left text-right">
+                    <h2 class="you">You</h2>
+                    <user-bar id="Userbar"></user-bar>
+                </div>
+                <div id="rightComponent" class="pull-right">
+                    <h2>Login</h2>
+                    <login-bar id="loginBar"></login-bar>
+                </div>
+            </div>
+            <div id="beam-backGround">
+                <div id="beam-blue"></div>
+                <div id="beam-red"></div>
+            </div>
+        </div>
+        <div id="page" data-bind="component: { name: route().page, params: route() }"></div>
     </body>
 </html>

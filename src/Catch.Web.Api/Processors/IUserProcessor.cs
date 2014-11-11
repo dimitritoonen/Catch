@@ -12,6 +12,6 @@ namespace Catch.Web.Api.Processors
 {
     public interface IUserProcessor
     {
-        
+        bool EmailAddressInUse(string emailAddress);
     }
 }

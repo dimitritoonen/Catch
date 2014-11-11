@@ -1,23 +1,27 @@
-﻿using Catch.Web.Api.BindingModels.Account;
+﻿#region using directives
+
+using Catch.Web.Api.BindingModels.Account;
 using Catch.Web.Api.Data.Entities;
-using Catch.Web.Api.Processors;
 using Catch.Web.Api.Processors.Account;
 using Catch.Web.Api.Results;
+
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
+
 using Newtonsoft.Json.Linq;
+
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
+
+#endregion
 
 namespace Catch.Web.Api.Controllers
 {
@@ -68,6 +72,7 @@ namespace Catch.Web.Api.Controllers
 
             return Ok();
         }
+
 
         // POST api/Account/Logout
         [Route("ChangePassword")]
@@ -295,7 +300,6 @@ namespace Catch.Web.Api.Controllers
 
             return tokenResponse;
         }
-
 
         #endregion
 

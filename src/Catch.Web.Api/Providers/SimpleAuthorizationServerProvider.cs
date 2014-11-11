@@ -39,6 +39,10 @@ namespace Catch.Web.Api.Providers
         
         public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
+            context.Validated();
+
+            return Task.FromResult<object>(null);
+
             string clientId = string.Empty;
             string clientSecret = string.Empty;
             Client client = null;

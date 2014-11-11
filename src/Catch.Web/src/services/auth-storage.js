@@ -22,6 +22,6 @@
 
   };
 
-  return authStorage();
+  return authStorage;
 
 });

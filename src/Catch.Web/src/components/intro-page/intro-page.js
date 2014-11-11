@@ -1,4 +1,4 @@
-define(['knockout', 'text!./intro-page.html'], function(ko, templateMarkup) {
+define(['knockout', 'text!./intro-page.html'], function (ko, templateMarkup) {
 
   function IntroPage(params) {
     this.message = ko.observable('Hello from the Intro-page component!');

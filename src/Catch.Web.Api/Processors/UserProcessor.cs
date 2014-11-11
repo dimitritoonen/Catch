@@ -23,5 +23,11 @@ namespace Catch.Web.Api.Processors
             this._mapper = autoMapper;
         }
 
+
+        /// checks if a particular e-mail is already registered
+        public bool EmailAddressInUse(string emailAddress)
+        {
+            return _repository.EmailAddressInUse(emailAddress);
+        }
     }
 }

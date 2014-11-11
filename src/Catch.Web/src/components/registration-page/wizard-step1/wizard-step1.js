@@ -1,24 +1,36 @@
-define(['knockout', 'text!./wizard-step1.html'], function(ko, templateMarkup) {
+define(['jquery', 'knockout', 'text!./wizard-step1.html', 'services/auth-service', 'app/app.config'], function($, ko, templateMarkup, auth, config) {
 
   function WizardStep1(params) {
 
     var self = this;
 
-    var tokenKey = 'accessToken';
     self.result = ko.observable();
-
-    self.emailAddress = ko.observable('dimitritoonen@gmail.com');
+    self.emailAddress = ko.observable('dimitritoonen@gmail.co');
     self.password = ko.observable('Password1!');
-
     self.isValid = false;
+      
 
-    self.isValidEmail = function (emailAddress) {
+    self.SetValidation = function (control, isValid) {
 
-      $.getJSON('http://localhost:4421/api/emails?emailAddress=' + emailAddress, function (data) {
-        console.log(data);
+      $(control).addClass('has-error');
+    };
+
+    // check if email is already in use
+    self.emailAddress.subscribe(function (emailAddress) {
+      
+      var queryString = '/?emailAddress=' + encodeURI(emailAddress)
+
+      $.ajax({
+        type: 'GET',
+        url: config.BaseUrl + 'api/Emails/EmailAddressAvailable' + queryString
+      }).done(function (data) {
+        
+        // display result on control
+        self.SetValidation($('#emailAddressHeader'), data);
+
       });
 
-    };
+    });
 
 
     function showError(jqXHR) {
@@ -35,28 +47,13 @@ define(['knockout', 'text!./wizard-step1.html'], function(ko, templateMarkup) {
         Age: '25 - 35',
         InterestedIn: 'Female'
       };
-      
-      $.ajax({
-        type: 'POST',
-        url: 'http://localhost:4421/api/Account/Register',
-        contentType: 'application/json; charset=utf-8',
-        data: JSON.stringify(data)
-      }).done(function (data) {
+
+      auth.RegisterUser(data).done(function (data) {
         self.result("Done!");
-      }).fail(showError);
+      });
     };
 
     this.registerViaFacebook = function () {
-      /*
-        var redirectUri = location.protocol + '//' + location.host + '/authcomplete.html';
-
-        var externalProviderUrl = ngAuthSettings.apiServiceBaseUri + "api/Account/ExternalLogin?provider=" + provider
-                                                                    + "&response_type=token&client_id=" + ngAuthSettings.clientId
-                                                                    + "&redirect_uri=" + redirectUri;
-        window.$windowScope = $scope;
-
-        var oauthWindow = window.open(externalProviderUrl, "Authenticate Account", "location=0,status=0,width=600,height=750");
-      */
 
       var redirectUri = 'http://localhost:8080';
       var externalProviderUrl = 'http://localhost:4421/api/Account/ExternalLogin?provider=Facebook'
@@ -83,25 +80,6 @@ define(['knockout', 'text!./wizard-step1.html'], function(ko, templateMarkup) {
       }).fail(showError);
 
     };
-
-
-    this.logOut = function () {
-
-      sessionStorage.removeItem(tokenKey);
-
-    };
-
-
-    // check if email is already in use
-    self.emailAddress.subscribe(function (emailAddress) {
-
-      if (!self.isValidEmail(emailAddress)) {
-        //
-      }
-
-      // ajax request
-
-    });
   }
   
   return { viewModel: WizardStep1, template: templateMarkup };

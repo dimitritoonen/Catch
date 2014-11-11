@@ -1,3 +1,124 @@
-<h2>wizard-step2</h2>
+<div class="row text-center">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <br />
+        <input type="text" class="form-control" placeholder="Nick name" id="NickNameTextbox" />
+    </div>
+    <div class="col-md-2"></div>
+</div>
 
-<p data-bind='text: message'></p>
+<div class="row">
+    <p>
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-3">
+                    <div class="center-block empty-profile-image-small" id="wizard-profileImage1"></div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="center-block empty-profile-image-small" id="wizard-profileImage2"></div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="center-block empty-profile-image-small" id="wizard-profileImage3"></div>
+                </div>
+                <div class="col-xs-1"></div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </p>
+</div>
+<p></p>
+<div class="row wizard-gender-height">
+    <div class="row center-block">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="wizard-align-gender">
+                        <b>Sex</b>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="wizard-align-gender">
+                        <label class="pull-down" for="GenderMale">Male</label>
+                        <input type="radio" id="GenderMale" name="sex" value="Male"
+                               data-bind="checked: CurrentGender" />
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="wizard-align-gender">
+                        <label for="GenderFemale">Female</label>
+                        <input type="radio" id="GenderFemale" name="sex" value="Female"
+                               data-bind="checked: CurrentGender" />
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div id="GenderIcon" class="pull-right" data-bind="css: CurrentGenderIcon" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+<p></p>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <p>
+            <input type="text" class="form-control" id="CityTextbox" placeholder="City" />
+        </p>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <p>
+            <input type="text" class="form-control" id="AgeTextbox" placeholder="Age" />
+        </p>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+<div class="row wizard-gender-height">
+    <div class="row center-block">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="wizard-align-gender">
+                        <b>Interested in?</b>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="wizard-align-gender">
+                        <label class="pull-down" for="InterstedInMale">Male</label>
+                        <input type="radio" id="InterstedInMale" name="InterestedIn" value="Male"
+                               data-bind="checked: CurrentInterestedIn" />
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="wizard-align-gender">
+                        <label for="InterstedInFemale">Female</label>
+                        <input type="radio" id="InterstedInFemale" name="InterestedIn" value="Female"
+                               data-bind="checked: CurrentInterestedIn" />
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="wizard-align-gender">
+                        <label for="InterestedInFemale">Both</label>
+                        <input type="radio" id="InterestedInFemale" name="InterestedIn" value="Both"
+                               data-bind="checked: CurrentInterestedIn" />
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div id="GenderIcon" class="pull-right" data-bind="css: CurrentInterestedInIcon" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

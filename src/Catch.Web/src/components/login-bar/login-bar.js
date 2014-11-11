@@ -1,4 +1,4 @@
-define(['knockout', 'text!./login-bar.html'], function(ko, templateMarkup) {
+define(['knockout', 'text!./login-bar.html', 'services/auth-service'], function (ko, templateMarkup, auth) {
 
   function LoginBar(params) {
     
@@ -22,15 +22,8 @@ define(['knockout', 'text!./login-bar.html'], function(ko, templateMarkup) {
         username: self.userName(),
         password: self.password()
       };
-        
-      $.ajax({
-        type: 'POST',
-        url: 'http://localhost:4421/Token',
-        data: data
-      }).done(function (data) {
-          sessionStorage.setItem(tokenKey, data.access_token);
-        }).fail(showError);
 
+      auth.LoginUser(data);
     };
   }
   

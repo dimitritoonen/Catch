@@ -29,7 +29,6 @@ namespace Catch.Web.Api.Data.Repository
 
         private UserManager<UserAccountEntity> GetUserManager()
         {
-//            var manager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(_context));
             var manager = new UserManager<UserAccountEntity>(new UserStore<UserAccountEntity>(_context));
 
             // Configure validation logic for usernames
@@ -88,6 +87,13 @@ namespace Catch.Web.Api.Data.Repository
                 RefreshTokenLifeTime = clientEntity.RefreshTokenLifeTime,
                 AllowedOrigin = clientEntity.AllowedOrigin
             };
+        }
+
+        public bool EmailAddressInUse(string emailAddress)
+        {
+            // Implement check
+
+            return false;
         }
 
         #region operations for external logon (Facebook, Google, etc)

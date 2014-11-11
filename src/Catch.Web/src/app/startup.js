@@ -1,13 +1,14 @@
-define(['jquery', 'knockout', './router', 'bootstrap', 'knockout-projections'], function($, ko, router) {
+define(['jquery', 'knockout', './router', 'services/auth-service', 'bootstrap', 'knockout-projections'], function($, ko, router, auth) {
   
-  var startup = {
-    route: ko.observable(router.currentRoute)
+  var baseUrl = 'http://localhost:4421/';
+  
+  var viewModel = {
+    route: router.currentRoute,
+    auth: auth
   };
 
-  // define ajax defaults
   $.ajaxSetup({
-    contentType: 'application/json: charset-utf-8',
-    dataType: 'json'
+    contentType: 'application/json; charset=utf-8'
   });
 
   // Components can be packaged as AMD modules, such as the following:
@@ -20,11 +21,10 @@ define(['jquery', 'knockout', './router', 'bootstrap', 'knockout-projections'], 
   ko.components.register('wizard-step2', { require: 'components/registration-page/wizard-step2/wizard-step2' });
   ko.components.register('wizard-step3', { require: 'components/registration-page/wizard-step3/wizard-step3' });
   ko.components.register('logged-in-page', { require: 'components/logged-in-page/logged-in-page' });
-  ko.components.register('main-page', { require: 'components/main-page/main-page' });
 
   // [Scaffolded component registrations will be inserted here. To retain this feature, don't remove this comment.]
   
+
   // Start the application
-  //ko.applyBindings({ route: router.currentRoute });
-  ko.applyBindings(startup);
+  ko.applyBindings(viewModel);
 });

@@ -1,13 +1,26 @@
 define(['knockout', 'text!./wizard-step2.html'], function(ko, templateMarkup) {
 
   function WizardStep2(params) {
-    this.message = ko.observable('Hello from the wizard-step2 component!');
+    
+    // constants
+    var genderMaleIcon = 'gender-male-icon';
+    var genderFemaleIcon = 'gender-female-icon';
+    var genderBothIcon = 'gender-both-icon';
+
+    var self = this;
+    
+    self.CurrentGender = ko.observable('Male');
+    self.CurrentInterestedIn = ko.observable('Female');
+
+    self.CurrentGenderIcon = ko.computed(function () {
+      return (self.CurrentGender() == 'Male' ? genderMaleIcon : genderFemaleIcon);
+    })
+
+    self.CurrentInterestedInIcon = ko.computed(function () {
+      return (self.CurrentInterestedIn() == 'Male' ? genderMaleIcon : genderFemaleIcon);
+    });
   }
 
-  // This runs when the component is torn down. Put here any logic necessary to clean up,
-  // for example cancelling setTimeouts or disposing Knockout subscriptions/computeds.
-  WizardStep2.prototype.dispose = function() { };
-  
   return { viewModel: WizardStep2, template: templateMarkup };
 
 });

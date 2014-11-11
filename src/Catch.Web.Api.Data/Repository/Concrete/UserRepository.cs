@@ -16,6 +16,11 @@ namespace Catch.Web.Api.Data.Repository
 {
     public class UserRepository : AbstractRepository<User, UserEntity>, IUserRepository
     {
+        public bool EmailAddressInUse(string emailAddress)
+        {
+            return false;
+        }
+
         #region Mapping operators
 
         protected override UserEntity ToDataEntity(User domainModel)

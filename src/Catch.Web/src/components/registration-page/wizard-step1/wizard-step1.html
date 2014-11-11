@@ -1,53 +1,43 @@
-<div id="wizardStep1" class="container">
-    <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-8 text-center">
-            <img id="facebookButton" data-bind="click: registerViaFacebook" src="/images/facebookLogo.jpg" />
-            Via facebook
-        </div>
-        <div class="col-sm-2"></div>
-    </div>
-    <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-8">
-            <hr />
-            <p class="text-center">Register with your e-mail address</p>
-        </div>
-        <div class="col-sm-2"></div>
-    </div>
-    <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6">
-            <p>
-                <input data-bind="value: emailAddress" class="form-control" placeholder="E-mail" type="text" id="emailTextbox" />
-            </p>
-        </div>
-        <div class="col-sm-3"></div>
-    </div>
-    <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6">
-            <p><input class="form-control" placeholder="Confirm e-mail" type="text" id="emailConfirmTextbox" /></p>
-        </div>
-        <div class="col-sm-3"></div>
-    </div>
-    <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6">
-            <p><input data-bind="value: password" class="form-control" placeholder="password" type="password" id="password" /></p>
-        </div>
-        <div class="col-sm-3"></div>
-    </div>
-    <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-8 text-center">
-            Already registered? <b><a href="#" data-bind="click: function () { clickedEvent(); }">Click here</a></b>
-        </div>
-        <div class="col-sm-2"></div>
-    </div>
+<div class="row text-center">
+    <img id="facebookButton" data-bind="click: registerViaFacebook" src="/images/facebookLogo.jpg" />
+    Via facebook
 </div>
-<p></p>
-<div class="container">
+<div class="row">
+    <div class="col-sm-12"><hr /></div>
+</div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <p class="text-center">Register with your e-mail address</p>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8" id="emailAddressHeader">
+        <p><input data-bind="value: emailAddress" class="form-control" placeholder="E-mail" 
+                  type="text" id="emailTextbox" /></p>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <p>
+            <input class="form-control" placeholder="Confirm e-mail" type="text"
+                   id="emailConfirmTextbox" />
+        </p>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <p><input data-bind="value: password" class="form-control" placeholder="password" type="password" id="password" /></p>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<!--<div class="container hide">
     <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-sm-8 text-center">
@@ -58,4 +48,4 @@
         </div>
         <div class="col-sm-2"></div>
     </div>
-</div>
+</div>-->

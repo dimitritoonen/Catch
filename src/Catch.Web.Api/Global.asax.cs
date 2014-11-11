@@ -16,8 +16,6 @@ namespace Catch.Web.Api
     {
         protected void Application_Start(object sender, EventArgs e)
         {
-            GlobalConfiguration.Configure(WebApiConfig.Register);
-
             new AutoMapperConfigurator().Config(
                 WebContainerManager.GetAll<IAutoMapperTypeConfigurator>());
         }
