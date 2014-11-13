@@ -2,35 +2,30 @@ define(['jquery', 'knockout', 'text!./wizard-step1.html', 'services/auth-service
 
   function WizardStep1(params) {
 
+
     var self = this;
-
+    
     self.result = ko.observable();
-    self.emailAddress = ko.observable('dimitritoonen@gmail.co');
-    self.password = ko.observable('Password1!');
-    self.isValid = false;
-      
 
-    self.SetValidation = function (control, isValid) {
-
-      $(control).addClass('has-error');
+    ko.validation.rules['mustEqual'] = {
+      validator: function (val, otherVal) {
+        return val === otherVal;
+      },
+      message: 'The field must equal {0}'
     };
+    ko.validation.registerExtenders();
 
-    // check if email is already in use
-    self.emailAddress.subscribe(function (emailAddress) {
-      
-      var queryString = '/?emailAddress=' + encodeURI(emailAddress)
-
-      $.ajax({
-        type: 'GET',
-        url: config.BaseUrl + 'api/Emails/EmailAddressAvailable' + queryString
-      }).done(function (data) {
-        
-        // display result on control
-        self.SetValidation($('#emailAddressHeader'), data);
-
+    self.emailAddress = ko.observable('test@test.nl').extend(
+      {
+        required: true,
+        email: true,
+        isEmailAvailable: true
       });
+    self.confirmEmail = ko.observable().extend({ mustEqual: 'test' });
 
-    });
+    self.password = ko.observable();
+    
+
 
 
     function showError(jqXHR) {

@@ -8,15 +8,20 @@ define(['knockout', 'text!./registration-page.html'], function(ko, templateMarku
     var maxSteps = 3;
 
     self.currentStep = ko.observable(minSteps);
+
+    self.currentStepImage = ko.computed(function () {
+      return 'image-step' + self.currentStep()
+    });
+
     self.currentWizardStep = ko.computed(function () {
       return 'wizard-step' + self.currentStep()
     });
 
     // form items
-    self.emailAddress = ko.observable('dimitritoonen@gmail.co');
-    self.NickName = ko.observable('Dimitri456');
-    self.Age = ko.observable('25 - 35');
-    self.InterestedIn = ko.observable('Female');
+    self.emailAddress = ko.observable();
+    self.NickName = ko.observable();
+    self.Age = ko.observable();
+    self.InterestedIn = ko.observable();
 
     // advances to the next step
     self.NextStep = function () {

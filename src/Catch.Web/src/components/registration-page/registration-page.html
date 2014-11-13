@@ -1,38 +1,30 @@
-<div id="wizardProgress" class="container">
+<div id="wizardProgress" class="container fixed-container">
     <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2"><h4>Register</h4></div>
-        <div class="col-sm-4">
-            <div id="wizardProgressIndication" class="center-block"><h4></h4></div>
+        <div class="col-xs-2"></div>
+        <div class="col-xs-2"><h4>Register</h4></div>
+        <div class="col-xs-4">
+            <div id="wizardIndication" data-bind="css: currentStepImage" class="progress-image center-block"><h4></h4></div>
         </div>
-        <div class="col-sm-2"></div>
+        <div class="col-xs-2"></div>
     </div>
     <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-8">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-8">
             <hr>
         </div>
-        <div class="col-sm-2"></div>
+        <div class="col-xs-2"></div>
     </div>
 </div>
-<div id="wizardSteps" class="container">
+<div id="wizardSteps" class="container fixed-container">
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-xs-2">
             <div class="pull-right" data-bind="click: PreviousStep, visible: currentStep() > 1" id="wizardLeftArrow"></div>
         </div>
-        <div class="col-sm-8 center-block">
+        <div class="col-xs-8 center-block">
             <div id="wizardStep" data-bind="component: { name: currentWizardStep }"></div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-xs-2">
             <div class="pull-left" data-bind="click: NextStep, visible: currentStep() < 3" id="wizardRightArrow"></div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 center-block text-center">
-            <br />
-            Already registered? <b><a href="#">Click here</a></b>
-        </div>
-        <div class="col-md-2"></div>
     </div>
 </div>

@@ -89,13 +89,6 @@ namespace Catch.Web.Api.Data.Repository
             };
         }
 
-        public bool EmailAddressInUse(string emailAddress)
-        {
-            // Implement check
-
-            return false;
-        }
-
         #region operations for external logon (Facebook, Google, etc)
 
         public async Task<UserAccountEntity> FindAsync(UserLoginInfo loginInfo)

@@ -5,6 +5,19 @@
     
   };
 
+  // checks if the e-mail address is available
+  authService.IsEmailAddressAvailable = function (emailAddress, callBackResult) {
+
+    var queryString = '/?emailAddress=' + encodeURI(emailAddress)
+
+    $.ajax({
+      type: 'GET',
+      url: config.BaseUrl + 'api/Emails/EmailAddressAvailable' + queryString
+    }).done(function (data) {
+      callBackResult(data);
+    });
+  };
+
   // 
   authService.LoginUser = function (loginData) {
 

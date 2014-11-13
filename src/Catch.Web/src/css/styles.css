@@ -3,6 +3,7 @@
     src: url(/fonts/CaviarDreams.ttf);
 }
 
+
 /* General css styles */
 div {
     font-family: CaviarDreams;
@@ -37,6 +38,7 @@ input[type=text],
 input[type=password] {
     width:100%;
 }
+
 
 /* the header of the page */
 #header {
@@ -241,12 +243,31 @@ input[type=password] {
 }
 
 /* Define the styles for the wizzard */
-#wizardProgressIndication {
-    background-image: url(/images/wizardStep1.jpg);
+#wizardSteps.fixed-container {
+    width: 650px !important;
+}
+
+
+
+
+#wizardIndication.progress-image {
     background-repeat: no-repeat;
     width: 64px;
     height: 27px;
 }
+
+#wizardIndication.image-step1 {
+    background-image: url(/images/wizardStep1.jpg);
+}
+
+#wizardIndication.image-step2 {
+    background-image: url(/images/wizardStep2.jpg);
+}
+
+#wizardIndication.image-step3 {
+    background-image: url(/images/wizardStep3.jpg);
+}
+
 
 #wizardLeftArrow {
     background-image: url('../images/arrowLeft.jpg');    
