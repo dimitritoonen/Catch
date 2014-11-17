@@ -21,7 +21,7 @@
             <div class="pull-right" data-bind="click: PreviousStep, visible: currentStep() > 1" id="wizardLeftArrow"></div>
         </div>
         <div class="col-xs-8 center-block">
-            <div id="wizardStep" data-bind="component: { name: currentWizardStep }"></div>
+            <div id="wizardStep" data-bind="component: { name: currentWizardStep, params: { registration: registration } }"></div>
         </div>
         <div class="col-xs-2">
             <div class="pull-left" data-bind="click: NextStep, visible: currentStep() < 3" id="wizardRightArrow"></div>

@@ -1,4 +1,4 @@
-define(['knockout', 'text!./registration-page.html'], function(ko, templateMarkup) {
+define(['knockout', 'text!./registration-page.html', './registration-model'], function(ko, templateMarkup, registrationModel) {
   
   function RegistrationPage(params) {
 
@@ -6,6 +6,9 @@ define(['knockout', 'text!./registration-page.html'], function(ko, templateMarku
 
     var minSteps = 1;
     var maxSteps = 3;
+
+    // contains the registration view model
+    self.registration = registrationModel;
 
     self.currentStep = ko.observable(minSteps);
 
@@ -16,15 +19,13 @@ define(['knockout', 'text!./registration-page.html'], function(ko, templateMarku
     self.currentWizardStep = ko.computed(function () {
       return 'wizard-step' + self.currentStep()
     });
-
-    // form items
-    self.emailAddress = ko.observable();
-    self.NickName = ko.observable();
-    self.Age = ko.observable();
-    self.InterestedIn = ko.observable();
-
+    
     // advances to the next step
     self.NextStep = function () {
+
+      if (!self.registration.isCurrentStepValid())
+        return;
+
       if (self.currentStep() == maxSteps)
         return;
 

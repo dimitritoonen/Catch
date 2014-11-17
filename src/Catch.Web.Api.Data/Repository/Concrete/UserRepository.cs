@@ -18,7 +18,9 @@ namespace Catch.Web.Api.Data.Repository
     {
         public bool EmailAddressInUse(string emailAddress)
         {
-            return false;
+            var user = this.Context.Users.Where(x => string.Compare(x.Email, emailAddress, true) == 0).FirstOrDefault();
+
+            return (user == null);
         }
 
         #region Mapping operators

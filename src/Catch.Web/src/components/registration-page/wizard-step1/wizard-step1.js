@@ -1,30 +1,26 @@
-define(['jquery', 'knockout', 'text!./wizard-step1.html', 'services/auth-service', 'app/app.config'], function($, ko, templateMarkup, auth, config) {
+define(['jquery', 'knockout', 'text!./wizard-step1.html', 'app/app.config'], function ($, ko, templateMarkup, auth, config) {
 
   function WizardStep1(params) {
-
-
+    
     var self = this;
     
     self.result = ko.observable();
-
-    ko.validation.rules['mustEqual'] = {
-      validator: function (val, otherVal) {
-        return val === otherVal;
-      },
-      message: 'The field must equal {0}'
-    };
-    ko.validation.registerExtenders();
-
-    self.emailAddress = ko.observable('test@test.nl').extend(
-      {
-        required: true,
-        email: true,
-        isEmailAvailable: true
-      });
-    self.confirmEmail = ko.observable().extend({ mustEqual: 'test' });
-
-    self.password = ko.observable();
+    self.emailAddress = params.registration.emailAddress;
+    self.confirmEmail = params.registration.confirmEmail;
+    self.password = params.registration.password;
     
+    var validationGroup = ko.validatedObservable({
+      emailAddress: self.emailAddress,
+      confirmEmail: self.confirmEmail,
+      password: self.password
+    });
+
+    validationGroup.isValid.subscribe(function (valid) {
+      params.registration.isCurrentStepValid(valid);
+    });
+
+
+
 
 
 
@@ -55,7 +51,7 @@ define(['jquery', 'knockout', 'text!./wizard-step1.html', 'services/auth-service
                               + '&response_type=token&client_id=ChirpingWeb&redirect_uri=' + redirectUri;
 
       var oauthWindows = window.open(externalProviderUrl, "Authenticate Account", "location=0,status=0,width=600,height=750");
-    }
+    };
 
     this.callApi = function () {
 

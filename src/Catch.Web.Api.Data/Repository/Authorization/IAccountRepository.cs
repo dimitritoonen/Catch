@@ -17,7 +17,6 @@ namespace Catch.Web.Api.Data.Repository
 
         Task<UserAccountEntity> FindUser(string email, string password);
         Client FindClient(string clientId);
-        bool EmailAddressInUse(string emailAddress);
 
         #region operations for external logon (Facebook, Google, etc)
 

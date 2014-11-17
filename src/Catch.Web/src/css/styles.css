@@ -318,3 +318,13 @@ input[type=password] {
     width: 75px;
     height: 91px;
 }
+
+.glyphicon-ok {
+    margin-top: -25px;
+    margin-right: 15px;
+}
+
+.glyphicon-remove {
+    margin-top: -25px;
+    margin-right: 15px;
+}
