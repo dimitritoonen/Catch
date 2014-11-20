@@ -29,5 +29,11 @@ namespace Catch.Web.Api.Processors
         {
             return _repository.EmailAddressInUse(emailAddress);
         }
+
+        // checks if a particular nickname is already registered
+        public bool NickNameInUse(string nickname)
+        {
+            return _repository.NicknameInUse(nickname);
+        }
     }
 }

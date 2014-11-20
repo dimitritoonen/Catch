@@ -1,23 +1,18 @@
 <div class="row">
     <div class="col-xs-12">
         <p>
-            <select id="mottoDropdown" class="form-control" data-bind="options: mottoList"></select>
+            <select id="mottoDropdown" class="form-control" data-bind="
+                options: mottoList,
+                selectedOptions: registration.selectedMottoOption"></select>
         </p>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-xs-12">
-        <p>
-            <textarea rows="4" class="form-control" placeholder="Choose a motto" required></textarea>
-        </p>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12 text-center">
-        <p>
-            <h3><a href="#Register">Register</a></h3>
-        </p>
+<p></p>
+<div class="row form-group has-feedback">
+    <div class="col-xs-12" data-bind="validationElement: registration.motto">
+        <textarea data-bind="value: registration.motto, qtipValMessage: registration.motto" class="form-control"
+                  rows="4" id="wizardMottotextbox" placeholder="Choose a motto" required></textarea>
+        <span id="wizardMottotextboxIcon" class="glyphicon form-control-feedback"></span>
     </div>
 </div>

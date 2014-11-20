@@ -1,4 +1,4 @@
-﻿define(['knockout', 'services/auth-service', 'knockout-validation'], function (ko, auth) {
+﻿define(['knockout', 'services/auth-service'], function (ko, auth) {
 
   // configure knockout validation
   ko.validation.init({
@@ -11,8 +11,7 @@
     parseInputAttributes: false,
     messagesOnModified: false,
     decorateElementOnModified: true,
-    decorateInputElement: true,
-    grouping: { deep: true }
+    decorateInputElement: true
   });
 
   
@@ -20,43 +19,49 @@
   ko.bindingHandlers.qtipValMessage = {
     update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
       var observable = valueAccessor();
-      var $element = $(element);
+      var elementId = $(element).attr('id');
 
       if (observable.isValid) {
         observable.isModified.subscribe(function (modified) {
           if (!observable.isValid()) {
-            SetValidationStateControl($element, observable, false);
+            SetValidationStateControl(elementId, observable, observable.isValid());
+          }
+
+          if (!modified && observable.isValid()) {
+            SetValidationStateControl(elementId, observable, observable.isValid());
           }
 
         })
 
         observable.isValid.subscribe(function (valid) {
-          SetValidationStateControl($element, observable, valid);
-
+          SetValidationStateControl(elementId, observable, valid);
         })
       }
     }
   };
 
-  function SetValidationStateControl(element, observable, isValid) {
+  function SetValidationStateControl(elementId, observable, isValid) {
+
+    var $element = $('#' + elementId);
+
     if (!isValid) {
-      element.qtip({
+      $element.qtip({
         show: { ready: true },
         hide: { fixed: true },
         content: { text: observable.error }
       });
 
-      element.closest('.form-group').removeClass('has-success');
-      element.next('span').removeClass('glyphicon-ok');
-      element.next('span').addClass('glyphicon-remove');
-      element.attr('title', '');
+      $element.closest('.form-group').removeClass('has-success');
+      $element.next('span').removeClass('glyphicon-ok');
+      $element.next('span').addClass('glyphicon-remove');
+      $element.attr('title', '');
     } else {
-      element.qtip('destroy');
+      $element.qtip('destroy');
 
-      element.closest('.form-group').addClass('has-success');
-      element.next('span').removeClass('glyphicon-remove');
-      element.next('span').addClass('glyphicon-ok');
-      element.attr('title', '');
+      $element.closest('.form-group').addClass('has-success');
+      $element.next('span').removeClass('glyphicon-remove');
+      $element.next('span').addClass('glyphicon-ok');
+      $element.attr('title', '');
     }
   };
   
@@ -71,6 +76,17 @@
       });
     },
     message: 'Email address is invalid or already taken'
+  };
+
+  // checks if the nickname is already used by the registered users
+  ko.validation.rules['IsNickNameAvailable'] = {
+    async: true,
+    validator: function (nickname, enabled, callback) {
+      auth.IsNickNameAvailable(nickname, function (result) {
+        callback(result);
+      });
+    },
+    message: 'Nick name is already taken'
   };
 
 

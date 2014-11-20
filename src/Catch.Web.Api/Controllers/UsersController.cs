@@ -1,0 +1,27 @@
+﻿using Catch.Web.Api.Processors;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Http;
+
+namespace Catch.Web.Api.Controllers
+{
+    [Authorize]
+    public class UsersController : ApiController
+    {
+        IUserProcessor _processor;
+
+        public UsersController(IUserProcessor processor)
+        {
+            this._processor = processor;
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public bool NickNameAvailable(string nickname)
+        {
+            return _processor.NickNameInUse(nickname);
+        }
+    }
+}

@@ -4,16 +4,9 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service'], function 
     
     var self = this;
 
-    self.userName = ko.observable('dimitritoonen@gmail.com');
-    self.password = ko.observable('Password1!');
+    self.userName = ko.observable();
+    self.password = ko.observable();
 
-    var tokenKey = "accessToken";
-
-    self.result = ko.observable();
-
-    function showError(jqXHR) {
-      self.result(jqXHR.status + ': ' + jqXHR.statusText);
-    }
 
     self.login = function () {
 

@@ -1,7 +1,9 @@
-<div class="row text-center">
-    <div class="col-xs-12">
-        <br />
-        <input type="text" class="form-control" placeholder="Nick name" id="NickNameTextbox" />
+<br />
+<div class="row form-group has-feedback">
+    <div class="col-xs-12" data-bind="validationElement: registration.nickName">
+        <input data-bind="value: registration.nickName, qtipValMessage: registration.nickName" class="form-control"
+               type="text" placeholder="Nick name" id="NickNameTextbox" />
+        <span id="NickNameTextboxIcon" class="glyphicon form-control-feedback"></span>
     </div>
 </div>
 
@@ -11,13 +13,15 @@
             <div class="row">
                 <div class="col-xs-1"></div>
                 <div class="col-xs-3">
-                    <div class="center-block empty-profile-image-small" id="wizard-profileImage1"></div>
+                    <div class="center-block empty-profile-image-small wizard-profileImage"
+                         id="wizard-profileImage1" data-bind="click: openFileDialog { "></div>
+                    <input type="file" id="wizard-profileFile1" name="wizardProfileFile1" class="hidden" />
                 </div>
                 <div class="col-xs-4">
-                    <div class="center-block empty-profile-image-small" id="wizard-profileImage2"></div>
+                    <div class="center-block empty-profile-image-small wizard-profileImage" id="wizard-profileImage2"></div>
                 </div>
                 <div class="col-xs-3">
-                    <div class="center-block empty-profile-image-small" id="wizard-profileImage3"></div>
+                    <div class="center-block empty-profile-image-small wizard-profileImage" id="wizard-profileImage3"></div>
                 </div>
                 <div class="col-xs-1"></div>
             </div>
@@ -36,16 +40,16 @@
                 </div>
                 <div class="col-xs-3">
                     <div class="wizard-align-gender">
-                        <label class="pull-down" for="GenderMale">Male</label>
-                        <input type="radio" id="GenderMale" name="sex" value="Male"
-                               data-bind="checked: CurrentGender" />
+                        <label class="pull-down" for="wizardGenderMale">Male</label>
+                        <input type="radio" id="wizardGenderMale" name="sex" value="Male"
+                               data-bind="checked: registration.gender" />
                     </div>
                 </div>
                 <div class="col-xs-3">
                     <div class="wizard-align-gender">
-                        <label for="GenderFemale">Female</label>
-                        <input type="radio" id="GenderFemale" name="sex" value="Female"
-                               data-bind="checked: CurrentGender" />
+                        <label for="wizardGenderFemale">Female</label>
+                        <input type="radio" id="wizardGenderFemale" name="sex" value="Female"
+                               data-bind="checked: registration.gender" />
                     </div>
                 </div>
                 <div class="col-xs-3">
@@ -57,19 +61,21 @@
 </div>
 <p></p>
 
-<div class="row">
-    <div class="col-xs-12">
-        <p>
-            <input type="text" class="form-control" id="CityTextbox" placeholder="City" />
-        </p>
+<p></p>
+<div class="row form-group has-feedback">
+    <div class="col-xs-12" data-bind="validationElement: registration.city">
+        <input data-bind="value: registration.city, qtipValMessage: registration.city" class="form-control"
+               id="wizardCityTextbox" placeholder="City" type="text" />
+        <span id="wizardCityTextboxIcon" class="glyphicon form-control-feedback"></span>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-xs-12">
-        <p>
-            <input type="text" class="form-control" id="AgeTextbox" placeholder="Age" />
-        </p>
+<p></p>
+<div class="row form-group has-feedback">
+    <div class="col-xs-12" data-bind="validationElement: registration.age">
+        <input data-bind="value: registration.age, qtipValMessage: registration.age" class="form-control"
+               type="text" id="wizardAgeTextbox" placeholder="Age" />
+        <span id="wizardAgeTextboxIcon" class="glyphicon form-control-feedback"></span>
     </div>
 </div>
 
@@ -84,27 +90,27 @@
                 </div>
                 <div class="col-xs-2">
                     <div class="wizard-align-gender">
-                        <label class="pull-down" for="InterstedInMale">Male</label>
-                        <input type="radio" id="InterstedInMale" name="InterestedIn" value="Male"
-                               data-bind="checked: CurrentInterestedIn" />
+                        <label class="pull-down" for="wizardInterstedInMale">Male</label>
+                        <input type="radio" id="wizardInterstedInMale" name="InterestedIn" value="Male"
+                               data-bind="checked: registration.interestedIn" />
                     </div>
                 </div>
                 <div class="col-xs-3">
                     <div class="wizard-align-gender">
-                        <label for="InterstedInFemale">Female</label>
-                        <input type="radio" id="InterstedInFemale" name="InterestedIn" value="Female"
-                               data-bind="checked: CurrentInterestedIn" />
+                        <label for="wizardInterstedInFemale">Female</label>
+                        <input type="radio" id="wizardInterstedInFemale" name="InterestedIn" value="Female"
+                               data-bind="checked: registration.interestedIn" />
                     </div>
                 </div>
                 <div class="col-xs-2">
                     <div class="wizard-align-gender">
-                        <label for="InterestedInFemale">Both</label>
-                        <input type="radio" id="InterestedInFemale" name="InterestedIn" value="Both"
-                               data-bind="checked: CurrentInterestedIn" />
+                        <label for="wizardInterestedInFemale">Both</label>
+                        <input type="radio" id="wizardInterestedInFemale" name="InterestedIn" value="Both"
+                               data-bind="checked: registration.interestedIn" />
                     </div>
                 </div>
                 <div class="col-xs-2">
-                    <div id="GenderIcon" class="pull-right" data-bind="css: CurrentInterestedInIcon" />
+                    <div id="wizardGenderIcon" class="pull-right" data-bind="css: CurrentInterestedInIcon" />
                 </div>
             </div>
         </div>

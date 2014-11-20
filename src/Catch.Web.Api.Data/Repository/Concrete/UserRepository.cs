@@ -23,6 +23,13 @@ namespace Catch.Web.Api.Data.Repository
             return (user == null);
         }
 
+        public bool NicknameInUse(string nickname)
+        {
+            var user = this.Context.Users.Where(x => string.Compare(x.NickName, nickname, true) == 0).FirstOrDefault();
+
+            return (user == null);
+        }
+
         #region Mapping operators
 
         protected override UserEntity ToDataEntity(User domainModel)

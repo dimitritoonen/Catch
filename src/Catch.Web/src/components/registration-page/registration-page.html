@@ -27,4 +27,11 @@
             <div class="pull-left" data-bind="click: NextStep, visible: currentStep() < 3" id="wizardRightArrow"></div>
         </div>
     </div>
+    <div id="registrationRegisterButton" data-bind="visible: currentStep() == 3" class="row">
+        <div class="col-xs-12 text-center">
+            <p>
+                <h3><a data-bind="click: RegisterUser">Register</a></h3>
+            </p>
+        </div>
+    </div>
 </div>

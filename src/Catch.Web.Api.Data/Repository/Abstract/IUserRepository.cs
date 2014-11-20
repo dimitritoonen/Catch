@@ -12,5 +12,6 @@ namespace Catch.Web.Api.Data.Repository
     public interface IUserRepository : IRepository<User>
     {
         bool EmailAddressInUse(string emailAddress);
+        bool NicknameInUse(string nickname);
     }
 }

@@ -2527,6 +2527,20 @@
     <Content Include="src\bower_modules\js-signals\dist\docs\symbols\_global_.html" />
     <Content Include="src\bower_modules\js-signals\dist\signals.js" />
     <Content Include="src\bower_modules\js-signals\dist\signals.min.js" />
+    <Content Include="src\bower_modules\knockout-mapping\.gitignore" />
+    <Content Include="src\bower_modules\knockout-mapping\build\output\knockout.mapping-latest.debug.js" />
+    <Content Include="src\bower_modules\knockout-mapping\build\output\knockout.mapping-latest.js" />
+    <Content Include="src\bower_modules\knockout-mapping\build\tools\curl.exe" />
+    <Content Include="src\bower_modules\knockout-mapping\build\tools\searchReplace.js" />
+    <Content Include="src\bower_modules\knockout-mapping\build\version-header.js" />
+    <Content Include="src\bower_modules\knockout-mapping\knockout.mapping.js" />
+    <Content Include="src\bower_modules\knockout-mapping\spec\issues.js" />
+    <Content Include="src\bower_modules\knockout-mapping\spec\lib\json2.js" />
+    <Content Include="src\bower_modules\knockout-mapping\spec\lib\qunit-1.10.0.css" />
+    <Content Include="src\bower_modules\knockout-mapping\spec\lib\qunit-1.10.0.js" />
+    <Content Include="src\bower_modules\knockout-mapping\spec\mappingBehaviors.js" />
+    <Content Include="src\bower_modules\knockout-mapping\spec\proxyDependentObservableBehaviors.js" />
+    <Content Include="src\bower_modules\knockout-mapping\spec\runner.html" />
     <Content Include="src\bower_modules\knockout-projections\dist\knockout-projections.js" />
     <Content Include="src\bower_modules\knockout-projections\dist\knockout-projections.min.js" />
     <Content Include="src\bower_modules\knockout-projections\Gruntfile.js" />
@@ -2647,6 +2661,7 @@
     <Content Include="src\images\backgroundContent.jpg" />
     <Content Include="src\images\CatchLogo.jpg" />
     <Content Include="src\images\emptyProfileSmall.jpg" />
+    <Content Include="src\images\emptyProfileSmalls-selected.jpg" />
     <Content Include="src\images\facebookLogo.jpg" />
     <Content Include="src\images\femaleSign.jpg" />
     <Content Include="src\images\happycouple1.jpg" />
@@ -4821,6 +4836,11 @@
     <Content Include="src\bower_modules\qtip2\README.md" />
     <Content Include="src\bower_modules\knockout-validation\.bower.json" />
     <Content Include="src\bower_modules\knockout-validation\ReadMe.md" />
+    <Content Include="src\bower_modules\knockout-mapping\.bower.json" />
+    <Content Include="src\bower_modules\knockout-mapping\build\build-linux" />
+    <Content Include="src\bower_modules\knockout-mapping\HISTORY.md" />
+    <Content Include="src\bower_modules\knockout-mapping\Package.nuspec" />
+    <Content Include="src\bower_modules\knockout-mapping\README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

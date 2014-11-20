@@ -1,48 +1,48 @@
 define(['jquery', 'knockout', 'text!./wizard-step1.html', 'app/app.config'], function ($, ko, templateMarkup, auth, config) {
 
   function WizardStep1(params) {
-    
+        
     var self = this;
-    
+        
     self.result = ko.observable();
-    self.emailAddress = params.registration.emailAddress;
-    self.confirmEmail = params.registration.confirmEmail;
-    self.password = params.registration.password;
+
+    self.registration = params.registration;
     
+    // validation group to determine if all control on step 1 are valid
     var validationGroup = ko.validatedObservable({
-      emailAddress: self.emailAddress,
-      confirmEmail: self.confirmEmail,
-      password: self.password
+      emailAddress: self.registration.emailAddress,
+      confirmEmail: self.registration.confirmEmail,
+      password: self.registration.password
     });
 
+    // checks if wizard step1 is valid upon loading (which indicates that the previous step button 
+    // is used), and if so ensures that all controls are shown as valid (i.e. green ok)
+    if (validationGroup.isValid()) {
+      params.registration.isCurrentStepValid(validationGroup.isValid()) ;
+      params.registration.validateStep1();
+    };
+
+    // indicate to the regiration-model that all controls are valid
     validationGroup.isValid.subscribe(function (valid) {
       params.registration.isCurrentStepValid(valid);
+      params.registration.isStep1Valid(valid);
     });
 
+    // checks if wizard step1 is valid upon loading (which indicates that the previous step button 
+    // is used), and if so ensures that all controls are shown as valid (i.e. green ok)
+    if (params.registration.isStep1Valid()) {
+      params.registration.validateStep1();
+    }
 
 
 
 
+    
 
     function showError(jqXHR) {
       self.result(jqXHR.status + ': ' + jqXHR.statusText);
     }
 
-    this.registerUser = function () {
-
-      var data = {
-        NickName: 'Dimitri',
-        Email: self.emailAddress(),
-        ConfirmEmail: self.emailAddress(),
-        Password: self.password(),
-        Age: '25 - 35',
-        InterestedIn: 'Female'
-      };
-
-      auth.RegisterUser(data).done(function (data) {
-        self.result("Done!");
-      });
-    };
 
     this.registerViaFacebook = function () {
 

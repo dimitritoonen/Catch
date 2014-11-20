@@ -1,5 +1,5 @@
 define(['jquery', 'knockout', './router', 'services/auth-service', 'bootstrap', 'app/app.config',
-  'knockout-projections', 'knockout-validation', 'app/ko-validation-config', 'qtip2'],
+  'knockout-projections', 'knockout-validation', 'knockout-mapping', 'app/ko-validation-config', 'qtip2'],
   function ($, ko, router, auth) {
   
   var baseUrl = 'http://localhost:4421/';

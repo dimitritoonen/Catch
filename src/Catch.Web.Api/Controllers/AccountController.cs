@@ -60,6 +60,7 @@ namespace Catch.Web.Api.Controllers
             }
             catch (Exception ex)
             {
+                // TODO implement logging
                 Console.WriteLine("");
             }
 

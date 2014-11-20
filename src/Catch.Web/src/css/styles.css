@@ -315,6 +315,7 @@ input[type=password] {
 .empty-profile-image-small {
     background-image: url('../images/emptyProfileSmall.jpg');
     background-repeat: no-repeat;
+    padding: 2px;
     width: 75px;
     height: 91px;
 }
@@ -327,4 +328,10 @@ input[type=password] {
 .glyphicon-remove {
     margin-top: -25px;
     margin-right: 15px;
+}
+
+
+.wizard-profileImage:hover {
+    background-image: url('../images/emptyProfileSmalls-selected.jpg');
+    cursor: pointer;
 }

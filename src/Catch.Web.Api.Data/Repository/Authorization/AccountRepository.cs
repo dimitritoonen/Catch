@@ -57,7 +57,10 @@ namespace Catch.Web.Api.Data.Repository
             {
                 UserName = user.Email,
                 Email = user.Email,
+                NickName = user.NickName,
                 Age = user.Age,
+                Gender = user.Gender,
+                City = user.City,
                 InterestedIn = user.InterestedIn
             };
 

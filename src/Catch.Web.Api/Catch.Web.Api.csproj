@@ -162,7 +162,7 @@
     <Compile Include="BindingModels\Account\ExternalLoginViewModel.cs" />
     <Compile Include="BindingModels\Account\ParsedExternalAccessToken.cs" />
     <Compile Include="BindingModels\Account\RegisterExternalBindingModel.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Providers\FacebookAuthProvider.cs" />
     <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />

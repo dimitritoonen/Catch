@@ -6,7 +6,7 @@
   };
 
   // checks if the e-mail address is available
-  authService.IsEmailAddressAvailable = function (emailAddress, callBackResult) {
+  authService.IsEmailAddressAvailable = function (emailAddress, callback) {
 
     var queryString = '/?emailAddress=' + encodeURI(emailAddress)
 
@@ -14,7 +14,20 @@
       type: 'GET',
       url: config.BaseUrl + 'api/Emails/EmailAddressAvailable' + queryString
     }).done(function (data) {
-      callBackResult(data);
+      callback(data);
+    });
+  };
+
+  // checks if the nickname is available
+  authService.IsNickNameAvailable = function (nickname, callback) {
+
+    var queryString = '/?nickname=' + encodeURI(nickname);
+
+    $.ajax({
+      type: 'GET',
+      url: config.BaseUrl + 'api/Users/NickNameAvailable' + queryString
+    }).done(function (data) {
+      callback(data);
     });
   };
 
@@ -39,6 +52,8 @@
   //
   authService.RegisterUser = function (data) {
     
+    console.log(data);
+
     return $.ajax({
       type: 'POST',
       url: config.BaseUrl + 'api/Account/Register',
@@ -50,14 +65,6 @@
 
   //
   authService.RegisterExternal = function (data) {
-
-  };
-
-
-
-  authService.isValidEmail = function (emailAddress) {
-
-    //
 
   };
 

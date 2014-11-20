@@ -28,6 +28,13 @@ namespace Catch.Web.Api.BindingModels.Account
         public string Password { get; set; }
 
         [Required]
+        public string Gender { get; set; }
+
+        [Required]
+        public string City { get; set; }
+
+        [Required]
+        [Range(0, 150, ErrorMessage = "Please fill in a proper age")]
         public string Age { get; set; }
 
         [Required]
