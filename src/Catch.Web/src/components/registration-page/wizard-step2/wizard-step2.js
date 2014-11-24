@@ -1,4 +1,4 @@
-define(['knockout', 'text!./wizard-step2.html'], function(ko, templateMarkup) {
+define(['knockout', 'bootstrap-dialog', 'text!./wizard-step2.html', 'jcrop'], function (ko, bootstrapDialog, templateMarkup) {
 
   function WizardStep2(params) {
     
@@ -39,11 +39,6 @@ define(['knockout', 'text!./wizard-step2.html'], function(ko, templateMarkup) {
       params.registration.isCurrentStepValid(valid);
       params.registration.isStep2Valid(valid);
     });
-
-
-    self.openFileDialog = function () {
-      $('#wizard-profileFile1').trigger('click');
-    };
   }
 
   return { viewModel: WizardStep2, template: templateMarkup };

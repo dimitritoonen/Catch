@@ -39,6 +39,16 @@ input[type=password] {
     width:100%;
 }
 
+.visibility-hide {
+    visibility: hidden;
+}
+
+
+.qtip-background-color {
+    background-color: #D0E9F5;
+}
+
+
 
 /* the header of the page */
 #header {
@@ -121,11 +131,7 @@ input[type=password] {
     background-color: #f75455;
 }
 
-.male-themeLeft {
-}
 
-.female-themeLeft {
-}
 
 #registration {
     height: 50%;
@@ -331,7 +337,80 @@ input[type=password] {
 }
 
 
+
 .wizard-profileImage:hover {
     background-image: url('../images/emptyProfileSmalls-selected.jpg');
     cursor: pointer;
+}
+
+.modal-dialog {
+    width: 300px;
+}
+
+
+.image-dialog {
+    width: 100%;
+    -webkit-user-drag: none;
+}
+
+.wizard-profile-image-thumb {
+    position:relative;
+    z-index:120;
+    left: 1px;
+    top: -64px;
+    width: 67px;
+    height: 67px;
+    border: none;
+    padding: 0px;
+}
+
+
+
+
+.loading-icon-background {
+    position:relative;
+    top: 3px;
+    left: 1px;
+    width: 67px;
+    height: 67px;
+    background: white;
+    opacity: 0.75;
+}
+
+
+.loading-icon {
+    background: url('../images/loading.png') repeat 0 0;
+    z-index: 121;
+    top: 10px;
+    left: 9px;
+    position: relative;
+    width:50px;
+    height:50px;
+}
+
+.loading-icon-animation {
+    -webkit-animation: rotateThis 1s infinite linear;
+    animation: rotateThis 1s infinite linear;
+    -moz-animation: rotateThis 1s infinite linear;
+    -o-animation:  rotateThis 1s infinite linear;
+}
+
+@-webkit-keyframes rotateThis {
+  from { transform: scale( 1 ) rotate( 0deg );   }
+  to   { transform: scale( 1 ) rotate( 360deg ); }
+}
+
+@keyframes rotateThis {
+  from { transform: scale( 1 ) rotate( 0deg );   }
+  to   { transform: scale( 1 ) rotate( 360deg ); }
+}
+
+@-moz-keyframes rotateThis {
+  from { transform: scale( 1 ) rotate( 0deg );   }
+  to   { transform: scale( 1 ) rotate( 360deg ); }
+}
+
+@-o-keyframes rotateThis {
+  from { transform: scale( 1 ) rotate( 0deg );   }
+  to   { transform: scale( 1 ) rotate( 360deg ); }
 }

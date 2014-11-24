@@ -48,6 +48,8 @@
       $element.qtip({
         show: { ready: true },
         hide: { fixed: true },
+        position: { my: 'left center', at: 'right center' },
+        style: { classes: 'qtip-red qtip-bootstrap' },
         content: { text: observable.error }
       });
 

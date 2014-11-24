@@ -13,7 +13,7 @@ define(['knockout', 'text!./registration-page.html', './registration-model', 'se
     self.registration = registrationModel;
 
     // indicates the current step of the wizard
-    self.currentStep = ko.observable(2); //minSteps);
+    self.currentStep = ko.observable(minSteps);
 
     // get the component name (to load) and the progress image loaded based on the chosen step
     self.currentStepImage = ko.computed(function () { return 'image-step' + self.currentStep() });

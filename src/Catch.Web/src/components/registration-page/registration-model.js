@@ -58,12 +58,19 @@
     // #region step 2
 
     this.isStep2Valid = ko.observable(false);
-
+    
     this.nickName = ko.observable().extend({
       required: true,
       maxLength: 50,
       IsNickNameAvailable: true
     });
+
+    this.profileImage1 = ko.observable();
+    this.profileImage1Crop = ko.observable(); // coordinates are stored as (x, y, x2, y2, w)
+    this.profileImage2 = ko.observable();
+    this.profileImage2Crop = ko.observable(); // coordinates are stored as (x, y, x2, y2, w)
+    this.profileImage3 = ko.observable();
+    this.profileImage3Crop = ko.observable(); // coordinates are stored as (x, y, x2, y2, w)
 
     this.gender = ko.observable('Male');
 

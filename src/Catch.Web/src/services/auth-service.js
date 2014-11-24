@@ -51,8 +51,6 @@
 
   //
   authService.RegisterUser = function (data) {
-    
-    console.log(data);
 
     return $.ajax({
       type: 'POST',

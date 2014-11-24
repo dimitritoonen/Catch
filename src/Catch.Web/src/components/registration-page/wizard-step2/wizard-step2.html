@@ -13,15 +13,19 @@
             <div class="row">
                 <div class="col-xs-1"></div>
                 <div class="col-xs-3">
-                    <div class="center-block empty-profile-image-small wizard-profileImage"
-                         id="wizard-profileImage1" data-bind="click: openFileDialog { "></div>
-                    <input type="file" id="wizard-profileFile1" name="wizardProfileFile1" class="hidden" />
+                    <profile-image-upload id="test1" params="identifier: 1,
+                                profileImage: registration.profileImage1,
+                                profileImageCrop: registration.profileImage1Crop"></profile-image-upload>
                 </div>
                 <div class="col-xs-4">
-                    <div class="center-block empty-profile-image-small wizard-profileImage" id="wizard-profileImage2"></div>
+                    <profile-image-upload id="test2" params="identifier: 2,
+                                profileImage: registration.profileImage2,
+                                profileImageCrop: registration.profileImage2Crop"></profile-image-upload>
                 </div>
                 <div class="col-xs-3">
-                    <div class="center-block empty-profile-image-small wizard-profileImage" id="wizard-profileImage3"></div>
+                    <profile-image-upload id="test3" params="identifier: 3,
+                                profileImage: registration.profileImage3,
+                                profileImageCrop: registration.profileImage3Crop"></profile-image-upload>
                 </div>
                 <div class="col-xs-1"></div>
             </div>
