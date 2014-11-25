@@ -49,7 +49,7 @@
         show: { ready: true },
         hide: { fixed: true },
         position: { my: 'left center', at: 'right center' },
-        style: { classes: 'qtip-red qtip-bootstrap' },
+        style: { classes: 'qtip-bootstrap qtip-icon qtip-red' },
         content: { text: observable.error }
       });
 

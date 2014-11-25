@@ -49,6 +49,10 @@ input[type=password] {
 }
 
 
+.jcrop-keymgr {
+    left: -99999px !important;
+}
+
 
 /* the header of the page */
 #header {

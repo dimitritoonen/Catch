@@ -2749,6 +2749,7 @@
     <Content Include="src\index.html" />
     <Content Include="src\services\auth-service.js" />
     <Content Include="src\services\auth-storage.js" />
+    <Content Include="src\services\chunked-uploader.js" />
     <Content Include="src\Test.html" />
     <Content Include="test\bower_modules\jasmine\.gitignore" />
     <Content Include="test\bower_modules\jasmine\.gitmodules" />

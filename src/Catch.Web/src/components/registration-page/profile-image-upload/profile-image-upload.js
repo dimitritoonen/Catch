@@ -1,4 +1,5 @@
-define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'jcrop'], function (ko, bootstrapDialog, templateMarkup) {
+define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'services/chunked-uploader', 'jcrop'],
+  function (ko, bootstrapDialog, templateMarkup, ChunkedUploader) {
 
   function ProfileImageUpload(params) {
     
@@ -16,11 +17,32 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'jcr
     // ensure that input type[file] component has an unique identifier
     $('#wizard-profileFile').attr('id', 'wizard-profileFile' + self.identifier);
     $('#loadingIconBackground').attr('id', 'loadingIconBackground' + self.identifier);
+    $('#wizard-profile-upload-form').attr('id', 'wizard-profile-upload-form' + self.identifier);
+
+    $('#wizard-profileFile' + self.identifier).on('change', onFileSelected);
 
     // opens a open file dialog 
     self.openFileDialog = function () {
       $('#wizard-profileFile' + self.identifier).trigger('click');
     };
+
+
+    /**
+     * Utility method to format bytes into the most logical magnitude (KB, MB,
+     * or GB).
+     */
+    Number.prototype.formatBytes = function () {
+      var units = ['B', 'KB', 'MB', 'GB', 'TB'],
+          bytes = this,
+          i;
+
+      for (i = 0; bytes >= 1024 && i < 4; i++) {
+        bytes /= 1024;
+      }
+
+      return bytes.toFixed(2) + units[i];
+    };
+
 
 
     function toggleLoadingIcon() {
@@ -33,31 +55,51 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'jcr
         $element.addClass('visibility-hide');
     };
 
-    function async(fn, callback) {
-      setTimeout(function () {
-        fn();
-        callback();
-      }, 0);
-    }
 
-    // display the select image by the user in a dialog where the image can be cropped
-    self.displayImage = function (element) {
+    var uploaders = [];
+    var upload_form = $('#wizard-profile-upload-form' + self.identifier)
+    upload_form.on('submit', onFormSubmit);
+
+    function onFileSelected(e) {
+      var file = e.target.files[0];
+
+      uploaders.push(new ChunkedUploader(file));
+
+      $('#wizard-profile-upload-form' + self.identifier).submit();
+    };
+
+    function onFormSubmit(e) {
 
       toggleLoadingIcon();
 
-      async(displayImageInDialog(element), function () {
-        toggleLoadingIcon();
+      $.each(uploaders, function (i, uploader) {
+        uploader.start(displayImageInDialog);
       });
 
-    }; // self.displayImage
+      uploaders = [];
+
+      // Prevent default form submission
+      e.preventDefault();
+    };
 
 
-    function displayImageInDialog(element) {
+    // display the select image by the user in a dialog where the image can be cropped
+    //self.displayImage = function (element) {
 
+    //  toggleLoadingIcon();
+
+    //  displayImageInDialog(element);
+
+    //}; // self.displayImage
+
+
+    //function displayImageInDialog(element) {
+    function displayImageInDialog(file) {
+      
       if (window.File && window.FileReader && window.FileList && window.Blob) {
 
         // get file and reset input type=[file] html object so that the same file can be selected again
-        var file = element.files[0];
+        //var file = element.files[0];
         $('#wizard-profileFile' + self.identifier).val('');
 
         loadSelectedImage(file);
@@ -70,14 +112,16 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'jcr
 
       // load the image the user selected 
       function loadSelectedImage(file) {
-
+        
         var reader = new FileReader();
         reader.onload = (function (theFile) {
 
           return function (e) {
-
+            
+            image = new Image();
             image.src = e.target.result;
             image.onload = function () {
+
               displayImageInDialog(image);
 
               drawImage(image);
@@ -113,18 +157,35 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'jcr
 
       function resizeDialog(dialog) {
 
-        var maxWindowWidth = ($(window).width() * .6);
-
+        var maxWindowWidth = getMaxWindowWidth();
+        var maxWindowHeight = getMaxWindowHeight();
+        
+        // if height exceeeds max windows height, calculate width based on max window height
+        if (image.height > image.width && image.height > maxWindowHeight) {
+          var width = (image.width / image.height) * maxWindowHeight;
+          dialog.getModalBody().css('width', width);
+          dialog.getModalDialog().css('width', width);
+        }
         // define the max width (60% of window) of the dialog box when selecting a large image        
-        if (image.width > 500 && image.width < maxWindowWidth) {
+        else if (image.width > 500 && image.width < maxWindowWidth) {
           dialog.getModalBody().css('width', image.width);
           dialog.getModalDialog().css('width', image.width);
-        } else if (image.width > maxWindowWidth) {
+        }
+        else if (image.width > maxWindowWidth) {
           dialog.getModalBody().css('width', maxWindowWidth);
           dialog.getModalDialog().css('width', maxWindowWidth);
         }
+      }; // resizeDialog()
+
+      // get the max window width
+      function getMaxWindowWidth() {
+        return ($(window).width() * .6);
       };
 
+      // get the max window height
+      function getMaxWindowHeight() {
+        return ($(window).height() * .85);
+      };
 
       function getBaseMessage() {
 
@@ -187,7 +248,7 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'jcr
         $('#wizard-dialogProfileImage').Jcrop({
           bgColor: 'black',
           bgOpacity: .6,
-          setSelect: [0, 0, 100, 100],
+          setSelect: [0, 0, 0, image.width],
           aspectRatio: 1,
         }, function () {
           jcropApi = this;
@@ -202,21 +263,8 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'jcr
       function getCanvasDimensions(image) {
 
         var containerWidth = $('#wizard-dialogProfileContainer').width();
-
-        console.log('container: ' + containerWidth);
-        console.log('image: h: ' + image.height + ', w: ' + image.width);
-
-        if (image.height < containerWidth && image.width < containerWidth)
-          return { height: image.height, width: image.width };
-
         var height = width = containerWidth;
-
-        if (image.height > image.width) {
-          width = height * (image.width / image.height);
-        } else {
-          height = width * (image.height / image.width);
-        }
-
+        height = width * (image.height / image.width);
         return { height: height, width: width };
       }; // getCanvasDimensions()
     };
