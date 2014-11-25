@@ -1,11 +1,11 @@
-﻿using Catch.Web.Api.Common.Domain;
+﻿using Chirping.Web.Api.Common.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Catch.Web.Api.Common.Repository
+namespace Chirping.Web.Api.Common.Repository
 {
     public interface IRepository<T> where T : DomainModel
     {

@@ -1,6 +1,6 @@
-﻿using Catch.Web.Api.Common.TypeMapping;
-using Catch.Web.Api.Data;
-using Catch.Web.Api.Infrastructure;
+﻿using Chirping.Web.Api.Common.TypeMapping;
+using Chirping.Web.Api.Data;
+using Chirping.Web.Api.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,7 +10,7 @@ using System.Web.Http;
 using System.Web.Security;
 using System.Web.SessionState;
 
-namespace Catch.Web.Api
+namespace Chirping.Web.Api
 {
     public class Global : System.Web.HttpApplication
     {

@@ -1,7 +1,7 @@
 ﻿#region using directives
 
-using Catch.Web.Api.Common.Domain;
-using Catch.Web.Api.Data.Entities;
+using Chirping.Web.Api.Common.Domain;
+using Chirping.Web.Api.Data.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 #endregion
 
-namespace Catch.Web.Api.Data.Repository
+namespace Chirping.Web.Api.Data.Repository
 {
     public interface IAccountRepository : IDisposable
     {

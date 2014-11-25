@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Catch.Web.Api.BindingModels.Account
+namespace Chirping.Web.Api.BindingModels.Account
 {
     public class ChangePasswordBindingModel
     {

@@ -1,13 +1,13 @@
 ﻿#region using directives
 
-using Catch.Web.Api.Common.Domain;
+using Chirping.Web.Api.Common.Domain;
 
 using System;
 using System.Collections.Generic;
 
 #endregion
 
-namespace Catch.Web.Api.Domain
+namespace Chirping.Web.Api.Domain
 {
     public class User : DomainModel
     {

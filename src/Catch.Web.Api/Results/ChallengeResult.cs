@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 
-namespace Catch.Web.Api.Results
+namespace Chirping.Web.Api.Results
 {
     public class ChallengeResult : IHttpActionResult
     {

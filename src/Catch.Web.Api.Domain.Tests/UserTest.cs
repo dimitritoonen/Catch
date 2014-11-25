@@ -1,4 +1,4 @@
-﻿using Catch.Web.Api;
+﻿using Chirping.Web.Api;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Catch.Web.Api.Domain.Tests
+namespace Chirping.Web.Api.Domain.Tests
 {
     [TestClass]
     public class UserTest
@@ -16,7 +16,7 @@ namespace Catch.Web.Api.Domain.Tests
         #region private members
 
         private string _name = "John Doe";
-        private string _email = "johndoe@catch.com";
+        private string _email = "johndoe@Chirping.com";
         private string _age = "25 - 35";
         private string _interestedIn = "Female";
 

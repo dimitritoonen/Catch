@@ -6,7 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Catch.Web.Api.Providers
+namespace Chirping.Web.Api.Providers
 {
     public class FacebookAuthProvider : FacebookAuthenticationProvider
     {

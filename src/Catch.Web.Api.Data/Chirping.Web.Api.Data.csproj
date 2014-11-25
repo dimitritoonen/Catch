@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{08429B50-9904-448E-A2B3-E955EC225FF9}</ProjectGuid>
+    <ProjectGuid>{84F1518B-0825-4921-AA2F-FA87643C3A2B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Catch.Web.Api.Common</RootNamespace>
-    <AssemblyName>Catch.Web.Api.Common</AssemblyName>
+    <RootNamespace>Chirping.Web.Api.Data</RootNamespace>
+    <AssemblyName>Chirping.Web.Api.Data</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -40,14 +40,17 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper">
-      <HintPath>..\..\lib\AutoMapper.3.2.1\lib\net40\AutoMapper.dll</HintPath>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\lib\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="AutoMapper.Net4">
-      <HintPath>..\..\lib\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\lib\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\lib\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\..\lib\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\..\lib\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -59,28 +62,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account\ApplicationTypes.cs" />
-    <Compile Include="Data\EntityModel.cs" />
-    <Compile Include="Domain\Client.cs" />
-    <Compile Include="Domain\UserAccount.cs" />
-    <Compile Include="DateTimeAdapter.cs" />
-    <Compile Include="Domain\DomainModel.cs" />
-    <Compile Include="Domain\User.cs" />
-    <Compile Include="IDateTime.cs" />
-    <Compile Include="Logging\ILogManager.cs" />
-    <Compile Include="Logging\LogManagerAdapter.cs" />
+    <Compile Include="Context\CatchContext.cs" />
+    <Compile Include="Context\CatchContextInitializer.cs" />
+    <Compile Include="Entities\Client.cs" />
+    <Compile Include="Entities\UserAccountEntity.cs" />
+    <Compile Include="Entities\UserEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\IRepository.cs" />
-    <Compile Include="TypeMapping\AutoMapperAdapter.cs" />
-    <Compile Include="TypeMapping\IAutoMapper.cs" />
-    <Compile Include="TypeMapping\IAutoMapperTypeConfigurator.cs" />
+    <Compile Include="Repository\Abstract\AbstractRepository.cs" />
+    <Compile Include="Repository\Authorization\IAccountRepository.cs" />
+    <Compile Include="Repository\Authorization\AccountRepository.cs" />
+    <Compile Include="Repository\Abstract\IUserRepository.cs" />
+    <Compile Include="Repository\Concrete\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Catch.Web.Api.Common\Chirping.Web.Api.Common.csproj">
+      <Project>{08429b50-9904-448e-a2b3-e955ec225ff9}</Project>
+      <Name>Chirping.Web.Api.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Catch.Web.Api.Domain\Chirping.Web.Api.Domain.csproj">
+      <Project>{60ff8476-0a01-4969-9040-45b4c2b06d1d}</Project>
+      <Name>Chirping.Web.Api.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\lib\AutoMapper.3.2.1\tools\AutoMapper.targets" Condition="Exists('..\..\lib\AutoMapper.3.2.1\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -1,7 +1,7 @@
-﻿using Catch.Web.Api.Common.Account;
-using Catch.Web.Api.Common.Domain;
-using Catch.Web.Api.Data.Repository;
-using Catch.Web.Api.Infrastructure;
+﻿using Chirping.Web.Api.Common.Account;
+using Chirping.Web.Api.Common.Domain;
+using Chirping.Web.Api.Data.Repository;
+using Chirping.Web.Api.Infrastructure;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security.OAuth;
 using System;
@@ -12,7 +12,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Catch.Web.Api.Providers
+namespace Chirping.Web.Api.Providers
 {
     public class SimpleAuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
@@ -41,7 +41,7 @@ namespace Catch.Web.Api.Providers
         {
             context.Validated();
 
-            return Task.FromResult<object>(null);
+            //return Task.FromResult<object>(null);
 
             string clientId = string.Empty;
             string clientSecret = string.Empty;

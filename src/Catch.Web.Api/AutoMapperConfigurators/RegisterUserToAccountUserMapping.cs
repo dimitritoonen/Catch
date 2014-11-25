@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 
-using Catch.Web.Api.BindingModels.Account;
-using Catch.Web.Api.Common.Domain;
-using Catch.Web.Api.Common.TypeMapping;
+using Chirping.Web.Api.BindingModels.Account;
+using Chirping.Web.Api.Common.Domain;
+using Chirping.Web.Api.Common.TypeMapping;
 
 using System;
 
-namespace Catch.Web.Api.AutoMapperConfigurators
+namespace Chirping.Web.Api.AutoMapperConfigurators
 {
     public class RegisterUserToAccountUserMapping
         : IAutoMapperTypeConfigurator

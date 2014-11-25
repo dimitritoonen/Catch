@@ -1,5 +1,4 @@
-﻿using Catch.Web.Api.Common.Data;
-using Catch.Web.Api.Data.Entities;
+﻿using Chirping.Web.Api.Data.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -9,12 +8,12 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 
-namespace Catch.Web.Api.Data.Context
+namespace Chirping.Web.Api.Data.Context
 {
-    public class CatchContext : IdentityDbContext<UserAccountEntity>
+    public class ChirpingContext : IdentityDbContext<UserAccountEntity>
     {
-        public CatchContext()
-            : base("CatchConnectionString")
+        public ChirpingContext()
+            : base("ChirpingConnectionString")
         {
         }
 
@@ -30,9 +29,9 @@ namespace Catch.Web.Api.Data.Context
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
-        public static CatchContext Create()
+        public static ChirpingContext Create()
         {
-            return new CatchContext();
+            return new ChirpingContext();
         }
     }
 }

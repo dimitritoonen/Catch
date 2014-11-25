@@ -1,7 +1,7 @@
-﻿using Catch.Web.Api.Common.Data;
-using Catch.Web.Api.Common.Domain;
-using Catch.Web.Api.Common.Repository;
-using Catch.Web.Api.Data.Context;
+﻿using Chirping.Web.Api.Common.Data;
+using Chirping.Web.Api.Common.Domain;
+using Chirping.Web.Api.Common.Repository;
+using Chirping.Web.Api.Data.Context;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Catch.Web.Api.Data.Repository
+namespace Chirping.Web.Api.Data.Repository
 {
     public abstract class AbstractRepository<TDomainModel, TEntityModel> : IRepository<TDomainModel>
         where TDomainModel : DomainModel
@@ -18,11 +18,11 @@ namespace Catch.Web.Api.Data.Repository
     {
         #region Db context
 
-        public CatchContext Context { get; private set; }
+        public ChirpingContext Context { get; private set; }
 
         public AbstractRepository()
         {
-            Context = new CatchContext();
+            Context = new ChirpingContext();
         }
 
         #endregion

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Catch.Web.Api.BindingModels
+namespace Chirping.Web.Api.BindingModels
 {
     // Models used as parameters to AccountController actions.
 

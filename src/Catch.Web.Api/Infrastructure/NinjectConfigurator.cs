@@ -1,19 +1,19 @@
 ﻿#region using directives
 
-using Catch.Web.Api.AutoMapperConfigurators;
-using Catch.Web.Api.Common;
-using Catch.Web.Api.Common.Logging;
-using Catch.Web.Api.Common.TypeMapping;
-using Catch.Web.Api.Data.Repository;
-using Catch.Web.Api.Processors;
-using Catch.Web.Api.Processors.Account;
+using Chirping.Web.Api.AutoMapperConfigurators;
+using Chirping.Web.Api.Common;
+using Chirping.Web.Api.Common.Logging;
+using Chirping.Web.Api.Common.TypeMapping;
+using Chirping.Web.Api.Data.Repository;
+using Chirping.Web.Api.Processors;
+using Chirping.Web.Api.Processors.Account;
 using log4net.Config;
 using Ninject;
 using Ninject.Web.Common;
 
 #endregion
 
-namespace Catch.Web.Api.Infrastructure
+namespace Chirping.Web.Api.Infrastructure
 {
     public class NinjectConfigurator
     {

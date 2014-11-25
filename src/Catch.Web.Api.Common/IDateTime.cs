@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Catch.Web.Api.Common
+namespace Chirping.Web.Api.Common
 {
     public interface IDateTime
     {

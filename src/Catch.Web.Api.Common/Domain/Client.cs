@@ -1,12 +1,12 @@
 ﻿#region using directives
 
-using Catch.Web.Api.Common.Account;
+using Chirping.Web.Api.Common.Account;
 
 using System;
 
 #endregion
 
-namespace Catch.Web.Api.Common.Domain
+namespace Chirping.Web.Api.Common.Domain
 {
     public class Client
     {

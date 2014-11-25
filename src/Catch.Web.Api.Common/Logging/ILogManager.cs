@@ -6,7 +6,7 @@ using log4net;
 
 #endregion
 
-namespace Catch.Web.Api.Common.Logging
+namespace Chirping.Web.Api.Common.Logging
 {
     public interface ILogManager
     {

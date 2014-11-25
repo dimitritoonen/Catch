@@ -1,8 +1,8 @@
 ﻿#region using directives
 
-using Catch.Web.Api.BindingModels.Account;
-using Catch.Web.Api.Common.Domain;
-using Catch.Web.Api.Data.Entities;
+using Chirping.Web.Api.BindingModels.Account;
+using Chirping.Web.Api.Common.Domain;
+using Chirping.Web.Api.Data.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 #endregion
 
-namespace Catch.Web.Api.Processors.Account
+namespace Chirping.Web.Api.Processors.Account
 {
     public interface IAccountProcessor : IDisposable
     {

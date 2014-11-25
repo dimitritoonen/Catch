@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using Catch.Web.Api.Common.TypeMapping;
+using Chirping.Web.Api.Common.TypeMapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Catch.Web.Api
+namespace Chirping.Web.Api
 {
     public class AutoMapperConfigurator
     {

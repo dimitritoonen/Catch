@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Catch.Backend.Domain")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Chirping.Backend.Domain")]
+[assembly: AssemblyDescription("Chirping")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Catch.Backend.Domain")]
+[assembly: AssemblyCompany("Chirping")]
+[assembly: AssemblyProduct("Chirping.Backend.Domain")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

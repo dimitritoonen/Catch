@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 #endregion
 
-namespace Catch.Web.Api.BindingModels.Account
+namespace Chirping.Web.Api.BindingModels.Account
 {
     public class RegisterExternalBindingModel
     {

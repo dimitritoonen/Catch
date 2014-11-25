@@ -1,8 +1,8 @@
-﻿using Catch.Web.Api.BindingModels.Account;
-using Catch.Web.Api.Common.Domain;
-using Catch.Web.Api.Data.Entities;
-using Catch.Web.Api.Data.Repository;
-using Catch.Web.Api.Processors.Account;
+﻿using Chirping.Web.Api.BindingModels.Account;
+using Chirping.Web.Api.Common.Domain;
+using Chirping.Web.Api.Data.Entities;
+using Chirping.Web.Api.Data.Repository;
+using Chirping.Web.Api.Processors.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Catch.Web.Api.Tests.Processors
+namespace Chirping.Web.Api.Tests.Processors
 {
     [TestClass]
     public class AccountProcessorTest

@@ -1,8 +1,8 @@
 ﻿#region using directives
 
-using Catch.Web.Api.Common.Domain;
-using Catch.Web.Api.Data.Context;
-using Catch.Web.Api.Data.Entities;
+using Chirping.Web.Api.Common.Domain;
+using Chirping.Web.Api.Data.Context;
+using Chirping.Web.Api.Data.Entities;
 
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -12,17 +12,17 @@ using System.Threading.Tasks;
 
 #endregion
 
-namespace Catch.Web.Api.Data.Repository
+namespace Chirping.Web.Api.Data.Repository
 {
     public class AccountRepository : IAccountRepository, IDisposable
     {
-        private CatchContext _context;
+        private ChirpingContext _context;
 
         private UserManager<UserAccountEntity> _userManager;
 
         public AccountRepository()
         {
-            _context = new CatchContext();
+            _context = new ChirpingContext();
 
             _userManager = GetUserManager();
         }

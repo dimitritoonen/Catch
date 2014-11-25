@@ -1,5 +1,5 @@
 ﻿
-namespace Catch.Web.Api.Domain
+namespace Chirping.Web.Api.Domain
 {
     public enum InterestedInEnum
     {

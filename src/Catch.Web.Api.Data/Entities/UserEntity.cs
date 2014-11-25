@@ -1,9 +1,9 @@
 ﻿using System;
 
-using Catch.Web.Api.Common.Data;
+using Chirping.Web.Api.Common.Data;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Catch.Web.Api.Data.Entities
+namespace Chirping.Web.Api.Data.Entities
 {
     [Table("User")]
     public class UserEntity : EntityModel

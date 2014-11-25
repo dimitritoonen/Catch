@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Catch.Web.Api.Domain.Tests.User
+namespace Chirping.Web.Api.Domain.Tests.User
 {
     class AgeTest
     {

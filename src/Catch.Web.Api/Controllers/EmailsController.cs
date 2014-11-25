@@ -1,7 +1,7 @@
 ﻿#region using directives
 
-using Catch.Web.Api.BindingModels.Account;
-using Catch.Web.Api.Processors;
+using Chirping.Web.Api.BindingModels.Account;
+using Chirping.Web.Api.Processors;
 
 using System.Web.Http;
 using System;
@@ -9,7 +9,7 @@ using System.Net.Mail;
 
 #endregion
 
-namespace Catch.Web.Api.Controllers
+namespace Chirping.Web.Api.Controllers
 {
     [Authorize]
     public class EmailsController : ApiController

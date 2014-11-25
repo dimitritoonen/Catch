@@ -1,14 +1,14 @@
 ﻿#region using directives
 
-using Catch.Web.Api.Domain;
-using Catch.Web.Api.Models;
+using Chirping.Web.Api.Domain;
+using Chirping.Web.Api.Models;
 
 using System;
 using System.Collections.Generic;
 
 #endregion
 
-namespace Catch.Web.Api.Processors
+namespace Chirping.Web.Api.Processors
 {
     public interface IUserProcessor
     {

@@ -1,8 +1,8 @@
 ﻿#region using directives
 
-using Catch.Web.Api.Common.TypeMapping;
-using Catch.Web.Api.Infrastructure;
-using Catch.Web.Api.Providers;
+using Chirping.Web.Api.Common.TypeMapping;
+using Chirping.Web.Api.Infrastructure;
+using Chirping.Web.Api.Providers;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
@@ -15,9 +15,9 @@ using System.Web.Http;
 
 #endregion
 
-[assembly: OwinStartup(typeof(Catch.Web.Api.Startup))]
+[assembly: OwinStartup(typeof(Chirping.Web.Api.Startup))]
 
-namespace Catch.Web.Api
+namespace Chirping.Web.Api
 {
     public class Startup
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Catch.Web.Api.Common.Domain
+namespace Chirping.Web.Api.Common.Domain
 {
     public class User
     {

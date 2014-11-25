@@ -1,12 +1,12 @@
 ﻿#region using directives
 
-using Catch.Web.Api.Common.Account;
+using Chirping.Web.Api.Common.Account;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 #endregion
 
-namespace Catch.Web.Api.Data.Entities
+namespace Chirping.Web.Api.Data.Entities
 {
     [Table("Client")]
     public class ClientEntity

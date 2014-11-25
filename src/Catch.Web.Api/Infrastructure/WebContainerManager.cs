@@ -8,7 +8,7 @@ using System.Web.Http.Dependencies;
 
 #endregion
 
-namespace Catch.Web.Api.Infrastructure
+namespace Chirping.Web.Api.Infrastructure
 {
     public class WebContainerManager
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http.Dependencies;
 
-namespace Catch.Web.Api.Infrastructure
+namespace Chirping.Web.Api.Infrastructure
 {
     public class NinjectDependencyResolver : IDependencyResolver
     {

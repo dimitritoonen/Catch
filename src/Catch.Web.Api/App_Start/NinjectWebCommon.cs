@@ -7,15 +7,15 @@ using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
 using Ninject;
 using Ninject.Web.Common;
-using Catch.Web.Api.Infrastructure;
+using Chirping.Web.Api.Infrastructure;
 using System.Web.Http;
 
 #endregion
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Catch.Web.Api.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Catch.Web.Api.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Chirping.Web.Api.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Chirping.Web.Api.NinjectWebCommon), "Stop")]
 
-namespace Catch.Web.Api
+namespace Chirping.Web.Api
 {
     public static class NinjectWebCommon 
     {

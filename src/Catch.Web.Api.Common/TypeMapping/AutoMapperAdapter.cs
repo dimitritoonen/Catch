@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Catch.Web.Api.Common.TypeMapping
+namespace Chirping.Web.Api.Common.TypeMapping
 {
     public class AutoMapperAdapter : IAutoMapper
     {

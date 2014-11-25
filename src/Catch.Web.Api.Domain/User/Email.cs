@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Mail;
 
-namespace Catch.Web.Api.Domain
+namespace Chirping.Web.Api.Domain
 {
     internal class Email
     {

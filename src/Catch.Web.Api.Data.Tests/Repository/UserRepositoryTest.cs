@@ -1,13 +1,13 @@
 ﻿#region using directives
 
-using Catch.Web.Api.Data.Entities;
-using Catch.Web.Api.Data.Repository;
-using Catch.Web.Api.Domain;
+using Chirping.Web.Api.Data.Entities;
+using Chirping.Web.Api.Data.Repository;
+using Chirping.Web.Api.Domain;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 #endregion
 
-namespace Catch.Web.Api.Data.Tests.Repository
+namespace Chirping.Web.Api.Data.Tests.Repository
 {
     [TestClass]
     public class UserRepositoryTest : UserRepository
@@ -15,7 +15,7 @@ namespace Catch.Web.Api.Data.Tests.Repository
         #region private members
 
         private string _name = "John Doe";
-        private string _email = "johndoe@catch.com";
+        private string _email = "johndoe@Chirping.com";
         private string _age = "25 - 35";
         private string _interestedIn = "Female";
 

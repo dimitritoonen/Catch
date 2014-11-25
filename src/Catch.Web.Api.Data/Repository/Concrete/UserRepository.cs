@@ -1,8 +1,8 @@
 ﻿#region using directives
 
-using Catch.Web.Api.Common.Data;
-using Catch.Web.Api.Data.Entities;
-using Catch.Web.Api.Domain;
+using Chirping.Web.Api.Common.Data;
+using Chirping.Web.Api.Data.Entities;
+using Chirping.Web.Api.Domain;
 
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 #endregion
 
-namespace Catch.Web.Api.Data.Repository
+namespace Chirping.Web.Api.Data.Repository
 {
     public class UserRepository : AbstractRepository<User, UserEntity>, IUserRepository
     {

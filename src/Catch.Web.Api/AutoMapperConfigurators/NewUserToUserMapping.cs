@@ -2,14 +2,14 @@
 
 using AutoMapper;
 
-using Catch.Web.Api.Common.TypeMapping;
-using Catch.Web.Api.Models;
+using Chirping.Web.Api.Common.TypeMapping;
+using Chirping.Web.Api.Models;
 
 using System;
 
 #endregion
 
-namespace Catch.Web.Api.AutoMapperConfigurators
+namespace Chirping.Web.Api.AutoMapperConfigurators
 {
     public class NewUserToUserMapping
         : IAutoMapperTypeConfigurator

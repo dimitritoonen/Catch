@@ -1,9 +1,9 @@
 ﻿#region using directives
 
-using Catch.Web.Api.BindingModels.Account;
-using Catch.Web.Api.Data.Entities;
-using Catch.Web.Api.Processors.Account;
-using Catch.Web.Api.Results;
+using Chirping.Web.Api.BindingModels.Account;
+using Chirping.Web.Api.Data.Entities;
+using Chirping.Web.Api.Processors.Account;
+using Chirping.Web.Api.Results;
 
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -23,7 +23,7 @@ using System.Web.Http;
 
 #endregion
 
-namespace Catch.Web.Api.Controllers
+namespace Chirping.Web.Api.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]

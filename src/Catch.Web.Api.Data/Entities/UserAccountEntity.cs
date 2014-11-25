@@ -9,7 +9,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Catch.Web.Api.Data.Entities
+namespace Chirping.Web.Api.Data.Entities
 {
     [Table("User")]
     public class UserAccountEntity : IdentityUser

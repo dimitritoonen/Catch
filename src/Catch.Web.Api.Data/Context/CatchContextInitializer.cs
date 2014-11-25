@@ -1,5 +1,5 @@
-﻿using Catch.Web.Api.Common.Account;
-using Catch.Web.Api.Data.Entities;
+﻿using Chirping.Web.Api.Common.Account;
+using Chirping.Web.Api.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Catch.Web.Api.Data.Context
+namespace Chirping.Web.Api.Data.Context
 {
-    public class CatchContextInitializer : DropCreateDatabaseIfModelChanges<CatchContext> // DropCreateDatabaseAlways<CatchContext>
+    public class ChirpingContextInitializer : DropCreateDatabaseIfModelChanges<ChirpingContext> // DropCreateDatabaseAlways<CatchContext>
     {
-        protected override void Seed(CatchContext context)
+        protected override void Seed(ChirpingContext context)
         {
             var clients = new List<ClientEntity>
             {
