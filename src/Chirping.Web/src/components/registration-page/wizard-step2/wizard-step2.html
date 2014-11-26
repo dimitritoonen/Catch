@@ -1,0 +1,122 @@
+<br />
+<div class="row form-group has-feedback">
+    <div class="col-xs-12" data-bind="validationElement: registration.nickName">
+        <input data-bind="value: registration.nickName, qtipValMessage: registration.nickName" class="form-control"
+               type="text" placeholder="Nick name" id="NickNameTextbox" />
+        <span id="NickNameTextboxIcon" class="glyphicon form-control-feedback"></span>
+    </div>
+</div>
+
+<div class="row">
+    <p>
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-3">
+                    <profile-image-upload id="test1" params="identifier: 1,
+                                profileImage: registration.profileImage1,
+                                profileImageCrop: registration.profileImage1Crop"></profile-image-upload>
+                </div>
+                <div class="col-xs-4">
+                    <profile-image-upload id="test2" params="identifier: 2,
+                                profileImage: registration.profileImage2,
+                                profileImageCrop: registration.profileImage2Crop"></profile-image-upload>
+                </div>
+                <div class="col-xs-3">
+                    <profile-image-upload id="test3" params="identifier: 3,
+                                profileImage: registration.profileImage3,
+                                profileImageCrop: registration.profileImage3Crop"></profile-image-upload>
+                </div>
+                <div class="col-xs-1"></div>
+            </div>
+        </div>
+    </p>
+</div>
+<p></p>
+<div class="row wizard-gender-height">
+    <div class="row center-block">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="wizard-align-gender">
+                        <b>Sex</b>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="wizard-align-gender">
+                        <label class="pull-down" for="wizardGenderMale">Male</label>
+                        <input type="radio" id="wizardGenderMale" name="sex" value="Male"
+                               data-bind="checked: registration.gender" />
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="wizard-align-gender">
+                        <label for="wizardGenderFemale">Female</label>
+                        <input type="radio" id="wizardGenderFemale" name="sex" value="Female"
+                               data-bind="checked: registration.gender" />
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div id="GenderIcon" class="pull-right" data-bind="css: CurrentGenderIcon" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p></p>
+
+<p></p>
+<div class="row form-group has-feedback">
+    <div class="col-xs-12" data-bind="validationElement: registration.city">
+        <input data-bind="value: registration.city, qtipValMessage: registration.city" class="form-control"
+               id="wizardCityTextbox" placeholder="City" type="text" />
+        <span id="wizardCityTextboxIcon" class="glyphicon form-control-feedback"></span>
+    </div>
+</div>
+
+<p></p>
+<div class="row form-group has-feedback">
+    <div class="col-xs-12" data-bind="validationElement: registration.age">
+        <input data-bind="value: registration.age, qtipValMessage: registration.age" class="form-control"
+               type="text" id="wizardAgeTextbox" placeholder="Age" />
+        <span id="wizardAgeTextboxIcon" class="glyphicon form-control-feedback"></span>
+    </div>
+</div>
+
+<div class="row wizard-gender-height">
+    <div class="row center-block">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="wizard-align-gender">
+                        <b>Interested in?</b>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="wizard-align-gender">
+                        <label class="pull-down" for="wizardInterstedInMale">Male</label>
+                        <input type="radio" id="wizardInterstedInMale" name="InterestedIn" value="Male"
+                               data-bind="checked: registration.interestedIn" />
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="wizard-align-gender">
+                        <label for="wizardInterstedInFemale">Female</label>
+                        <input type="radio" id="wizardInterstedInFemale" name="InterestedIn" value="Female"
+                               data-bind="checked: registration.interestedIn" />
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="wizard-align-gender">
+                        <label for="wizardInterestedInFemale">Both</label>
+                        <input type="radio" id="wizardInterestedInFemale" name="InterestedIn" value="Both"
+                               data-bind="checked: registration.interestedIn" />
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div id="wizardGenderIcon" class="pull-right" data-bind="css: CurrentInterestedInIcon" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

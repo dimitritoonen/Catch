@@ -1,0 +1,13 @@
+<div class="center-block empty-profile-image-small wizard-profileImage"
+     id="wizard-profileImage" data-bind="click: openFileDialog">
+    <div id="loadingIconBackground" class="visibility-hide loading-icon-background">
+        <div id="loadingIcon" class="loading-icon loading-icon-animation"></div>
+    </div>
+    <img id="profileThumb" class="wizard-profile-image-thumb"
+            data-bind="attr: { src: profileImage }" />
+</div>
+<!--<form id="wizard-profile-upload-form" action="/upload" method="post">-->
+    <input type="file" id="wizard-profileFile" accept="image/*"
+           data-bind="event: { change: function() { displayImage($element) } }"
+           name="wizardProfileFile" class="hidden" />
+<!--</form>-->

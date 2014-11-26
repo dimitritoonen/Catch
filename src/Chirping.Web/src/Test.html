@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="bower_modules/jcrop/css/jquery.Jcrop.min.css" rel="stylesheet" />
+    <script src="bower_modules/jquery/dist/jquery.min.js"></script>
+    <script src="bower_modules/jcrop/js/jquery.Jcrop.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+    var inputFile = document.getElementById('image_file');
+            inputFile.addEventListener('click', function () { this.value = null; }, false);
+            inputFile.addEventListener('change', readData, false);
+
+            function readData(evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                var file = evt.dataTransfer !== undefined ? evt.dataTransfer.files[0] : evt.target.files[0];
+                var reader = new FileReader();
+                reader.onload = (function (theFile) {
+                    return function (e) {
+                        var image = new Image();
+                        image.src = e.target.result;
+                        
+                        image.onload = function () {
+                            var canvas = document.createElement('canvas');
+
+                            var dimensions = getCanvasDimenstion(image);
+
+                            console.log('h: ' + image.height + ', w: ' + image.width);
+
+                            canvas.height = dimensions.height;
+                            canvas.width = dimensions.width;
+
+                            canvas.style.height = '100%';
+                            canvas.style.width = '100%';
+
+                            var ctx = canvas.getContext('2d');
+                            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+                            $('#image_input').html(['<img id="BazenImage" src="', canvas.toDataURL(), '"/>'].join(''));
+
+                            var img = $('#BazenImage')[0];
+
+                            $('#BazenImage').Jcrop({
+                                bgColor: 'black',
+                                bgOpacity: .6,
+                                setSelect: [0, 0, 100, 100],
+                                aspectRatio: 1,
+                                onSelect: imgSelect,
+                                onChange: imgSelect
+                            });
+
+                            function imgSelect(selection) {
+                                canvas.width = canvas.height = 200;
+
+                                var ctx = canvas.getContext('2d');
+                                ctx.drawImage(img, selection.x, selection.y, selection.w, selection.h, 0, 0, canvas.width, canvas.height);
+
+                                $('#image_output').attr('src', canvas.toDataURL());
+                                $('#image_source').text(canvas.toDataURL());
+                            }
+
+                            function getCanvasDimenstion(image) {
+
+                                var containerWidth = $('#image_input').width();
+
+                                if (image.height < containerWidth && image.width < containerWidth)
+                                    return { height: image.height, width: image.width };
+
+                                var height = width = containerWidth;
+
+                                if (image.height > image.width) {
+                                    width = height * (image.width / image.height);
+                                } else {
+                                    height = width * (image.height / image.width);
+                                }
+
+                                return { height: height, width: width };
+                            };
+                        }
+                    }
+                })(file);
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</head>
+<body>
+    <input type="file" id="image_file" />
+    <h3>Source</h3>
+    <div id="image_input" style="width:65%; border: 1px solid red;"></div>
+    <h3>Crop</h3>
+    <img id="image_output" style="border:1px solid #000" />
+    <textarea id="image_source" style="height:100px;width:200px"></textarea>
+
+</body>
+</html>
