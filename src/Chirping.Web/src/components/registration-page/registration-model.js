@@ -1,4 +1,4 @@
-﻿define(['knockout', './facebook-registration-model'], function (ko, facebook) {
+﻿define(['knockout', 'bootstrap-dialog', './facebook-registration-model'], function (ko, bootstrapDialog, facebook) {
 
   // contains the filled in properties of the registration form
 
@@ -41,9 +41,36 @@
         facebook.storeFacebookDetails(user);
       } else {
 
-        alert('user is already registered');
+        var dialog = new bootstrapDialog({
+          message: getMessage(),
+          cssClass: 'wizard-registereduser-dialog'
+        });
 
+        // create the dialog
+        dialog.realize();
+        dialog.getModalHeader().hide();
+        dialog.open();
       }
+    };
+    
+    var getMessage = function () {
+      // define the html to display in the modal dialog
+      var $message = $('<div id="wizard-dialogProfileContainer">');
+      $message.append('<span class="glyphicon glyphicon-remove" aria-hidden"true"></span>');
+      $message.append('The user is already registered with Chirping');
+      $message.append('</div>');
+      return $message;
+    };
+
+    // get the Ok button for the dialog
+    var getOkButton = function () {
+      return [{
+        label: 'Ok',
+        cssClass: 'btn-primary',
+        action: function (dialog) {
+          dialog.close();
+        }
+      }];
     };
 
     self.Facebook = facebook;
