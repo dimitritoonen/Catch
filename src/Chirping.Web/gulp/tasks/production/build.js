@@ -5,10 +5,10 @@ var runSequence = require('run-sequence');
   Run all tasks needed for a build in defined order
 */
 gulp.task('build:production', function (callback) {
-  runSequence('delete',
+  runSequence('delete', 'sass:vendor',
     [
       'js:production',
-      'html:production',
+      'html',
       'sass',
       'images',
       'fonts'
@@ -18,6 +18,7 @@ gulp.task('build:production', function (callback) {
       'optimize:js',
       'optimize:css',
       //'optimize:html',
+      'copy:html:production',
       'optimize:images',
       'copy:fonts:production'
     ],

@@ -10,6 +10,7 @@ gulp.task('html', function () {
   ])
     .pipe(htmlreplace({
       'css': '/css/styles.css',
+      'vendor-css': '/css/vendor-styles.css',
       'js': 'scripts.js'
     }))
     .pipe(gulp.dest(config.dest));

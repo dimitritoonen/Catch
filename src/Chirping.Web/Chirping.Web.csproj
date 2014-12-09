@@ -70,12 +70,13 @@
     <Content Include="gulp\tasks\development\html.js" />
     <Content Include="gulp\tasks\development\images.js" />
     <Content Include="gulp\tasks\development\requirejs.js" />
+    <Content Include="gulp\tasks\development\sass-vendor.js" />
     <Content Include="gulp\tasks\development\sass.js" />
     <Content Include="gulp\tasks\development\scss-lint.js" />
     <Content Include="gulp\tasks\development\watch.js" />
     <Content Include="gulp\tasks\production\copy-fonts.js" />
     <Content Include="gulp\tasks\production\optimize-css.js" />
-    <Content Include="gulp\tasks\production\html.js" />
+    <Content Include="gulp\tasks\production\copy-html.js" />
     <Content Include="gulp\tasks\production\optimize-images.js" />
     <Content Include="gulp\tasks\production\optimize-js.js" />
     <Content Include="gulp\tasks\production\requirejs.js" />
@@ -9877,8 +9878,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\bower_modules\bootstrap-sass-official\assets\images\" />
-    <Folder Include="src\sass\components\" />
-    <Folder Include="src\sass\pages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="node_modules\del\node_modules\.bin\rimraf" />
@@ -12288,6 +12287,18 @@
     <Content Include="node_modules\gulp-size\node_modules\through2\README.md" />
     <Content Include="node_modules\gulp-size\package.json" />
     <Content Include="node_modules\gulp-size\readme.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\sass\vendor\bootstrap.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\sass\pages\intro-page.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\sass\pages\registration-page.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\sass\components\register-component.scss" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

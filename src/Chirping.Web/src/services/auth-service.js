@@ -8,7 +8,7 @@
   // checks if the e-mail address is available
   authService.IsEmailAddressAvailable = function (emailAddress, callback) {
 
-    var queryString = '/?emailAddress=' + encodeURI(emailAddress)
+    var queryString = '/?emailAddress=' + encodeURI(emailAddress);
 
     $.ajax({
       type: 'GET',
@@ -76,7 +76,7 @@
       return registerViaFaceBook(data);
     } else {
       return registerViaEmail(data);
-    };
+    }
 
   };
 
@@ -85,8 +85,7 @@
   authService.authFacebookUser = function (registration) {
 
     var redirectUri = 'http://localhost:8080/authcomplete.html';
-    var externalProviderUrl = 'http://localhost:4421/api/Account/ExternalLogin?provider=Facebook'
-                            + '&response_type=token&client_id=ChirpingWeb&redirect_uri=' + redirectUri;
+    var externalProviderUrl = 'http://localhost:4421/api/Account/ExternalLogin?provider=Facebook' + '&response_type=token&client_id=ChirpingWeb&redirect_uri=' + redirectUri;
 
     window.$windowScope = registration;
 

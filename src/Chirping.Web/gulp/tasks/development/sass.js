@@ -5,7 +5,6 @@ var gulpFilter = require('gulp-filter');
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var config = require('../../config');
-var cssConfig = require('../../config').css;
 
 // add plugins for piping css files
 var concat = require('gulp-concat');
@@ -18,8 +17,7 @@ gulp.task('sass', function () {
 
   // Don’t write sourcemaps of sourcemaps
   var filter = gulpFilter(['*.css', '!*.map']);
-
-  var bowerFiles = gulp.src(cssConfig.src);
+  
   var sassFiles = gulp.src(config.sass.src)
     .pipe(sass(sassConfig))
     .pipe(sourcemaps.init())
@@ -28,7 +26,7 @@ gulp.task('sass', function () {
     .pipe(filter.restore()) // Restore original files
     .pipe(gulp.dest(config.sass.dest));
 
-  return es.concat(bowerFiles, sassFiles)
+  return es.concat(sassFiles)
     .pipe(concat('styles.css'))
     .pipe(gulp.dest(config.sass.dest));
 });

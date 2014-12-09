@@ -28,17 +28,26 @@ module.exports = {
     dest: dest
   },
   sass: {
-    src: src + '/sass/**/*.{sass,scss}',
+    src: [
+      '!' + src + '/sass/vendor/**/*.{sass,scss}',
+      src + '/sass/**/*.{sass,scss}'
+    ],
     dest: dest + '/css',
     options: {
-      loadPath: [
-      './src/bower_modules/bootstrap-sass-official/assets/stylesheets'
-      ],
       noCache: true,
       compass: false,
       bundleExec: false,
       sourcemap: false
-      //sourcemapPath: src + '/sass'
+    },
+    vendor: {
+      src: src + '/sass/vendor/bootstrap.scss',
+      dest: dest + '/css',
+      options: {
+        noCache: true,
+        compass: false,
+        bundleExec: false,
+        sourcemap: false
+      },
     }
   },
   css: {
@@ -62,7 +71,7 @@ module.exports = {
       dest: dest
     },
     production: {
-      src: src,
+      src: dest + '/*',
       dest: production      
     }
   },
@@ -90,8 +99,9 @@ module.exports = {
   },
   watch: {
     sass: [
-      //src + '/sass/**/*.{sass,scss}',
-      src + '/sass/styles.scss'
+      '!' + src + '/sass/vendor/**/*.{sass,scss}',
+      src + '/sass/**/*.{sass,scss}'
+      //src + '/sass/styles.scss'
     ],
     scripts: src + '/**/*.js',
     images: src + '/images/**/*',
@@ -125,7 +135,9 @@ module.exports = {
   /* building, optimization, and add revision for the production build */
   optimize: {
     css: {
-      src: dest + '/css/*.css',
+      src: [dest + '/css/styles.css',
+        dest + '/css/vendor-styles.css'
+      ],
       dest: production + '/css/',
       options: {
         keepSpecialComments: 0
