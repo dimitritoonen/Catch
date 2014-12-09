@@ -13,22 +13,36 @@ module.exports = {
       files: [
         dest + '/**'
       ]
+    },
+    production: {
+      server: {
+        baseDir: [production]
+      },
+      port: 9998,
+      files: [
+        production + '/**'
+      ]
     }
   },
   del: {
     dest: dest
   },
   sass: {
-    src: [src + '/bower_modules/bootstrap-sass-official/assets/stylesheets/**/*.{sass,scss}',
-    src + '/sass/**/*.{sass,scss}'],
+    src: src + '/sass/**/*.{sass,scss}',
     dest: dest + '/css',
     options: {
+      loadPath: [
+      './src/bower_modules/bootstrap-sass-official/assets/stylesheets'
+      ],
       noCache: true,
       compass: false,
       bundleExec: false,
       sourcemap: false
-      //sourcemapPath: '/sass'
+      //sourcemapPath: src + '/sass'
     }
+  },
+  css: {
+    src: src + '/bower_modules/qtip2/jquery.qtip.min.css'
   },
   autoprefixer: {
     browsers: [
@@ -41,6 +55,16 @@ module.exports = {
       'android 4'
     ],
     cascade: true
+  },
+  html: {
+    development: {
+      src: src,
+      dest: dest
+    },
+    production: {
+      src: src,
+      dest: production      
+    }
   },
   baseUrl: {
     dest: dest,
@@ -57,7 +81,81 @@ module.exports = {
   fonts: {
     development: {
       src: src + '/bower_modules/bootstrap/fonts/*',
-      dest: dest + '/fonts'
+      dest: dest + '/fonts/bootstrap'
+    },
+    production: {
+      src: dest + '/fonts/bootstrap/*',
+      dest: production + '/fonts/bootstrap'
+    }
+  },
+  watch: {
+    sass: [
+      //src + '/sass/**/*.{sass,scss}',
+      src + '/sass/styles.scss'
+    ],
+    scripts: src + '/**/*.js',
+    images: src + '/images/**/*',
+    html: src + '/**/*.html'
+  },
+  base64: {
+    src: dest + '/css/*.css',
+    dest: dest + '/css',
+    options: {
+      baseDir: dest,
+      extensions: ['png'],
+      maxImageSize: 20 * 1024, // bytes
+      debug: false
+    }
+  },
+  scsslint: {
+    src: [
+      src + '/sass/**/*.{sass,scss}',
+      '!' + src + '/sass/import-vendors.scss'
+    ]
+  },
+  jshint: {
+    src: [
+      src + '/components/**/*.js',
+      src + '/authentication/**/*.js',
+      src + '/app/**/*.js',
+      src + '/services/**/*.js'
+      ]
+  },
+
+  /* building, optimization, and add revision for the production build */
+  optimize: {
+    css: {
+      src: dest + '/css/*.css',
+      dest: production + '/css/',
+      options: {
+        keepSpecialComments: 0
+      }
+    },
+    js: {
+      src: dest + '/*.js',
+      dest: production,
+      options: {}
+    },
+    images: {
+      src: dest + '/images/**/*.{jpg,jpeg,png,gif}',
+      dest: production + '/images',
+      options: {
+        optimizationLevel: 3,
+        progressive: true,
+        interlaced: true
+      }
+    },
+    revision: {
+      src: {
+        base: production
+      },
+      dest: {
+        dest: production,
+        manifest: {
+          name: 'manifest.json',
+          path: production
+        }
+      }
     }
   }
 };

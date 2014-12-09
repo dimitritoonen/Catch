@@ -1,6 +1,6 @@
 ﻿var gulp = require('gulp');
 var htmlreplace = require('gulp-html-replace');
-var config = require('../../config').baseUrl;
+var config = require('../../config').html.development;
 
 // Copies index.html, replacing <script> and <link> tags to reference production URLs
 gulp.task('html', function () {

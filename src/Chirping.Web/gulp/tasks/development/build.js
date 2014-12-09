@@ -6,11 +6,11 @@ gulp.task('build', function (callback) {
   runSequence('delete',
   [
     'js',
-    //'css',
     'sass',
     'html',
     'images',
     'fonts'
   ],
+  'base64',
   callback);
 });

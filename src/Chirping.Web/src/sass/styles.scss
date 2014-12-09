@@ -1,14 +1,8 @@
-﻿/*@font-face {
-    font-family: CaviarDreams;
-    src: url(/fonts/CaviarDreams.ttf);
-}*/
-
+﻿@import "../bower_modules/bootstrap-sass-official/assets/stylesheets/bootstrap";
 
 /* General css styles */
 div {
-    /*font-family: CaviarDreams;*/
     font-family:Verdana, Arial, sans-serif
-
 }
 
 H2 {
@@ -335,6 +329,7 @@ input[type=password] {
     width: 75px;
     height: 91px;
 }
+
 
 .glyphicon-ok {
     margin-top: -25px;

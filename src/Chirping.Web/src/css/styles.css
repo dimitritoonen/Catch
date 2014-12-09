@@ -1,12 +1,14 @@
-@font-face {
+/*@font-face {
     font-family: CaviarDreams;
     src: url(/fonts/CaviarDreams.ttf);
-}
+}*/
 
 
 /* General css styles */
 div {
-    font-family: CaviarDreams;
+    /*font-family: CaviarDreams;*/
+    font-family:Verdana, Arial, sans-serif
+
 }
 
 H2 {
@@ -373,6 +375,14 @@ input[type=password] {
 }
 
 
+.wizard-registereduser-dialog .modal-dialog {
+    width: 400px;
+}
+
+.wizard-registereduser-dialog .modal-body {
+    background-color: #f75455;
+    color: white;
+}
 
 
 .loading-icon-background {
