@@ -1,4 +1,6 @@
-﻿define(['jquery'], function ($) {
+﻿define(function () {
+
+  // defines the acceptance configuration used throughout the SPA
 
   var configuration = {
 
@@ -6,6 +8,5 @@
 
   };
 
-  
   return configuration;
 });

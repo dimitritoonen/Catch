@@ -84,8 +84,9 @@
   // authenticate user via facebook provider
   authService.authFacebookUser = function (registration) {
 
-    var redirectUri = 'http://localhost:8080/authcomplete.html';
-    var externalProviderUrl = 'http://localhost:4421/api/Account/ExternalLogin?provider=Facebook' + '&response_type=token&client_id=ChirpingWeb&redirect_uri=' + redirectUri;
+    //var redirectUri = 'http://localhost:8080/authcomplete.html';
+    var redirectUri = window.location.protocol + "//" + window.location.host + '/authcomplete.html';
+    var externalProviderUrl = config.BaseUrl + '/api/Account/ExternalLogin?provider=Facebook' + '&response_type=token&client_id=ChirpingWeb&redirect_uri=' + redirectUri;
 
     window.$windowScope = registration;
 

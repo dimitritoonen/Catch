@@ -12,6 +12,10 @@
       <script src="app/require.config.js"></script>
       <script data-main="app/startup" src="bower_modules/requirejs/require.js"></script>
     <!-- endbuild -->
+
+    <!-- @if NODE_ENV='production' -->
+      <script src="src/app/config/production.app.config.js"></script>
+    <!-- @endif -->
   </head>
   <body>
     <nav-bar params="route: route"></nav-bar>

@@ -6017,6 +6017,9 @@
     <Content Include="node_modules\requirejs\require.js" />
     <Content Include="node_modules\run-sequence\index.js" />
     <Content Include="src\app\app.config.js" />
+    <Content Include="src\app\config\acceptance.app.config.js" />
+    <Content Include="src\app\config\development.app.config.js" />
+    <Content Include="src\app\config\production.app.config.js" />
     <Content Include="src\app\require.config.js" />
     <Content Include="src\app\router.js" />
     <Content Include="src\app\startup.js" />
