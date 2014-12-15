@@ -1,7 +1,7 @@
 /// <reference path="../.js" />
 // require.js looks for the following global when initializing
 var require = {
-    baseUrl: ".",
+  baseUrl: ".",
     paths: {
       "bootstrap":            "bower_modules/components-bootstrap/js/bootstrap.min",
       "bootstrap-dialog":     "bower_modules/bootstrap-dialog/dist/js/bootstrap-dialog.min",

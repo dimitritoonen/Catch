@@ -1,10 +1,11 @@
-﻿define(function () {
+﻿define(['./environment-configuration'], function (environmentConfig) {
 
   // defines the acceptance configuration used throughout the SPA
-
+  var config = environmentConfig['/*@echo NODE_ENV*/'];
+  
   var configuration = {
 
-    BaseUrl: 'http://localhost:4421/'
+    BaseUrl: config.baseUrl
 
   };
 

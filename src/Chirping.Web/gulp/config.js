@@ -1,7 +1,7 @@
 ﻿var src = 'src';
 var dest = 'build'
 var development = 'build/development';
-var production = 'build/production';
+var production = 'build/publish';
 
 module.exports = {
   browsersync: {
@@ -71,7 +71,7 @@ module.exports = {
       dest: dest
     },
     production: {
-      src: dest + '/*',
+      src: dest + '/*.html',
       dest: production      
     }
   },
@@ -81,6 +81,23 @@ module.exports = {
   },
   js: {
     src: src,
+    dest: dest,
+    development: {
+      vendor: {
+        paths: {
+          'require-js': 'bower_modules/requirejs/require'
+        }
+      },
+
+      src: [
+        '!' + src + '/bower_modules/**/*.js',
+        src + '/**/*.js'
+      ],
+      dest: dest
+    }
+  },
+  components: {
+    src: src + '/components/**/*.html',
     dest: dest
   },
   images: {
@@ -97,11 +114,12 @@ module.exports = {
       dest: production + '/fonts/bootstrap'
     }
   },
+
+  // specifies the which files trigger the watch mechanism
   watch: {
     sass: [
       '!' + src + '/sass/vendor/**/*.{sass,scss}',
       src + '/sass/**/*.{sass,scss}'
-      //src + '/sass/styles.scss'
     ],
     scripts: src + '/**/*.js',
     images: src + '/images/**/*',
@@ -146,7 +164,40 @@ module.exports = {
     js: {
       src: dest + '/*.js',
       dest: production,
-      options: {}
+      options: {
+        keepSpecialComments: 0
+      },
+
+      // Contains the configuration for the requireJs optimalization tool. 
+      // This bit defines which bundles are created and how compile the require modules.
+      requireJs: {
+        out: 'scripts.js',
+        baseUrl: src,
+        name: 'app/startup',
+        paths: {
+          requireLib: 'bower_modules/requirejs/require'
+        },
+        include: [
+            'requireLib',
+            'components/intro-page/intro-page',
+            'components/user-bar/user-bar',
+            'components/login-bar/login-bar'
+        ],
+        insertRequire: ['app/startup'],
+        bundles: {
+          'registration-page': [
+            'services/auth-service',
+            'services/auth-storage',
+            'services/chunked-uploader',
+            'components/registration-page/registration-page',
+            'components/registration-page/profile-image-upload/profile-image-upload',
+            'components/registration-page/wizard-step1/wizard-step1',
+            'components/registration-page/wizard-step2/wizard-step2',
+            'components/registration-page/wizard-step3/wizard-step3'
+          ],
+          'auth-complete': ['authentication/auth-complete']
+        }
+      }
     },
     images: {
       src: dest + '/images/**/*.{jpg,jpeg,png,gif}',
