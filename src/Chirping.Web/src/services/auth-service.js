@@ -29,7 +29,7 @@
     }).done(function (data) {
       callback(data);
     });
-  };
+  }; 
 
   // 
   authService.LoginUser = function (loginData) {
