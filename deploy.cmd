@@ -91,7 +91,7 @@ echo Handling node.js deployment.
 echo 1. Select node version
 call :SelectNodeVersion
 
-push src\Chirping.Web
+pushd src\Chirping.Web
 echo 2. Install npm packages
 IF EXIST "package.json" (
   call :ExecuteCmd !NPM_CMD! install --production
@@ -99,8 +99,8 @@ IF EXIST "package.json" (
 )
 
 echo Execute gulp
-IF EXISTS "GulpFile.js" (
-	call .\gulp\tasks\gulp production
+IF EXIST "gulpfile.js" (
+	call .\node_modules\.bin\gulp acceptance
 	IF !ERRORLEVEL! NEQ 0 goto error
 )
 
