@@ -101,7 +101,7 @@ IF EXIST "package.json" (
 
 echo Execute gulp
 IF EXIST "gulpfile.js" (
-	call \node_modules\.bin\gulp production
+	call "%DEPLOYMENT_SOURCE%src\Chirping.Web\node_modules\.bin\gulp production"
 	IF !ERRORLEVEL! NEQ 0 goto error
 )
 
