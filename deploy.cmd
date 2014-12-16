@@ -101,8 +101,7 @@ IF EXIST "package.json" (
 
 echo Execute gulp
 IF EXIST "gulpfile.js" (
-	echo Yoooooo
-	call ".\node_modules\.bin\gulp production"
+	call .\node_modules\.bin\gulp
 	IF !ERRORLEVEL! NEQ 0 goto error
 )
 
