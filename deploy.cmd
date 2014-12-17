@@ -38,10 +38,10 @@ IF NOT DEFINED NEXT_MANIFEST_PATH (
   )
 )
 
-IF NOT DEFINED PROJECT_PATH (
-  echo Missing PROJECT_PATH app setting. Please configure in Azure portal and redeploy.
-  goto error
-)
+REM IF NOT DEFINED PROJECT_PATH (
+  REM echo Missing PROJECT_PATH app setting. Please configure in Azure portal and redeploy.
+  REM goto error
+REM )
 
 IF NOT DEFINED KUDU_SYNC_CMD (
   :: Install kudu sync
@@ -52,6 +52,17 @@ IF NOT DEFINED KUDU_SYNC_CMD (
   :: Locally just running "kuduSync" would also work
   SET KUDU_SYNC_CMD=%appdata%\npm\kuduSync.cmd
 )
+
+IF NOT DEFINED GULP_CMD (
+  :: Install gulp
+  echo Installing Gulp
+  call npm --registry "http://registry.npmjs.org/" install gulp -g --silent
+  IF !ERRORLEVEL! NEQ 0 goto error
+
+  :: Locally just running "gulp" would also work
+  SET GULP_CMD="%appdata%\npm\gulp.cmd"
+)
+
 goto Deployment
 
 :: Utility Functions
@@ -99,19 +110,16 @@ call :SelectNodeVersion
 pushd src\Chirping.Web
 echo 2. Install npm packages
 IF EXIST package.json (
-  call :ExecuteCmd !NPM_CMD! install --production
+  call :ExecuteCmd !NPM_CMD! install
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
 echo 3. Execute gulp
 IF EXIST "gulpfile.js" (
-	call .\node_modules\.bin\gulp production
+	call :ExecuteCmd !GULP_CMD! production
 	IF !ERRORLEVEL! NEQ 0 goto error
 )
-
 popd
-
-echo "%DEPLOYMENT_TARGET%"
 
 echo 4. KuduSync
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
