@@ -5,7 +5,6 @@
   "dependencies": {
 	"bootstrap": "3.1.1",
 	"bootstrap3-dialog": "1.33.5",
-	"bootstrap-sass": "3.3.1",
     "components-bootstrap": "~3.1.1",
     "crossroads": "~0.12.0",
 	"eventEmitter": "4.2.9",

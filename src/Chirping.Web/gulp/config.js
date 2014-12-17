@@ -27,29 +27,19 @@ module.exports = {
   del: {
     dest: dest
   },
-  sass: {
+
+  less: {
     src: [
-      '!' + src + '/sass/vendor/**/*.{sass,scss}',
-      src + '/sass/**/*.{sass,scss}'
+      '!' + src + '/less/vendor/**/*.less',
+      src + '/less/**/*.less'
     ],
     dest: dest + '/css',
-    options: {
-      noCache: true,
-      compass: false,
-      bundleExec: false,
-      sourcemap: false
-    },
     vendor: {
-      src: src + '/sass/vendor/bootstrap.scss',
-      dest: dest + '/css',
-      options: {
-        noCache: true,
-        compass: false,
-        bundleExec: false,
-        sourcemap: false
-      },
+      src: src + '/less/vendor/bootstrap.less',
+      dest: dest + '/css'
     }
   },
+
   css: {
     src: src + '/bower_modules/qtip2/jquery.qtip.min.css'
   },
@@ -107,7 +97,7 @@ module.exports = {
   fonts: {
     development: {
       src: src + '/bower_modules/bootstrap/fonts/*',
-      dest: dest + '/fonts/bootstrap'
+      dest: dest + '/fonts'
     },
     production: {
       src: dest + '/fonts/bootstrap/*',
@@ -117,9 +107,9 @@ module.exports = {
 
   // specifies the which files trigger the watch mechanism
   watch: {
-    sass: [
-      '!' + src + '/sass/vendor/**/*.{sass,scss}',
-      src + '/sass/**/*.{sass,scss}'
+    less: [
+      '!' + src + '/less/vendor/**/*.less',
+      src + '/less/**/*.less'
     ],
     scripts: src + '/**/*.js',
     images: src + '/images/**/*',
@@ -137,8 +127,8 @@ module.exports = {
   },
   scsslint: {
     src: [
-      src + '/sass/**/*.{sass,scss}',
-      '!' + src + '/sass/import-vendors.scss'
+      src + '/less/**/*.less',
+      '!' + src + '/less/vendor/**/*.less'
     ]
   },
   jshint: {
