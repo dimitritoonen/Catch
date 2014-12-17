@@ -77,8 +77,8 @@
     <Content Include="gulp\tasks\dev-build\html.js" />
     <Content Include="gulp\tasks\dev-build\images.js" />
     <Content Include="gulp\tasks\dev-build\copy-scripts.js" />
-    <Content Include="gulp\tasks\dev-build\sass-vendor.js" />
-    <Content Include="gulp\tasks\dev-build\sass.js" />
+    <Content Include="gulp\tasks\dev-build\less-vendor.js" />
+    <Content Include="gulp\tasks\dev-build\less.js" />
     <Content Include="gulp\tasks\dev-build\scss-lint.js" />
     <Content Include="gulp\tasks\dev-optimized-build\watch-optimized.js" />
     <Content Include="gulp\tasks\dev-build\watch.js" />
@@ -877,7 +877,7 @@
     <Content Include="src\bower_modules\jcrop\README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\sass\styles.scss" />
+    <None Include="src\less\styles.less" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\bower_modules\bootstrap-sass-official\assets\images\" />
@@ -970,16 +970,16 @@
     <Content Include="src\bower_modules\bootstrap-sass-official\sache.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\sass\vendor\bootstrap.scss" />
+    <None Include="src\less\vendor\bootstrap.less" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\sass\pages\intro-page.scss" />
+    <None Include="src\less\pages\intro-page.less" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\sass\pages\registration-page.scss" />
+    <None Include="src\less\pages\registration-page.less" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\sass\components\register-component.scss" />
+    <None Include="src\less\components\register-component.less" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
