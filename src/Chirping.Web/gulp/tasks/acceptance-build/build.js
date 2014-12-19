@@ -19,6 +19,7 @@ gulp.task('build:acceptance', function (callback) {
       'optimize:images',
       'copy:fonts:publish'
     ],
+    'copy:web:config',
     //'revision',
     //'rev:collect',
     callback);

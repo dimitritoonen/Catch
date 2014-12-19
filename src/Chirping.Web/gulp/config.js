@@ -104,6 +104,10 @@ module.exports = {
       dest: production + '/fonts/bootstrap'
     }
   },
+  webConfig: {
+    src: src + '/Web.config',
+    dest: production
+  },
 
   // specifies the which files trigger the watch mechanism
   watch: {

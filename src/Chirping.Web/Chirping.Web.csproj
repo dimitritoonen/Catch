@@ -60,6 +60,7 @@
     <Content Include="gulpfile-publish.js" />
     <Content Include="gulpfile.js" />
     <Content Include="gulp\config.js" />
+    <Content Include="gulp\tasks\acceptance-build\copy-web-config.js" />
     <Content Include="gulp\tasks\acceptance-build\scripts-publish.js" />
     <Content Include="gulp\tasks\acceptance.js" />
     <Content Include="gulp\tasks\default.js" />
@@ -863,6 +864,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="src\less\styles.less" />
+    <Content Include="src\Web.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

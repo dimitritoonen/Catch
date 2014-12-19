@@ -21,6 +21,7 @@ gulp.task('build:production', function (callback) {
       'optimize:images',
       'copy:fonts:publish'
     ],
+    'copy:web:config',
     //'revision',
     //'rev:collect',
     callback);
