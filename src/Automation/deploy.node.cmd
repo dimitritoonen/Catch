@@ -98,7 +98,7 @@ echo Handling node.js deployment.
 echo 1. Select node version
 call :SelectNodeVersion
 
-pushd src\Chirping.Web
+pushd .\src\Chirping.Web
 echo 2. Install and update npm packages
 IF EXIST package.json (
   call :ExecuteCmd !NPM_CMD! --production install
@@ -116,14 +116,14 @@ IF EXIST "gulpfile.js" (
 	call :ExecuteCmd ".\node_modules\.bin\gulp" production --gulpfile ".\gulpfile-publish.js"
 	IF !ERRORLEVEL! NEQ 0 goto error
 )
-popd
 
 echo 5. KuduSync
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
-  call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%\src\Chirping.Web\build\publish" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
+  call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f ".\build\publish" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
+popd
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :: Post deployment stub
