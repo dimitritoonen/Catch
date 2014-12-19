@@ -107,7 +107,7 @@ IF EXIST bower.json (
 
 echo 4. Execute gulp
 IF EXIST "gulpfile.js" (
-	call :ExecuteCmd ".\node_modules\.bin\gulp" production
+	call :ExecuteCmd ".\node_modules\.bin\gulp" production --gulpfile ".\gulpfile-publish.js"
 	IF !ERRORLEVEL! NEQ 0 goto error
 )
 popd

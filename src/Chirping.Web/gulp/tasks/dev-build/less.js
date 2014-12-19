@@ -1,6 +1,5 @@
 ﻿var gulp = require('gulp');
 var less = require('gulp-less');
-var browsersync = require('browser-sync');
 var gulpFilter = require('gulp-filter');
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
