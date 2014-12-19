@@ -90,7 +90,6 @@
     <Content Include="gulp\tasks\acceptance-build\optimize-js-acceptance.js" />
     <Content Include="gulp\tasks\prod-build\optimize-js-prod.js" />
     <Content Include="gulp\tasks\production.js" />
-    <Content Include="gulp\tasks\acceptance-build\browser-sync.js" />
     <Content Include="gulp\tasks\acceptance-build\build.js" />
     <Content Include="gulp\tasks\prod-build\build.js" />
     <Content Include="gulp\utils\underscore-extender.js" />
@@ -126,21 +125,6 @@
     <Content Include="src\bower_modules\bootstrap-dialog\gulpfile.js" />
     <Content Include="src\bower_modules\bootstrap-dialog\src\css\bootstrap-dialog.css" />
     <Content Include="src\bower_modules\bootstrap-dialog\src\js\bootstrap-dialog.js" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\fonts\bootstrap\glyphicons-halflings-regular.svg" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\javascripts\bootstrap-sprockets.js" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\javascripts\bootstrap.js" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\javascripts\bootstrap\affix.js" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\javascripts\bootstrap\alert.js" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\javascripts\bootstrap\button.js" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\javascripts\bootstrap\carousel.js" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\javascripts\bootstrap\collapse.js" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\javascripts\bootstrap\dropdown.js" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\javascripts\bootstrap\modal.js" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\javascripts\bootstrap\popover.js" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\javascripts\bootstrap\scrollspy.js" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\javascripts\bootstrap\tab.js" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\javascripts\bootstrap\tooltip.js" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\javascripts\bootstrap\transition.js" />
     <Content Include="src\bower_modules\bootstrap\dist\css\bootstrap-theme.css" />
     <Content Include="src\bower_modules\bootstrap\dist\css\bootstrap-theme.min.css" />
     <Content Include="src\bower_modules\bootstrap\dist\css\bootstrap.css" />
@@ -879,96 +863,7 @@
   <ItemGroup>
     <None Include="src\less\styles.less" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\bower_modules\bootstrap-sass-official\assets\images\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\bower_modules\bootstrap-sass-official\.bower.json" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\fonts\bootstrap\glyphicons-halflings-regular.eot" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\fonts\bootstrap\glyphicons-halflings-regular.ttf" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\fonts\bootstrap\glyphicons-halflings-regular.woff" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_alerts.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_background-variant.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_border-radius.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_buttons.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_center-block.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_clearfix.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_forms.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_gradients.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_grid-framework.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_grid.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_hide-text.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_image.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_labels.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_list-group.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_nav-divider.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_nav-vertical-align.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_opacity.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_pagination.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_panels.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_progress-bar.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_reset-filter.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_resize.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_responsive-visibility.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_size.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_tab-focus.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_table-row.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_text-emphasis.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_text-overflow.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\mixins\_vendor-prefixes.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_alerts.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_badges.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_breadcrumbs.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_button-groups.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_buttons.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_carousel.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_close.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_code.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_component-animations.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_dropdowns.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_forms.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_glyphicons.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_grid.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_input-groups.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_jumbotron.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_labels.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_list-group.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_media.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_mixins.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_modals.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_navbar.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_navs.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_normalize.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_pager.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_pagination.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_panels.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_popovers.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_print.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_progress-bars.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_responsive-embed.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_responsive-utilities.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_scaffolding.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_tables.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_theme.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_thumbnails.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_tooltip.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_type.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_utilities.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_variables.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\bootstrap\_wells.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\_bootstrap-compass.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\_bootstrap-mincer.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\_bootstrap-sprockets.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\assets\stylesheets\_bootstrap.scss" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\bower.json" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\CHANGELOG.md" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\composer.json" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\CONTRIBUTING.md" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\LICENSE" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\package.json" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\README.md" />
-    <Content Include="src\bower_modules\bootstrap-sass-official\sache.json" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="src\less\vendor\bootstrap.less" />
   </ItemGroup>
