@@ -22,6 +22,12 @@ setlocal enabledelayedexpansion
 
 SET ARTIFACTS=%~dp0%../artifacts
 
+SET ENVIRONMENT=%ENVIRONMENT%
+
+IF ENVIRONMENT="" (
+	SET ENVIRONMENT = "acceptance"
+)
+
 IF NOT DEFINED DEPLOYMENT_SOURCE (
   SET DEPLOYMENT_SOURCE=%~dp0%.
 )
