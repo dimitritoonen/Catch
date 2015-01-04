@@ -11,7 +11,7 @@ define(["knockout", "crossroads", "hasher"], function(ko, crossroads, hasher) {
 
     return new Router({
         routes: [
-            { url: '', params: { page: 'intro-page' } },
+            { url: '', params: { page: 'login-page' } },
             { url: 'register', params: {page: 'registration-page' } }
         ]
     });
