@@ -102,14 +102,17 @@
     <Content Include="src\app\router.js" />
     <Content Include="src\app\startup.js" />
     <Content Include="src\authentication\authcomplete.html" />
+    <Content Include="src\components\forgot-password\forgot-password.html" />
+    <Content Include="src\components\forgot-password\forgot-password.js" />
+    <Content Include="src\components\login-bar\login-bar.html" />
     <Content Include="src\images\backgrounds\background1.jpg" />
     <Content Include="src\images\backgrounds\background2.jpg" />
     <Content Include="src\images\backgrounds\background3.jpg" />
     <Content Include="src\images\backgrounds\background4.jpg" />
     <Content Include="src\pages\intro-page\intro-page.html" />
+    <Content Include="src\pages\intro-page\intro-page_old.html" />
     <Content Include="src\pages\intro-page\intro-page.js" />
     <Content Include="src\pages\about-page\about.html" />
-    <Content Include="src\components\login-bar\login-bar.html" />
     <Content Include="src\components\login-bar\login-bar.js" />
     <Content Include="src\pages\login-page\login-page.html" />
     <Content Include="src\pages\login-page\login-page.js" />
@@ -353,7 +356,9 @@
     <Content Include="src\app\ko-validation-config.js" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\less\pages\login-page.less" />
+    <Content Include="src\less\pages\login-bar.less" />
+    <Content Include="src\less\pages\intro-page.less" />
+    <Content Include="src\less\animation\animation.less" />
     <None Include="src\less\styles.less" />
     <Content Include="src\Web.config" />
   </ItemGroup>
@@ -362,7 +367,7 @@
     <None Include="src\less\vendor\bootstrap.less" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\less\pages\intro-page.less" />
+    <None Include="src\less\pages\intro-page-old.less" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\less\pages\registration-page.less" />

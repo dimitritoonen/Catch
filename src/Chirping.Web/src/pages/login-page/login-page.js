@@ -1,13 +1,25 @@
-define(['knockout', 'text!./login-page.html'], function(ko, templateMarkup) {
+define(['knockout', 'text!./login-page.html', 'services/auth-service'], function (ko, templateMarkup, auth) {
 
-  function LoginPage(params) {
-    this.message = ko.observable('Hello from the login-page component!');
+  function LoginBar(params) {
+
+    var self = this;
+
+    self.username = ko.observable();
+    self.password = ko.observable();
+
+
+    self.login = function () {
+
+      var data = {
+        grant_type: 'password',
+        username: self.username(),
+        password: self.password()
+      };
+
+      auth.LoginUser(data);
+    };
   }
 
-  // This runs when the component is torn down. Put here any logic necessary to clean up,
-  // for example cancelling setTimeouts or disposing Knockout subscriptions/computeds.
-  LoginPage.prototype.dispose = function() { };
-  
-  return { viewModel: LoginPage, template: templateMarkup };
+  return { viewModel: LoginBar, template: templateMarkup };
 
 });

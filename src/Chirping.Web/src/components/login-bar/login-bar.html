@@ -1,24 +1,31 @@
-<table id="loginBar">
-    <tr>
-        <td colspan="2">
-            <input data-bind="value: userName" class="form-control input-sm" type="text" id="loginEmailTextbox"
-                placeholder="Enter Username" />
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <input data-bind="value: password" class="form-control input-sm" type="password" id="loginPasswordTextbox"
-                   placeholder="Enter password" />
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <label for="keepMyLoggedInCheckBox">
-                <input type="checkbox" id="keepMyLoggedInCheckBox" />
-                Keep me logged in
+﻿<div id="unregistered-page-wrap" class="center-block">
+    <div id="login-controls" class="center-block">
+        <div>
+            <img id="wizard-facebook-button" class="center-block" src="/images/facebookLogo.jpg" />
+        </div>
+        <br />
+        <p class="text-center">or</p>
+        <br />
+        <div class="form-group has-feedback">
+            <p>
+                <input type="text" id="username" data-bind="value: username" class="form-control" placeholder="Username" />
+                <span id="usernameIcon" class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </p>
+        </div>
+        <div class="form-group has-feedback">
+            <p>
+                <input type="password" id="password" data-bind="value: password" class="form-control" placeholder="Password" />
+                <span id="passwordIcon" class="glyphicon glyphicon-asterisk form-control-feedback"></span>
+            </p>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="stayLoggedIn" /> stay logged in?
             </label>
-        </td>
-        <td><button data-bind="click: login" id="LoginButton" type="button">Ok</button></td>
-    </tr>
-</table>
-<strong data-="text: result"></strong>
+            <a class="pull-right" href="#intro/forgot-password">forgot password?</a>
+        </div>
+        <div class="pull-right">
+            <button data-bind="click: login" class="btn btn-primary">Login</button>
+        </div>
+    </div>
+</div>

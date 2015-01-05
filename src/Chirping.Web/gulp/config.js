@@ -41,7 +41,10 @@ module.exports = {
   },
 
   css: {
-    src: src + '/bower_modules/qtip2/jquery.qtip.min.css'
+    src: [
+      src + '/bower_modules/qtip2/jquery.qtip.min.css',
+      src + '/bower_modules/animate.css/animate.min.css'
+      ]
   },
   autoprefixer: {
     browsers: [

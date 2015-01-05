@@ -4,7 +4,7 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service'], function 
     
     var self = this;
 
-    self.userName = ko.observable();
+    self.username = ko.observable();
     self.password = ko.observable();
 
 
@@ -12,7 +12,7 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service'], function 
 
       var data = {
         grant_type: 'password',
-        username: self.userName(),
+        username: self.username(),
         password: self.password()
       };
 
