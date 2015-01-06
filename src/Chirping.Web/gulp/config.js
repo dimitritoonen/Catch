@@ -132,11 +132,14 @@ module.exports = {
       debug: false
     }
   },
-  scsslint: {
+  recess: {
     src: [
       src + '/less/**/*.less',
       '!' + src + '/less/vendor/**/*.less'
-    ]
+    ],
+    options: {
+      noIDs: false
+    }
   },
   jshint: {
     src: [

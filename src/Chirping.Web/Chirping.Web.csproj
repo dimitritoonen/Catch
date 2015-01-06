@@ -81,7 +81,7 @@
     <Content Include="gulp\tasks\dev-build\copy-scripts.js" />
     <Content Include="gulp\tasks\dev-build\less-vendor.js" />
     <Content Include="gulp\tasks\dev-build\less.js" />
-    <Content Include="gulp\tasks\dev-build\scss-lint.js" />
+    <Content Include="gulp\tasks\dev-build\recess.js" />
     <Content Include="gulp\tasks\exclude-from-publish\watch-optimized.js" />
     <Content Include="gulp\tasks\exclude-from-publish\watch.js" />
     <Content Include="gulp\tasks\optimized.js" />
@@ -105,6 +105,7 @@
     <Content Include="src\components\forgot-password\forgot-password.html" />
     <Content Include="src\components\forgot-password\forgot-password.js" />
     <Content Include="src\components\login-bar\login-bar.html" />
+    <Content Include="src\components\registration-bar\registration-bar.html" />
     <Content Include="src\images\backgrounds\background1.jpg" />
     <Content Include="src\images\backgrounds\background2.jpg" />
     <Content Include="src\images\backgrounds\background3.jpg" />
@@ -114,24 +115,22 @@
     <Content Include="src\pages\intro-page\intro-page.js" />
     <Content Include="src\pages\about-page\about.html" />
     <Content Include="src\components\login-bar\login-bar.js" />
-    <Content Include="src\pages\login-page\login-page.html" />
-    <Content Include="src\pages\login-page\login-page.js" />
     <Content Include="src\components\nav-bar\nav-bar.html" />
     <Content Include="src\components\nav-bar\nav-bar.js" />
-    <Content Include="src\pages\registration-page\facebook-registration-model.js" />
-    <Content Include="src\pages\registration-page\profile-image-upload\profile-image-upload.html" />
-    <Content Include="src\pages\registration-page\profile-image-upload\profile-image-upload.js" />
-    <Content Include="src\pages\registration-page\registration-model.js" />
-    <Content Include="src\pages\registration-page\registration-page.html" />
-    <Content Include="src\pages\registration-page\registration-page.js" />
+    <Content Include="src\components\registration-bar\facebook-registration-model.js" />
+    <Content Include="src\components\registration-bar\profile-image-upload\profile-image-upload.html" />
+    <Content Include="src\components\registration-bar\profile-image-upload\profile-image-upload.js" />
+    <Content Include="src\components\registration-bar\registration-model.js" />
+    <Content Include="src\components\registration-bar\registration-bar_old.html" />
+    <Content Include="src\components\registration-bar\registration-bar.js" />
     <Content Include="src\components\user-bar\user-bar.html" />
     <Content Include="src\components\user-bar\user-bar.js" />
-    <Content Include="src\pages\registration-page\wizard-step1\wizard-step1.html" />
-    <Content Include="src\pages\registration-page\wizard-step1\wizard-step1.js" />
-    <Content Include="src\pages\registration-page\wizard-step2\wizard-step2.html" />
-    <Content Include="src\pages\registration-page\wizard-step2\wizard-step2.js" />
-    <Content Include="src\pages\registration-page\wizard-step3\wizard-step3.html" />
-    <Content Include="src\pages\registration-page\wizard-step3\wizard-step3.js" />
+    <Content Include="src\components\registration-bar\wizard-step1\wizard-step1.html" />
+    <Content Include="src\components\registration-bar\wizard-step1\wizard-step1.js" />
+    <Content Include="src\components\registration-bar\wizard-step2\wizard-step2.html" />
+    <Content Include="src\components\registration-bar\wizard-step2\wizard-step2.js" />
+    <Content Include="src\components\registration-bar\wizard-step3\wizard-step3.html" />
+    <Content Include="src\components\registration-bar\wizard-step3\wizard-step3.js" />
     <Content Include="src\images\arrowLeft.jpg" />
     <Content Include="src\images\arrowRight.jpg" />
     <Content Include="src\images\backgroundContent.jpg" />
@@ -356,9 +355,9 @@
     <Content Include="src\app\ko-validation-config.js" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\less\pages\login-bar.less" />
     <Content Include="src\less\pages\intro-page.less" />
     <Content Include="src\less\animation\animation.less" />
+    <Content Include="src\less\components\general.less" />
     <None Include="src\less\styles.less" />
     <Content Include="src\Web.config" />
   </ItemGroup>

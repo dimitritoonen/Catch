@@ -1,6 +1,6 @@
-define(['knockout', 'text!./registration-page.html', './registration-model', 'services/auth-service'], function (ko, templateMarkup, registrationModel, auth) {
+define(['knockout', 'text!./registration-bar.html', './registration-model', 'services/auth-service'], function (ko, templateMarkup, registrationModel, auth) {
   
-  function RegistrationPage(params) {
+  function RegistrationBar(params) {
 
     var self = this;
 
@@ -78,6 +78,6 @@ define(['knockout', 'text!./registration-page.html', './registration-model', 'se
     };
   }
 
-  return { viewModel: RegistrationPage, template: templateMarkup };
+  return { viewModel: RegistrationBar, template: templateMarkup };
 
 });

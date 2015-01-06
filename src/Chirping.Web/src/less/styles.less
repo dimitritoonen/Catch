@@ -1,11 +1,15 @@
 ﻿/* General css styles */
+h1, h2, h3, h4, h5, h6 {
+    display:inline;
+}
+
 hr {
-  border: 0;
   height: 1px;
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .35), rgba(0, 0, 0, 0));
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .35), rgba(0, 0, 0, 0));
   background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .35), rgba(0, 0, 0, 0));
   background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .35), rgba(0, 0, 0, 0));
+  border: 0;
 }
 
 textarea {
@@ -38,12 +42,12 @@ input[type=password] {
 
 /* the header of the page */
 #header {
-    margin: 0 auto;
-    background-color: #7b7b7b;
-    height: 350px;
-    width:100%;
     position:fixed;
     z-index:99;
+    width:100%;
+    height: 350px;
+    margin: 0 auto;
+    background-color: #7b7b7b;
 }
 
 
@@ -51,22 +55,22 @@ input[type=password] {
 #logo {
     position: relative;
     top: 30px;
-    padding-top: 50px;
-    background-image: url(/images/CatchLogo.jpg);
-    background-repeat: no-repeat;
     width: 200px;
     height: 75px;
+    padding-top: 50px;
     margin: 0 auto;
+    background-image: url(/images/CatchLogo.jpg);
+    background-repeat: no-repeat;
 }
 
 .logo-text {
     position:absolute;
     top: 10px;
     left: 15px;
-    font-size: 25px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color:white;
+    font-size: 25px;
     font-weight:bold;
+    color:white;
     text-align:center;
 }
 
@@ -96,4 +100,8 @@ input[type=password] {
 
 .glyphicon {
     opacity: 0.40;
+}
+
+.glyphicon-remove, .glyphicon-ok {
+    opacity: 1;
 }
