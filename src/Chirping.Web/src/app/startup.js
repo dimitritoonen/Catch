@@ -18,6 +18,7 @@ define(['jquery', 'knockout', './router', 'services/auth-service', 'bootstrap', 
     ko.components.register('intro-page', { require: 'pages/intro-page/intro-page' });
 
     // components
+    ko.components.register('register-container', { require: 'components/register-container/register-container' });
     ko.components.register('login-bar', { require: 'components/login-bar/login-bar' });
     ko.components.register('forgot-password', { require: 'components/forgot-password/forgot-password' });
 

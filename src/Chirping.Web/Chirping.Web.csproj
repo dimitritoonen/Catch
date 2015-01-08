@@ -105,6 +105,8 @@
     <Content Include="src\components\forgot-password\forgot-password.html" />
     <Content Include="src\components\forgot-password\forgot-password.js" />
     <Content Include="src\components\login-bar\login-bar.html" />
+    <Content Include="src\components\register-container\register-container.html" />
+    <Content Include="src\components\register-container\register-container.js" />
     <Content Include="src\components\registration-bar\registration-bar.html" />
     <Content Include="src\images\backgrounds\background1.jpg" />
     <Content Include="src\images\backgrounds\background2.jpg" />
@@ -357,7 +359,7 @@
   <ItemGroup>
     <Content Include="src\less\pages\intro-page.less" />
     <Content Include="src\less\animation\animation.less" />
-    <Content Include="src\less\components\general.less" />
+    <Content Include="src\less\components\register-container.less" />
     <None Include="src\less\styles.less" />
     <Content Include="src\Web.config" />
   </ItemGroup>

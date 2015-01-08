@@ -1,34 +1,35 @@
-﻿<div class="unregistered-container-small center-block">
-    <div class="unregistered-container-controls center-block">
-        <div class="text-center"><h3>Login</h3></div>
-        <br /><br />
-        <div class="text-center">
-            <!--Via&nbsp;<button class="btn btn-primary">Facebook</button>-->
-            <button class="btn btn-primary btn-facebook">Inloggen met facebook</button>
-        </div>
-        <br />
-        <p class="text-center">or</p>
-        <br />
-        <div class="form-group has-feedback">
-            <p>
-                <input type="text" id="username" data-bind="value: username" class="form-control" placeholder="Username" />
-                <span id="usernameIcon" class="glyphicon glyphicon-envelope form-control-feedback"></span>
-            </p>
-        </div>
-        <div class="form-group has-feedback">
-            <p>
-                <input type="password" id="password" data-bind="value: password" class="form-control" placeholder="Password" />
-                <span id="passwordIcon" class="glyphicon glyphicon-asterisk form-control-feedback"></span>
-            </p>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" id="stayLoggedIn" /> stay logged in?
-            </label>
-            <a class="pull-right" href="#forgot-password">forgot password?</a>
-        </div>
-        <div class="pull-right">
-            <button data-bind="click: login" class="btn btn-primary">Login</button>
-        </div>
+﻿<div class="unregistered-container-controls center-block">
+    <div class="text-center"><h3>Login</h3></div>
+    <br /><br />
+    <div class="text-center">
+        <button class="btn btn-primary btn-block">Inloggen met facebook</button>
+    </div>
+    <br />
+    <p class="text-center">or</p>
+    <br />
+    <div class="form-group has-feedback">
+        <p>
+            <input type="text" id="username" data-bind="value: username" class="form-control" placeholder="Username" />
+            <span id="usernameIcon" class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </p>
+    </div>
+    <div class="form-group has-feedback">
+        <p>
+            <input type="password" id="password" data-bind="value: password" class="form-control" placeholder="Password" />
+            <span id="passwordIcon" class="glyphicon glyphicon-asterisk form-control-feedback"></span>
+        </p>
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" id="stayLoggedIn" /> stay logged in?
+        </label>
+    </div>
+    <br />
+    <div>
+        <button data-bind="click: login" class="btn btn-primary">Login</button>
+    </div>
+    <br />
+    <div>
+        <a href="#forgot-password">Are you unable to login?</a>
     </div>
 </div>
