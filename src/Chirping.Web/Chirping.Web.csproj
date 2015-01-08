@@ -363,6 +363,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="src\less\vendor\bootstrap-changes.less" />
     <None Include="src\less\vendor\bootstrap.less" />
   </ItemGroup>
   <ItemGroup>

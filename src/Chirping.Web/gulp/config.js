@@ -30,7 +30,7 @@ module.exports = {
 
   less: {
     src: [
-      '!' + src + '/less/vendor/**/*.less',
+      '!' + src + '/less/vendor/bootstrap.less',
       src + '/less/**/*.less'
     ],
     dest: dest + '/css',
@@ -115,7 +115,7 @@ module.exports = {
   // specifies the which files trigger the watch mechanism
   watch: {
     less: [
-      '!' + src + '/less/vendor/**/*.less',
+      '!' + src + '/less/vendor/bootstrap.less',
       src + '/less/**/*.less'
     ],
     scripts: src + '/**/*.js',
@@ -135,7 +135,7 @@ module.exports = {
   recess: {
     src: [
       src + '/less/**/*.less',
-      '!' + src + '/less/vendor/**/*.less'
+      '!' + src + '/less/vendor/bootstrap.less'
     ],
     options: {
       noIDs: false
