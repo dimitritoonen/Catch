@@ -64,6 +64,7 @@
     <Content Include="gulp\tasks\acceptance-build\scripts-publish.js" />
     <Content Include="gulp\tasks\acceptance.js" />
     <Content Include="gulp\tasks\default.js" />
+    <Content Include="gulp\tasks\dev-build\recess.js" />
     <Content Include="gulp\tasks\dev-optimized-build\optimize-html.js" />
     <Content Include="gulp\tasks\dev-build\base64.js" />
     <Content Include="gulp\tasks\exclude-from-publish\browser-sync.js" />
@@ -81,7 +82,6 @@
     <Content Include="gulp\tasks\dev-build\copy-scripts.js" />
     <Content Include="gulp\tasks\dev-build\less-vendor.js" />
     <Content Include="gulp\tasks\dev-build\less.js" />
-    <Content Include="gulp\tasks\dev-build\recess.js" />
     <Content Include="gulp\tasks\exclude-from-publish\watch-optimized.js" />
     <Content Include="gulp\tasks\exclude-from-publish\watch.js" />
     <Content Include="gulp\tasks\optimized.js" />
