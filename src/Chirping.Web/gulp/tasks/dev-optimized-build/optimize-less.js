@@ -3,17 +3,17 @@ var less = require('gulp-less');
 var gulpFilter = require('gulp-filter');
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
-var config = require('../../config').less.development;
+var config = require('../../config').less.optimized;
 
 // add plugins for piping css files
 var concat = require('gulp-concat');
 var es = require('event-stream');
 
-gulp.task('less', function () {
+gulp.task('less:optimized', function () {
 
   // Don’t write sourcemaps of sourcemaps
   var filter = gulpFilter(['*.css', '!*.map']);
-  
+
   var lessFiles = gulp.src(config.src)
     .pipe(less())
     .pipe(sourcemaps.init())

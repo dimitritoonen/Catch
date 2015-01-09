@@ -7,7 +7,7 @@ gulp.task('build:acceptance', function (callback) {
     [
       'scripts:publish',
       'optimize:html',
-      'less',
+      'less:optimized',
       'images',
       'fonts'
     ],

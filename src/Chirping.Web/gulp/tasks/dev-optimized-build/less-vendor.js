@@ -1,7 +1,7 @@
 ﻿var gulp = require('gulp');
 var less = require('gulp-less');
 var autoprefixer = require('gulp-autoprefixer');
-var config = require('../../config').less.vendor;
+var config = require('../../config').less.optimized.vendor;
 var cssConfig = require('../../config').css;
 
 // add plugins for piping vendor css files

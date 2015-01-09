@@ -6,31 +6,25 @@ define(['knockout', 'text!./intro-page.html', 'qtip2'], function (ko, templateMa
 
     self.component = ko.observable(params.component);
 
-    // get browsed component (default to login-bar)
-    self.getActiveComponent = function () {
-
-      if (self.component() == null) {
-        return 'login-bar';
-      } else {
-        return self.component();
-      }
-    };
-
     // define the size of the container based on the chosen component
     self.getContainerSize = function () {
-      
       if (self.component() === 'register') {
         return 'big';
       }
-
     };
 
+    // returns the parameters of the browsed component in string format
     self.getComponentParams = function () {
-      return {
-        component: self.getActiveComponent(),
+      return JSON.stringify({
+        component: self.component(),
         containerSize: self.getContainerSize()
-      }
+      });
     };
+
+    // draw the html of the browsed component
+    if (self.component() != null) {
+      $('#component').append("<register-container params='" + self.getComponentParams() + "'><register-container>");
+    }
   }
   
   return { viewModel: IntroPage, template: templateMarkup };

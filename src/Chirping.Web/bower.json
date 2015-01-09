@@ -21,12 +21,10 @@
     "knockout-validation": "1.0.2",
     "qtip2": "2.2.1",
     "requirejs": "~2.1.11",
-    "requirejs-text": "~2.0.10"
+    "requirejs-text": "~2.0.10",
+    "font-awesome": "~4.2.0"
   },
   "resolutions": {
     "knockout": "~3.2.0"
-  },
-  "devDependencies": {
-    "animate.css": "~3.2.0"
   }
 }

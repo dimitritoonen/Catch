@@ -6,7 +6,7 @@ gulp.task('build:optimize', function (callback) {
   runSequence('delete', 'less:vendor',
   [
     'scripts',
-    'less',
+    'less:optimized',
     'optimize:html',
     'images',
     'fonts'

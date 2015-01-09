@@ -29,21 +29,28 @@ module.exports = {
   },
 
   less: {
-    src: [
-      '!' + src + '/less/vendor/bootstrap.less',
-      src + '/less/**/*.less'
-    ],
-    dest: dest + '/css',
-    vendor: {
-      src: src + '/less/vendor/bootstrap.less',
+    development: {
+      src: [
+          src + '/less/**/*.less'
+      ],
       dest: dest + '/css'
+    },
+    optimized: {
+      src: [
+          '!' + src + '/less/vendor/bootstrap.less',
+          src + '/less/**/*.less'
+      ],
+      dest: dest + '/css',
+      vendor: {
+        src: src + '/less/vendor/bootstrap.less',
+        dest: dest + '/css'
+      }
     }
   },
 
   css: {
     src: [
-      src + '/bower_modules/qtip2/jquery.qtip.min.css',
-      src + '/bower_modules/animate.css/animate.min.css'
+      src + '/bower_modules/qtip2/jquery.qtip.min.css'
       ]
   },
   autoprefixer: {
@@ -115,7 +122,7 @@ module.exports = {
   // specifies the which files trigger the watch mechanism
   watch: {
     less: [
-      '!' + src + '/less/vendor/bootstrap.less',
+      //'!' + src + '/less/vendor/bootstrap.less',
       src + '/less/**/*.less'
     ],
     scripts: src + '/**/*.js',
@@ -179,21 +186,26 @@ module.exports = {
         },
         include: [
             'requireLib',
-            'components/intro-page/intro-page',
+            'pages/intro-page/intro-page',
             'components/user-bar/user-bar',
             'components/login-bar/login-bar'
         ],
         insertRequire: ['app/startup'],
         bundles: {
+          'register-container': [
+            'components/register-container/register-container',
+            'components/login-bar/login-bar',
+            'components/forgot-password/forgot-password'
+          ],
           'registration-page': [
             'services/auth-service',
             'services/auth-storage',
             'services/chunked-uploader',
-            'components/registration-page/registration-page',
-            'components/registration-page/profile-image-upload/profile-image-upload',
-            'components/registration-page/wizard-step1/wizard-step1',
-            'components/registration-page/wizard-step2/wizard-step2',
-            'components/registration-page/wizard-step3/wizard-step3'
+            'components/registration-bar/registration-bar',
+            'components/registration-bar/profile-image-upload/profile-image-upload',
+            'components/registration-bar/wizard-step1/wizard-step1',
+            'components/registration-bar/wizard-step2/wizard-step2',
+            'components/registration-bar/wizard-step3/wizard-step3'
           ],
           'auth-complete': ['authentication/auth-complete']
         }

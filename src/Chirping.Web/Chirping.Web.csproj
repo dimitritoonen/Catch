@@ -67,6 +67,7 @@
     <Content Include="gulp\tasks\dev-build\recess.js" />
     <Content Include="gulp\tasks\dev-optimized-build\optimize-html.js" />
     <Content Include="gulp\tasks\dev-build\base64.js" />
+    <Content Include="gulp\tasks\dev-optimized-build\optimize-less.js" />
     <Content Include="gulp\tasks\exclude-from-publish\browser-sync.js" />
     <Content Include="gulp\tasks\exclude-from-publish\browsersync-optimized.js" />
     <Content Include="gulp\tasks\dev-optimized-build\optimize-build.js" />
@@ -80,7 +81,7 @@
     <Content Include="gulp\tasks\dev-build\html.js" />
     <Content Include="gulp\tasks\dev-build\images.js" />
     <Content Include="gulp\tasks\dev-build\copy-scripts.js" />
-    <Content Include="gulp\tasks\dev-build\less-vendor.js" />
+    <Content Include="gulp\tasks\dev-optimized-build\less-vendor.js" />
     <Content Include="gulp\tasks\dev-build\less.js" />
     <Content Include="gulp\tasks\exclude-from-publish\watch-optimized.js" />
     <Content Include="gulp\tasks\exclude-from-publish\watch.js" />
@@ -365,7 +366,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="src\less\vendor\bootstrap-changes.less" />
+    <Content Include="src\less\variables.less" />
     <None Include="src\less\vendor\bootstrap.less" />
   </ItemGroup>
   <ItemGroup>
