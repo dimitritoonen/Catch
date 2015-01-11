@@ -4,27 +4,29 @@ define(['knockout', 'text!./intro-page.html', 'qtip2'], function (ko, templateMa
 
     var self = this;
 
-    self.component = ko.observable(params.component);
-
-    // define the size of the container based on the chosen component
-    self.getContainerSize = function () {
-      if (self.component() === 'register') {
-        return 'big';
-      }
+    self.component = ko.observable();
+    self.showComponent = ko.observable(false);
+    
+  
+    // load a particular component
+    self.loadComponent = function (component) {
+      self.component(component);
+      self.showComponent(!self.showComponent());
+    };
+    
+    // closes the loaded component
+    self.closeComponent = function () {
+      self.showComponent(false);
+      self.component(null);
     };
 
     // returns the parameters of the browsed component in string format
     self.getComponentParams = function () {
-      return JSON.stringify({
-        component: self.component(),
-        containerSize: self.getContainerSize()
-      });
+      return {
+        parent: self,
+        component: self.component()
+      };
     };
-
-    // draw the html of the browsed component
-    if (self.component() != null) {
-      $('#component').append("<register-container params='" + self.getComponentParams() + "'><register-container>");
-    }
   }
   
   return { viewModel: IntroPage, template: templateMarkup };

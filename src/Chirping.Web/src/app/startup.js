@@ -28,6 +28,7 @@ define(['jquery', 'knockout', './router', 'services/auth-service', 'bootstrap', 
     ko.components.register('wizard-step3', { require: 'components/registration-bar/wizard-step3/wizard-step3' });
     ko.components.register('profile-image-upload', { require: 'components/registration-bar/profile-image-upload/profile-image-upload' });
 
+
     // [Scaffolded component registrations will be inserted here. To retain this feature, don't remove this comment.]
 
 

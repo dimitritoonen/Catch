@@ -1,4 +1,4 @@
-<div class="page-wrap" data-bind="click: closeComponent()"></div>
-<div class="unregistered-container-small center-block">
-    <div id="selectedComponent" data-bind="component: activeComponent"></div>
+<div class="page-wrap" data-bind="click: closeSelf"></div>
+<div id="register-container" class="unregistered-container-small center-block">
+    <div id="selectedComponent" data-bind="component: getActiveComponent()"></div>
 </div>

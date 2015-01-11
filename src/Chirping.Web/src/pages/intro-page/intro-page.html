@@ -3,22 +3,22 @@
         <p>&lt;3 chirping</p>
     </div>
     <div class="pull-right">
-        <a href="#Register" class="btn btn-shine-through">Register</a>
-        <a href="#Login" class="btn btn-shine-through">Login</a>
+        <button data-bind="click: function() { loadComponent('register') }" class="btn btn-shine-through">register</button>
+        <button data-bind="click: function() { loadComponent('login-bar') }" class=" btn btn-shine-through">login</button>
     </div>
 </div>
 <div class="intro-page-content text-center">
-    <h1>One place for all the <br />importance in your life</h1>
-    <br /><br />
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
+    <div class="header-text center-block">
+        <h1>One place for all the importance in your life</h1>
+        <br /><br />
+        <p>
             <h4>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
                 Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec
             </h4>
-        </div>
-        <div class="col-md-3"></div>
+        </p>
     </div>
 </div>
-<div id="component"></div>
+<div data-bind="if: showComponent">
+    <div data-bind="component: { name: 'register-container', params: getComponentParams() }"></div>
+</div>

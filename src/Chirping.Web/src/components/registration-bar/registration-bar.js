@@ -3,6 +3,7 @@ define(['knockout', 'text!./registration-bar.html', './registration-model', 'ser
   function RegistrationBar(params) {
 
     var self = this;
+    var container = params.container;
 
     // indicates if all wizards are validated and registration form is completely filled in
 
@@ -75,6 +76,11 @@ define(['knockout', 'text!./registration-bar.html', './registration-model', 'ser
         alert('User is registered');
       });
 
+    };
+
+    // show the login component
+    self.showLoginComponent = function () {
+      container.updateActiveComponent('login-bar');
     };
   }
 

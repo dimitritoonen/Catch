@@ -1,12 +1,20 @@
 define(['knockout', 'text!./forgot-password.html'], function(ko, templateMarkup) {
 
   function ForgotPassword(params) {
-    this.message = ko.observable('Hello from the forgot-password component!');
-  }
+    
+    var self = this;
+    var container = params.container;
 
-  // This runs when the component is torn down. Put here any logic necessary to clean up,
-  // for example cancelling setTimeouts or disposing Knockout subscriptions/computeds.
-  ForgotPassword.prototype.dispose = function() { };
+    // display the 'forgot password' component
+    self.showLoginComponent = function () {
+      container.updateActiveComponent('login-bar');
+    };
+
+    self.showRegisterComponent = function () {
+      container.updateActiveComponent('register');
+    }
+
+  }
   
   return { viewModel: ForgotPassword, template: templateMarkup };
 

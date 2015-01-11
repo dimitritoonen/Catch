@@ -3,7 +3,7 @@ var runSequence = require('run-sequence');
 
 // run all gulp tasks to build the application in a specific order
 gulp.task('build', function (callback) {
-  runSequence('delete', 'copy:scripts:vendor',
+  runSequence('delete', 'css:vendor', 'copy:scripts:vendor',
   [
     'copy:scripts',
     'less',
