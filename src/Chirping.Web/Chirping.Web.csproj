@@ -107,8 +107,8 @@
     <Content Include="src\components\forgot-password\forgot-password.html" />
     <Content Include="src\components\forgot-password\forgot-password.js" />
     <Content Include="src\components\login-bar\login-bar.html" />
-    <Content Include="src\components\register-container\register-container.html" />
-    <Content Include="src\components\register-container\register-container.js" />
+    <Content Include="src\components\component-container\component-container.html" />
+    <Content Include="src\components\component-container\component-container.js" />
     <Content Include="src\components\registration-bar\registration-bar.html" />
     <Content Include="src\images\backgrounds\background1.jpg" />
     <Content Include="src\images\backgrounds\background2.jpg" />
@@ -361,13 +361,19 @@
   <ItemGroup>
     <Content Include="src\less\pages\intro-page.less" />
     <Content Include="src\less\animation\animation.less" />
-    <Content Include="src\less\components\register-container.less" />
+    <Content Include="src\less\components\component-container.less" />
+    <Content Include="src\less\fonts.less" />
+    <Content Include="src\fonts\OpenSans-Bold.ttf" />
+    <Content Include="src\fonts\OpenSans-Light.ttf" />
+    <Content Include="src\fonts\OpenSans-Regular.ttf" />
+    <Content Include="src\less\font-awesome.less" />
     <None Include="src\less\styles.less" />
     <Content Include="src\Web.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <Content Include="src\less\variables.less" />
+    <Content Include="src\less\vendor-prefixes.less" />
     <None Include="src\less\vendor\bootstrap.less" />
   </ItemGroup>
   <ItemGroup>

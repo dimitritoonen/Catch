@@ -13,7 +13,6 @@ define(['knockout', 'text!./forgot-password.html'], function(ko, templateMarkup)
     self.showRegisterComponent = function () {
       container.updateActiveComponent('register');
     }
-
   }
   
   return { viewModel: ForgotPassword, template: templateMarkup };

@@ -50,7 +50,8 @@ module.exports = {
 
   css: {
     src: [
-      src + '/bower_modules/qtip2/jquery.qtip.min.css'
+        src + '/bower_modules/qtip2/jquery.qtip.min.css',
+        src + '/bower_modules/font-awesome/css/font-awesome.min.css'
       ]
   },
   autoprefixer: {
@@ -106,7 +107,11 @@ module.exports = {
   },
   fonts: {
     development: {
-      src: src + '/bower_modules/bootstrap/fonts/*',
+      src: [
+        src + '/bower_modules/bootstrap/fonts/*',
+        src + '/bower_modules/font-awesome/fonts/*',
+        src + '/fonts/*'
+      ],
       dest: dest + '/fonts'
     },
     production: {

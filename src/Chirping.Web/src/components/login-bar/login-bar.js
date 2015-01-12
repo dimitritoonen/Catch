@@ -4,7 +4,7 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service'], function 
     
     var self = this;
     var container = params.container;
-
+    
     self.username = ko.observable();
     self.password = ko.observable();
 
@@ -19,7 +19,7 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service'], function 
 
       auth.LoginUser(data);
     };
-
+      
     // display the 'forgot password' component
     self.showForgotPasswordComponent = function () {
       container.updateActiveComponent('forgot-password');

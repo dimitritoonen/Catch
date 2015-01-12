@@ -138,7 +138,7 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'ser
       function displayImageInDialog(file) {
 
         var dialog = new bootstrapDialog({
-          animate: false,
+          animate: true,
           closeByKeyboard: false,
           message: getBaseMessage(),
           buttons: defineDialogButtons()
