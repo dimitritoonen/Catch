@@ -115,8 +115,8 @@ module.exports = {
       dest: dest + '/fonts'
     },
     production: {
-      src: dest + '/fonts/bootstrap/*',
-      dest: production + '/fonts/bootstrap'
+      src: dest + '/fonts/*',
+      dest: production + '/fonts/'
     }
   },
   webConfig: {
@@ -198,7 +198,7 @@ module.exports = {
         insertRequire: ['app/startup'],
         bundles: {
           'register-container': [
-            'components/register-container/register-container',
+            'components/component-container/component-container',
             'components/login-bar/login-bar',
             'components/forgot-password/forgot-password'
           ],

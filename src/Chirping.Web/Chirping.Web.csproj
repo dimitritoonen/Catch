@@ -69,8 +69,8 @@
     <Content Include="gulp\tasks\dev-optimized-build\optimize-html.js" />
     <Content Include="gulp\tasks\dev-build\base64.js" />
     <Content Include="gulp\tasks\dev-optimized-build\optimize-less.js" />
-    <Content Include="gulp\tasks\exclude-from-publish\browser-sync.js" />
-    <Content Include="gulp\tasks\exclude-from-publish\browsersync-optimized.js" />
+    <Content Include="gulp\tasks\_exclude-from-publish\browser-sync.js" />
+    <Content Include="gulp\tasks\_exclude-from-publish\browsersync-optimized.js" />
     <Content Include="gulp\tasks\dev-optimized-build\optimize-build.js" />
     <Content Include="gulp\tasks\dev-build\build.js" />
     <Content Include="gulp\tasks\dev-build\delete.js" />
@@ -84,8 +84,8 @@
     <Content Include="gulp\tasks\dev-build\copy-scripts.js" />
     <Content Include="gulp\tasks\dev-optimized-build\less-vendor.js" />
     <Content Include="gulp\tasks\dev-build\less.js" />
-    <Content Include="gulp\tasks\exclude-from-publish\watch-optimized.js" />
-    <Content Include="gulp\tasks\exclude-from-publish\watch.js" />
+    <Content Include="gulp\tasks\_exclude-from-publish\watch-optimized.js" />
+    <Content Include="gulp\tasks\_exclude-from-publish\watch.js" />
     <Content Include="gulp\tasks\optimized.js" />
     <Content Include="gulp\tasks\acceptance-build\copy-fonts.js" />
     <Content Include="gulp\tasks\acceptance-build\optimize-css.js" />
