@@ -65,7 +65,7 @@
     <Content Include="gulp\tasks\acceptance.js" />
     <Content Include="gulp\tasks\default.js" />
     <Content Include="gulp\tasks\dev-build\css-vendor.js" />
-    <Content Include="gulp\tasks\dev-build\recess.js" />
+    <Content Include="gulp\tasks\_exclude-from-publish\recess.js" />
     <Content Include="gulp\tasks\dev-optimized-build\optimize-html.js" />
     <Content Include="gulp\tasks\dev-build\base64.js" />
     <Content Include="gulp\tasks\dev-optimized-build\optimize-less.js" />
