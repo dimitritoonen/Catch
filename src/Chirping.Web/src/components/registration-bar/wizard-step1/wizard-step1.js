@@ -8,7 +8,7 @@ define(['jquery', 'knockout', 'text!./wizard-step1.html', 'app/app.config', 'ser
     self.result = ko.observable();
 
     self.registration = params.registration;
-    
+        
     // validation group to determine if all control on step 1 are valid
     var validationGroup = ko.validatedObservable({
       emailAddress: self.registration.emailAddress,

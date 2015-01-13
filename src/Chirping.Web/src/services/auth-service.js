@@ -88,32 +88,33 @@
     var externalProviderUrl = config.BaseUrl + '/api/Account/ExternalLogin?provider=Facebook' + '&response_type=token&client_id=ChirpingWeb&redirect_uri=' + redirectUri;
 
     window.$windowScope = registration;
-
-    var oauthWindows = window.open(externalProviderUrl, "Authenticate Account", "location=0,status=0,width=750,height=600");
-  };
-
-  authService.registerExternal = function (registration) {
     
-    //var deferred = $q.defer();
-
-    //$http.post(serviceBase + 'api/account/registerexternal', registerExternalData).success(function (response) {
-
-    //  localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, refreshToken: "", useRefreshTokens: false });
-
-    //  _authentication.isAuth = true;
-    //  _authentication.userName = response.userName;
-    //  _authentication.useRefreshTokens = false;
-
-    //  deferred.resolve(response);
-
-    //}).error(function (err, status) {
-    //  _logOut();
-    //  deferred.reject(err);
-    //});
-
-    //return deferred.promise;
-
+    var oauthWindows = window.open(externalProviderUrl, "Authenticate Account", "location=0,status=0,width=750,height=600");
+    
   };
+
+  //authService.registerExternal = function (registration) {
+    
+  //  //var deferred = $q.defer();
+
+  //  //$http.post(serviceBase + 'api/account/registerexternal', registerExternalData).success(function (response) {
+
+  //  //  localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, refreshToken: "", useRefreshTokens: false });
+
+  //  //  _authentication.isAuth = true;
+  //  //  _authentication.userName = response.userName;
+  //  //  _authentication.useRefreshTokens = false;
+
+  //  //  deferred.resolve(response);
+
+  //  //}).error(function (err, status) {
+  //  //  _logOut();
+  //  //  deferred.reject(err);
+  //  //});
+
+  //  //return deferred.promise;
+
+  //};
 
 
   //

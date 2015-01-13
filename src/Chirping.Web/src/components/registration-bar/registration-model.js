@@ -90,7 +90,7 @@
       minLength: 8,
       maxLength: 128,
       passwordContainsDigit: true,
-      passwordContainsUppercase: true,
+      //passwordContainsUppercase: true,
       passwordContainsLowercase: true,
       passwordContainsSymbol: true
     });

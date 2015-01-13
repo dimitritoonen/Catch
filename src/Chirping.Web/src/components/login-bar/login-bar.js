@@ -5,11 +5,12 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service'], function 
     var self = this;
     var container = params.container;
     
-    self.username = ko.observable('dimitritoonen@gmail.com');
-    self.password = ko.observable('dimitritoonen@gmail.com');
+    self.username = ko.observable();
+    self.password = ko.observable();
 
     self.errorTitle = ko.observable();
     self.errorDescription = ko.observable();
+
 
     // display and hide the loading screen
     var toggleLoading = function () {
@@ -30,7 +31,6 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service'], function 
 
     // define the error message that should be shown if an error occures when loggin in
     var defineErrorText = function (desc) {
-      console.log(desc);
       if (desc === 'incorrect_email') {
         self.errorTitle('Incorrect e-mail address');
         self.errorDescription('The e-mail address you entered is not in a correct format. Please provide a proper e-mail address.');
@@ -72,8 +72,6 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service'], function 
         alert('open dashboard!');
       }).error(function (data) {
         toggleLoading();
-
-        console.log(data);
 
         var err = JSON.parse(data.responseText);
         displayErrorMessage(err);

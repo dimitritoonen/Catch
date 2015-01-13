@@ -380,7 +380,7 @@
     <None Include="src\less\pages\intro-page-old.less" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\less\pages\registration-page.less" />
+    <None Include="src\less\pages\registration-bar.less" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\less\components\register-component.less" />

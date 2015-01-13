@@ -1,4 +1,7 @@
-﻿/* Define the styles for the wizzard */
+﻿@import "../variables";
+
+
+/* Define the styles for the wizzard */
 #wizardSteps.fixed-container {
     width: 650px !important;
 }
@@ -170,4 +173,14 @@
 @-o-keyframes rotateThis {
   from { transform: scale( 1 ) rotate( 0deg );   }
   to   { transform: scale( 1 ) rotate( 360deg ); }
+}
+
+
+
+
+/* THE ABOVE NEEDS TO BE CLEANED UP */
+
+.wizard-nav-button {
+    color: @blue;
+    cursor: pointer;
 }

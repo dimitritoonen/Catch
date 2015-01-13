@@ -51,6 +51,7 @@ var fragment = common.getFragment();
 
 window.location.hash = fragment.state || '';
 
+console.log(fragment);
 window.opener.$windowScope.registerFacebookUser(fragment);
 
 window.close();

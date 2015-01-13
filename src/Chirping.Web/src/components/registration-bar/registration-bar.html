@@ -13,15 +13,13 @@
     </div>
     <div class="row">
         <div class="col-xs-1">
-            <a><i class="fa fa-angle-left fa-4x pull-right" data-bind="click: PreviousStep, visible: currentStep() > 2"></i></a>
-            <!--<div class="pull-right" data-bind="click: PreviousStep, visible: currentStep() > 2" id="wizardLeftArrow"></div>-->
+            <span class="wizard-nav-button"><i class="fa fa-angle-left fa-4x pull-right" data-bind="click: PreviousStep, visible: currentStep() > 2"></i></span>
         </div>
         <div class="col-xs-10 center-block">
             <div id="wizardStep" data-bind="component: { name: currentWizardStep, params: { registration: registration } }"></div>
         </div>
         <div class="col-xs-1">
-            <a><i class="fa fa-angle-right fa-4x pull-left" data-bind="click: NextStep, visible: currentStep() < 3"></i></a>
-            <!--<div class="pull-left" data-bind="click: NextStep, visible: currentStep() < 3" id="wizardRightArrow"></div>-->
+            <span class="wizard-nav-button"><i class="fa fa-angle-right fa-4x pull-left" data-bind="click: NextStep, visible: currentStep() < 3"></i></span>
         </div>
     </div>
     <div id="registrationRegisterButton" data-bind="visible: currentStep() == 3" class="row">

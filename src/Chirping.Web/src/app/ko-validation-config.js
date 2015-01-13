@@ -43,27 +43,33 @@
   function SetValidationStateControl(elementId, observable, isValid) {
 
     var $element = $('#' + elementId);
-
+    
     if (!isValid) {
       $element.qtip({
+        suppress: true,
         show: { ready: true },
         hide: { fixed: true },
         position: { my: 'left center', at: 'right center' },
         style: { classes: 'qtip-bootstrap qtip-icon qtip-red' },
-        content: { text: observable.error }
+        content: { text: observable.error },
+        //prerender: true,
+        //events: {
+        //  render: function (event, api) {
+        //    $element.attr('title', '');
+        //    $element.attr('oldtitle', '');
+        //  }
+        //}
       });
 
       $element.closest('.form-group').removeClass('has-success');
       $element.next('span').removeClass('glyphicon-ok');
       $element.next('span').addClass('glyphicon-remove');
-      $element.attr('title', '');
     } else {
       $element.qtip('destroy');
 
       $element.closest('.form-group').addClass('has-success');
       $element.next('span').removeClass('glyphicon-remove');
-      $element.next('span').addClass('glyphicon-ok');
-      $element.attr('title', '');
+      $element.next('span').addClass('glyphicon-ok');  
     }
   };
   
@@ -100,13 +106,13 @@
     message: 'Password must contain a least one digit'
   };
 
-  // verifies if the password has at least one uppercase letter
-  ko.validation.rules['passwordContainsUppercase'] = {
-    validator: function (val) {
-      return /([A-Z]+)/.test('' + val + '');
-    },
-    message: 'Password must contain a least one uppercase letter'
-  };
+  //// verifies if the password has at least one uppercase letter
+  //ko.validation.rules['passwordContainsUppercase'] = {
+  //  validator: function (val) {
+  //    return /([A-Z]+)/.test('' + val + '');
+  //  },
+  //  message: 'Password must contain a least one uppercase letter'
+  //};
 
   // verifies if the password has at least one uppercase letter
   ko.validation.rules['passwordContainsLowercase'] = {
