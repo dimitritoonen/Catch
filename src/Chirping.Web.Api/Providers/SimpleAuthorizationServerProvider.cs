@@ -1,16 +1,18 @@
-﻿using Chirping.Web.Api.Common.Account;
+﻿#region using directives
+
+using Chirping.Web.Api.Common.Account;
 using Chirping.Web.Api.Common.Domain;
 using Chirping.Web.Api.Data.Repository;
 using Chirping.Web.Api.Infrastructure;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security.OAuth;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
+
+#endregion
 
 namespace Chirping.Web.Api.Providers
 {
@@ -20,13 +22,27 @@ namespace Chirping.Web.Api.Providers
         {
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
 
+            if (IsEmailAddressInvalid(context.UserName))
+            {
+                context.SetError("invalid_grant", "incorrect_email");
+                return;
+            }
+
             IAccountRepository repository = WebContainerManager.Get<IAccountRepository>();
+
+            IdentityUser emailRegistered = await repository.FindByEmailAsync(context.UserName);
+            if (emailRegistered == null)
+            {
+                context.SetError("invalid_grant", "email_not_registered");
+                return;
+            }
+
             IdentityUser user = await repository.FindUser(context.UserName, context.Password);
             repository.Dispose();
 
             if (user == null)
             {
-                context.SetError("invalid_grant", "The user name or password is incorrect.");
+                context.SetError("invalid_grant", "incorrect_password");
                 return;
             }
 
@@ -35,6 +51,25 @@ namespace Chirping.Web.Api.Providers
             identity.AddClaim(new Claim("role", "user"));
 
             context.Validated(identity);
+        }
+
+        private bool IsEmailAddressInvalid(string emailAddress)
+        {
+            return (string.IsNullOrWhiteSpace(emailAddress) ||
+                !IsValidEmail(emailAddress));
+        }
+
+        private bool IsValidEmail(string emailAddress)
+        {
+            try
+            {
+                var address = new MailAddress(emailAddress);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         
         public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)

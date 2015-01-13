@@ -1,37 +1,51 @@
 ﻿<div class="component-container-controls center-block">
-    <div class="text-center"><h2>Login</h2></div>
-    <br /><br />
-    <div class="text-center">
-        <button class="btn btn-primary btn-block">Inloggen met facebook</button>
-    </div>
-    <br />
-    <p class="text-center">or</p>
-    <br />
-    <!-- <div class="form-group has-feedback"> -->
-    <div class="input-group margin-bottom-sm">
-        <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-        <input type="text" id="username" data-bind="value: username" class="form-control" placeholder="Username" />
-        <!--<span id="usernameIcon" class="glyphicon glyphicon-envelope form-control-feedback"></span>-->
-    </div>
-    <br />
-
-    <!-- <div class="form-group has-feedback"> -->
-    <div class="input-group margin-bottom-sm">
-        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-        <input type="password" id="password" data-bind="value: password" class="form-control" placeholder="Password" />
-        <!--<span id="passwordIcon" class="glyphicon glyphicon-asterisk form-control-feedback"></span>-->
-    </div>
-    <div class="checkbox">
-        <label>
-            <input type="checkbox" id="stayLoggedIn" /> stay logged in?
-        </label>
-    </div>
-    <br />
-    <div>
-        <button data-bind="click: login" class="btn btn-primary">Login</button>
-    </div>
-    <br />
-    <div>
-        <a data-bind="click: function() { showForgotPasswordComponent() }">Are you unable to login?</a>
+    <div id="loginScreen">
+        <div class="text-center"><h2>Login</h2></div>
+        <br /><br />
+        <div class="text-center">
+            <button class="btn btn-primary btn-block">
+                <i class="fa fa-facebook fa-lg fa-fw fa-line-height pull-left"></i>Login with Facebook
+            </button>
+        </div>
+        <br />
+        <p class="text-center">or</p>
+        <div id="error-message-container" class="hide">
+            <br />
+            <div class="bg-danger text-center" style="color:red; padding: 5px 5px 5px 5px; border:1px solid red;">
+                <p>
+                    <b data-bind="text: errorTitle"></b>
+                    <br /><br />
+                    <span data-bind="html: errorDescription"></span>
+                </p>
+            </div>
+            <br />
+        </div>
+        <div class="inner-addon right-addon">
+            <i class="fa fa-lg fa-envelope-o icon-lighter"></i>
+            <input type="text" id="username" data-bind="value: username" class="form-control" placeholder="Username" />
+        </div>
+        <div id="loginSpinner" class="login-loader text-center hide">
+            <i class="fa fa-spinner fa-4x spin icon-lighter"></i>
+            <br /><br />
+            logging in...
+        </div>
+        <br />
+        <div class="inner-addon right-addon">
+            <i class="fa fa-lg fa-key icon-lighter"></i>
+            <input type="password" id="password" data-bind="value: password" class="form-control" placeholder="Password" />
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="stayLoggedIn" /> stay logged in?
+            </label>
+        </div>
+        <br />
+        <div>
+            <button data-bind="click: login" class="btn btn-primary">Login</button>
+        </div>
+        <div>
+            <br />
+            <a data-bind="click: function() { showForgotPasswordComponent() }">Are you unable to login?</a>
+        </div>
     </div>
 </div>

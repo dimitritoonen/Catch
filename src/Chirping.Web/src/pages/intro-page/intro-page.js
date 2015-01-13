@@ -6,13 +6,14 @@ define(['knockout', 'text!./intro-page.html', 'qtip2'], function (ko, templateMa
 
     self.component = ko.observable();
     self.showComponent = ko.observable(false);
-    
-  
+      
     // load a particular component
     self.loadComponent = function (component) {
       self.component(component);
       self.showComponent(!self.showComponent());
     };
+
+    self.loadComponent('login-bar');
     
     // closes the loaded component
     self.closeComponent = function () {

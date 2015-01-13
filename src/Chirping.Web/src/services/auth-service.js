@@ -45,7 +45,6 @@
     }).done(function (data) {
       authStorage.storeToken(data.access_token);
     });
-
   };
 
 
