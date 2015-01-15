@@ -1,11 +1,12 @@
 ﻿define(['knockout', 'bootstrap-dialog', './facebook-registration-model'], function (ko, bootstrapDialog, facebook) {
 
   // contains the filled in properties of the registration form
-
+  
   function RegistrationModel() {
 
     var self = this;
-    
+
+    self.disposables = [];
     self.isCurrentStepValid = ko.observable(false);
 
     // #region step 1
@@ -18,6 +19,10 @@
         email: true,
         isEmailAvailable: true
       });
+    self.disposables.push(self.emailAddress.subscribe(function () {
+      resetObservable(self.emailAddress);
+    }));
+
     self.confirmEmail = ko.observable().extend({
       validation: {
         validator: function (val, someOtherVal) {
@@ -32,55 +37,21 @@
         params: self.emailAddress
       }
     });
-    
 
-    // this operation is called from the authcomplete.html to finish off the facebook registration
-    self.registerFacebookUser = function (user) {
-
-      if (user.haslocalaccount == 'False') {
-        facebook.storeFacebookDetails(user);
-      } else {
-
-        var dialog = new bootstrapDialog({
-          message: getMessage(),
-          cssClass: 'wizard-registereduser-dialog'
-        });
-
-        // create the dialog
-        dialog.realize();
-        dialog.getModalHeader().hide();
-        dialog.open();
-      }
-    };
-    
-    var getMessage = function () {
-      // define the html to display in the modal dialog
-      var $message = $('<div id="wizard-dialogProfileContainer">');
-      $message.append('<span class="glyphicon glyphicon-remove" aria-hidden"true"></span>');
-      $message.append('The user is already registered with Chirping');
-      $message.append('</div>');
-      return $message;
-    };
-
-    // get the Ok button for the dialog
-    var getOkButton = function () {
-      return [{
-        label: 'Ok',
-        cssClass: 'btn-primary',
-        action: function (dialog) {
-          dialog.close();
-        }
-      }];
-    };
 
     self.Facebook = facebook;
+
+    // register new user
+    self.storeFacebookDetails = function (user) {
+      self.Facebook.storeFacebookDetails(user);
+    };
 
     // indicates if the form uses facebook credentials for authentication
     self.UseFacebookAuthentication = ko.computed(function () {
       return facebook.UseFacebookAuthentication();
     });
 
-    
+
     // Password must be between 8 and 128 characters long and contain three of the following 4 items:
     // - upper case letter
     // - lower case letter
@@ -90,10 +61,12 @@
       minLength: 8,
       maxLength: 128,
       passwordContainsDigit: true,
-      //passwordContainsUppercase: true,
       passwordContainsLowercase: true,
       passwordContainsSymbol: true
     });
+    self.disposables.push(self.password.subscribe(function () {
+      resetObservable(self.password);
+    }));
 
     self.validateStep1 = function () {
       resetObservable(self.emailAddress);
@@ -108,7 +81,7 @@
     // #region step 2
 
     self.isStep2Valid = ko.observable(false);
-    
+
     self.nickName = ko.observable().extend({
       required: true,
       maxLength: 50,
@@ -134,7 +107,7 @@
     });
 
     self.interestedIn = ko.observable('Female');
-    
+
     self.validationGroupStep2 = ko.validatedObservable({
       nickName: self.nickName,
       city: self.city,
@@ -142,7 +115,7 @@
     })
 
     self.validateStep2 = function () {
-      
+
       resetObservable(self.nickName);
       resetObservable(self.city);
       resetObservable(self.age);
@@ -152,7 +125,7 @@
 
 
 
-    
+
     // #region step 3
 
     self.isStep3Valid = ko.observable(false);
@@ -205,7 +178,7 @@
     };
 
     // gets profile data 
-    var getProfileData = function() {
+    var getProfileData = function () {
       return {
         NickName: self.nickName(),
         Gender: self.gender(),
@@ -222,8 +195,16 @@
   function resetObservable(observable) {
     observable.isModified(false);
     observable.isModified(true);
-  };
+  }
 
-  return new RegistrationModel();
+
+  // dispose all subscriptions
+  RegistrationModel.prototype.dispose = function () {
+    ko.utils.arrayForEach(this.disposables, function (item) {
+      item.dispose();
+    })
+  }
+
+  return RegistrationModel;
 
 })

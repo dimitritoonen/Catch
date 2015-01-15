@@ -37,8 +37,17 @@ define(['jquery', 'knockout', 'text!./wizard-step1.html', 'app/app.config', 'ser
 
 
     // 
-    this.registerViaFacebook = function () {
-      auth.authFacebookUser(self.registration);
+    self.logonToFacebook = function () {
+      auth.authFacebookUser(self);
+    };
+
+
+    self.registerFacebookUser = function (user) {
+      if (user.haslocalaccount == 'False') {
+        self.registration.storeFacebookDetails(user);
+      } else {
+        $('#error-message-container').removeClass('hide');
+      }
     };
 
 

@@ -4,10 +4,10 @@ define(['knockout', 'text!./component-container.html'], function (ko, templateMa
     
     var self = this;
     var parent = params.parent;
+
+    self.showComponent = ko.observable(params.showComponent);
     
     self.activeComponent = ko.observable(params.component);
-    
-    //setContainerSize(self.activeComponent);
 
     initializeComponentAnimation();
     
@@ -27,7 +27,6 @@ define(['knockout', 'text!./component-container.html'], function (ko, templateMa
       removeComponentAnimation();
 
       self.activeComponent(component);
-      //setContainerSize(self.activeComponent);
 
       refreshComponentAnimation();
     };
@@ -37,18 +36,6 @@ define(['knockout', 'text!./component-container.html'], function (ko, templateMa
       parent.closeComponent();
     };
   }
-
-  //// defines the size of the container 
-  //function setContainerSize(component) {
-
-  //  if (component() === 'register') {
-  //    $('#register-container').removeClass('contract');
-  //    $('#register-container').addClass('expand');
-  //  } else {
-  //    $('#register-container').removeClass('expand');
-  //    $('#register-container').addClass('contract');
-  //  }
-  //}
 
   // initializes the animation of the component
   function initializeComponentAnimation() {

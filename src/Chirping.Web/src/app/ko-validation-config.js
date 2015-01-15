@@ -18,6 +18,7 @@
   // bind the QTip2 to the knockout validation
   ko.bindingHandlers.qtipValMessage = {
     update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+      
       var observable = valueAccessor();
       var elementId = $(element).attr('id');
 
@@ -45,26 +46,27 @@
     var $element = $('#' + elementId);
     
     if (!isValid) {
+      
       $element.qtip({
-        suppress: true,
+        suppress: false,
         show: { ready: true },
         hide: { fixed: true },
         position: { my: 'left center', at: 'right center' },
         style: { classes: 'qtip-bootstrap qtip-icon qtip-red' },
         content: { text: observable.error },
-        //prerender: true,
-        //events: {
-        //  render: function (event, api) {
-        //    $element.attr('title', '');
-        //    $element.attr('oldtitle', '');
-        //  }
-        //}
+        content: {
+          text: true,
+          attr: 'title',
+          text: false,
+          button: false
+        }
       });
 
       $element.closest('.form-group').removeClass('has-success');
       $element.next('span').removeClass('glyphicon-ok');
       $element.next('span').addClass('glyphicon-remove');
     } else {
+
       $element.qtip('destroy');
 
       $element.closest('.form-group').addClass('has-success');

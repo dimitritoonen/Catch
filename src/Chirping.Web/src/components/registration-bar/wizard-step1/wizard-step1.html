@@ -1,8 +1,18 @@
 <div class="row text-center">
     <div class="col-xs-12">
-        <button class="btn btn-primary btn-block" data-bind="click: registerViaFacebook">
+        <button class="btn btn-primary btn-block" data-bind="click: logonToFacebook">
             <i class="fa fa-facebook fa-lg fa-fw fa-line-height pull-left"></i>Login with Facebook
         </button>
+    </div>
+</div>
+<div id="error-message-container" class="hide">
+    <br />
+    <div class="bg-danger text-center" style="color:red; padding: 5px 5px 5px 5px; border:1px solid red;">
+        <p>
+            <b>User is already registered</b>
+            <br /><br />
+            <span>The user is already registered via Facebook<br />or the e-mail address is already used</span>
+        </p>
     </div>
 </div>
 <div class="row">
@@ -13,7 +23,7 @@
         <p class="text-center">Register with your e-mail address</p>
     </div>
 </div>
-<div id="test" class="row form-group has-feedback">
+<div class="row form-group has-feedback">
     <div class="col-xs-12" data-bind="validationElement: registration.emailAddress">
         <input data-bind="value: registration.emailAddress, qtipValMessage: registration.emailAddress" class="form-control"
                placeholder="E-mail" type="text" id="wizardEmailTextbox" />

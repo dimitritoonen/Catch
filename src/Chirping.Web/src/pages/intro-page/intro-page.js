@@ -6,7 +6,7 @@ define(['knockout', 'text!./intro-page.html', 'qtip2'], function (ko, templateMa
 
     self.component = ko.observable();
     self.showComponent = ko.observable(false);
-      
+
     // load a particular component
     self.loadComponent = function (component) {
       self.component(component);
@@ -14,7 +14,7 @@ define(['knockout', 'text!./intro-page.html', 'qtip2'], function (ko, templateMa
     };
 
     self.loadComponent('register');
-    
+
     // closes the loaded component
     self.closeComponent = function () {
       self.showComponent(false);
@@ -25,7 +25,8 @@ define(['knockout', 'text!./intro-page.html', 'qtip2'], function (ko, templateMa
     self.getComponentParams = function () {
       return {
         parent: self,
-        component: self.component()
+        component: self.component(),
+        showComponent: self.showComponent()
       };
     };
   }

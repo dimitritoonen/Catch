@@ -1,7 +1,7 @@
 define(['knockout', 'text!./registration-bar.html', './registration-model', 'services/auth-service'], function (ko, templateMarkup, registrationModel, auth) {
   
   function RegistrationBar(params) {
-
+    
     var self = this;
     var container = params.container;
 
@@ -19,7 +19,7 @@ define(['knockout', 'text!./registration-bar.html', './registration-model', 'ser
     };
 
     // contains the registration view model
-    self.registration = registrationModel;
+    self.registration = new registrationModel();
 
     // indicates the current step of the wizard
     self.currentStep = ko.observable(minSteps);
@@ -82,6 +82,11 @@ define(['knockout', 'text!./registration-bar.html', './registration-model', 'ser
     self.showLoginComponent = function () {
       container.updateActiveComponent('login-bar');
     };
+  }
+
+  // dispose all subscriptions from the registration model
+  RegistrationBar.prototype.dispose = function () {
+    this.registration.dispose();
   }
 
   return { viewModel: RegistrationBar, template: templateMarkup };
