@@ -68,13 +68,27 @@ module.exports = {
   },
   html: {
     development: {
-      src: src,
+      src: [
+        '!' + src + '/authentication/*.html',
+        src + '/**/*.html',
+      ],
+      dest: dest
+    },
+    optimized: {
+      src: [
+        src + '/*.html',
+        src + '/authentication/*.html'
+      ],
       dest: dest
     },
     production: {
       src: dest + '/*.html',
       dest: production      
     }
+  },
+  auth: {
+    src: src + '/authentication/*',
+    dest: dest
   },
   baseUrl: {
     dest: dest,
@@ -92,6 +106,7 @@ module.exports = {
 
       src: [
         '!' + src + '/bower_modules/**/*.js',
+        '!' + src + '/authentication/*.js',
         src + '/**/*.js'
       ],
       dest: dest

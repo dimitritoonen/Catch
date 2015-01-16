@@ -8,6 +8,7 @@ gulp.task('build', function (callback) {
     'copy:scripts',
     'less',
     'html',
+    'copy:auth',
     'images',
     'fonts'
   ],
