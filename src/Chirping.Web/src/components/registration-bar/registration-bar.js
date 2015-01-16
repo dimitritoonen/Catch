@@ -31,6 +31,7 @@ define(['knockout', 'text!./registration-bar.html', './registration-model', 'ser
 
     // advances to the next step in the wizard if facebook is chosen
     self.registration.UseFacebookAuthentication.subscribe(function (useFacebook) {
+
       if (self.currentStep() == minSteps && useFacebook) {
         goToNextStep();
       }

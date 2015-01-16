@@ -1,4 +1,4 @@
-define(['knockout', 'text!./login-bar.html', 'services/auth-service'], function (ko, templateMarkup, auth) {
+define(['knockout', 'text!./login-bar.html', 'services/auth-service', 'services/login-service'], function (ko, templateMarkup, auth, login) {
 
   function LoginBar(params) {
     
@@ -8,8 +8,8 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service'], function 
     self.username = ko.observable();
     self.password = ko.observable();
 
-    self.errorTitle = ko.observable();
-    self.errorDescription = ko.observable();
+    self.error = ko.observable();
+    self.showErrorBox = ko.observable(false);
 
 
     // display and hide the loading screen
@@ -19,32 +19,7 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service'], function 
       $('#loginSpinner').toggleClass('hide');
     };
 
-    var showErrorMessage = function () {
-      $('#error-message-container').removeClass('hide');
-    };
     
-    var displayErrorMessage = function(err) {
-      defineErrorText(err.error_description);
-
-      showErrorMessage();
-    };
-
-    // define the error message that should be shown if an error occures when loggin in
-    var defineErrorText = function (desc) {
-      if (desc === 'incorrect_email') {
-        self.errorTitle('Incorrect e-mail address');
-        self.errorDescription('The e-mail address you entered is not in a correct format. Please provide a proper e-mail address.');
-      } else if (desc === 'email_not_registered') {
-        self.errorTitle('User not registered');
-        self.errorDescription('The e-mail address you entered is not registered.');
-      } else if (desc === 'incorrect_password') {
-        self.errorTitle('Incorrect password');
-        self.errorDescription('The password you entered is incorrect<br />(Check if Caps lock is not enabled). Please try again.');
-      } else {
-        self.errorTitle('Incorrect email address or password ');
-        self.errorDescription('The email you entered does not belong to any account or your password is incorrect.');
-      }
-    };
 
     // automatically try to log on the user when pressing the [Enter] key
     var submitForm = function (event) {
@@ -74,14 +49,45 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service'], function 
         toggleLoading();
 
         var err = JSON.parse(data.responseText);
-        displayErrorMessage(err);
+        self.error(err);
+        self.showErrorBox(true);
       });
+    };
+
+
+    // logon to facebook
+    self.logonToFacebook = function () {
+      toggleLoading();
+
+      login.authExternalProvider('Facebook', self.facebookLogonCallback);
+    };
+
+
+    // executed after successfully logged on to facebook
+    self.facebookLogonCallback = function (user) {
+      if (user.haslocalaccount == 'False') {
+        toggleLoading();
+
+        self.error({ error_description: 'facebook_notregistered' });
+        self.showErrorBox(true);
+      }
     };
        
     // display the 'forgot password' component
     self.showForgotPasswordComponent = function () {
       container.updateActiveComponent('forgot-password');
     };
+
+
+    // get the error box component
+    self.getErrorBox = function () {
+      return {
+        name: 'error-box',
+        params: {
+          error: self.error
+        }
+      };
+    }
   }
   
   return { viewModel: LoginBar, template: templateMarkup };

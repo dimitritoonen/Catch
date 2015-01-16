@@ -1,4 +1,4 @@
-﻿define(['knockout', 'bootstrap-dialog', './facebook-registration-model'], function (ko, bootstrapDialog, facebook) {
+﻿define(['knockout', 'bootstrap-dialog', './facebook-registration-model'], function (ko, bootstrapDialog, facebookModel) {
 
   // contains the filled in properties of the registration form
   
@@ -39,7 +39,7 @@
     });
 
 
-    self.Facebook = facebook;
+    self.Facebook = new facebookModel();
 
     // register new user
     self.storeFacebookDetails = function (user) {
@@ -48,7 +48,7 @@
 
     // indicates if the form uses facebook credentials for authentication
     self.UseFacebookAuthentication = ko.computed(function () {
-      return facebook.UseFacebookAuthentication();
+      return self.Facebook.UseFacebookAuthentication();
     });
 
 
@@ -171,8 +171,8 @@
     // gets the completed facebook user data + profile
     var getCompletedFacebookUserData = function () {
       return {
-        Email: facebook.Email,
-        ExternalAccessToken: facebook.ExternalAccessToken,
+        Email: self.Facebook.Email,
+        ExternalAccessToken: self.Facebook.ExternalAccessToken,
         Profile: getProfileData()
       };
     };

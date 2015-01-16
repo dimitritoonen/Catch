@@ -3,23 +3,13 @@
         <div class="text-center"><h2>Login</h2></div>
         <br /><br />
         <div class="text-center">
-            <button class="btn btn-primary btn-block">
+            <button class="btn btn-primary btn-block" data-bind="click: logonToFacebook">
                 <i class="fa fa-facebook fa-lg fa-fw fa-line-height pull-left"></i>Login with Facebook
             </button>
         </div>
         <br />
-        <p class="text-center">or</p>
-        <div id="error-message-container" class="hide">
-            <br />
-            <div class="bg-danger text-center" style="color:red; padding: 5px 5px 5px 5px; border:1px solid red;">
-                <p>
-                    <b data-bind="text: errorTitle"></b>
-                    <br /><br />
-                    <span data-bind="html: errorDescription"></span>
-                </p>
-            </div>
-            <br />
-        </div>
+        <p class="text-center" data-bind="visible: !showErrorBox()">or</p>
+        <div id="errorComponent" data-bind="visible: showErrorBox, component: getErrorBox()"></div>
         <div class="inner-addon right-addon">
             <i class="fa fa-lg fa-envelope-o icon-lighter"></i>
             <input type="text" id="username" data-bind="value: username" class="form-control" placeholder="Username" />

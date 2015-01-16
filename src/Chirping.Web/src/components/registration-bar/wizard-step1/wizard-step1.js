@@ -1,5 +1,5 @@
 /// <reference path="../../../authcomplete.html" />
-define(['jquery', 'knockout', 'text!./wizard-step1.html', 'app/app.config', 'services/auth-service'], function ($, ko, templateMarkup, config, auth) {
+define(['jquery', 'knockout', 'text!./wizard-step1.html', 'app/app.config', 'services/login-service'], function ($, ko, templateMarkup, config, login) {
 
   function WizardStep1(params) {
         
@@ -36,40 +36,39 @@ define(['jquery', 'knockout', 'text!./wizard-step1.html', 'app/app.config', 'ser
     }
 
 
-    // 
+    // logon to facebook
     self.logonToFacebook = function () {
-      auth.authFacebookUser(self);
+      login.authExternalProvider('Facebook', self.facebookLogonCallback);
     };
 
 
-    self.registerFacebookUser = function (user) {
+    // executed after successfully logged on to facebook
+    self.facebookLogonCallback = function (user) {
       if (user.haslocalaccount == 'False') {
         self.registration.storeFacebookDetails(user);
-      } else {
-        $('#error-message-container').removeClass('hide');
       }
     };
 
 
 
-    this.callApi = function () {
+    //this.callApi = function () {
 
-      // If we already have a bearer token, set the Authorization header.
-      var token = sessionStorage.getItem(tokenKey);
-      var headers = {};
-      if (token) {
-        headers.Authorization = 'Bearer ' + token;
-      }
+    //  // If we already have a bearer token, set the Authorization header.
+    //  var token = sessionStorage.getItem(tokenKey);
+    //  var headers = {};
+    //  if (token) {
+    //    headers.Authorization = 'Bearer ' + token;
+    //  }
 
-      $.ajax({
-        type: 'GET',
-        url: 'http://localhost:4421/api/values/1',
-        headers: headers
-      }).done(function (data) {
-        self.result(data);
-      }).fail(showError);
+    //  $.ajax({
+    //    type: 'GET',
+    //    url: 'http://localhost:4421/api/values/1',
+    //    headers: headers
+    //  }).done(function (data) {
+    //    self.result(data);
+    //  }).fail(showError);
 
-    };
+    //};
   }
   
   return { viewModel: WizardStep1, template: templateMarkup };

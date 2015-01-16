@@ -29,6 +29,6 @@
 
   };
 
-  return new FacebookModel();
+  return FacebookModel;
 
 });    

@@ -215,7 +215,8 @@ module.exports = {
           'register-container': [
             'components/component-container/component-container',
             'components/login-bar/login-bar',
-            'components/forgot-password/forgot-password'
+            'components/forgot-password/forgot-password',
+            'components/component-container/error-box/error-box'
           ],
           'registration-page': [
             'services/auth-service',

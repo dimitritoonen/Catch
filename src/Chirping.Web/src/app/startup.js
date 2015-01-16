@@ -21,15 +21,13 @@ define(['jquery', 'knockout', './router', 'services/auth-service', 'bootstrap', 
     ko.components.register('component-container', { require: 'components/component-container/component-container' });
     ko.components.register('login-bar', { require: 'components/login-bar/login-bar' });
     ko.components.register('forgot-password', { require: 'components/forgot-password/forgot-password' });
+    ko.components.register('error-box', { require: 'components/component-container/error-box/error-box' });
 
     ko.components.register('register', { require: 'components/registration-bar/registration-bar' });
     ko.components.register('wizard-step1', { require: 'components/registration-bar/wizard-step1/wizard-step1' });
     ko.components.register('wizard-step2', { require: 'components/registration-bar/wizard-step2/wizard-step2' });
     ko.components.register('wizard-step3', { require: 'components/registration-bar/wizard-step3/wizard-step3' });
     ko.components.register('profile-image-upload', { require: 'components/registration-bar/profile-image-upload/profile-image-upload' });
-
-
-    ko.components.register('test1', { require: 'components/test1/test1' });
 
 
 

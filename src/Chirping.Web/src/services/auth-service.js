@@ -1,8 +1,8 @@
 ﻿define(['jquery', './auth-storage', 'app/app.config'], function ($, authStorage, config) {
-  
+
   // defines the entry points for the authentication with the back-end
   var authService = {
-    
+
   };
 
   // checks if the e-mail address is available
@@ -29,14 +29,14 @@
     }).done(function (data) {
       callback(data);
     });
-  }; 
+  };
 
   // 
   authService.LoginUser = function (loginData) {
 
     // map login data to a querystring
     var data = 'grant_type=password&username=' + loginData.username + '&password=' + loginData.password + '&client_id=ChirpingWeb';
-    
+
     return $.ajax({
       type: 'POST',
       url: config.BaseUrl + 'token',
@@ -78,45 +78,29 @@
 
   };
 
+  // get an local access token when loggin in with an external provider
+  authService.obtainAccessToken = function (externalData) {
 
-  // authenticate user via facebook provider
-  authService.authFacebookUser = function (registration) {
+    var data = { 
+      provider: externalData.provider,
+      externalAccessToken: externalData.externalAccessToken
+    };
 
-    var redirectUri = window.location.protocol + "//" + window.location.host + '/authcomplete.html';
-    var externalProviderUrl = config.BaseUrl + '/api/Account/ExternalLogin?provider=Facebook' + '&response_type=token&client_id=ChirpingWeb&redirect_uri=' + redirectUri;
+    return $.ajax({
+      type: 'GET',
+      url: config.BaseUrl + 'api/Account/ObtainLocalAccessToken',
+      data: data
+    }).success(function (data) {
 
-    window.$windowScope = registration;
-    
-    var oauthWindows = window.open(externalProviderUrl, "Authenticate Account", "location=0,status=0,width=750,height=600");
-    
+      authStorage.storeToken({ token: data.access_token, userName: data.userName });
+
+    }).error(function(err, status) {
+      authService.logOut();
+    });
   };
 
-  //authService.registerExternal = function (registration) {
-    
-  //  //var deferred = $q.defer();
-
-  //  //$http.post(serviceBase + 'api/account/registerexternal', registerExternalData).success(function (response) {
-
-  //  //  localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, refreshToken: "", useRefreshTokens: false });
-
-  //  //  _authentication.isAuth = true;
-  //  //  _authentication.userName = response.userName;
-  //  //  _authentication.useRefreshTokens = false;
-
-  //  //  deferred.resolve(response);
-
-  //  //}).error(function (err, status) {
-  //  //  _logOut();
-  //  //  deferred.reject(err);
-  //  //});
-
-  //  //return deferred.promise;
-
-  //};
-
-
-  //
-  authService.logOut = function (data) {
+  // remove the session token and logout the user
+  authService.logOut = function () {
 
     authStorage.removeToken();
 

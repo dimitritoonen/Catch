@@ -105,6 +105,8 @@
     <Content Include="src\app\router.js" />
     <Content Include="src\app\startup.js" />
     <Content Include="src\authentication\authcomplete.html" />
+    <Content Include="src\components\component-container\error-box\error-box.html" />
+    <Content Include="src\components\component-container\error-box\error-box.js" />
     <Content Include="src\components\forgot-password\forgot-password.html" />
     <Content Include="src\components\forgot-password\forgot-password.js" />
     <Content Include="src\components\login-bar\login-bar.html" />
@@ -156,6 +158,7 @@
     <Content Include="src\services\auth-service.js" />
     <Content Include="src\services\auth-storage.js" />
     <Content Include="src\services\chunked-uploader.js" />
+    <Content Include="src\services\login-service.js" />
     <Content Include="test\bower_modules\jasmine\.gitignore" />
     <Content Include="test\bower_modules\jasmine\.gitmodules" />
     <Content Include="test\bower_modules\jasmine\Gruntfile.js" />
