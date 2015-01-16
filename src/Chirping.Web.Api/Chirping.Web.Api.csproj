@@ -191,6 +191,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="Config\HiddenSettings.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\HiddenSettings.template.config" />
     <None Include="Properties\PublishProfiles\chirping-webapi__acceptance.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

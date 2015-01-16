@@ -59,8 +59,8 @@ namespace Chirping.Web.Api
             // configure Facebook external login
             FacebookAuthOptions = new FacebookAuthenticationOptions
             {
-                AppId = ConfigurationManager.AppSettings["Facebook.AppId"], // 889224261090562
-                AppSecret = ConfigurationManager.AppSettings["Facebook.AppSecret"], // e1e4156e53f1ada9118667fb96f87ceb
+                AppId = ConfigurationManager.AppSettings["Facebook.AppId"],
+                AppSecret = ConfigurationManager.AppSettings["Facebook.AppSecret"],
                 Provider = new FacebookAuthProvider()
             };
             FacebookAuthOptions.Scope.Add("email");
