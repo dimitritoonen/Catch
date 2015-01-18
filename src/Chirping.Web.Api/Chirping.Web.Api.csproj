@@ -260,9 +260,9 @@
   </Target>
   -->
   <Target Name="AfterBuild">
-    <Copy SourceFiles="HiddenSettings.Template.config" 
-    DestinationFiles="HiddenSettings.config" SkipUnchangedFiles="true" 
-    Condition="!Exists('HiddenSettings.config')">
+    <Copy SourceFiles="Config\HiddenSettings.Template.config" 
+    DestinationFiles="Config\HiddenSettings.config" SkipUnchangedFiles="true" 
+    Condition="!Exists('Config\HiddenSettings.config')">
     </Copy>
   </Target> 
   
