@@ -418,11 +418,8 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
-  -->
   <Target Name="AfterBuild">
-    <Copy SourceFiles="HiddenSettings.Template.config" 
-    DestinationFiles="HiddenSettings.config" SkipUnchangedFiles="true" 
-    Condition="!Exists('HiddenSettings.config')">
     </Copy>
   </Target> 
+  -->
 </Project>
