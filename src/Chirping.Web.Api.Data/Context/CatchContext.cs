@@ -13,7 +13,7 @@ namespace Chirping.Web.Api.Data.Context
     public class ChirpingContext : IdentityDbContext<UserAccountEntity>
     {
         public ChirpingContext()
-            : base("ChirpingConnectionString")
+            : base("ChirpingContext")
         {
         }
 
