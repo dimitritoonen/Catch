@@ -13,8 +13,6 @@ define(['knockout', 'text!./intro-page.html', 'qtip2'], function (ko, templateMa
       self.showComponent(!self.showComponent());
     };
 
-    self.loadComponent('login-bar');
-
     // closes the loaded component
     self.closeComponent = function () {
       self.showComponent(false);
