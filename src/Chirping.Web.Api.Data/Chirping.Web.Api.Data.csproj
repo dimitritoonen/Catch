@@ -90,13 +90,9 @@
     <Compile Include="Migrations\201412101849589_InitialCreate.Designer.cs">
       <DependentUpon>201412101849589_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201501192115189_AddProfileImageColumn.cs" />
-    <Compile Include="Migrations\201501192115189_AddProfileImageColumn.Designer.cs">
-      <DependentUpon>201501192115189_AddProfileImageColumn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501192123241_AddProfileImageColumn1.cs" />
-    <Compile Include="Migrations\201501192123241_AddProfileImageColumn1.Designer.cs">
-      <DependentUpon>201501192123241_AddProfileImageColumn1.cs</DependentUpon>
+    <Compile Include="Migrations\201501192202331_AddProfileImageColumn.cs" />
+    <Compile Include="Migrations\201501192202331_AddProfileImageColumn.Designer.cs">
+      <DependentUpon>201501192202331_AddProfileImageColumn.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,11 +110,8 @@
     <EmbeddedResource Include="Migrations\201412101849589_InitialCreate.resx">
       <DependentUpon>201412101849589_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501192115189_AddProfileImageColumn.resx">
-      <DependentUpon>201501192115189_AddProfileImageColumn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501192123241_AddProfileImageColumn1.resx">
-      <DependentUpon>201501192123241_AddProfileImageColumn1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201501192202331_AddProfileImageColumn.resx">
+      <DependentUpon>201501192202331_AddProfileImageColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

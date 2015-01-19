@@ -30,15 +30,24 @@ namespace Chirping.Web.Api.Processors.Account
 
         public async Task<IdentityResult> RegisterUser(RegisterBindingModel registerUser)
         {
-            var user = Mapper.Map<RegisterBindingModel, UserAccount>(registerUser);
+            IdentityResult result = null;
 
-            user.ProfileImage = string.Format("{0}.jpg", System.Uri.EscapeDataString(registerUser.Email));
+            //try
+            //{
+                var user = Mapper.Map<RegisterBindingModel, UserAccount>(registerUser);
 
-            IdentityResult result = await _repository.RegisterUser(user);
+                user.ProfileImage = string.Format("{0}.jpg", System.Uri.EscapeDataString(registerUser.Email));
 
-            // store the profile picture in Azure cloud storage
-            StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage);
-            
+                result = await _repository.RegisterUser(user);
+
+                // store the profile picture in Azure cloud storage
+                StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage);
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex);
+            //}
+
             return result;
         }
 
