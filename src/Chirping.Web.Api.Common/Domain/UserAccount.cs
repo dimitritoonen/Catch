@@ -16,5 +16,6 @@ namespace Chirping.Web.Api.Common.Domain
         public string Gender { get; set; }
         public string City { get; set; }
         public string InterestedIn { get; set; }
+        public string ProfileImage { get; set; }
     }
 }

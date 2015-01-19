@@ -48,12 +48,43 @@
 @import "../../bower_modules/bootstrap/less/utilities.less";
 @import "../../bower_modules/bootstrap/less/responsive-utilities.less";
 
-
 @import "../variables";
+
+// Bootstrap dialog
+@import "../../bower_modules/bootstrap-dialog/dist/less/bootstrap-dialog.less";
 
 // remove borders
 @border-radius-base: 0px;
+@border-radius-large: 5px;
+@border-radius-smll: 5px;
 
+/*.modal-body {
+    padding: 0px;
+}*/
+
+@modal-title-padding: 8px;
+@modal-inner-padding: 8px;
+
+.modal-body {
+    padding: 10px 2px 0px 0px;
+}
+
+.modal-header-grey .modal-content .modal-header {
+   background-color:#eaeaea;
+}
+
+.bootstrap-dialog .bootstrap-dialog-title {
+    color: #000;
+}
+
+.close {
+    color: #000; 
+    opacity: 1;
+}
+
+.modal-body-text {
+    padding: 0px 0px 0px 10px;
+}
 
 .glyphicon {
     opacity: 0.40;
@@ -73,3 +104,4 @@
 @font-family-base: Open-sans light, Verdana, Arial;
 @font-size-h1: 50px;
 @headings-font-weight: 100;
+@btn-primary-bg: @blue;

@@ -61,7 +61,8 @@ namespace Chirping.Web.Api.Data.Repository
                 Age = user.Age,
                 Gender = user.Gender,
                 City = user.City,
-                InterestedIn = user.InterestedIn
+                InterestedIn = user.InterestedIn,
+                ProfileImage = user.ProfileImage
             };
 
             var result = await _userManager.CreateAsync(newUser, user.Password);

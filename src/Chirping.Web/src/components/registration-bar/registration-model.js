@@ -185,7 +185,8 @@
         Gender: self.gender(),
         City: self.city(),
         Age: self.age(),
-        InterestedIn: self.interestedIn()
+        InterestedIn: self.interestedIn(),
+        ProfileImage: self.profileImage1()
       };
     };
 

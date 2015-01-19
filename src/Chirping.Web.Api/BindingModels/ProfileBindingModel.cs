@@ -28,5 +28,7 @@ namespace Chirping.Web.Api.BindingModels
 
         [Required]
         public string InterestedIn { get; set; }
+
+        public string ProfileImage { get; set; }
     }
 }

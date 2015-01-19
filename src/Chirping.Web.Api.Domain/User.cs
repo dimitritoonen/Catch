@@ -17,20 +17,18 @@ namespace Chirping.Web.Api.Domain
         private Email _email;
         private Age _age;
         private InterestedIn _interestedIn;
-
-        private List<string> _pictures = new List<string>();
+        private ProfileImage _profileImage;
 
         #endregion
 
         public User(string name, string email, 
-            string age, string interestedIn, List<string> pictures)
+            string age, string interestedIn, string profileImage)
         {
             this._name = new Name(name);
             this._email = new Email(email);
             this._age = new Age(age);
             this._interestedIn = new InterestedIn(interestedIn);
-
-            this._pictures = pictures;
+            this._profileImage = new ProfileImage(profileImage);
         }
 
         #region get operations
@@ -55,9 +53,9 @@ namespace Chirping.Web.Api.Domain
             return _interestedIn.ToString();
         }
 
-        public List<string> GetPictures()
+        public string GetProfileImage()
         {
-            return _pictures;
+            return _profileImage.ToString();
         }
 
         #endregion

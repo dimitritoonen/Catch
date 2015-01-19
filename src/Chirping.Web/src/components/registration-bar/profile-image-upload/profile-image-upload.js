@@ -87,11 +87,13 @@
 
       var dialog = new bootstrapDialog({
         animate: true,
+        closeByBackdrop: false,
         closeByKeyboard: false,
+        cssClass: 'modal-header-grey',
         message: function(dialogRef) {
           var $message = $('<div id="wizard-dialogProfileContainer">');
           $message.append('</div>');
-          $message.append('<br />Drag the border to cut the image');
+          $message.append('<br /><div class="modal-body-text">Drag the border to cut the image</div>');
           return $message;
         },
         buttons: [{
@@ -111,9 +113,10 @@
 
       // create the dialog
       dialog.realize();
+
+      dialog.getModalHeader().css('color', 'black');
                   
       resizeDialog(dialog);
-      dialog.getModalHeader().hide();
       dialog.open();
     } // displayImageInDialog
 
@@ -163,6 +166,8 @@
       // store the resized and cropped image
       self.profileImage(canvas.toDataURL());
 
+      console.log(canvas.toDataURL('image/jpeg', 0.9).split(',')[1]);
+
       // save image to registration page and close dialog
       dialog.close();
     }
@@ -187,6 +192,7 @@
       $('#wizard-dialogProfileImage').Jcrop({
         bgColor: 'black',
         bgOpacity: 0.6,
+        minSize: [100, 100],
         setSelect: [0, 0, 0, 300],
         aspectRatio: 1,
       }, function () {

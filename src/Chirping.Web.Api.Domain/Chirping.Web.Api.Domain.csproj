@@ -76,6 +76,7 @@
     <Compile Include="User\InterestedInEnum.cs" />
     <Compile Include="User\Name.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="User\ProfileImage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

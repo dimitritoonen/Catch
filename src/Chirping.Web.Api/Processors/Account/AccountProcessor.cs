@@ -32,11 +32,22 @@ namespace Chirping.Web.Api.Processors.Account
         {
             var user = Mapper.Map<RegisterBindingModel, UserAccount>(registerUser);
 
+            user.ProfileImage = string.Format("{0}.jpg", System.Uri.EscapeDataString(registerUser.Email));
+
             IdentityResult result = await _repository.RegisterUser(user);
 
+            // store the profile picture in Azure cloud storage
+            StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage);
+            
             return result;
         }
 
+        private void StoreProfileImage(string profileImage, string imageFileName)
+        {
+            var store = new ImageStore();
+            store.StoreImage(profileImage, imageFileName);
+        }
+        
         public void Logout(HttpRequestMessage request)
         {
             request.GetOwinContext().Authentication.SignOut();

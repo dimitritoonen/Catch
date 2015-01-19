@@ -19,6 +19,7 @@ namespace Chirping.Web.Api.Data.Entities
         public string Gender { get; set; }
         public string City { get; set; }
         public string InterestedIn { get; set; }
+        public string ProfileImage { get; set; }
 
         [DefaultValue(false)]
         public bool Active { get; set; }

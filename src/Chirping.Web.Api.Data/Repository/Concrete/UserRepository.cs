@@ -39,7 +39,8 @@ namespace Chirping.Web.Api.Data.Repository
                 Name = domainModel.GetName(),
                 Email = domainModel.GetEmail(),
                 Age = domainModel.GetAge(),
-                InterestedIn = domainModel.GetInterestedIn()
+                InterestedIn = domainModel.GetInterestedIn(),
+                ProfileImage = domainModel.GetProfileImage()
             };
         }
 
@@ -48,8 +49,8 @@ namespace Chirping.Web.Api.Data.Repository
             return new User(dataEntity.Name, 
                 dataEntity.Email, 
                 dataEntity.Age, 
-                dataEntity.InterestedIn, 
-                new List<string>());
+                dataEntity.InterestedIn,
+                dataEntity.ProfileImage);
         }
 
         #endregion
