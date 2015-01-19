@@ -164,9 +164,7 @@
       ctx.drawImage(img, selection.x, selection.y, selection.w, selection.h, 0, 0, canvas.width, canvas.height);
 
       // store the resized and cropped image
-      self.profileImage(canvas.toDataURL());
-
-      console.log(canvas.toDataURL('image/jpeg', 0.9).split(',')[1]);
+      self.profileImage(canvas.toDataURL('image/jpeg', 0.9).split(',')[1]);
 
       // save image to registration page and close dialog
       dialog.close();
