@@ -374,6 +374,7 @@
     <Content Include="src\less\font-awesome.less" />
     <None Include="src\less\styles.less" />
     <Content Include="src\Web.config" />
+    <Content Include="src\less\vendor\jcrop.less" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

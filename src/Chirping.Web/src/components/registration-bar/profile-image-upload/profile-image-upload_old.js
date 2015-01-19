@@ -7,7 +7,6 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'ser
 
     // defines the jcrop object to retrieve the selected cropping coordinates from
     var jcropApi;
-    var container = null;
     var image = new Image();
     var canvas = document.createElement('canvas');
 
@@ -151,10 +150,6 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'ser
 
         dialog.getModalHeader().hide();
         dialog.open();
-
-        this.container = dialog.getModalBody().find('#wizard-dialogProfileContainer');
-
-        //console.log(this.container.css('width'));
       } // displayImageInDialog
 
 
@@ -239,20 +234,15 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'ser
         canvas.width = dimensions.width;
         canvas.height = dimensions.height;
 
-        console.log('width: ' + canvas.width);
-        console.log('height: ' + canvas.height);
-        console.log('image: ' + canvas.toDataURL());
-
         // draw the image within the canvas
         var ctx = canvas.getContext('2d');
         ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-        
+
         // write the original image to an <img html object
-        //$('#wizard-dialogProfileContainer').html(['<img id="wizard-dialogProfileImage" src="', canvas.toDataURL(), '"/>'].join(''));
-        this.container.append('<img id="wizard-dialogProfileImage" src="', canvas.toDataURL(), '"/>');
+        $('#wizard-dialogProfileContainer').html(['<img id="wizard-dialogProfileImage" src="', canvas.toDataURL(), '"/>'].join(''));
 
         // configure Jcrop on the image
-        this.container.Jcrop({
+        $('#wizard-dialogProfileImage').Jcrop({
           bgColor: 'black',
           bgOpacity: 0.6,
           setSelect: [0, 0, 0, image.width],
@@ -269,16 +259,18 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'ser
       // define the max width and height based on the width of the modal dialog
       function getCanvasDimensions(image) {
 
-        //var containerWidth = $('#wizard-dialogProfileContainer').width();
-        var containerWidth = this.container.width();
+        var containerWidth = $('#wizard-dialogProfileContainer').width();
         var height = containerWidth;
         var width = containerWidth;
-
         height = width * (image.height / image.width);
         return { height: height, width: width };
       } // getCanvasDimensions()
     }
   }
+
+  // This runs when the component is torn down. Put here any logic necessary to clean up,
+  // for example cancelling setTimeouts or disposing Knockout subscriptions/computeds.
+  ProfileImageUpload.prototype.dispose = function() { };
   
   return { viewModel: ProfileImageUpload, template: templateMarkup };
 
