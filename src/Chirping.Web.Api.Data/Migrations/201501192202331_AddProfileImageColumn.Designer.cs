@@ -13,7 +13,7 @@ namespace Chirping.Web.Api.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201501192115189_AddProfileImageColumn"; }
+            get { return "201501192202331_AddProfileImageColumn"; }
         }
         
         string IMigrationMetadata.Source
