@@ -1,40 +1,47 @@
 ﻿<div class="component-container-controls center-block">
-    <div class="text-center"><h3>Register</h3></div>
-    <div class="row"><br /></div>
-    <div class="row">
-        <div id="wizardIndication" data-bind="css: currentStepImage" class="progress-image center-block"></div>
-    </div>
-    <div class="row">
-        <div class="col-xs-1"></div>
-        <div class="col-xs-10">
-            <hr>
+    <div id="loginScreen">
+        <div class="text-center"><h3>Register</h3></div>
+        <div class="row"><br /></div>
+        <div class="row">
+            <div id="wizardIndication" data-bind="css: currentStepImage" class="progress-image center-block"></div>
         </div>
-        <div class="col-xs-1"></div>
-    </div>
-    <div class="row">
-        <div class="col-xs-1">
-            <span class="wizard-nav-button"><i class="fa fa-angle-left fa-4x pull-right" data-bind="click: PreviousStep, visible: currentStep() > 2"></i></span>
+        <div class="row">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-10">
+                <hr>
+            </div>
+            <div class="col-xs-1"></div>
         </div>
-        <div class="col-xs-10 center-block">
-            <div id="wizardStep" data-bind="component: { name: currentWizardStep, params: { registration: registration } }"></div>
+        <div id="loginSpinner" class="login-loader text-center hide">
+            <i class="fa fa-spinner fa-4x spin icon-lighter"></i>
+            <br /><br />
+            registering...
         </div>
-        <div class="col-xs-1">
-            <span class="wizard-nav-button"><i class="fa fa-angle-right fa-4x pull-left" data-bind="click: NextStep, visible: currentStep() < 3"></i></span>
+        <div class="row">
+            <div class="col-xs-1">
+                <span class="wizard-nav-button"><i class="fa fa-angle-left fa-4x pull-right" data-bind="click: PreviousStep, visible: currentStep() > 2"></i></span>
+            </div>
+            <div class="col-xs-10 center-block">
+                <div id="wizardStep" data-bind="component: { name: currentWizardStep, params: { registration: registration } }"></div>
+            </div>
+            <div class="col-xs-1">
+                <span class="wizard-nav-button"><i class="fa fa-angle-right fa-4x pull-left" data-bind="click: NextStep, visible: currentStep() < 3"></i></span>
+            </div>
         </div>
-    </div>
-    <div id="registrationRegisterButton" data-bind="visible: currentStep() == 3" class="row">
-        <div class="col-xs-12 text-center">
-            <p>
-                <h3><a data-bind="click: RegisterUser">Register</a></h3>
-                <br /><br />
-            </p>
+        <div id="registrationRegisterButton" data-bind="visible: currentStep() == 3" class="row">
+            <div class="col-xs-12 text-center">
+                <p>
+                    <h3><a data-bind="click: RegisterUser">Register</a></h3>
+                    <br /><br />
+                </p>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-10">
+                Already registered?&nbsp;<a data-bind="click: showLoginComponent">Click here!</a>
+            </div>
+            <div class="col-xs-1"></div>
         </div>
-    </div><br />
-    <div class="row">
-        <div class="col-xs-1"></div>
-        <div class="col-xs-10">
-            Already registered?&nbsp;<a data-bind="click: showLoginComponent">Click here!</a>
-        </div>
-        <div class="col-xs-1"></div>
     </div>
 </div>

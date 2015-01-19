@@ -17,16 +17,23 @@ define(['knockout', 'text!./registration-bar.html', './registration-model', 'ser
     var goToPreviousStep = function () {
       self.currentStep(self.currentStep() - 1);
     };
+    
+    // display and hide the loading screen
+    var toggleLoading = function () {
+      $('#loginScreen').toggleClass('hide-visibility');
+      $('#loginSpinner').toggleClass('show-visibility');
+      $('#loginSpinner').toggleClass('hide');
+    };
 
     // contains the registration view model
     self.registration = new registrationModel();
 
     // indicates the current step of the wizard
-    self.currentStep = ko.observable(minSteps);
+    self.currentStep = ko.observable(2); //minSteps);
 
     // get the component name (to load) and the progress image loaded based on the chosen step
-    self.currentStepImage = ko.computed(function () { return 'image-step' + self.currentStep() });
-    self.currentWizardStep = ko.computed(function () { return 'wizard-step' + self.currentStep() });
+    self.currentStepImage = ko.computed(function () { return 'image-step' + self.currentStep(); });
+    self.currentWizardStep = ko.computed(function () { return 'wizard-step' + self.currentStep(); });
 
 
     // advances to the next step in the wizard if facebook is chosen
@@ -65,6 +72,8 @@ define(['knockout', 'text!./registration-bar.html', './registration-model', 'ser
     // registers the user on the back-end
     self.RegisterUser = function () {
 
+      toggleLoading();
+
       // validate current step and display error if registration is not complete
       if (!self.registration.isRegistrationComplete())
         self.registration['validateStep' + self.currentStep()]();
@@ -88,7 +97,7 @@ define(['knockout', 'text!./registration-bar.html', './registration-model', 'ser
   // dispose all subscriptions from the registration model
   RegistrationBar.prototype.dispose = function () {
     this.registration.dispose();
-  }
+  };
 
   return { viewModel: RegistrationBar, template: templateMarkup };
 

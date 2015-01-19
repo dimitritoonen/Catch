@@ -6,12 +6,12 @@
     var self = this;
 
     // contains the facebook data needed for registration
-    self.RegisterData;
+    self.RegisterData = null;
 
     // indicates if facebook authentication is used
     self.UseFacebookAuthentication = ko.observable(false);
-    self.Email;
-    self.ExternalAccessToken;
+    self.Email = null;
+    self.ExternalAccessToken = null;
     
     // register new user
     self.storeFacebookDetails = function (externalData) {
@@ -27,7 +27,7 @@
       self.UseFacebookAuthentication(true);
     };
 
-  };
+  }
 
   return FacebookModel;
 

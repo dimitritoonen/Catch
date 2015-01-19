@@ -32,11 +32,11 @@
             SetValidationStateControl(elementId, observable, observable.isValid());
           }
 
-        })
+        });
 
         observable.isValid.subscribe(function (valid) {
           SetValidationStateControl(elementId, observable, valid);
-        })
+        });
       }
     }
   };
@@ -53,11 +53,10 @@
         hide: { fixed: true },
         position: { my: 'left center', at: 'right center' },
         style: { classes: 'qtip-bootstrap qtip-icon qtip-red' },
-        content: { text: observable.error },
         content: {
+          //text: observable.error
           text: true,
           attr: 'title',
-          text: false,
           button: false
         }
       });
@@ -73,12 +72,12 @@
       $element.next('span').removeClass('glyphicon-remove');
       $element.next('span').addClass('glyphicon-ok');  
     }
-  };
+  }
   
 
   // custom validation rule
   // checks if the email address is already used by the registered users
-  ko.validation.rules['isEmailAvailable'] = {
+  ko.validation.rules.isEmailAvailable = { //['isEmailAvailable'] = {
     async: true,
     validator: function (email, enabled, callback) {
       auth.IsEmailAddressAvailable(email, function (result) {
@@ -89,7 +88,7 @@
   };
 
   // checks if the nickname is already used by the registered users
-  ko.validation.rules['IsNickNameAvailable'] = {
+  ko.validation.rules.IsNickNameAvailable = { //['IsNickNameAvailable'] = {
     async: true,
     validator: function (nickname, enabled, callback) {
       auth.IsNickNameAvailable(nickname, function (result) {
@@ -101,23 +100,23 @@
 
 
   // verifies if the password has at least one digit
-  ko.validation.rules['passwordContainsDigit'] = {
+  ko.validation.rules.passwordContainsDigit = { //['passwordContainsDigit'] = {
     validator: function (val) {
       return /(\d+)/.test('' + val + '');
     },
     message: 'Password must contain a least one digit'
   };
 
-  //// verifies if the password has at least one uppercase letter
-  //ko.validation.rules['passwordContainsUppercase'] = {
-  //  validator: function (val) {
-  //    return /([A-Z]+)/.test('' + val + '');
-  //  },
-  //  message: 'Password must contain a least one uppercase letter'
-  //};
+  // verifies if the password has at least one uppercase letter
+  ko.validation.rules.passwordContainsUppercase = { // ['passwordContainsUppercase'] = {
+    validator: function (val) {
+      return /([A-Z]+)/.test('' + val + '');
+    },
+    message: 'Password must contain a least one uppercase letter'
+  };
 
   // verifies if the password has at least one uppercase letter
-  ko.validation.rules['passwordContainsLowercase'] = {
+  ko.validation.rules.passwordContainsLowercase = { //['passwordContainsLowercase'] = {
     validator: function (val) {
       return /([a-z]+)/.test('' + val + '');
     },
@@ -125,7 +124,7 @@
   };
 
   // verifies if the password has at least one symbol
-  ko.validation.rules['passwordContainsSymbol'] = {
+  ko.validation.rules.passwordContainsSymbol = { //['passwordContainsSymbol'] = {
     validator: function (val) {
       return /([\W]+)/.test('' + val + '');
     },

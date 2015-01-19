@@ -87,7 +87,7 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service', 'services/
           error: self.error
         }
       };
-    }
+    };
   }
   
   return { viewModel: LoginBar, template: templateMarkup };

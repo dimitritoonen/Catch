@@ -18,7 +18,7 @@ define(['knockout', 'text!./component-container.html'], function (ko, templateMa
         params: {
           container: self
         }
-      }
+      };
     };
 
     // updates the currently active component
@@ -42,13 +42,13 @@ define(['knockout', 'text!./component-container.html'], function (ko, templateMa
     $('#selectedComponent').css('opacity');
     $('#selectedComponent').css('top');
     $('#selectedComponent').addClass('show');
-  };
+  }
 
   // remove the animation so that it can be refreshed
   function removeComponentAnimation() {
     $('#selectedComponent').addClass('disableAnimation');
     $('#selectedComponent').removeClass('show');
-  };
+  }
 
   // REFACTOR: Need to find a way to remove the setTimeOut
   function refreshComponentAnimation() {

@@ -10,6 +10,8 @@
 
     var queryString = '/?emailAddress=' + encodeURI(emailAddress);
 
+    console.log(config.BaseUrl + 'api/Emails/EmailAddressAvailable' + queryString);
+
     $.ajax({
       type: 'GET',
       url: config.BaseUrl + 'api/Emails/EmailAddressAvailable' + queryString

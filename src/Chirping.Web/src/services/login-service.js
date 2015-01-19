@@ -2,15 +2,14 @@
 
   var loginService = {};
 
-  loginService.loginCallback;
+  loginService.loginCallback = null;
 
   // authenticate user via an external provider
   loginService.authExternalProvider = function (provider, callback) {
 
     var redirectUri = window.location.protocol + "//" + window.location.host + '/authcomplete.html';
-    var externalProviderUrl = config.BaseUrl + 'api/Account/ExternalLogin?provider=' + provider
-                                             + '&response_type=token&client_id=ChirpingWeb&redirect_uri='
-                                             + redirectUri;
+    var externalProviderUrl = config.BaseUrl + 'api/Account/ExternalLogin?provider=' + provider +
+                                               '&response_type=token&client_id=ChirpingWeb&redirect_uri=' + redirectUri;
 
     window.$windowScope = loginService;
     loginService.loginCallback = callback;
@@ -27,7 +26,7 @@
       var externalData = { provider: fragment.provider, externalAccessToken: fragment.external_access_token };
       auth.obtainAccessToken(externalData).then(function () {
 
-        alert('user is already registered. Redirect to dashboard')
+        alert('user is already registered. Redirect to dashboard');
 
       });
     }

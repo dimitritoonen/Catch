@@ -21,7 +21,7 @@ define(['jquery', 'knockout', 'text!./wizard-step1.html', 'app/app.config', 'ser
     if (validationGroup.isValid()) {
       params.registration.isCurrentStepValid(validationGroup.isValid()) ;
       params.registration.validateStep1();
-    };
+    }
 
     // indicate to the regiration-model that all controls are valid
     validationGroup.isValid.subscribe(function (valid) {

@@ -13,6 +13,8 @@ define(['knockout', 'text!./intro-page.html', 'qtip2'], function (ko, templateMa
       self.showComponent(!self.showComponent());
     };
 
+    self.loadComponent('register');
+
     // closes the loaded component
     self.closeComponent = function () {
       self.showComponent(false);

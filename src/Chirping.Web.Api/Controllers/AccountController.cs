@@ -52,16 +52,9 @@ namespace Chirping.Web.Api.Controllers
             }
 
             IdentityResult result = null;
-            try
-            {
-                result = await _processor.RegisterUser(user);
-            }
-            catch (Exception ex)
-            {
-                // TODO implement logging
-                Console.WriteLine("");
-            }
 
+            result = await _processor.RegisterUser(user);
+            
             IHttpActionResult errorResult = GetErrorResult(result);
 
             if (errorResult != null)

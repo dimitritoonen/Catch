@@ -1,7 +1,7 @@
 ﻿define(['knockout', 'bootstrap-dialog', './facebook-registration-model'], function (ko, bootstrapDialog, facebookModel) {
 
   // contains the filled in properties of the registration form
-  
+
   function RegistrationModel() {
 
     var self = this;
@@ -28,7 +28,7 @@
         validator: function (val, someOtherVal) {
 
           // only validate if values has been entered
-          if (val == null)
+          if (val === null)
             return;
 
           return val === someOtherVal();
@@ -61,6 +61,7 @@
       minLength: 8,
       maxLength: 128,
       passwordContainsDigit: true,
+      passwordContainsUppercase: true,
       passwordContainsLowercase: true,
       passwordContainsSymbol: true
     });
@@ -112,7 +113,7 @@
       nickName: self.nickName,
       city: self.city,
       age: self.age
-    })
+    });
 
     self.validateStep2 = function () {
 
@@ -185,7 +186,7 @@
         City: self.city(),
         Age: self.age(),
         InterestedIn: self.interestedIn()
-      }
+      };
     };
 
   }
@@ -202,9 +203,9 @@
   RegistrationModel.prototype.dispose = function () {
     ko.utils.arrayForEach(this.disposables, function (item) {
       item.dispose();
-    })
-  }
+    });
+  };
 
   return RegistrationModel;
 
-})
+});

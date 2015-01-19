@@ -25,7 +25,7 @@ define(['knockout', 'text!./wizard-step3.html'], function(ko, templateMarkup) {
       params.registration.validateStep3();
     } else {
       params.registration.isCurrentStepValid(false);
-    };
+    }
 
     // indicate to the registration-model that all controls are valid
     self.registration.motto.subscribe(function (valid) {

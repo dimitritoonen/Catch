@@ -53,7 +53,7 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'ser
         $element.removeClass('visibility-hide');
       else
         $element.addClass('visibility-hide');
-    };
+    }
 
 
     //var uploaders = [];
@@ -94,7 +94,6 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'ser
 
 
     function displayImageInDialog(element) {
-    //function displayImageInDialog(file) {
       
       if (window.File && window.FileReader && window.FileList && window.Blob) {
 
@@ -122,7 +121,7 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'ser
             image.src = e.target.result;
             image.onload = function () {
 
-              displayImageInDialog(image);
+              displayDialog(image);
 
               drawImage(image);
             };
@@ -131,11 +130,11 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'ser
         })(file);
         reader.readAsDataURL(file);
 
-      }; // loadSelectedImage()
+      } // loadSelectedImage()
 
 
       // display a dialog box in which the user can crop the image
-      function displayImageInDialog(file) {
+      function displayDialog(file) {
 
         var dialog = new bootstrapDialog({
           animate: true,
@@ -151,7 +150,7 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'ser
 
         dialog.getModalHeader().hide();
         dialog.open();
-      }; // displayImageInDialog
+      } // displayImageInDialog
 
 
       function resizeDialog(dialog) {
@@ -174,17 +173,17 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'ser
           dialog.getModalBody().css('width', maxWindowWidth);
           dialog.getModalDialog().css('width', maxWindowWidth);
         }
-      }; // resizeDialog()
+      } // resizeDialog()
 
       // get the max window width
       function getMaxWindowWidth() {
-        return ($(window).width() * .6);
-      };
+        return ($(window).width() * 0.6);
+      }
 
       // get the max window height
       function getMaxWindowHeight() {
-        return ($(window).height() * .85);
-      };
+        return ($(window).height() * 0.85);
+      }
 
       function getBaseMessage() {
 
@@ -193,7 +192,7 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'ser
         $message.append('</div>');
         $message.append('<br />Drag the border to cut the image');
         return $message;
-      };
+      }
 
 
       // defines the buttons visible on the modal dialog
@@ -208,7 +207,7 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'ser
           cssClass: 'btn-primary',
           action: storeImageOnClose
         }];
-      };
+      }
 
       // store image in view model
       function storeImageOnClose(dialog) {
@@ -225,7 +224,7 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'ser
 
         // save image to registration page and close dialog
         dialog.close();
-      };
+      }
 
       // use the canvas object to draw the image in the modal dialog
       function drawImage(image) {
@@ -245,7 +244,7 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'ser
         // configure Jcrop on the image
         $('#wizard-dialogProfileImage').Jcrop({
           bgColor: 'black',
-          bgOpacity: .6,
+          bgOpacity: 0.6,
           setSelect: [0, 0, 0, image.width],
           aspectRatio: 1,
         }, function () {
@@ -254,18 +253,19 @@ define(['knockout', 'bootstrap-dialog', 'text!./profile-image-upload.html', 'ser
 
         toggleLoadingIcon();
 
-      }; // drawImage()
+      } // drawImage()
 
 
       // define the max width and height based on the width of the modal dialog
       function getCanvasDimensions(image) {
 
         var containerWidth = $('#wizard-dialogProfileContainer').width();
-        var height = width = containerWidth;
+        var height = containerWidth;
+        var width = containerWidth;
         height = width * (image.height / image.width);
         return { height: height, width: width };
-      }; // getCanvasDimensions()
-    };
+      } // getCanvasDimensions()
+    }
   }
 
   // This runs when the component is torn down. Put here any logic necessary to clean up,
