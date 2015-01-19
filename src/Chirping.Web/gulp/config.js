@@ -51,7 +51,8 @@ module.exports = {
   css: {
     src: [
         src + '/bower_modules/qtip2/jquery.qtip.min.css',
-        src + '/bower_modules/font-awesome/css/font-awesome.min.css'
+        src + '/bower_modules/font-awesome/css/font-awesome.min.css',
+        src + '/bower_modules/jcrop/css/jquery.Jcrop.min.css'
       ]
   },
   autoprefixer: {
@@ -117,7 +118,10 @@ module.exports = {
     dest: dest
   },
   images: {
-    src: src + '/images/**/*',
+    src: [
+      src + '/images/**/*',
+      src + '/bower_modules/jcrop/css/*'
+      ],
     dest: dest + '/images/'
   },
   fonts: {

@@ -6,8 +6,6 @@
     <img id="profileThumb" class="wizard-profile-image-thumb"
             data-bind="attr: { src: profileImage }" />
 </div>
-<!--<form id="wizard-profile-upload-form" action="/upload" method="post">-->
-    <input type="file" id="wizard-profileFile" accept="image/*"
-           data-bind="event: { change: function() { displayImage($element) } }"
-           name="wizardProfileFile" class="hidden" />
-<!--</form>-->
+<input type="file" id="wizard-profileFile" accept="image/*"
+    data-bind="event: { change: function() { openImage($element) } }"
+    name="wizardProfileFile" class="hidden" />

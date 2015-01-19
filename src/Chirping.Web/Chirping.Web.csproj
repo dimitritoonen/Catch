@@ -112,6 +112,7 @@
     <Content Include="src\components\login-bar\login-bar.html" />
     <Content Include="src\components\component-container\component-container.html" />
     <Content Include="src\components\component-container\component-container.js" />
+    <Content Include="src\components\registration-bar\profile-image-upload\profile-image-upload.js" />
     <Content Include="src\components\registration-bar\registration-bar.html" />
     <Content Include="src\images\backgrounds\background1.jpg" />
     <Content Include="src\images\backgrounds\background2.jpg" />
@@ -126,7 +127,7 @@
     <Content Include="src\components\nav-bar\nav-bar.js" />
     <Content Include="src\components\registration-bar\facebook-registration-model.js" />
     <Content Include="src\components\registration-bar\profile-image-upload\profile-image-upload.html" />
-    <Content Include="src\components\registration-bar\profile-image-upload\profile-image-upload.js" />
+    <Content Include="src\components\registration-bar\profile-image-upload\profile-image-upload_old.js" />
     <Content Include="src\components\registration-bar\registration-model.js" />
     <Content Include="src\components\registration-bar\registration-bar_old.html" />
     <Content Include="src\components\registration-bar\registration-bar.js" />
@@ -373,6 +374,7 @@
     <Content Include="src\less\font-awesome.less" />
     <None Include="src\less\styles.less" />
     <Content Include="src\Web.config" />
+    <Content Include="src\less\vendor\jcrop.less" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
