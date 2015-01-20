@@ -61,6 +61,10 @@ namespace Chirping.Web.Api.Infrastructure
             kernel.Bind<IAutoMapperTypeConfigurator>()
                 .To<RegisterUserToAccountUserMapping>()
                 .InSingletonScope();
+
+            kernel.Bind<IAutoMapperTypeConfigurator>()
+                .To<RegisterExternalUserToAccountUserMapping>()
+                .InSingletonScope();
         }
     }
 }

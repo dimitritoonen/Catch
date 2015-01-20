@@ -92,7 +92,6 @@ Global
 		{7050EC23-727B-4870-A42B-ADF9D7590074}.Acceptance|Any CPU.ActiveCfg = Acceptance|Any CPU
 		{7050EC23-727B-4870-A42B-ADF9D7590074}.Acceptance|Any CPU.Build.0 = Acceptance|Any CPU
 		{7050EC23-727B-4870-A42B-ADF9D7590074}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7050EC23-727B-4870-A42B-ADF9D7590074}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7050EC23-727B-4870-A42B-ADF9D7590074}.Production|Any CPU.ActiveCfg = Production|Any CPU
 		{7050EC23-727B-4870-A42B-ADF9D7590074}.Production|Any CPU.Build.0 = Production|Any CPU
 		{7050EC23-727B-4870-A42B-ADF9D7590074}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -53,17 +53,7 @@ namespace Chirping.Web.Api.Data.Repository
 
         public async Task<IdentityResult> RegisterUser(UserAccount user)
         {
-            UserAccountEntity newUser = new UserAccountEntity
-            {
-                UserName = user.Email,
-                Email = user.Email,
-                NickName = user.NickName,
-                Age = user.Age,
-                Gender = user.Gender,
-                City = user.City,
-                InterestedIn = user.InterestedIn,
-                ProfileImage = user.ProfileImage
-            };
+            UserAccountEntity newUser = GetUserEntityFromUser(user);
 
             var result = await _userManager.CreateAsync(newUser, user.Password);
 
@@ -109,11 +99,28 @@ namespace Chirping.Web.Api.Data.Repository
             return user;
         }
 
-        public async Task<IdentityResult> CreateAsync(UserAccountEntity user)
+        public async Task<IdentityResult> CreateAsync(UserAccount user)
         {
-            var result = await _userManager.CreateAsync(user);
+            UserAccountEntity newUser = GetUserEntityFromUser(user);
+
+            var result = await _userManager.CreateAsync(newUser);
 
             return result;
+        }
+
+        private UserAccountEntity GetUserEntityFromUser(UserAccount user)
+        {
+            return new UserAccountEntity
+            {
+                UserName = user.Email,
+                Email = user.Email,
+                NickName = user.NickName,
+                Age = user.Age,
+                Gender = user.Gender,
+                City = user.City,
+                InterestedIn = user.InterestedIn,
+                ProfileImage = user.ProfileImage
+            };
         }
 
         public async Task<IdentityResult> AddLoginAsync(string userId, UserLoginInfo login)

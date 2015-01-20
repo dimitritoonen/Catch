@@ -176,6 +176,7 @@
   <ItemGroup>
     <Compile Include="App_Start\AutoMapperConfigurator.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="AutoMapperConfigurators\RegisterExternalUserToAccountUserMapping.cs" />
     <Compile Include="BindingModels\Account\ChangePasswordBindingModel.cs" />
     <Compile Include="BindingModels\Account\EmailAddressInUseBindingModel.cs" />
     <Compile Include="BindingModels\Account\ExternalLoginViewModel.cs" />
@@ -183,6 +184,7 @@
     <Compile Include="BindingModels\Account\RegisterExternalBindingModel.cs" />
     <Compile Include="BindingModels\ProfileBindingModel.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Infrastructure\AutoMapperExtensionMethods.cs" />
     <Compile Include="Providers\FacebookAuthProvider.cs" />
     <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />

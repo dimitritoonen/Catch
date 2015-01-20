@@ -25,7 +25,7 @@ namespace Chirping.Web.Api.Processors.Account
 
         Task<UserAccountEntity> FindAsync(UserLoginInfo loginInfo);
         Task<UserAccountEntity> FindByEmailAsync(string email);
-        Task<IdentityResult> CreateAsync(UserAccountEntity user);
+        Task<IdentityResult> CreateAsync(RegisterExternalBindingModel registerUser);
         Task<IdentityResult> AddLoginAsync(string userId, UserLoginInfo login);
 
         #endregion

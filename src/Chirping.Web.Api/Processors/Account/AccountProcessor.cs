@@ -32,27 +32,31 @@ namespace Chirping.Web.Api.Processors.Account
         {
             IdentityResult result = null;
 
-            //try
-            //{
-                var user = Mapper.Map<RegisterBindingModel, UserAccount>(registerUser);
+            var user = Mapper.Map<RegisterBindingModel, UserAccount>(registerUser);
 
+            if (ProfileImageSelected(registerUser.Profile.ProfileImage))
+            {
                 user.ProfileImage = string.Format("{0}.jpg", System.Uri.EscapeDataString(registerUser.Email));
+            }
 
-                result = await _repository.RegisterUser(user);
+            result = await _repository.RegisterUser(user);
 
-                // store the profile picture in Azure cloud storage
-                StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage);
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine(ex);
-            //}
+            // store the profile picture in Azure cloud storage
+            StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage);
 
             return result;
         }
 
+        private bool ProfileImageSelected(string profileImage)
+        {
+            return !(string.IsNullOrEmpty(profileImage));
+        }
+
         private void StoreProfileImage(string profileImage, string imageFileName)
         {
+            if (!ProfileImageSelected(profileImage))
+                return;
+
             var store = new ImageStore();
             store.StoreImage(profileImage, imageFileName);
         }
@@ -88,9 +92,20 @@ namespace Chirping.Web.Api.Processors.Account
             return user;
         }
 
-        public async Task<IdentityResult> CreateAsync(UserAccountEntity user)
+        // create user without password
+        public async Task<IdentityResult> CreateAsync(RegisterExternalBindingModel registerUser)
         {
+            var user = Mapper.Map<RegisterExternalBindingModel, UserAccount>(registerUser);
+
+            if (ProfileImageSelected(registerUser.Profile.ProfileImage))
+            {
+                user.ProfileImage = string.Format("{0}.jpg", System.Uri.EscapeDataString(registerUser.Email));
+            }
+
             var result = await _repository.CreateAsync(user);
+
+            // store the profile picture in Azure cloud storage
+            StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage);
 
             return result;
         }
