@@ -1,7 +1,7 @@
 ﻿#region using directives
 
 using Chirping.Web.Api.BindingModels.Account;
-using Chirping.Web.Api.Data.Entities;
+using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Processors.Account;
 using Chirping.Web.Api.Results;
 using Microsoft.AspNet.Identity;
@@ -65,8 +65,56 @@ namespace Chirping.Web.Api.Controllers
             var accessTokenResponse = GenerateLocalAccessTokenResponse(model.Email);
 
             return Ok(accessTokenResponse);
+        }
 
-            //return Ok();
+
+        [AllowAnonymous]
+        [Route("ConfirmEmail")]
+        [HttpGet]
+        public async Task<IHttpActionResult> ConfirmEmail(string userId, string code)
+        {
+            if (userId == null || code == null)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var result = await _processor.ConfirmEmailAsync(userId, code);
+
+            IHttpActionResult errorResult = GetErrorResult(result);
+
+            // TODO if invalid token or another error display result in SPA
+
+            if (errorResult != null)
+            {
+                return errorResult;
+            }
+
+            return Ok();
+        }
+
+
+        
+        [AllowAnonymous]
+        [Route("ForgotPassword")]
+        [HttpPost]
+        public async Task<IHttpActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = await _processor.FindByEmailAsync(model.Email);
+            if (user == null || 
+                !(await _processor.IsEmailConfirmedAsync(user.Id)))
+            {
+                // Don't reveal that the user does not exist or is not confirmed
+                return Ok();
+            }
+
+            await _processor.SendResetPasswordEmail(user.Id);
+
+            return Ok();
         }
 
 

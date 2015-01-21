@@ -1,61 +1,44 @@
 ﻿#region using directives
 
+using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Common.Domain;
+using Chirping.Web.Api.Common.Security;
 using Chirping.Web.Api.Data.Context;
 using Chirping.Web.Api.Data.Entities;
-
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-
 using System;
 using System.Threading.Tasks;
 
 #endregion
 
-namespace Chirping.Web.Api.Data.Repository
+namespace Chirping.Web.Api.Data.Repository.Authorization
 {
     public class AccountRepository : IAccountRepository, IDisposable
     {
-        private ChirpingContext _context;
+        #region constructor
 
+        private ChirpingContext _context;
         private UserManager<UserAccountEntity> _userManager;
 
         public AccountRepository()
         {
             _context = new ChirpingContext();
 
-            _userManager = GetUserManager();
+            var manager = new UserManagerWrapper(_context);
+            _userManager = manager.GetUserManager();
         }
 
-        private UserManager<UserAccountEntity> GetUserManager()
+        #endregion
+
+        public async Task<RegisterUserResult> RegisterUser(UserAccount user)
         {
-            var manager = new UserManager<UserAccountEntity>(new UserStore<UserAccountEntity>(_context));
+            RegisterUserResult result = new RegisterUserResult();
 
-            // Configure validation logic for usernames
-            manager.UserValidator = new UserValidator<UserAccountEntity>(manager)
-            {
-                AllowOnlyAlphanumericUserNames = false,
-                RequireUniqueEmail = true
-            };
-
-            // Configure validation logic for passwords
-            manager.PasswordValidator = new PasswordValidator
-            {
-                RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
-                RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true,
-            };
-
-            return manager;
-        }
-
-        public async Task<IdentityResult> RegisterUser(UserAccount user)
-        {
             UserAccountEntity newUser = GetUserEntityFromUser(user);
-
-            var result = await _userManager.CreateAsync(newUser, user.Password);
+            result.UserId = newUser.Id;
+            
+            result.IdentityResult = await _userManager.CreateAsync(newUser, user.Password);
 
             return result;
         }
@@ -82,6 +65,38 @@ namespace Chirping.Web.Api.Data.Repository
                 AllowedOrigin = clientEntity.AllowedOrigin
             };
         }
+
+
+        #region e-mail confirmation and password reset
+
+        public async Task<IdentityResult> ConfirmEmailAsync(string userId, string code)
+        {
+            return await _userManager.ConfirmEmailAsync(userId, code);
+        }
+
+        public async Task<string> GenerateEmailConfirmationTokenAsync(string userid)
+        {
+            return await _userManager.GenerateEmailConfirmationTokenAsync(userid);
+        }
+
+        public async Task<bool> IsEmailConfirmedAsync(string userId)
+        {
+            return await _userManager.IsEmailConfirmedAsync(userId);
+        }
+
+
+        public async Task<string> GeneratePasswordResetTokenAsync(string userId)
+        {
+            return await _userManager.GeneratePasswordResetTokenAsync(userId);
+        }
+
+        public async Task SendEmailAsync(string userId, string subject, string body)
+        {
+            await _userManager.SendEmailAsync(userId, subject, body);
+        }
+
+        #endregion
+
 
         #region operations for external logon (Facebook, Google, etc)
 

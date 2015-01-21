@@ -2,14 +2,18 @@
 
 using AutoMapper;
 using Chirping.Web.Api.BindingModels.Account;
+using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Common.Domain;
 using Chirping.Web.Api.Data.Entities;
 using Chirping.Web.Api.Data.Repository;
+using Chirping.Web.Api.Data.Repository.Authorization;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 
 #endregion
 
@@ -30,7 +34,7 @@ namespace Chirping.Web.Api.Processors.Account
 
         public async Task<IdentityResult> RegisterUser(RegisterBindingModel registerUser)
         {
-            IdentityResult result = null;
+            RegisterUserResult result = null;
 
             var user = Mapper.Map<RegisterBindingModel, UserAccount>(registerUser);
 
@@ -40,11 +44,31 @@ namespace Chirping.Web.Api.Processors.Account
             }
 
             result = await _repository.RegisterUser(user);
+            
+            if (result.IdentityResult.Succeeded)
+            {
+                // send confirmation e-mail
+                await SendConfirmationEmail(result.UserId);
+                
+                // store the profile picture in Azure cloud storage
+                StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage);
+            }
 
-            // store the profile picture in Azure cloud storage
-            StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage);
+            return result.IdentityResult;
+        }
 
-            return result;
+        private async Task SendConfirmationEmail(string userId)
+        {
+            var code = await _repository.GenerateEmailConfirmationTokenAsync(userId);
+
+            var baseUri = new Uri(HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority));
+            var url = string.Format("/api/Account/ConfirmEmail/?UserId={0}&Code={1}", userId, code);
+            var callbackUrl = new Uri(baseUri, url).ToString();
+            
+            var subject = "Confirm your account";
+            var body = "Please confirm your account by click this link: <a href=\"" + callbackUrl + "\">link</a>";
+
+            await _repository.SendEmailAsync(userId, subject, body);
         }
 
         private bool ProfileImageSelected(string profileImage)
@@ -60,7 +84,29 @@ namespace Chirping.Web.Api.Processors.Account
             var store = new ImageStore();
             store.StoreImage(profileImage, imageFileName);
         }
-        
+
+
+        public async Task<bool> IsEmailConfirmedAsync(string userId)
+        {
+            return await _repository.IsEmailConfirmedAsync(userId);
+        }
+
+
+        public async Task SendResetPasswordEmail(string userId)
+        {
+            var code = await _repository.GeneratePasswordResetTokenAsync(userId);
+
+            var baseUri = new Uri(HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority));
+            var url = string.Format("/api/Account/ResetPassword/?UserId={0}&Code={1}", userId, code);
+            var callbackUrl = new Uri(baseUri, url).ToString();
+
+            var subject = "Confirm your account";
+            var body = "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>";
+
+            await _repository.SendEmailAsync(userId, subject, body);
+        }
+
+
         public void Logout(HttpRequestMessage request)
         {
             request.GetOwinContext().Authentication.SignOut();
@@ -74,6 +120,11 @@ namespace Chirping.Web.Api.Processors.Account
         public Client FindClient(string clientId)
         {
             return _repository.FindClient(clientId);
+        }
+
+        public async Task<IdentityResult> ConfirmEmailAsync(string userId, string code)
+        {
+            return await _repository.ConfirmEmailAsync(userId, code);
         }
 
         #region operations for external logon (Facebook, Google, etc)
@@ -104,8 +155,11 @@ namespace Chirping.Web.Api.Processors.Account
 
             var result = await _repository.CreateAsync(user);
 
-            // store the profile picture in Azure cloud storage
-            StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage);
+            if (result.Succeeded)
+            {
+                // store the profile picture in Azure cloud storage
+                StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage);
+            }
 
             return result;
         }
