@@ -46,7 +46,6 @@ Global
 		{6EC23A82-74B2-401C-A9E7-90DAD782707D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6EC23A82-74B2-401C-A9E7-90DAD782707D}.Production|Any CPU.ActiveCfg = Production|Any CPU
 		{6EC23A82-74B2-401C-A9E7-90DAD782707D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6EC23A82-74B2-401C-A9E7-90DAD782707D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{82F1B0E8-62A4-49FD-BF26-2FB8B1466BF1}.Acceptance|Any CPU.ActiveCfg = Acceptance|Any CPU
 		{82F1B0E8-62A4-49FD-BF26-2FB8B1466BF1}.Acceptance|Any CPU.Build.0 = Acceptance|Any CPU
 		{82F1B0E8-62A4-49FD-BF26-2FB8B1466BF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -95,7 +94,6 @@ Global
 		{7050EC23-727B-4870-A42B-ADF9D7590074}.Production|Any CPU.ActiveCfg = Production|Any CPU
 		{7050EC23-727B-4870-A42B-ADF9D7590074}.Production|Any CPU.Build.0 = Production|Any CPU
 		{7050EC23-727B-4870-A42B-ADF9D7590074}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7050EC23-727B-4870-A42B-ADF9D7590074}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B6370AF5-746A-43F8-BC6B-D12315C171EA}.Acceptance|Any CPU.ActiveCfg = Acceptance|Any CPU
 		{B6370AF5-746A-43F8-BC6B-D12315C171EA}.Acceptance|Any CPU.Build.0 = Acceptance|Any CPU
 		{B6370AF5-746A-43F8-BC6B-D12315C171EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
