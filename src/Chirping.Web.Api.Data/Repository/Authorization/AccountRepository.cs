@@ -114,11 +114,14 @@ namespace Chirping.Web.Api.Data.Repository.Authorization
             return user;
         }
 
-        public async Task<IdentityResult> CreateAsync(UserAccount user)
+        public async Task<RegisterUserResult> CreateAsync(UserAccount user)
         {
-            UserAccountEntity newUser = GetUserEntityFromUser(user);
+            RegisterUserResult result = new RegisterUserResult();
 
-            var result = await _userManager.CreateAsync(newUser);
+            UserAccountEntity newUser = GetUserEntityFromUser(user);
+            result.UserId = newUser.Id;
+            
+            result.IdentityResult = await _userManager.CreateAsync(newUser);
 
             return result;
         }

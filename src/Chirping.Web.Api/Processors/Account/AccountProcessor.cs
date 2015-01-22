@@ -157,13 +157,16 @@ namespace Chirping.Web.Api.Processors.Account
 
             var result = await _repository.CreateAsync(user);
 
-            if (result.Succeeded)
+            if (result.IdentityResult.Succeeded)
             {
+                // send confirmation e-mail
+                await SendConfirmationEmail(result.UserId);
+
                 // store the profile picture in Azure cloud storage
                 StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage);
             }
 
-            return result;
+            return result.IdentityResult;
         }
 
         public async Task<IdentityResult> AddLoginAsync(string userId, UserLoginInfo login)

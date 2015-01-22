@@ -34,7 +34,7 @@ namespace Chirping.Web.Api.Data.Repository.Authorization
 
         Task<UserAccountEntity> FindAsync(UserLoginInfo loginInfo);
         Task<UserAccountEntity> FindByEmailAsync(string email);
-        Task<IdentityResult> CreateAsync(UserAccount user);
+        Task<RegisterUserResult> CreateAsync(UserAccount user);
         Task<IdentityResult> AddLoginAsync(string userId, UserLoginInfo login);
 
         #endregion
