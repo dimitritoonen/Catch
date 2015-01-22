@@ -5,6 +5,7 @@ using Chirping.Web.Api.Common;
 using Chirping.Web.Api.Common.Logging;
 using Chirping.Web.Api.Common.TypeMapping;
 using Chirping.Web.Api.Data.Repository;
+using Chirping.Web.Api.Data.Repository.Authorization;
 using Chirping.Web.Api.Processors;
 using Chirping.Web.Api.Processors.Account;
 using log4net.Config;
@@ -60,6 +61,10 @@ namespace Chirping.Web.Api.Infrastructure
 
             kernel.Bind<IAutoMapperTypeConfigurator>()
                 .To<RegisterUserToAccountUserMapping>()
+                .InSingletonScope();
+
+            kernel.Bind<IAutoMapperTypeConfigurator>()
+                .To<RegisterExternalUserToAccountUserMapping>()
                 .InSingletonScope();
         }
     }

@@ -1,8 +1,25 @@
-﻿define(['app/app.config', 'services/auth-service'], function (config, auth) {
+﻿define(['app/app.config', 'services/auth-service', './auth-storage'], function (config, auth, authStorage) {
 
   var loginService = {};
 
   loginService.loginCallback = null;
+
+  // login user with e-mail and password
+  loginService.LoginUser = function (loginData) {
+
+    // map login data to a querystring
+    var data = 'grant_type=password&username=' + loginData.username + '&password=' + loginData.password + '&client_id=ChirpingWeb';
+
+    return $.ajax({
+      type: 'POST',
+      url: config.BaseUrl + 'token',
+      data: loginData,
+      contentType: 'application/x-www-form-urlencoded'
+    }).done(function (data) {
+      authStorage.storeToken(data.access_token);
+    });
+  };
+
 
   // authenticate user via an external provider
   loginService.authExternalProvider = function (provider, callback) {

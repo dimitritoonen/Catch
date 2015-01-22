@@ -220,7 +220,8 @@ module.exports = {
             'components/component-container/component-container',
             'components/login-bar/login-bar',
             'components/forgot-password/forgot-password',
-            'components/component-container/error-box/error-box'
+            'components/component-container/error-box/error-box',
+            'components/forgot-password/reset-password-sent/reset-password-sent'
           ],
           'registration-page': [
             'services/auth-service',

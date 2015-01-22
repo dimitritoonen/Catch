@@ -3,15 +3,12 @@
   function ProfileImageUpload(params) {
     
     var self = this;
-
-    // defines the jcrop object to retrieve the selected cropping coordinates from
-    //var jcropApi;
     var image = new Image();
     var canvas = document.createElement('canvas');
 
     self.identifier = params.identifier;
     self.profileImage = params.profileImage;
-    self.profileImageCrop = params.profileImageCrop;
+    self.profileImageThumb = ko.observable();
 
     // ensure that input type[file] component has an unique identifier
     $('#wizard-profileFile').attr('id', 'wizard-profileFile' + self.identifier);
@@ -25,7 +22,7 @@
 
     // display the select image by the user in a dialog where the image can be cropped
     self.openImage = function (element) {
-            
+
       toggleLoadingIcon();
 
       displayImageInDialog(element);
@@ -51,7 +48,7 @@
         // get file and reset input type=[file] html object so that the same file can be selected again
         var file = element.files[0];
         $('#wizard-profileFile' + self.identifier).val('');
-
+        
         loadSelectedImage(file);
 
       } else {
@@ -69,6 +66,7 @@
 
         return function (e) {
 
+          image = new Image();
           image.src = e.target.result;
           image.onload = function () {
             
@@ -93,6 +91,9 @@
         message: function(dialogRef) {
           var $message = $('<div id="wizard-dialogProfileContainer">');
           $message.append('</div>');
+          $message.append('<div id="wizard-image-loading">');
+          $message.append('');
+          $message.append('</div>')
           $message.append('<br /><div class="modal-body-text">Drag the border to cut the image</div>');
           return $message;
         },
@@ -165,6 +166,7 @@
 
       // store the resized and cropped image
       self.profileImage(canvas.toDataURL('image/jpeg', 0.9).split(',')[1]);
+      self.profileImageThumb(canvas.toDataURL('image/jpeg', 0.9));
 
       // save image to registration page and close dialog
       dialog.close();

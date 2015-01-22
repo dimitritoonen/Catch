@@ -105,6 +105,9 @@
     <Content Include="src\app\router.js" />
     <Content Include="src\app\startup.js" />
     <Content Include="src\authentication\authcomplete.html" />
+    <Content Include="src\bindingHandlers\bindingHandlers.js" />
+    <Content Include="src\bindingHandlers\invokeOnEnter.js" />
+    <Content Include="src\bindingHandlers\qtipValMessage.js" />
     <Content Include="src\components\component-container\error-box\error-box.html" />
     <Content Include="src\components\component-container\error-box\error-box.js" />
     <Content Include="src\components\forgot-password\forgot-password.html" />
@@ -114,6 +117,8 @@
     <Content Include="src\components\component-container\component-container.js" />
     <Content Include="src\components\registration-bar\profile-image-upload\profile-image-upload.js" />
     <Content Include="src\components\registration-bar\registration-bar.html" />
+    <Content Include="src\components\forgot-password\reset-password-sent\success-message.html" />
+    <Content Include="src\components\forgot-password\reset-password-sent\reset-password-sent.js" />
     <Content Include="src\images\backgrounds\background1.jpg" />
     <Content Include="src\images\backgrounds\background2.jpg" />
     <Content Include="src\images\backgrounds\background3.jpg" />
@@ -156,6 +161,7 @@
     <Content Include="src\images\wizardStep3.jpg" />
     <Content Include="src\index.html" />
     <Content Include="src\authentication\auth-complete.js" />
+    <Content Include="src\services\webapi-service.js" />
     <Content Include="src\services\auth-service.js" />
     <Content Include="src\services\auth-storage.js" />
     <Content Include="src\services\chunked-uploader.js" />

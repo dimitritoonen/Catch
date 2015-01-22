@@ -1,5 +1,5 @@
 ﻿<div class="component-container-controls center-block">
-    <div id="loginScreen">
+    <div id="login-container">
         <div class="text-center"><h2>Login</h2></div>
         <br /><br />
         <div class="text-center">
@@ -12,9 +12,9 @@
         <div id="errorComponent" data-bind="visible: showErrorBox, component: getErrorBox()"></div>
         <div class="inner-addon right-addon">
             <i class="fa fa-lg fa-envelope-o icon-lighter"></i>
-            <input type="text" id="username" data-bind="value: username" class="form-control" placeholder="Username" />
+            <input type="text" id="username" data-bind="value: username, invokeOnEnter: { funct: login }" class="form-control" placeholder="Username" />
         </div>
-        <div id="loginSpinner" class="login-loader text-center hide">
+        <div id="login-spinner" class="login-loader text-center hide">
             <i class="fa fa-spinner fa-4x spin icon-lighter"></i>
             <br /><br />
             logging in...
@@ -22,7 +22,7 @@
         <br />
         <div class="inner-addon right-addon">
             <i class="fa fa-lg fa-key icon-lighter"></i>
-            <input type="password" id="password" data-bind="value: password" class="form-control" placeholder="Password" />
+            <input type="password" id="password" data-bind="value: password, invokeOnEnter: { funct: login }" class="form-control" placeholder="Password" />
         </div>
         <div class="checkbox">
             <label>

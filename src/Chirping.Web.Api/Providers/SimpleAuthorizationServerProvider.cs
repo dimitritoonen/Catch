@@ -3,6 +3,7 @@
 using Chirping.Web.Api.Common.Account;
 using Chirping.Web.Api.Common.Domain;
 using Chirping.Web.Api.Data.Repository;
+using Chirping.Web.Api.Data.Repository.Authorization;
 using Chirping.Web.Api.Infrastructure;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security.OAuth;
