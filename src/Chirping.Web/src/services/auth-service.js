@@ -32,23 +32,7 @@
       callback(data);
     });
   };
-
-  // 
-  authService.LoginUser = function (loginData) {
-
-    // map login data to a querystring
-    var data = 'grant_type=password&username=' + loginData.username + '&password=' + loginData.password + '&client_id=ChirpingWeb';
-
-    return $.ajax({
-      type: 'POST',
-      url: config.BaseUrl + 'token',
-      data: loginData,
-      contentType: 'application/x-www-form-urlencoded'
-    }).done(function (data) {
-      authStorage.storeToken(data.access_token);
-    });
-  };
-
+  
 
   var registerViaFaceBook = function (data) {
 

@@ -4,13 +4,9 @@ using AutoMapper;
 using Chirping.Web.Api.BindingModels.Account;
 using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Common.Domain;
-using Chirping.Web.Api.Data.Entities;
-using Chirping.Web.Api.Data.Repository;
 using Chirping.Web.Api.Data.Repository.Authorization;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using System;
-using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
@@ -59,10 +55,12 @@ namespace Chirping.Web.Api.Processors.Account
 
         private async Task SendConfirmationEmail(string userId)
         {
+            // generate confirm email token and encode the Url
             var code = await _repository.GenerateEmailConfirmationTokenAsync(userId);
+            var encodedCode = HttpUtility.UrlEncode(code);
 
             var baseUri = new Uri(HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority));
-            var url = string.Format("/api/Account/ConfirmEmail/?UserId={0}&Code={1}", userId, code);
+            var url = string.Format("/api/Account/ConfirmEmail/?UserId={0}&Code={1}", userId, encodedCode);
             var callbackUrl = new Uri(baseUri, url).ToString();
             
             var subject = "Confirm your account";
@@ -94,13 +92,15 @@ namespace Chirping.Web.Api.Processors.Account
 
         public async Task SendResetPasswordEmail(string userId)
         {
+            // generate password reset token and encode the Url
             var code = await _repository.GeneratePasswordResetTokenAsync(userId);
+            var encodedCode = HttpUtility.UrlEncode(code);
 
             var baseUri = new Uri(HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority));
-            var url = string.Format("/api/Account/ResetPassword/?UserId={0}&Code={1}", userId, code);
+            var url = string.Format("/api/Account/ResetPassword/?UserId={0}&Code={1}", userId, encodedCode);
             var callbackUrl = new Uri(baseUri, url).ToString();
 
-            var subject = "Confirm your account";
+            var subject = "Reset your account";
             var body = "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>";
 
             await _repository.SendEmailAsync(userId, subject, body);
@@ -124,6 +124,8 @@ namespace Chirping.Web.Api.Processors.Account
 
         public async Task<IdentityResult> ConfirmEmailAsync(string userId, string code)
         {
+            var decodedCode = HttpUtility.HtmlDecode(code);
+
             return await _repository.ConfirmEmailAsync(userId, code);
         }
 

@@ -14,70 +14,10 @@
     decorateInputElement: true
   });
 
-  
-  // bind the QTip2 to the knockout validation
-  ko.bindingHandlers.qtipValMessage = {
-    update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
-      
-      var observable = valueAccessor();
-      var elementId = $(element).attr('id');
-
-      if (observable.isValid) {
-        observable.isModified.subscribe(function (modified) {
-          if (!observable.isValid()) {
-            SetValidationStateControl(elementId, observable, observable.isValid());
-          }
-
-          if (!modified && observable.isValid()) {
-            SetValidationStateControl(elementId, observable, observable.isValid());
-          }
-
-        });
-
-        observable.isValid.subscribe(function (valid) {
-          SetValidationStateControl(elementId, observable, valid);
-        });
-      }
-    }
-  };
-
-  function SetValidationStateControl(elementId, observable, isValid) {
-
-    var $element = $('#' + elementId);
-    
-    if (!isValid) {
-      
-      $element.qtip({
-        suppress: false,
-        show: { ready: true },
-        hide: { fixed: true },
-        position: { my: 'left center', at: 'right center' },
-        style: { classes: 'qtip-bootstrap qtip-icon qtip-red' },
-        content: {
-          //text: observable.error
-          text: true,
-          attr: 'title',
-          button: false
-        }
-      });
-
-      $element.closest('.form-group').removeClass('has-success');
-      $element.next('span').removeClass('glyphicon-ok');
-      $element.next('span').addClass('glyphicon-remove');
-    } else {
-
-      $element.qtip('destroy');
-
-      $element.closest('.form-group').addClass('has-success');
-      $element.next('span').removeClass('glyphicon-remove');
-      $element.next('span').addClass('glyphicon-ok');  
-    }
-  }
-  
 
   // custom validation rule
   // checks if the email address is already used by the registered users
-  ko.validation.rules.isEmailAvailable = { //['isEmailAvailable'] = {
+  ko.validation.rules.isEmailAvailable = {
     async: true,
     validator: function (email, enabled, callback) {
       auth.IsEmailAddressAvailable(email, function (result) {
@@ -88,7 +28,7 @@
   };
 
   // checks if the nickname is already used by the registered users
-  ko.validation.rules.IsNickNameAvailable = { //['IsNickNameAvailable'] = {
+  ko.validation.rules.IsNickNameAvailable = {
     async: true,
     validator: function (nickname, enabled, callback) {
       auth.IsNickNameAvailable(nickname, function (result) {
@@ -100,7 +40,7 @@
 
 
   // verifies if the password has at least one digit
-  ko.validation.rules.passwordContainsDigit = { //['passwordContainsDigit'] = {
+  ko.validation.rules.passwordContainsDigit = {
     validator: function (val) {
       return /(\d+)/.test('' + val + '');
     },
@@ -108,7 +48,7 @@
   };
 
   // verifies if the password has at least one uppercase letter
-  ko.validation.rules.passwordContainsUppercase = { // ['passwordContainsUppercase'] = {
+  ko.validation.rules.passwordContainsUppercase = {
     validator: function (val) {
       return /([A-Z]+)/.test('' + val + '');
     },
@@ -116,7 +56,7 @@
   };
 
   // verifies if the password has at least one uppercase letter
-  ko.validation.rules.passwordContainsLowercase = { //['passwordContainsLowercase'] = {
+  ko.validation.rules.passwordContainsLowercase = {
     validator: function (val) {
       return /([a-z]+)/.test('' + val + '');
     },
@@ -124,7 +64,7 @@
   };
 
   // verifies if the password has at least one symbol
-  ko.validation.rules.passwordContainsSymbol = { //['passwordContainsSymbol'] = {
+  ko.validation.rules.passwordContainsSymbol = {
     validator: function (val) {
       return /([\W]+)/.test('' + val + '');
     },
