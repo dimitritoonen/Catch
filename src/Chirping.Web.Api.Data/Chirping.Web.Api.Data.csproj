@@ -124,10 +124,6 @@
       <Project>{60ff8476-0a01-4969-9040-45b4c2b06d1d}</Project>
       <Name>Chirping.Web.Api.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Chirping.Web.Api.Security\Chirping.Web.Api.Security.csproj">
-      <Project>{4db0c158-c4f5-408e-9b36-a3f4b241b3bf}</Project>
-      <Name>Chirping.Web.Api.Security</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
