@@ -25,7 +25,7 @@ namespace Chirping.Web.Api
         public static FacebookAuthenticationOptions FacebookAuthOptions { get; private set; }
 
         public void Configuration(IAppBuilder app)
-        {
+        { 
             var config = GlobalConfiguration.Configuration;
 
             ConfigureOAuth(app);
