@@ -78,7 +78,7 @@ namespace Chirping.Web.Api
 
         private void ConfigureFilters(HttpConfiguration config)
         {
-            config.Filters.Add(new CheckModelForNullAttribute());
+            //config.Filters.Add(new CheckModelForNullAttribute());
             config.Filters.Add(new ValidateModelStateAttribute());
         }
 
