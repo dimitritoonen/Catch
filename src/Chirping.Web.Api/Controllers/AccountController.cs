@@ -45,6 +45,7 @@ namespace Chirping.Web.Api.Controllers
         [AllowAnonymous]
         [Route("Register")]
         [HttpPost]
+        [CheckModelForNull]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
             IdentityResult result = null;
@@ -93,6 +94,7 @@ namespace Chirping.Web.Api.Controllers
         [AllowAnonymous]
         [Route("ForgotPassword")]
         [HttpPost]
+        [CheckModelForNull]
         public async Task<IHttpActionResult> ForgotPassword(ForgotPasswordViewModel model)
         {
             var user = await _processor.FindByEmailAsync(model.Email);
@@ -112,6 +114,7 @@ namespace Chirping.Web.Api.Controllers
         // POST api/Account/Logout
         [Route("ChangePassword")]
         [HttpPost]
+        [CheckModelForNull]
         public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel changedPassword)
         {
             IdentityResult result = await _processor.ChangePassword(changedPassword);
