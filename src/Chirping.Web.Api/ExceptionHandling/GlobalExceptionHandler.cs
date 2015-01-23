@@ -11,6 +11,11 @@ namespace Chirping.Web.Api.ExceptionHandling
 {
     public class GlobalExceptionHandler : ExceptionHandler
     {
+        public virtual bool ShouldHandle(ExceptionHandlerContext context)
+        {
+            return true;
+        }
+
         public override void Handle(ExceptionHandlerContext context)
         {
             // log the exception to the tracing pipeline
