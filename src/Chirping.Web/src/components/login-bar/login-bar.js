@@ -14,24 +14,11 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service', 'services/
 
     // display and hide the loading screen
     var toggleLoading = function () {
-      $('#loginScreen').toggleClass('hide-visibility');
-      $('#loginSpinner').toggleClass('show-visibility');
-      $('#loginSpinner').toggleClass('hide');
+      $('#login-container').toggleClass('hide-visibility');
+      $('#login-spinner').toggleClass('show-visibility');
+      $('#login-spinner').toggleClass('hide');
     };
 
-    
-
-    // automatically try to log on the user when pressing the [Enter] key
-    var submitForm = function (event) {
-      if (event.keyCode == 13) {
-        self.login();
-      }
-    };
-
-    // bind keyup event to submitForm function
-    $('#username').keyup(function (event) { submitForm(event); });
-    $('#password').keyup(function (event) { submitForm(event); });
-    
     // try to log in the user
     self.login = function () {
 
@@ -43,7 +30,7 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service', 'services/
         password: self.password()
       };
 
-      auth.LoginUser(data).done(function () {
+      login.LoginUser(data).done(function () {
         alert('open dashboard!');
       }).error(function (data) {
         toggleLoading();

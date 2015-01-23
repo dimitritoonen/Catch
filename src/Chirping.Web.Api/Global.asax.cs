@@ -19,5 +19,18 @@ namespace Chirping.Web.Api
             new AutoMapperConfigurator().Config(
                 WebContainerManager.GetAll<IAutoMapperTypeConfigurator>());
         }
+
+
+        protected void Application_Error()
+        {
+            var exception = Server.GetLastError();
+
+            if (exception != null)
+            {
+                Console.WriteLine(exception);
+
+                // log!
+            }
+        }
     }
 }

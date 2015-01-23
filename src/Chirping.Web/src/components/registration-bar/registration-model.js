@@ -28,7 +28,7 @@
         validator: function (val, someOtherVal) {
 
           // only validate if values has been entered
-          if (val === null)
+          if (val === undefined)
             return;
 
           return val === someOtherVal();
@@ -89,9 +89,8 @@
       IsNickNameAvailable: true
     });
 
-    self.profileImage1 = ko.observable();
-    self.profileImage2 = ko.observable();
-    self.profileImage3 = ko.observable();
+    self.profileImage = ko.observable();
+    self.profileImageThumb = ko.observable();
 
     self.gender = ko.observable('Male');
 
@@ -186,7 +185,7 @@
         City: self.city(),
         Age: self.age(),
         InterestedIn: self.interestedIn(),
-        ProfileImage: self.profileImage1()
+        ProfileImage: self.profileImage()
       };
     };
 

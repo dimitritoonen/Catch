@@ -1,7 +1,8 @@
 ﻿#region using directives
 
+using Chirping.Web.Api.ActionFilters;
 using Chirping.Web.Api.BindingModels.Account;
-using Chirping.Web.Api.Data.Entities;
+using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Processors.Account;
 using Chirping.Web.Api.Results;
 using Microsoft.AspNet.Identity;
@@ -44,18 +45,40 @@ namespace Chirping.Web.Api.Controllers
         [AllowAnonymous]
         [Route("Register")]
         [HttpPost]
-        public async Task<IHttpActionResult> Register(RegisterBindingModel user)
+        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
-            if (!ModelState.IsValid)
+            IdentityResult result = null;
+
+            result = await _processor.RegisterUser(model);
+            
+            IHttpActionResult errorResult = GetErrorResult(result);
+
+            if (errorResult != null)
+            {
+                return errorResult;
+            }
+
+            var accessTokenResponse = GenerateLocalAccessTokenResponse(model.Email);
+
+            return Ok(accessTokenResponse);
+        }
+
+
+        [AllowAnonymous]
+        [Route("ConfirmEmail")]
+        [HttpGet]
+        public async Task<IHttpActionResult> ConfirmEmail(string userId, string code)
+        {
+            if (userId == null || code == null)
             {
                 return BadRequest(ModelState);
             }
 
-            IdentityResult result = null;
+            var result = await _processor.ConfirmEmailAsync(userId, code);
 
-            result = await _processor.RegisterUser(user);
-            
             IHttpActionResult errorResult = GetErrorResult(result);
+
+            // TODO if invalid token or another error display result in SPA
 
             if (errorResult != null)
             {
@@ -66,16 +89,31 @@ namespace Chirping.Web.Api.Controllers
         }
 
 
+        
+        [AllowAnonymous]
+        [Route("ForgotPassword")]
+        [HttpPost]
+        public async Task<IHttpActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            var user = await _processor.FindByEmailAsync(model.Email);
+            if (user == null || 
+                !(await _processor.IsEmailConfirmedAsync(user.Id)))
+            {
+                // Don't reveal that the user does not exist or is not confirmed
+                return Ok();
+            }
+
+            await _processor.SendResetPasswordEmail(user.Id);
+
+            return Ok();
+        }
+
+
         // POST api/Account/Logout
         [Route("ChangePassword")]
         [HttpPost]
         public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel changedPassword)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             IdentityResult result = await _processor.ChangePassword(changedPassword);
 
             IHttpActionResult errorResult = GetErrorResult(result);
@@ -183,9 +221,9 @@ namespace Chirping.Web.Api.Controllers
                 return BadRequest("External user is already registered");
             }
 
-            user = new UserAccountEntity() { UserName = model.Email, Email = model.Email };
+            //user = new UserAccountEntity() { UserName = model.Email, Email = model.Email };
 
-            IdentityResult result = await _processor.CreateAsync(user);
+            IdentityResult result = await _processor.CreateAsync(model);
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -197,6 +235,8 @@ namespace Chirping.Web.Api.Controllers
                 Login = new UserLoginInfo(provider, verifiedAccessToken.user_id)
             };
 
+            user = await _processor.FindByEmailAsync(model.Email);
+
             result = await _processor.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
@@ -207,6 +247,7 @@ namespace Chirping.Web.Api.Controllers
 
             return Ok(accessTokenResponse);
         }
+
 
         [AllowAnonymous]
         [HttpGet]

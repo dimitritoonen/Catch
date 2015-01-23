@@ -105,6 +105,9 @@
     <Content Include="src\app\router.js" />
     <Content Include="src\app\startup.js" />
     <Content Include="src\authentication\authcomplete.html" />
+    <Content Include="src\bindingHandlers\bindingHandlers.js" />
+    <Content Include="src\bindingHandlers\invokeOnEnter.js" />
+    <Content Include="src\bindingHandlers\qtipValMessage.js" />
     <Content Include="src\components\component-container\error-box\error-box.html" />
     <Content Include="src\components\component-container\error-box\error-box.js" />
     <Content Include="src\components\forgot-password\forgot-password.html" />
@@ -114,10 +117,18 @@
     <Content Include="src\components\component-container\component-container.js" />
     <Content Include="src\components\registration-bar\profile-image-upload\profile-image-upload.js" />
     <Content Include="src\components\registration-bar\registration-bar.html" />
+    <Content Include="src\components\forgot-password\reset-password-sent\success-message.html" />
+    <Content Include="src\components\forgot-password\reset-password-sent\reset-password-sent.js" />
     <Content Include="src\images\backgrounds\background1.jpg" />
     <Content Include="src\images\backgrounds\background2.jpg" />
     <Content Include="src\images\backgrounds\background3.jpg" />
     <Content Include="src\images\backgrounds\background4.jpg" />
+    <Content Include="src\images\femaleSign.gif" />
+    <Content Include="src\images\maleSign.gif" />
+    <Content Include="src\images\maleSign.png" />
+    <Content Include="src\images\wizardStep1.gif" />
+    <Content Include="src\images\wizardStep2.gif" />
+    <Content Include="src\images\wizardStep3.gif" />
     <Content Include="src\pages\intro-page\intro-page.html" />
     <Content Include="src\pages\intro-page\intro-page_old.html" />
     <Content Include="src\pages\intro-page\intro-page.js" />
@@ -127,9 +138,7 @@
     <Content Include="src\components\nav-bar\nav-bar.js" />
     <Content Include="src\components\registration-bar\facebook-registration-model.js" />
     <Content Include="src\components\registration-bar\profile-image-upload\profile-image-upload.html" />
-    <Content Include="src\components\registration-bar\profile-image-upload\profile-image-upload_old.js" />
     <Content Include="src\components\registration-bar\registration-model.js" />
-    <Content Include="src\components\registration-bar\registration-bar_old.html" />
     <Content Include="src\components\registration-bar\registration-bar.js" />
     <Content Include="src\components\user-bar\user-bar.html" />
     <Content Include="src\components\user-bar\user-bar.js" />
@@ -156,6 +165,7 @@
     <Content Include="src\images\wizardStep3.jpg" />
     <Content Include="src\index.html" />
     <Content Include="src\authentication\auth-complete.js" />
+    <Content Include="src\services\webapi-service.js" />
     <Content Include="src\services\auth-service.js" />
     <Content Include="src\services\auth-storage.js" />
     <Content Include="src\services\chunked-uploader.js" />
@@ -372,6 +382,7 @@
     <Content Include="src\fonts\OpenSans-Light.ttf" />
     <Content Include="src\fonts\OpenSans-Regular.ttf" />
     <Content Include="src\less\font-awesome.less" />
+    <Content Include="src\less\pages\registration-bar.less" />
     <None Include="src\less\styles.less" />
     <Content Include="src\Web.config" />
     <Content Include="src\less\vendor\jcrop.less" />
@@ -384,9 +395,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="src\less\pages\intro-page-old.less" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\less\pages\registration-bar.less" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\less\components\register-component.less" />

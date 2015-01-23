@@ -31,7 +31,8 @@ namespace Chirping.Web.Api.Data.Migrations
                     ApplicationType = ApplicationTypes.JavaScript,
                     Active = true,
                     RefreshTokenLifeTime = 0,
-                    AllowedOrigin = "*"
+                    //AllowedOrigin = "http://api.chirping.nl/"
+                    AllowedOrigin = "http://localhost:8080/"
                 }
             );
         }

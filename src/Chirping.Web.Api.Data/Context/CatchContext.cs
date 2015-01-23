@@ -1,4 +1,5 @@
-﻿using Chirping.Web.Api.Data.Entities;
+﻿using Chirping.Web.Api.Common.Data.Entities;
+using Chirping.Web.Api.Data.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
