@@ -71,21 +71,22 @@ define(['knockout', 'text!./registration-bar.html', './registration-model', 'ser
 
     // registers the user on the back-end
     self.RegisterUser = function () {
-
-      toggleLoading();
-
-      // validate current step and display error if registration is not complete
-      if (!self.registration.isRegistrationComplete())
-        self.registration['validateStep' + self.currentStep()]();
-
-      var data = self.registration.GetUserData();
       
-      var viaFacebook = self.registration.UseFacebookAuthentication();
+      // validate current step and display error if registration is not complete
+      if (!self.registration.isRegistrationComplete()) {
+        self.registration['validateStep' + self.currentStep()]();
+      } else {
 
-      auth.RegisterUser(data, viaFacebook).done(function (data) {
-        alert('User is registered');
-      });
+        toggleLoading();
 
+        var data = self.registration.GetUserData();
+      
+        var viaFacebook = self.registration.UseFacebookAuthentication();
+
+        auth.RegisterUser(data, viaFacebook).done(function (data) {
+          alert('User is registered');
+        });
+      }
     };
 
     // show the login component

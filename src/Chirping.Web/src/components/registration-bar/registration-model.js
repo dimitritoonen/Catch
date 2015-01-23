@@ -90,6 +90,7 @@
     });
 
     self.profileImage = ko.observable();
+    self.profileImageThumb = ko.observable();
 
     self.gender = ko.observable('Male');
 

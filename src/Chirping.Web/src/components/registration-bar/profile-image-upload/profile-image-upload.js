@@ -8,7 +8,7 @@
 
     self.identifier = params.identifier;
     self.profileImage = params.profileImage;
-    self.profileImageThumb = ko.observable();
+    self.profileImageThumb = params.profileImageThumb;
 
     // ensure that input type[file] component has an unique identifier
     $('#wizard-profileFile').attr('id', 'wizard-profileFile' + self.identifier);
