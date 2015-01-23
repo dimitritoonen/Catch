@@ -44,7 +44,7 @@ namespace Chirping.Web.Api.Processors.Account
             if (result.IdentityResult.Succeeded)
             {
                 // send confirmation e-mail
-                //await SendConfirmationEmail(result.UserId);
+                await SendConfirmationEmail(result.UserId);
                 
                 // store the profile picture in Azure cloud storage
                 StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage);
