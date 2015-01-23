@@ -57,9 +57,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\lib\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\..\lib\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -184,6 +181,8 @@
     <Content Include="Global.asax" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionFilters\CheckModelForNullAttribute.cs" />
+    <Compile Include="ActionFilters\ValidateModelStateAttribute.cs" />
     <Compile Include="App_Start\AutoMapperConfigurator.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="AutoMapperConfigurators\RegisterExternalUserToAccountUserMapping.cs" />
@@ -195,6 +194,8 @@
     <Compile Include="BindingModels\Account\RegisterExternalBindingModel.cs" />
     <Compile Include="BindingModels\ProfileBindingModel.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="ExceptionHandling\ErrorMessageResult.cs" />
+    <Compile Include="ExceptionHandling\GlobalExceptionHandler.cs" />
     <Compile Include="Infrastructure\AutoMapperExtensionMethods.cs" />
     <Compile Include="Providers\FacebookAuthProvider.cs" />
     <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />

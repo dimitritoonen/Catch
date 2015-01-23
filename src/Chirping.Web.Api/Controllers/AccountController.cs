@@ -1,5 +1,6 @@
 ﻿#region using directives
 
+using Chirping.Web.Api.ActionFilters;
 using Chirping.Web.Api.BindingModels.Account;
 using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Processors.Account;
@@ -46,11 +47,6 @@ namespace Chirping.Web.Api.Controllers
         [HttpPost]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             IdentityResult result = null;
 
             result = await _processor.RegisterUser(model);
@@ -99,11 +95,6 @@ namespace Chirping.Web.Api.Controllers
         [HttpPost]
         public async Task<IHttpActionResult> ForgotPassword(ForgotPasswordViewModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             var user = await _processor.FindByEmailAsync(model.Email);
             if (user == null || 
                 !(await _processor.IsEmailConfirmedAsync(user.Id)))
@@ -123,11 +114,6 @@ namespace Chirping.Web.Api.Controllers
         [HttpPost]
         public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel changedPassword)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             IdentityResult result = await _processor.ChangePassword(changedPassword);
 
             IHttpActionResult errorResult = GetErrorResult(result);
