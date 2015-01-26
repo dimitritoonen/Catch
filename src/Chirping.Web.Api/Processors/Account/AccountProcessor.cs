@@ -34,6 +34,7 @@ namespace Chirping.Web.Api.Processors.Account
         // processes the Http request for a user registration
         public async Task<IdentityResult> RegisterUser(RegisterBindingModel registerUser)
         {
+            Trace.TraceInformation("ZOMG this is awesome!");
             TraceVerbose(LogEvent.InfoRegisteringUser, "Start registering user with e-mail: '{0}'", registerUser.Email);
 
             var user = Mapper.Map<RegisterBindingModel, UserAccount>(registerUser);
