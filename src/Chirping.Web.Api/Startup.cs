@@ -40,7 +40,6 @@ namespace Chirping.Web.Api
 
             // configure filters and exception handlers/loggers
             ConfigureFilters(config);
-            ConfigureExceptionHandlers(config);
         }
 
 
@@ -80,12 +79,6 @@ namespace Chirping.Web.Api
         {
             //config.Filters.Add(new CheckModelForNullAttribute());
             config.Filters.Add(new ValidateModelStateAttribute());
-        }
-
-
-        private void ConfigureExceptionHandlers(HttpConfiguration config)
-        {
-            config.Services.Replace(typeof(IExceptionHandler), new GlobalExceptionHandler());
         }
     }
 }

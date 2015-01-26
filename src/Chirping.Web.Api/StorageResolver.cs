@@ -9,6 +9,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.Auth;
 using System.Text;
+using Chirping.Web.Api.Diagnostics;
 
 namespace Chirping.Web.Api
 {

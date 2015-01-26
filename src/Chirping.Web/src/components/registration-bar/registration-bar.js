@@ -77,7 +77,7 @@ define(['knockout', 'text!./registration-bar.html', './registration-model', 'ser
         self.registration['validateStep' + self.currentStep()]();
       } else {
 
-        toggleLoading();
+        //toggleLoading();
 
         var data = self.registration.GetUserData();
       

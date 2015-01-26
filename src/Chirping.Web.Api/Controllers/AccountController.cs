@@ -3,6 +3,7 @@
 using Chirping.Web.Api.ActionFilters;
 using Chirping.Web.Api.BindingModels.Account;
 using Chirping.Web.Api.Common.Data.Entities;
+using Chirping.Web.Api.Diagnostics;
 using Chirping.Web.Api.Processors.Account;
 using Chirping.Web.Api.Results;
 using Microsoft.AspNet.Identity;
@@ -48,9 +49,7 @@ namespace Chirping.Web.Api.Controllers
         [CheckModelForNull]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
-            IdentityResult result = null;
-
-            result = await _processor.RegisterUser(model);
+            IdentityResult result = await _processor.RegisterUser(model);
             
             IHttpActionResult errorResult = GetErrorResult(result);
 
@@ -325,6 +324,11 @@ namespace Chirping.Web.Api.Controllers
 
         private JObject GenerateLocalAccessTokenResponse(string userName)
         {
+            using (var logScope = new LogOperationScope("Account"))
+            {
+                //logScope.TraceVerbose();
+            }
+
             var tokenExpiration = TimeSpan.FromDays(1);
 
             ClaimsIdentity identity = new ClaimsIdentity(OAuthDefaults.AuthenticationType);
