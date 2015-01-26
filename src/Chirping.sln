@@ -35,8 +35,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{541022
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirping.Web.Api.Security", "Chirping.Web.Api.Security\Chirping.Web.Api.Security.csproj", "{4DB0C158-C4F5-408E-9B36-A3F4B241B3BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirping.Web.Api.Diagnostics", "Chirping.Web.Api.Diagnostics\Chirping.Web.Api.Diagnostics.csproj", "{ADEDAF99-00BE-4819-9A7E-0146FD2CE510}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Acceptance|Any CPU = Acceptance|Any CPU
@@ -109,14 +107,6 @@ Global
 		{4DB0C158-C4F5-408E-9B36-A3F4B241B3BF}.Production|Any CPU.Build.0 = Production|Any CPU
 		{4DB0C158-C4F5-408E-9B36-A3F4B241B3BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DB0C158-C4F5-408E-9B36-A3F4B241B3BF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ADEDAF99-00BE-4819-9A7E-0146FD2CE510}.Acceptance|Any CPU.ActiveCfg = Acceptance|Any CPU
-		{ADEDAF99-00BE-4819-9A7E-0146FD2CE510}.Acceptance|Any CPU.Build.0 = Acceptance|Any CPU
-		{ADEDAF99-00BE-4819-9A7E-0146FD2CE510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ADEDAF99-00BE-4819-9A7E-0146FD2CE510}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ADEDAF99-00BE-4819-9A7E-0146FD2CE510}.Production|Any CPU.ActiveCfg = Production|Any CPU
-		{ADEDAF99-00BE-4819-9A7E-0146FD2CE510}.Production|Any CPU.Build.0 = Production|Any CPU
-		{ADEDAF99-00BE-4819-9A7E-0146FD2CE510}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ADEDAF99-00BE-4819-9A7E-0146FD2CE510}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -131,6 +121,5 @@ Global
 		{B6370AF5-746A-43F8-BC6B-D12315C171EA} = {E01A84F4-3A4E-400C-9AB9-A3C4F3399221}
 		{08429B50-9904-448E-A2B3-E955EC225FF9} = {4D290D7A-91F2-414D-BC68-FDE2868CD0F6}
 		{4DB0C158-C4F5-408E-9B36-A3F4B241B3BF} = {4D290D7A-91F2-414D-BC68-FDE2868CD0F6}
-		{ADEDAF99-00BE-4819-9A7E-0146FD2CE510} = {4D290D7A-91F2-414D-BC68-FDE2868CD0F6}
 	EndGlobalSection
 EndGlobal

@@ -5,7 +5,6 @@ using Chirping.Web.Api.BindingModels.Account;
 using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Common.Domain;
 using Chirping.Web.Api.Data.Repository.Authorization;
-using Chirping.Web.Api.Diagnostics;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Diagnostics;
@@ -30,12 +29,11 @@ namespace Chirping.Web.Api.Processors.Account
         }
 
         #endregion
-        
+
         // processes the Http request for a user registration
         public async Task<IdentityResult> RegisterUser(RegisterBindingModel registerUser)
         {
-            Trace.TraceInformation("ZOMG this is awesome!");
-            TraceVerbose(LogEvent.InfoRegisteringUser, "Start registering user with e-mail: '{0}'", registerUser.Email);
+            Trace.WriteLine(string.Format("Start registering user with e-mail: '{0}'", registerUser.Email));
 
             var user = Mapper.Map<RegisterBindingModel, UserAccount>(registerUser);
 
@@ -45,12 +43,12 @@ namespace Chirping.Web.Api.Processors.Account
             }
 
             RegisterUserResult result = await _repository.RegisterUser(user);
-            
+
             if (result.IdentityResult.Succeeded)
             {
                 // send confirmation e-mail
                 await SendConfirmationEmail(result.UserId);
-                
+
                 // store the profile picture in Azure cloud storage
                 StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage, result.UserId);
             }
@@ -61,7 +59,7 @@ namespace Chirping.Web.Api.Processors.Account
         // sends a confirmation e-mail to the just registered user
         private async Task SendConfirmationEmail(string userId)
         {
-            TraceVerbose(LogEvent.InfoRegisteringUser, "Start sending confirmation e-mail for userId: '{0}'", userId);
+            Trace.WriteLine(string.Format("Start sending confirmation e-mail for userId: '{0}'", userId));
 
             // generate confirm email token and encode the Url
             var code = await _repository.GenerateEmailConfirmationTokenAsync(userId);
@@ -70,7 +68,7 @@ namespace Chirping.Web.Api.Processors.Account
             var baseUri = new Uri(HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority));
             var url = string.Format("/api/Account/ConfirmEmail/?UserId={0}&Code={1}", userId, encodedCode);
             var callbackUrl = new Uri(baseUri, url).ToString();
-            
+
             var subject = "Confirm your account";
             var body = "Please confirm your account by click this link: <a href=\"" + callbackUrl + "\">link</a>";
 
@@ -82,7 +80,7 @@ namespace Chirping.Web.Api.Processors.Account
             if (!ProfileImageSelected(profileImage))
                 return;
 
-            TraceVerbose(LogEvent.InfoRegisteringUser, "Storing profile in azure storage for user: '{0}'", userId);
+            Trace.WriteLine(string.Format("Storing profile in azure storage for user: '{0}'", userId));
 
             TryStoringProfileImage(profileImage, imageFileName, userId);
         }
@@ -96,13 +94,7 @@ namespace Chirping.Web.Api.Processors.Account
             }
             catch (Exception ex)
             {
-                using (var logScope = new LogOperationScope("Account"))
-                {
-                    logScope.TraceError(LogEvent.ErrorAccountRegisteringUser, ex,
-                        "unable to store image for user Id: '{0}', imageFileName: '{1}'",
-                        userId,
-                        imageFileName);
-                }
+                Trace.TraceError("Unable to store image for user Id: '{0}', imageFileName: '{1}', Exception: {2}", userId, imageFileName, ex.ToString());
 
                 throw ex;
             }
@@ -123,7 +115,7 @@ namespace Chirping.Web.Api.Processors.Account
 
         public async Task SendResetPasswordEmail(string userId)
         {
-            TraceVerbose(LogEvent.InfoRegisteringUser, "Start sending password reset e-mail for userId: '{0}'", userId);
+            Trace.WriteLine(string.Format("Start sending password reset e-mail for userId: '{0}'", userId));
 
             // generate password reset token and encode the Url
             var code = await _repository.GeneratePasswordResetTokenAsync(userId);
@@ -185,6 +177,8 @@ namespace Chirping.Web.Api.Processors.Account
         // create user without password
         public async Task<IdentityResult> CreateAsync(RegisterExternalBindingModel registerUser)
         {
+            Trace.WriteLine(string.Format("Start registering external user with e-mail: '{0}'", registerUser.Email));
+
             var user = Mapper.Map<RegisterExternalBindingModel, UserAccount>(registerUser);
 
             if (ProfileImageSelected(registerUser.Profile.ProfileImage))
@@ -214,15 +208,6 @@ namespace Chirping.Web.Api.Processors.Account
         }
 
         #endregion
-
-
-        private void TraceVerbose(LogEvent logEvent, string message, params string[] args)
-        {
-            using (var logScope = new LogOperationScope("Account"))
-            {
-                logScope.TraceVerbose(LogEvent.InfoRegisteringUser, message, args);
-            }
-        }
 
         #region disposal operations
 

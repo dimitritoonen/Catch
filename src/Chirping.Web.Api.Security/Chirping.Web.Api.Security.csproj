@@ -126,10 +126,6 @@
       <Project>{08429b50-9904-448e-a2b3-e955ec225ff9}</Project>
       <Name>Chirping.Web.Api.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Chirping.Web.Api.Diagnostics\Chirping.Web.Api.Diagnostics.csproj">
-      <Project>{adedaf99-00be-4819-9a7e-0146fd2ce510}</Project>
-      <Name>Chirping.Web.Api.Diagnostics</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
