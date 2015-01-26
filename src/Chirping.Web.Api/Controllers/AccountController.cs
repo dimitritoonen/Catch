@@ -3,7 +3,6 @@
 using Chirping.Web.Api.ActionFilters;
 using Chirping.Web.Api.BindingModels.Account;
 using Chirping.Web.Api.Common.Data.Entities;
-using Chirping.Web.Api.Diagnostics;
 using Chirping.Web.Api.Processors.Account;
 using Chirping.Web.Api.Results;
 using Microsoft.AspNet.Identity;
@@ -324,11 +323,6 @@ namespace Chirping.Web.Api.Controllers
 
         private JObject GenerateLocalAccessTokenResponse(string userName)
         {
-            using (var logScope = new LogOperationScope("Account"))
-            {
-                //logScope.TraceVerbose();
-            }
-
             var tokenExpiration = TimeSpan.FromDays(1);
 
             ClaimsIdentity identity = new ClaimsIdentity(OAuthDefaults.AuthenticationType);

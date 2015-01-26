@@ -231,12 +231,10 @@
     <Content Include="Config\HiddenSettings.template.config" />
     <Content Include="Config\System.Diagnostics.config">
       <TransformOnBuild>true</TransformOnBuild>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Config\System.Diagnostics.Acceptance.config">
       <DependentUpon>System.Diagnostics.config</DependentUpon>
       <IsTransformFile>True</IsTransformFile>
-      <SubType>Designer</SubType>
     </None>
     <None Include="Config\System.Diagnostics.Debug.config">
       <DependentUpon>System.Diagnostics.config</DependentUpon>
@@ -275,10 +273,6 @@
     <ProjectReference Include="..\Chirping.Web.Api.Data\Chirping.Web.Api.Data.csproj">
       <Project>{84f1518b-0825-4921-aa2f-fa87643c3a2b}</Project>
       <Name>Chirping.Web.Api.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Chirping.Web.Api.Diagnostics\Chirping.Web.Api.Diagnostics.csproj">
-      <Project>{adedaf99-00be-4819-9a7e-0146fd2ce510}</Project>
-      <Name>Chirping.Web.Api.Diagnostics</Name>
     </ProjectReference>
     <ProjectReference Include="..\Chirping.Web.Api.Domain\Chirping.Web.Api.Domain.csproj">
       <Project>{60ff8476-0a01-4969-9040-45b4c2b06d1d}</Project>

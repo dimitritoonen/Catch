@@ -4,7 +4,6 @@ using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Common.Domain;
 using Chirping.Web.Api.Common.Security;
 using Chirping.Web.Api.Data.Context;
-using Chirping.Web.Api.Diagnostics;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Diagnostics;
@@ -51,11 +50,7 @@ namespace Chirping.Web.Api.Data.Repository.Authorization
             }
             catch (Exception ex)
             {
-                using (var logContext = new LogOperationScope("Account"))
-                {
-                    var message = "Error occurred while registering user with id: '{0}', and e-mail: '{1}'";
-                    logContext.TraceError(LogEvent.ErrorAccountRegisteringUser, ex, message, newUser.Id, newUser.Email);
-                }
+                Trace.TraceError("Error occurred while registering user with id: '{0}', and e-mail: '{1}', Exception: {2}", newUser.Id, newUser.Email, ex.ToString());
 
                 throw ex;
             }

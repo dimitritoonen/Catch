@@ -1,9 +1,9 @@
 ﻿#region using directives
 
 using Chirping.Web.Api.Common.Mail;
-using Chirping.Web.Api.Diagnostics;
 using Microsoft.AspNet.Identity;
 using System;
+using System.Diagnostics;
 using System.Net.Mail;
 using System.Threading.Tasks;
 
@@ -30,18 +30,9 @@ namespace Chirping.Web.Api.Security
             }
             catch (Exception ex)
             {
-                LogError(identityMessage, ex);
+                Trace.TraceError("Unexcepted error while sending e-mail to: '{0}', Exception: {1}", identityMessage.Destination, ex.ToString());
 
                 throw ex;
-            }
-        }
-
-        private static void LogError(IdentityMessage identityMessage, Exception ex)
-        {
-            using (var logScope = new LogOperationScope("Account"))
-            {
-                var message = "Unexcepted error while sending e-mail to '{0}'";
-                logScope.TraceError(LogEvent.ErrorAccountSendEmail, ex, message, identityMessage.Destination);
             }
         }
     }
