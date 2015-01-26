@@ -5,8 +5,10 @@ using Chirping.Web.Api.BindingModels.Account;
 using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Common.Domain;
 using Chirping.Web.Api.Data.Repository.Authorization;
+using Chirping.Web.Api.Diagnostics;
 using Microsoft.AspNet.Identity;
 using System;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
@@ -15,6 +17,7 @@ using System.Web;
 
 namespace Chirping.Web.Api.Processors.Account
 {
+    // processes the Http requests related to account/security requests (i.e. registering user, log a user in, etc)
     public class AccountProcessor : IAccountProcessor, IDisposable
     {
         #region constructor
@@ -27,10 +30,11 @@ namespace Chirping.Web.Api.Processors.Account
         }
 
         #endregion
-
+        
+        // processes the Http request for a user registration
         public async Task<IdentityResult> RegisterUser(RegisterBindingModel registerUser)
         {
-            RegisterUserResult result = null;
+            TraceVerbose(LogEvent.InfoRegisteringUser, "Start registering user with e-mail: '{0}'", registerUser.Email);
 
             var user = Mapper.Map<RegisterBindingModel, UserAccount>(registerUser);
 
@@ -39,7 +43,7 @@ namespace Chirping.Web.Api.Processors.Account
                 user.ProfileImage = string.Format("{0}.jpg", System.Uri.EscapeDataString(registerUser.Email));
             }
 
-            result = await _repository.RegisterUser(user);
+            RegisterUserResult result = await _repository.RegisterUser(user);
             
             if (result.IdentityResult.Succeeded)
             {
@@ -47,14 +51,17 @@ namespace Chirping.Web.Api.Processors.Account
                 await SendConfirmationEmail(result.UserId);
                 
                 // store the profile picture in Azure cloud storage
-                StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage);
+                StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage, result.UserId);
             }
 
             return result.IdentityResult;
         }
 
+        // sends a confirmation e-mail to the just registered user
         private async Task SendConfirmationEmail(string userId)
         {
+            TraceVerbose(LogEvent.InfoRegisteringUser, "Start sending confirmation e-mail for userId: '{0}'", userId);
+
             // generate confirm email token and encode the Url
             var code = await _repository.GenerateEmailConfirmationTokenAsync(userId);
             var encodedCode = HttpUtility.UrlEncode(code);
@@ -69,19 +76,42 @@ namespace Chirping.Web.Api.Processors.Account
             await _repository.SendEmailAsync(userId, subject, body);
         }
 
+        private void StoreProfileImage(string profileImage, string imageFileName, string userId)
+        {
+            if (!ProfileImageSelected(profileImage))
+                return;
+
+            TraceVerbose(LogEvent.InfoRegisteringUser, "Storing profile in azure storage for user: '{0}'", userId);
+
+            TryStoringProfileImage(profileImage, imageFileName, userId);
+        }
+
+        private static void TryStoringProfileImage(string profileImage, string imageFileName, string userId)
+        {
+            try
+            {
+                var store = new ImageStore();
+                store.StoreImage(profileImage, imageFileName);
+            }
+            catch (Exception ex)
+            {
+                using (var logScope = new LogOperationScope("Account"))
+                {
+                    logScope.TraceError(LogEvent.ErrorAccountRegisteringUser, ex,
+                        "unable to store image for user Id: '{0}', imageFileName: '{1}'",
+                        userId,
+                        imageFileName);
+                }
+
+                throw ex;
+            }
+        }
+
         private bool ProfileImageSelected(string profileImage)
         {
             return !(string.IsNullOrEmpty(profileImage));
         }
 
-        private void StoreProfileImage(string profileImage, string imageFileName)
-        {
-            if (!ProfileImageSelected(profileImage))
-                return;
-
-            var store = new ImageStore();
-            store.StoreImage(profileImage, imageFileName);
-        }
 
 
         public async Task<bool> IsEmailConfirmedAsync(string userId)
@@ -92,6 +122,8 @@ namespace Chirping.Web.Api.Processors.Account
 
         public async Task SendResetPasswordEmail(string userId)
         {
+            TraceVerbose(LogEvent.InfoRegisteringUser, "Start sending password reset e-mail for userId: '{0}'", userId);
+
             // generate password reset token and encode the Url
             var code = await _repository.GeneratePasswordResetTokenAsync(userId);
             var encodedCode = HttpUtility.UrlEncode(code);
@@ -107,20 +139,24 @@ namespace Chirping.Web.Api.Processors.Account
         }
 
 
+
         public void Logout(HttpRequestMessage request)
         {
             request.GetOwinContext().Authentication.SignOut();
         }
+
 
         public Task<IdentityResult> ChangePassword(ChangePasswordBindingModel changedPassword)
         {
             throw new NotImplementedException();
         }
 
+
         public Client FindClient(string clientId)
         {
             return _repository.FindClient(clientId);
         }
+
 
         public async Task<IdentityResult> ConfirmEmailAsync(string userId, string code)
         {
@@ -163,7 +199,7 @@ namespace Chirping.Web.Api.Processors.Account
                 await SendConfirmationEmail(result.UserId);
 
                 // store the profile picture in Azure cloud storage
-                StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage);
+                StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage, result.UserId);
             }
 
             return result.IdentityResult;
@@ -177,11 +213,23 @@ namespace Chirping.Web.Api.Processors.Account
         }
 
         #endregion
-        
+
+
+        private void TraceVerbose(LogEvent logEvent, string message, params string[] args)
+        {
+            using (var logScope = new LogOperationScope("Account"))
+            {
+                logScope.TraceVerbose(LogEvent.InfoRegisteringUser, message, args);
+            }
+        }
+
+        #region disposal operations
 
         public void Dispose()
         {
             _repository.Dispose();
         }
+
+        #endregion
     }
 }

@@ -1,14 +1,14 @@
-﻿using Chirping.Web.Api.Common.TypeMapping;
-using Chirping.Web.Api.Data;
+﻿#region using directives
+
+using Chirping.Web.Api.Common.TypeMapping;
+using Chirping.Web.Api.ExceptionHandling;
 using Chirping.Web.Api.Infrastructure;
+
 using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
-using System.Web.Security;
-using System.Web.SessionState;
+using System.Web.Http.ExceptionHandling;
+
+#endregion
 
 namespace Chirping.Web.Api
 {
@@ -18,8 +18,9 @@ namespace Chirping.Web.Api
         {
             new AutoMapperConfigurator().Config(
                 WebContainerManager.GetAll<IAutoMapperTypeConfigurator>());
-        }
 
+            RegisterExceptionHandler();
+        }
 
         protected void Application_Error()
         {
@@ -31,6 +32,11 @@ namespace Chirping.Web.Api
 
                 // log!
             }
+        }
+
+        private void RegisterExceptionHandler()
+        {
+            GlobalConfiguration.Configuration.Services.Replace(typeof(IExceptionHandler), new GlobalExceptionHandler());
         }
     }
 }

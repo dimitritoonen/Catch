@@ -4,10 +4,10 @@ using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Common.Domain;
 using Chirping.Web.Api.Common.Security;
 using Chirping.Web.Api.Data.Context;
-using Chirping.Web.Api.Data.Entities;
+using Chirping.Web.Api.Diagnostics;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 #endregion
@@ -31,17 +31,36 @@ namespace Chirping.Web.Api.Data.Repository.Authorization
 
         #endregion
 
+        // register the user via the UserManager (ASP.NET Identity 2.0)
         public async Task<RegisterUserResult> RegisterUser(UserAccount user)
         {
             RegisterUserResult result = new RegisterUserResult();
 
             UserAccountEntity newUser = GetUserEntityFromUser(user);
             result.UserId = newUser.Id;
-            
-            result.IdentityResult = await _userManager.CreateAsync(newUser, user.Password);
+            result.IdentityResult = await TryRegisteringUser(newUser, user);
 
             return result;
         }
+
+        private async Task<IdentityResult> TryRegisteringUser(UserAccountEntity newUser, UserAccount user)
+        {
+            try
+            {
+                return await _userManager.CreateAsync(newUser, user.Password);
+            }
+            catch (Exception ex)
+            {
+                using (var logContext = new LogOperationScope("Account"))
+                {
+                    var message = "Error occurred while registering user with id: '{0}', and e-mail: '{1}'";
+                    logContext.TraceError(LogEvent.ErrorAccountRegisteringUser, ex, message, newUser.Id, newUser.Email);
+                }
+
+                throw ex;
+            }
+        }
+        
 
         public async Task<UserAccountEntity> FindUser(string email, string password)
         {
@@ -150,10 +169,15 @@ namespace Chirping.Web.Api.Data.Repository.Authorization
 
         #endregion
 
+
+        #region disposal operations
+
         public void Dispose()
         {
             _context.Dispose();
             _userManager.Dispose();
         }
+
+        #endregion
     }
 }
