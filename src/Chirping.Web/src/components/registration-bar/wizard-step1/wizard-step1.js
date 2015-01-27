@@ -8,7 +8,8 @@ define(['jquery', 'knockout', 'text!./wizard-step1.html', 'app/app.config', 'ser
     self.result = ko.observable();
 
     self.registration = params.registration;
-        
+    self.container = params.container;
+
     // validation group to determine if all control on step 1 are valid
     var validationGroup = ko.validatedObservable({
       emailAddress: self.registration.emailAddress,
@@ -44,11 +45,21 @@ define(['jquery', 'knockout', 'text!./wizard-step1.html', 'app/app.config', 'ser
 
     // executed after successfully logged on to facebook
     self.facebookLogonCallback = function (user) {
-      if (user.haslocalaccount == 'False') {
+      if (user.isregisteredasexternal == 'False') {
+        self.showLoginComponent();
+      } else if (user.haslocalaccount == 'False') {
         self.registration.storeFacebookDetails(user);
       }
     };
 
+
+    // show the login component
+    self.showLoginComponent = function () {
+
+      // pass in an error
+
+      self.container.updateActiveComponent('login-bar');
+    };
 
 
     //this.callApi = function () {

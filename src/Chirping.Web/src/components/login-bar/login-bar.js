@@ -11,6 +11,9 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service', 'services/
     self.error = ko.observable();
     self.showErrorBox = ko.observable(false);
 
+    var redirectToDashboard = function () {
+      alert('open dashboard');
+    };
 
     // display and hide the loading screen
     var toggleLoading = function () {
@@ -31,7 +34,7 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service', 'services/
       };
 
       login.LoginUser(data).done(function () {
-        alert('open dashboard!');
+        redirectToDashboard();
       }).error(function (data) {
         toggleLoading();
 
@@ -57,6 +60,8 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service', 'services/
 
         self.error({ error_description: 'facebook_notregistered' });
         self.showErrorBox(true);
+      } else {
+        redirectToDashboard();
       }
     };
        

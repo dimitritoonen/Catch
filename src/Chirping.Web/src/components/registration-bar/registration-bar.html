@@ -21,7 +21,7 @@
             <span class="wizard-nav-button"><i class="fa fa-angle-left fa-4x pull-right" data-bind="click: PreviousStep, visible: currentStep() > 2"></i></span>
         </div>
         <div class="col-xs-10 center-block">
-            <div id="wizardStep" data-bind="component: { name: currentWizardStep, params: { registration: registration } }"></div>
+            <div id="wizardStep" data-bind="component: { name: currentWizardStep, params: { registration: registration, container: container } }"></div>
         </div>
         <div class="col-xs-1">
             <span class="wizard-nav-button"><i class="fa fa-angle-right fa-4x pull-left" data-bind="click: NextStep, visible: currentStep() < 3"></i></span>
