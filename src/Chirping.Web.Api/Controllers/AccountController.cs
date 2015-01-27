@@ -48,9 +48,7 @@ namespace Chirping.Web.Api.Controllers
         [CheckModelForNull]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
-            IdentityResult result = null;
-
-            result = await _processor.RegisterUser(model);
+            IdentityResult result = await _processor.RegisterUser(model);
             
             IHttpActionResult errorResult = GetErrorResult(result);
 
@@ -170,32 +168,41 @@ namespace Chirping.Web.Api.Controllers
                 return new ChallengeResult(provider, null);
             }
 
-            bool hasRegistered = await IsUserRegistered(externalLogin);
-            //bool hasRegistered = (user != null);
+            IdentityUser user = await IsUserRegistered(externalLogin);
+            bool hasRegistered = (user != null);
+            bool isRegisteredAsExternal = IsRegisteredAsExternal(user);
 
             var email = HttpUtility.UrlEncode(externalLogin.Email);
 
-            redirectUri = string.Format("{0}#external_access_token={1}&provider={2}&haslocalaccount={3}&external_email={4}",
+            redirectUri = string.Format("{0}#external_access_token={1}&provider={2}&haslocalaccount={3}&external_email={4}&isregisteredasexternal={5}",
                redirectUri,
                externalLogin.ExternalAccessToken,
                externalLogin.LoginProvider,
                hasRegistered.ToString(),
-               email);
+               email,
+               isRegisteredAsExternal);
 
             return Redirect(redirectUri);
         }
 
-        private async Task<bool> IsUserRegistered(ExternalLoginData externalLogin)
+
+        // checks if the user is registered with username and password (ergo. Not registered with external provider)
+        private static bool IsRegisteredAsExternal(IdentityUser user)
+        {
+            return (user != null && user.PasswordHash == null);
+        }
+
+        private async Task<IdentityUser> IsUserRegistered(ExternalLoginData externalLogin)
         {
             // check user existence by provider id
             IdentityUser user = await _processor.FindAsync(new UserLoginInfo(externalLogin.LoginProvider, externalLogin.ProviderKey));
             if (user != null)
-                return true;
+                return user;
 
             // if user is not registered via facebook, maybe the e-mail address is still used for manual registration.
-            user = await _processor.FindByEmailAsync(externalLogin.Email);
+            return await _processor.FindByEmailAsync(externalLogin.Email);
 
-            return (user != null);
+            //return (user != null);
         }
 
         [AllowAnonymous]

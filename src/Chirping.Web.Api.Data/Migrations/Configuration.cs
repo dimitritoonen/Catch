@@ -8,7 +8,7 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 
-#endregion
+#endregion 
 
 namespace Chirping.Web.Api.Data.Migrations
 {
@@ -21,20 +21,29 @@ namespace Chirping.Web.Api.Data.Migrations
 
         protected override void Seed(ChirpingContext context)
         {
-            context.Clients.AddOrUpdate(
-                p => p.Id,
-                new ClientEntity
-                {
-                    Id = "ChirpingWeb",
-                    Secret = Guid.NewGuid().ToString(),
-                    Name = "Chirping front-end application",
-                    ApplicationType = ApplicationTypes.JavaScript,
-                    Active = true,
-                    RefreshTokenLifeTime = 0,
-                    //AllowedOrigin = "http://api.chirping.nl/"
-                    AllowedOrigin = "http://localhost:8080/"
-                }
-            );
+            SeedClients(context);
+        }
+
+        private static void SeedClients(ChirpingContext context)
+        {
+            var clientId = "ChirpingWeb";
+            var client = context.Clients.Find(clientId);
+
+            if (client == null)
+            {
+                context.Clients.Add(
+                    new ClientEntity
+                    {
+                        Id = clientId,
+                        Secret = Guid.NewGuid().ToString(),
+                        Name = "Chirping front-end application",
+                        ApplicationType = ApplicationTypes.JavaScript,
+                        Active = true,
+                        RefreshTokenLifeTime = 0,
+                        AllowedOrigin = "http://www.chirping.nl/"
+                    }
+                );
+            }
         }
     }
 }

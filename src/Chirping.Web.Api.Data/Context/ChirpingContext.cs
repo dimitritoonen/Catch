@@ -1,17 +1,19 @@
-﻿using Chirping.Web.Api.Common.Data.Entities;
+﻿#region using directives
+
 using Chirping.Web.Api.Data.Entities;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+
+#endregion
 
 namespace Chirping.Web.Api.Data.Context
 {
-    public class ChirpingContext : IdentityDbContext<UserAccountEntity>
+    public class ChirpingContext : DbContext
     {
         public ChirpingContext()
             : base("ChirpingContext")
@@ -24,15 +26,7 @@ namespace Chirping.Web.Api.Data.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            //modelBuilder.Entity<IdentityUser>().ToTable("User");
-            //modelBuilder.Entity<UserAccountEntity>().ToTable("User");
-
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
-
-        public static ChirpingContext Create()
-        {
-            return new ChirpingContext();
         }
     }
 }

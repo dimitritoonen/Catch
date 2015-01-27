@@ -11,7 +11,7 @@ namespace Chirping.Web.Api.ExceptionHandling
 {
     public class GlobalExceptionHandler : ExceptionHandler
     {
-        public virtual bool ShouldHandle(ExceptionHandlerContext context)
+        public override bool ShouldHandle(ExceptionHandlerContext context)
         {
             return true;
         }
@@ -19,7 +19,7 @@ namespace Chirping.Web.Api.ExceptionHandling
         public override void Handle(ExceptionHandlerContext context)
         {
             // log the exception to the tracing pipeline
-            Trace.WriteLine(context.Exception.ToString());
+            Trace.TraceError(context.Exception.ToString());
 
             // create a response and send back a bad request (400)
             var response = new HttpResponseMessage(HttpStatusCode.BadRequest)
