@@ -1,7 +1,9 @@
 ﻿#region using directives
 
 using Chirping.Web.Api.ActionFilters;
+using Chirping.Web.Api.Common.Security;
 using Chirping.Web.Api.Common.TypeMapping;
+using Chirping.Web.Api.Security.Data.Context;
 using Chirping.Web.Api.ExceptionHandling;
 using Chirping.Web.Api.Infrastructure;
 using Chirping.Web.Api.Providers;
@@ -31,6 +33,7 @@ namespace Chirping.Web.Api
         { 
             var config = GlobalConfiguration.Configuration;
 
+            ConfigureUserManager(app);
             ConfigureOAuth(app);
 
             WebApiConfig.Register(config);
@@ -40,6 +43,12 @@ namespace Chirping.Web.Api
 
             // configure filters and exception handlers/loggers
             ConfigureFilters(config);
+        }
+
+        private void ConfigureUserManager(IAppBuilder app)
+        {
+            app.CreatePerOwinContext(ChirpingIdentityContext.Create);
+            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
         }
 
 
