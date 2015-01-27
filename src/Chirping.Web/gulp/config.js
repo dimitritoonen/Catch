@@ -217,9 +217,9 @@ module.exports = {
         bundles: {
           'register-container': [
             'components/component-container/component-container',
-            'components/forgot-password/forgot-password',
             'components/component-container/error-box/error-box',
-            'components/reset-password-sent/reset-password-sent/reset-password-sent'
+            'components/forgot-password/forgot-password',
+            'components/forgot-password/reset-password-sent/reset-password-sent'
           ],
           'account-activated': [
             'components/activate-account/activate-account',
