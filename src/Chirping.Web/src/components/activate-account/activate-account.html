@@ -1,0 +1,21 @@
+<div id="activating-account-component">
+    <div class="text-center"><h2>Activating account</h2></div>
+    <br /><br />
+    <div class="text-center">
+        Please wait while we are activating your account ...
+        <br /><br />
+        <div id="spinner">
+            <i class="fa fa-spinner spin icon-lighter"></i>
+        </div>
+        <div id="error-message-container" data-bind="visible: showErrorBox">
+            <div class="bg-danger text-center error-box">
+                <p>
+                    <b data-bind="text: errorTitle"></b>
+                    <br /><br />
+                    <span data-bind="html: errorDescription"></span>
+                </p>
+            </div>
+            <br />
+        </div>
+    </div>
+</div>

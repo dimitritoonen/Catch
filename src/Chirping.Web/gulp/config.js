@@ -221,7 +221,11 @@ module.exports = {
             'components/login-bar/login-bar',
             'components/forgot-password/forgot-password',
             'components/component-container/error-box/error-box',
-            'components/forgot-password/reset-password-sent/reset-password-sent'
+            'components/reset-password-sent/reset-password-sent/reset-password-sent'
+          ],
+          'account-activated': [
+            'components/activate-account/activate-account',
+            'components/activate-account/account-activated/account-activated'
           ],
           'registration-page': [
             'services/auth-service',

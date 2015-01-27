@@ -6,6 +6,18 @@ define(['knockout', 'text!./intro-page.html', 'qtip2'], function (ko, templateMa
 
     self.component = ko.observable();
     self.showComponent = ko.observable(false);
+    self.querystring = {};
+
+    // loads components if browsed for
+    var initializeIntroPage = function (component) {
+      if (component !== undefined) {
+
+        // fetch the querystring parsed by crossroadsJs
+        self.querystring = params[0];
+
+        self.loadComponent(component);
+      }
+    };
 
     // load a particular component
     self.loadComponent = function (component) {
@@ -13,7 +25,7 @@ define(['knockout', 'text!./intro-page.html', 'qtip2'], function (ko, templateMa
       self.showComponent(!self.showComponent());
     };
 
-    self.loadComponent('register');
+    initializeIntroPage(params.component);
 
     // closes the loaded component
     self.closeComponent = function () {
@@ -26,7 +38,8 @@ define(['knockout', 'text!./intro-page.html', 'qtip2'], function (ko, templateMa
       return {
         parent: self,
         component: self.component(),
-        showComponent: self.showComponent()
+        showComponent: self.showComponent(),
+        querystring: self.querystring
       };
     };
   }
