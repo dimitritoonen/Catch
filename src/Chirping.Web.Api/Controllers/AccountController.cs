@@ -14,6 +14,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Configuration;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -65,26 +66,30 @@ namespace Chirping.Web.Api.Controllers
 
         [AllowAnonymous]
         [Route("ConfirmEmail")]
-        [HttpGet]
-        public async Task<IHttpActionResult> ConfirmEmail(string userId, string code)
+        [HttpPost]
+        [CheckModelForNull]
+        public async Task<IHttpActionResult> ConfirmEmail(ConfirmEmailBindingModel model)
         {
-            if (userId == null || code == null)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var result = await _processor.ConfirmEmailAsync(userId, code);
+            var result = await _processor.ConfirmEmailAsync(model.UserId, model.Code);
 
             IHttpActionResult errorResult = GetErrorResult(result);
 
-            // TODO if invalid token or another error display result in SPA
-
             if (errorResult != null)
             {
-                return errorResult;
+                var response = GetConfirmEmailResponse(model);
+                throw new HttpResponseException(response);
             }
 
             return Ok();
+        }
+
+        private HttpResponseMessage GetConfirmEmailResponse(ConfirmEmailBindingModel model)
+        {
+            return new HttpResponseMessage(HttpStatusCode.NotFound)
+            {
+                Content = new StringContent("The incorrect confirm code has been provided. Please request another one"),
+                ReasonPhrase = "Invalid confirm code"
+            };
         }
 
 

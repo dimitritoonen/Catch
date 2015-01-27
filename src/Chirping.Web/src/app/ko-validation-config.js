@@ -1,4 +1,4 @@
-﻿define(['knockout', 'services/auth-service'], function (ko, auth) {
+﻿define(['knockout', 'services/auth-service', 'knockout-validation'], function (ko, auth) {
 
   // configure knockout validation
   ko.validation.init({
