@@ -170,7 +170,7 @@ namespace Chirping.Web.Api.Controllers
 
             IdentityUser user = await IsUserRegistered(externalLogin);
             bool hasRegistered = (user != null);
-            bool isRegisteredAsExternal = (user.PasswordHash == null);
+            bool isRegisteredAsExternal = IsRegisteredAsExternal(user);
 
             var email = HttpUtility.UrlEncode(externalLogin.Email);
 
@@ -183,6 +183,13 @@ namespace Chirping.Web.Api.Controllers
                isRegisteredAsExternal);
 
             return Redirect(redirectUri);
+        }
+
+
+        // checks if the user is registered with username and password (ergo. Not registered with external provider)
+        private static bool IsRegisteredAsExternal(IdentityUser user)
+        {
+            return (user != null && user.PasswordHash == null);
         }
 
         private async Task<IdentityUser> IsUserRegistered(ExternalLoginData externalLogin)
