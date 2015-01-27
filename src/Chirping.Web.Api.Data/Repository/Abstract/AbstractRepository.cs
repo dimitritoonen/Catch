@@ -1,7 +1,7 @@
 ﻿using Chirping.Web.Api.Common.Data;
 using Chirping.Web.Api.Common.Domain;
 using Chirping.Web.Api.Common.Repository;
-using Chirping.Web.Api.Data.Context;
+using Chirping.Web.Api.Security.Data.Context;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -18,11 +18,11 @@ namespace Chirping.Web.Api.Data.Repository
     {
         #region Db context
 
-        public ChirpingContext Context { get; private set; }
+        public ChirpingIdentityContext Context { get; private set; }
 
         public AbstractRepository()
         {
-            Context = new ChirpingContext();
+            Context = new ChirpingIdentityContext();
         }
 
         #endregion

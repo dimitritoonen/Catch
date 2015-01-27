@@ -12,23 +12,24 @@ using Chirping.Web.Api.Common.Data.Entities;
 using Microsoft.Owin.Security.DataProtection;
 using Microsoft.AspNet.Identity.Owin;
 using Chirping.Web.Api.Security;
+using Microsoft.Owin;
+using Chirping.Web.Api.Security.Data.Context;
 
 #endregion
 
 namespace Chirping.Web.Api.Common.Security
 {
-    public class UserManagerWrapper
+    public class ApplicationUserManager : UserManager<UserAccountEntity>
     {
-        private IdentityDbContext<UserAccountEntity> _context;
+        public ApplicationUserManager(IUserStore<UserAccountEntity> store)
+            : base(store)
+        { }
 
-        public UserManagerWrapper(IdentityDbContext<UserAccountEntity> context)
+        //public UserManager<UserAccountEntity> GetUserManager()
+        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
-            this._context = context;
-        }
-
-        public UserManager<UserAccountEntity> GetUserManager()
-        {
-            var manager = new UserManager<UserAccountEntity>(new UserStore<UserAccountEntity>(_context));
+            //var manager = new UserManager<UserAccountEntity>(new UserStore<UserAccountEntity>(_context));
+            var manager = new ApplicationUserManager(new UserStore<UserAccountEntity>(context.Get<ChirpingIdentityContext>()));
 
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<UserAccountEntity>(manager)
@@ -54,8 +55,6 @@ namespace Chirping.Web.Api.Common.Security
             });
             manager.EmailService = new EmailService();
 
-            //manager.UserTokenProvider = new EmailTokenProvider<UserAccountEntity, string>();
-
             var dataProtectorProvider = new DpapiDataProtectionProvider("Chirping");
             var dataProtector = dataProtectorProvider.Create("Asp.Net Identity");
 
@@ -63,13 +62,6 @@ namespace Chirping.Web.Api.Common.Security
             {
                 TokenLifespan = TimeSpan.FromHours(24)
             };
-            
-            //var provider = new DpapiDataProtectionProvider("Chirping");
-            //var dataProtectionProvider = options.DataProtectionProvider;
-
-            //manager.UserTokenProvider = new dpapi
-
-            //manager.UserTokenProvider = new DataProtectorTokenProvider<UserAccountEntity>(provider.Create("ASP.NET Identity"));
 
             return manager;
         }

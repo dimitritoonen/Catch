@@ -4,10 +4,13 @@ using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Common.Domain;
 using Chirping.Web.Api.Common.Security;
 using Chirping.Web.Api.Data.Context;
+using Chirping.Web.Api.Security.Data.Context;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Web;
 
 #endregion
 
@@ -15,20 +18,36 @@ namespace Chirping.Web.Api.Data.Repository.Authorization
 {
     public class AccountRepository : IAccountRepository, IDisposable
     {
-        #region constructor
-
         private ChirpingContext _context;
-        private UserManager<UserAccountEntity> _userManager;
+        private ApplicationUserManager _userManager;
+
+        #region constructor
+        
+        public AccountRepository(ApplicationUserManager userManager)
+            : base()
+        {
+            this._userManager = userManager;
+        }
 
         public AccountRepository()
         {
             _context = new ChirpingContext();
+        }
+        
+        #endregion
 
-            var manager = new UserManagerWrapper(_context);
-            _userManager = manager.GetUserManager();
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
         }
 
-        #endregion
 
         // register the user via the UserManager (ASP.NET Identity 2.0)
         public async Task<RegisterUserResult> RegisterUser(UserAccount user)
@@ -46,7 +65,7 @@ namespace Chirping.Web.Api.Data.Repository.Authorization
         {
             try
             {
-                return await _userManager.CreateAsync(newUser, user.Password);
+                return await UserManager.CreateAsync(newUser, user.Password);
             }
             catch (Exception ex)
             {
@@ -59,7 +78,7 @@ namespace Chirping.Web.Api.Data.Repository.Authorization
 
         public async Task<UserAccountEntity> FindUser(string email, string password)
         {
-            UserAccountEntity user = await _userManager.FindAsync(email, password);
+            UserAccountEntity user = await UserManager.FindAsync(email, password);
 
             return user;
         }
@@ -85,28 +104,28 @@ namespace Chirping.Web.Api.Data.Repository.Authorization
 
         public async Task<IdentityResult> ConfirmEmailAsync(string userId, string code)
         {
-            return await _userManager.ConfirmEmailAsync(userId, code);
+            return await UserManager.ConfirmEmailAsync(userId, code);
         }
 
         public async Task<string> GenerateEmailConfirmationTokenAsync(string userid)
         {
-            return await _userManager.GenerateEmailConfirmationTokenAsync(userid);
+            return await UserManager.GenerateEmailConfirmationTokenAsync(userid);
         }
 
         public async Task<bool> IsEmailConfirmedAsync(string userId)
         {
-            return await _userManager.IsEmailConfirmedAsync(userId);
+            return await UserManager.IsEmailConfirmedAsync(userId);
         }
 
 
         public async Task<string> GeneratePasswordResetTokenAsync(string userId)
         {
-            return await _userManager.GeneratePasswordResetTokenAsync(userId);
+            return await UserManager.GeneratePasswordResetTokenAsync(userId);
         }
 
         public async Task SendEmailAsync(string userId, string subject, string body)
         {
-            await _userManager.SendEmailAsync(userId, subject, body);
+            await UserManager.SendEmailAsync(userId, subject, body);
         }
 
         #endregion
@@ -116,14 +135,14 @@ namespace Chirping.Web.Api.Data.Repository.Authorization
 
         public async Task<UserAccountEntity> FindAsync(UserLoginInfo loginInfo)
         {
-            UserAccountEntity user = await _userManager.FindAsync(loginInfo);
+            UserAccountEntity user = await UserManager.FindAsync(loginInfo);
 
             return user;
         }
 
         public async Task<UserAccountEntity> FindByEmailAsync(string email)
         {
-            UserAccountEntity user = await _userManager.FindByEmailAsync(email);
+            UserAccountEntity user = await UserManager.FindByEmailAsync(email);
 
             return user;
         }
@@ -134,8 +153,8 @@ namespace Chirping.Web.Api.Data.Repository.Authorization
 
             UserAccountEntity newUser = GetUserEntityFromUser(user);
             result.UserId = newUser.Id;
-            
-            result.IdentityResult = await _userManager.CreateAsync(newUser);
+
+            result.IdentityResult = await UserManager.CreateAsync(newUser);
 
             return result;
         }
@@ -157,7 +176,7 @@ namespace Chirping.Web.Api.Data.Repository.Authorization
 
         public async Task<IdentityResult> AddLoginAsync(string userId, UserLoginInfo login)
         {
-            var result = await _userManager.AddLoginAsync(userId, login);
+            var result = await UserManager.AddLoginAsync(userId, login);
 
             return result;
         }
@@ -170,7 +189,11 @@ namespace Chirping.Web.Api.Data.Repository.Authorization
         public void Dispose()
         {
             _context.Dispose();
-            _userManager.Dispose();
+
+            if (_userManager != null)
+            {
+                _userManager.Dispose();
+            }
         }
 
         #endregion

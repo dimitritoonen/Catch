@@ -1,4 +1,4 @@
-namespace Chirping.Web.Api.Data.Migrations
+namespace Chirping.Web.Api.Security.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
