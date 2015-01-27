@@ -197,6 +197,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="AutoMapperConfigurators\RegisterExternalUserToAccountUserMapping.cs" />
     <Compile Include="BindingModels\Account\ChangePasswordBindingModel.cs" />
+    <Compile Include="BindingModels\Account\ConfirmEmailBindingModel.cs" />
     <Compile Include="BindingModels\Account\EmailAddressInUseBindingModel.cs" />
     <Compile Include="BindingModels\Account\ExternalLoginViewModel.cs" />
     <Compile Include="BindingModels\Account\ForgotPasswordViewModel.cs" />

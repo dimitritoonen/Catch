@@ -7,10 +7,13 @@ using Chirping.Web.Api.Common.Domain;
 using Chirping.Web.Api.Data.Repository.Authorization;
 using Microsoft.AspNet.Identity;
 using System;
+using System.Configuration;
 using System.Diagnostics;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Http;
 
 #endregion
 
@@ -65,16 +68,16 @@ namespace Chirping.Web.Api.Processors.Account
             var code = await _repository.GenerateEmailConfirmationTokenAsync(userId);
             var encodedCode = HttpUtility.UrlEncode(code);
 
-            var baseUri = new Uri(HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority));
-            var url = string.Format("/api/Account/ConfirmEmail/?UserId={0}&Code={1}", userId, encodedCode);
+            var baseUri = GetChirpingUri();
+            var url = string.Format("/#ActivateAccount?userId={0}&confirmCode={1}", userId, encodedCode);
             var callbackUrl = new Uri(baseUri, url).ToString();
 
             var subject = "Confirm your account";
-            var body = "Please confirm your account by click this link: <a href=\"" + callbackUrl + "\">link</a>";
+            var body = "Chirping logo here<br /><br />Please confirm your account by click this link: <a href=\"" + callbackUrl + "\">link</a>";
 
             await _repository.SendEmailAsync(userId, subject, body);
         }
-
+        
         private void StoreProfileImage(string profileImage, string imageFileName, string userId)
         {
             if (!ProfileImageSelected(profileImage))
@@ -121,8 +124,8 @@ namespace Chirping.Web.Api.Processors.Account
             var code = await _repository.GeneratePasswordResetTokenAsync(userId);
             var encodedCode = HttpUtility.UrlEncode(code);
 
-            var baseUri = new Uri(HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority));
-            var url = string.Format("/api/Account/ResetPassword/?UserId={0}&Code={1}", userId, encodedCode);
+            var baseUri = GetChirpingUri();
+            var url = string.Format("/#ActivateAccount?userId={0}&confirmCode={1}", userId, encodedCode);
             var callbackUrl = new Uri(baseUri, url).ToString();
 
             var subject = "Reset your account";
@@ -151,12 +154,34 @@ namespace Chirping.Web.Api.Processors.Account
         }
 
 
+
         public async Task<IdentityResult> ConfirmEmailAsync(string userId, string code)
         {
-            var decodedCode = HttpUtility.HtmlDecode(code);
+            try
+            {
+                var decodedCode = HttpUtility.HtmlDecode(code);
 
-            return await _repository.ConfirmEmailAsync(userId, code);
+                return await _repository.ConfirmEmailAsync(userId, code);
+            }
+            catch (Exception ex)
+            {
+                var response = GetConfirmEmailResponse(userId, ex);
+                throw new HttpResponseException(response);
+            }
         }
+
+        private HttpResponseMessage GetConfirmEmailResponse(string userId, Exception ex)
+        {
+            Trace.TraceError("Unable to confirm account for user: '{0}', Exception: {1}", userId, ex.ToString());
+
+            return new HttpResponseMessage(HttpStatusCode.NotFound)
+            {
+                Content = new StringContent(string.Format("Couldn't find user id: {0}", userId)),
+                ReasonPhrase = "User ID not found"
+            };
+        }
+
+
 
         #region operations for external logon (Facebook, Google, etc)
 
@@ -208,6 +233,16 @@ namespace Chirping.Web.Api.Processors.Account
         }
 
         #endregion
+
+
+        private Uri GetChirpingUri()
+        {
+            if (ConfigurationManager.AppSettings["FrontEndUrl"] == null)
+                throw new ArgumentNullException("Couldn't find app setting 'FrontEndUrl'");
+
+            return new Uri(ConfigurationManager.AppSettings["FrontEndUrl"]);
+        }
+
 
         #region disposal operations
 

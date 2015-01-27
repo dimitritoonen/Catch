@@ -6,8 +6,8 @@ define(['knockout', 'text!./component-container.html'], function (ko, templateMa
     var parent = params.parent;
 
     self.showComponent = ko.observable(params.showComponent);
-    
     self.activeComponent = ko.observable(params.component);
+    self.querystring = params.querystring;
 
     initializeComponentAnimation();
     

@@ -211,17 +211,19 @@ module.exports = {
         include: [
             'requireLib',
             'pages/intro-page/intro-page',
-            'components/user-bar/user-bar',
             'components/login-bar/login-bar'
         ],
         insertRequire: ['app/startup'],
         bundles: {
           'register-container': [
             'components/component-container/component-container',
-            'components/login-bar/login-bar',
-            'components/forgot-password/forgot-password',
             'components/component-container/error-box/error-box',
+            'components/forgot-password/forgot-password',
             'components/forgot-password/reset-password-sent/reset-password-sent'
+          ],
+          'account-activated': [
+            'components/activate-account/activate-account',
+            'components/activate-account/account-activated/account-activated'
           ],
           'registration-page': [
             'services/auth-service',
