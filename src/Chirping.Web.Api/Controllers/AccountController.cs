@@ -132,6 +132,7 @@ namespace Chirping.Web.Api.Controllers
             return Ok();
         }
 
+
         #region operations for external login (Google, Facebook, etc)
 
         // GET api/Account/ExternalLogin
@@ -367,7 +368,6 @@ namespace Chirping.Web.Api.Controllers
         }
 
         #endregion
-
 
         #region helpers
 

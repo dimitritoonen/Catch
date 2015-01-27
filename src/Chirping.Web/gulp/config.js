@@ -211,14 +211,12 @@ module.exports = {
         include: [
             'requireLib',
             'pages/intro-page/intro-page',
-            'components/user-bar/user-bar',
             'components/login-bar/login-bar'
         ],
         insertRequire: ['app/startup'],
         bundles: {
           'register-container': [
             'components/component-container/component-container',
-            'components/login-bar/login-bar',
             'components/forgot-password/forgot-password',
             'components/component-container/error-box/error-box',
             'components/reset-password-sent/reset-password-sent/reset-password-sent'
