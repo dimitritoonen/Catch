@@ -55,14 +55,21 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service', 'services/
 
     // executed after successfully logged on to facebook
     self.facebookLogonCallback = function (user) {
+      console.log(user.isregisteredasexternal);
+
       if (user.haslocalaccount == 'False') {
         toggleLoading();
 
         self.error({ error_description: 'facebook_notregistered' });
         self.showErrorBox(true);
+      } else if (user.isregisteredasexternal == 'False') {
+        self.error({ error_description: 'email_already_used_internal' });
+        self.showErrorBox(true);
       } else {
         redirectToDashboard();
       }
+
+      toggleLoading();
     };
        
     // display the 'forgot password' component

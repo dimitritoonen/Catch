@@ -45,11 +45,18 @@ define(['jquery', 'knockout', 'text!./wizard-step1.html', 'app/app.config', 'ser
 
     // executed after successfully logged on to facebook
     self.facebookLogonCallback = function (user) {
-      if (user.isregisteredasexternal == 'False') {
-        self.showLoginComponent();
-      } else if (user.haslocalaccount == 'False') {
+
+      if (user.haslocalaccount == 'False') {
         self.registration.storeFacebookDetails(user);
+
+        // validate current step
+        params.registration.isCurrentStepValid(true);
+        params.registration.isStep1Valid(true);
+
+      } else if (user.isregisteredasexternal == 'False') {
+        self.showLoginComponent();
       }
+
     };
 
 

@@ -71,13 +71,13 @@ define(['knockout', 'text!./registration-bar.html', './registration-model', 'ser
 
     // registers the user on the back-end
     self.RegisterUser = function () {
-      
+
       // validate current step and display error if registration is not complete
       if (!self.registration.isRegistrationComplete()) {
         self.registration['validateStep' + self.currentStep()]();
       } else {
 
-        //toggleLoading();
+        toggleLoading();
 
         var data = self.registration.GetUserData();
       
