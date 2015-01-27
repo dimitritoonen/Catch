@@ -65,8 +65,6 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service', 'services/
       } else if (user.isregisteredasexternal == 'False') {
         self.error({ error_description: 'email_already_used_internal' });
         self.showErrorBox(true);
-      } else {
-        redirectToDashboard();
       }
 
       toggleLoading();

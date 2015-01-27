@@ -43,7 +43,7 @@
       var externalData = { provider: fragment.provider, externalAccessToken: fragment.external_access_token };
       auth.obtainAccessToken(externalData).then(function () {
 
-        alert('user is already registered. Redirect to dashboard');
+        alert('Redirect to dashboard');
 
       });
     }
