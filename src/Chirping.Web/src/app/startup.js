@@ -14,7 +14,6 @@ define(['jquery', 'knockout', './router', 'services/auth-service', 'bootstrap',
     // Components can be packaged as AMD modules, such as the following:
 
     // pages
-    ko.components.register('user-bar', { require: 'pages/user-bar/user-bar' });
     ko.components.register('intro-page', { require: 'pages/intro-page/intro-page' });
 
     // components
