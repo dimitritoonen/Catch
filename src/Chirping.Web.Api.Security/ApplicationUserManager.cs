@@ -55,13 +55,18 @@ namespace Chirping.Web.Api.Common.Security
             });
             manager.EmailService = new EmailService();
 
-            var dataProtectorProvider = new DpapiDataProtectionProvider("Chirping");
-            var dataProtector = dataProtectorProvider.Create("Asp.Net Identity");
-
-            manager.UserTokenProvider = new DataProtectorTokenProvider<UserAccountEntity, string>(dataProtector)
+            var dataProtectionProvider = options.DataProtectionProvider;
+            if (dataProtectionProvider != null)
             {
-                TokenLifespan = TimeSpan.FromHours(24)
-            };
+                manager.UserTokenProvider = new DataProtectorTokenProvider<UserAccountEntity>(dataProtectionProvider.Create("ASP.NET Identity"));
+            }
+
+            //var dataProtectorProvider = new DpapiDataProtectionProvider("Chirping");
+            //var dataProtector = dataProtectorProvider.Create("Asp.Net Identity");
+            //manager.UserTokenProvider = new DataProtectorTokenProvider<UserAccountEntity, string>(dataProtector)
+            //{
+            //    TokenLifespan = TimeSpan.FromHours(24)
+            //};
 
             return manager;
         }
