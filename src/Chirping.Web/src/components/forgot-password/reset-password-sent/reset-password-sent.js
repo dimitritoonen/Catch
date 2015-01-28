@@ -7,6 +7,8 @@ define(['knockout', 'text!./reset-password-sent.html'], function (ko, templateMa
     var self = this;
     var container = params.container;
 
+    container.header('Login');
+
     self.closeContainer = function () {
       container.closeSelf();
     };

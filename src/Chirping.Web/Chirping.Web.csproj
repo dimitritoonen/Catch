@@ -110,6 +110,8 @@
     <Content Include="src\bindingHandlers\qtipValMessage.js" />
     <Content Include="src\components\activate-account\activate-account.html" />
     <Content Include="src\components\activate-account\activate-account.js" />
+    <Content Include="src\components\change-password\change-password.html" />
+    <Content Include="src\components\change-password\change-password.js" />
     <Content Include="src\components\component-container\error-box\error-box.html" />
     <Content Include="src\components\component-container\error-box\error-box.js" />
     <Content Include="src\components\activate-account\account-activated\account-activated.html" />
@@ -119,6 +121,8 @@
     <Content Include="src\components\login-bar\login-bar.html" />
     <Content Include="src\components\component-container\component-container.html" />
     <Content Include="src\components\component-container\component-container.js" />
+    <Content Include="src\components\change-password\password-changed\password-changed.html" />
+    <Content Include="src\components\change-password\password-changed\password-changed.js" />
     <Content Include="src\components\registration-bar\profile-image-upload\profile-image-upload.js" />
     <Content Include="src\components\registration-bar\registration-bar.html" />
     <Content Include="src\components\forgot-password\reset-password-sent\reset-password-sent.html" />

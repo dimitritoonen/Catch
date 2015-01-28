@@ -4,6 +4,8 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service', 'services/
     
     var self = this;
     var container = params.container;
+
+    container.header('Login');
     
     self.username = ko.observable();
     self.password = ko.observable();

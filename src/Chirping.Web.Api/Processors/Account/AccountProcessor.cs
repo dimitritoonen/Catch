@@ -116,7 +116,7 @@ namespace Chirping.Web.Api.Processors.Account
         }
 
 
-        public async Task SendResetPasswordEmail(string userId)
+        public async Task SendResetPasswordEmail(string email, string userId)
         {
             Trace.WriteLine(string.Format("Start sending password reset e-mail for userId: '{0}'", userId));
 
@@ -125,7 +125,7 @@ namespace Chirping.Web.Api.Processors.Account
             var encodedCode = HttpUtility.UrlEncode(code);
 
             var baseUri = GetChirpingUri();
-            var url = string.Format("/#ActivateAccount?userId={0}&confirmCode={1}", userId, encodedCode);
+            var url = string.Format("/#ChangePassword?email={0}&userId={1}&confirmCode={2}", email, userId, encodedCode);
             var callbackUrl = new Uri(baseUri, url).ToString();
 
             var subject = "Reset your account";
@@ -135,10 +135,9 @@ namespace Chirping.Web.Api.Processors.Account
         }
 
 
-
-        public void Logout(HttpRequestMessage request)
+        public async Task<IdentityResult> ResetPassword(ResetPasswordBindingModel model)
         {
-            request.GetOwinContext().Authentication.SignOut();
+            return await _repository.ResetPassword(model.UserId, model.Code, model.NewPassword);
         }
 
 
@@ -147,6 +146,15 @@ namespace Chirping.Web.Api.Processors.Account
             throw new NotImplementedException();
         }
 
+
+
+
+
+        public void Logout(HttpRequestMessage request)
+        {
+            request.GetOwinContext().Authentication.SignOut();
+        }
+        
 
         public Client FindClient(string clientId)
         {
