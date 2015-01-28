@@ -76,14 +76,14 @@ namespace Chirping.Web.Api.Controllers
 
             if (errorResult != null)
             {
-                var response = GetConfirmEmailResponse(model);
+                var response = GetConfirmEmailResponse();
                 throw new HttpResponseException(response);
             }
 
             return Ok();
         }
 
-        private HttpResponseMessage GetConfirmEmailResponse(ConfirmEmailBindingModel model)
+        private HttpResponseMessage GetConfirmEmailResponse()
         {
             return new HttpResponseMessage(HttpStatusCode.NotFound)
             {
@@ -108,10 +108,36 @@ namespace Chirping.Web.Api.Controllers
                 return Ok();
             }
 
-            await _processor.SendResetPasswordEmail(user.Id);
+            await _processor.SendResetPasswordEmail(model.Email, user.Id);
 
             return Ok();
         }
+
+        [AllowAnonymous]
+        [Route("ResetPassword")]
+        [HttpPost]
+        [CheckModelForNull]
+        public async Task<IHttpActionResult> ResetPassword(ResetPasswordBindingModel model)
+        {
+            var user = await _processor.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                // don't reveal to the user that the e-mail address is not registered
+                return Ok();
+            }
+
+            var result = await _processor.ResetPassword(model);
+
+            IHttpActionResult errorResult = GetErrorResult(result);
+            
+            if (!result.Succeeded)
+            {
+                return BadRequest();
+            }
+
+            return Ok();
+        }
+
 
 
         // POST api/Account/Logout

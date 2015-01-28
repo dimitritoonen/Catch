@@ -27,6 +27,7 @@ namespace Chirping.Web.Api.Data.Repository.Authorization
 
         Task<string> GeneratePasswordResetTokenAsync(string userId);
         Task<bool> IsEmailConfirmedAsync(string userId);
+        Task<IdentityResult> ResetPassword(string userId, string token, string newPassword);
 
         #endregion
 

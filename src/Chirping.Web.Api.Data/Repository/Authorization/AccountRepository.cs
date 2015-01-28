@@ -8,6 +8,7 @@ using Chirping.Web.Api.Security.Data.Context;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Web;
@@ -117,15 +118,19 @@ namespace Chirping.Web.Api.Data.Repository.Authorization
             return await UserManager.IsEmailConfirmedAsync(userId);
         }
 
+        public async Task SendEmailAsync(string userId, string subject, string body)
+        {
+            await UserManager.SendEmailAsync(userId, subject, body);
+        }
 
         public async Task<string> GeneratePasswordResetTokenAsync(string userId)
         {
             return await UserManager.GeneratePasswordResetTokenAsync(userId);
         }
 
-        public async Task SendEmailAsync(string userId, string subject, string body)
+        public async Task<IdentityResult> ResetPassword(string userId, string token, string newPassword)
         {
-            await UserManager.SendEmailAsync(userId, subject, body);
+            return await UserManager.ResetPasswordAsync(userId, token, newPassword);
         }
 
         #endregion

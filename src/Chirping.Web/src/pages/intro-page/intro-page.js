@@ -7,7 +7,7 @@ define(['knockout', 'text!./intro-page.html', 'qtip2'], function (ko, templateMa
     self.component = ko.observable();
     self.showComponent = ko.observable(false);
     self.querystring = {};
-
+    
     // loads components if browsed for
     var initializeIntroPage = function (component) {
       if (component !== undefined) {
@@ -24,6 +24,8 @@ define(['knockout', 'text!./intro-page.html', 'qtip2'], function (ko, templateMa
       self.component(component);
       self.showComponent(!self.showComponent());
     };
+
+    //self.loadComponent('password-changed');
 
     initializeIntroPage(params.component);
 

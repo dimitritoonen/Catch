@@ -25,7 +25,6 @@ namespace Chirping.Web.Api.Common.Security
             : base(store)
         { }
 
-        //public UserManager<UserAccountEntity> GetUserManager()
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
             //var manager = new UserManager<UserAccountEntity>(new UserStore<UserAccountEntity>(_context));
@@ -60,13 +59,6 @@ namespace Chirping.Web.Api.Common.Security
             {
                 manager.UserTokenProvider = new DataProtectorTokenProvider<UserAccountEntity>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
-
-            //var dataProtectorProvider = new DpapiDataProtectionProvider("Chirping");
-            //var dataProtector = dataProtectorProvider.Create("Asp.Net Identity");
-            //manager.UserTokenProvider = new DataProtectorTokenProvider<UserAccountEntity, string>(dataProtector)
-            //{
-            //    TokenLifespan = TimeSpan.FromHours(24)
-            //};
 
             return manager;
         }

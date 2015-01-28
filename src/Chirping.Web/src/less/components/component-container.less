@@ -17,19 +17,18 @@
     max-width: 450px;
 }
 
-// defines the styles used by the components hosted in the component-container
-.component-container-controls {
-    position:relative;
-    width:90%;
-}
-
 // defines the loaded component in the component-container.
 // This class also contains a transition used to fade-in and slide-in the loaded component
 .component {
     position:relative;
+    width:90%;
     opacity: 0;
     top: 75px;
     .transition(~"opacity .3s ease-out, top .3s ease-out");
+}
+
+.component-container-controls {
+    padding-top: 35px;
 }
 
 .component.show {

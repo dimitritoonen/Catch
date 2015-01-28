@@ -203,6 +203,7 @@
     <Compile Include="BindingModels\Account\ForgotPasswordViewModel.cs" />
     <Compile Include="BindingModels\Account\ParsedExternalAccessToken.cs" />
     <Compile Include="BindingModels\Account\RegisterExternalBindingModel.cs" />
+    <Compile Include="BindingModels\Account\ResetPasswordBindingModel.cs" />
     <Compile Include="BindingModels\ProfileBindingModel.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="ExceptionHandling\ErrorMessageResult.cs" />
