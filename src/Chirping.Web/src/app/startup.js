@@ -1,5 +1,4 @@
-define(['jquery', 'knockout', './router', 'services/auth-service', 'bootstrap',
-  'knockout-projections', 'knockout-validation', 'validation/ko-validation-config', 'qtip2', 'bindingHandlers/bindingHandlers'],
+define(['jquery', 'knockout', './router', 'bootstrap', 'validation/ko-validation-config', 'bindingHandlers/bindingHandlers'],
   function ($, ko, router, auth) {
 
     var viewModel = {
@@ -10,6 +9,7 @@ define(['jquery', 'knockout', './router', 'services/auth-service', 'bootstrap',
     $.ajaxSetup({
       contentType: 'application/json; charset=utf-8'
     });
+
 
     // Components can be packaged as AMD modules, such as the following:
 
