@@ -4,6 +4,9 @@ define(['knockout', 'text!./component-container.html'], function (ko, templateMa
     
     var self = this;
     var parent = params.parent;
+    
+    // defines the header of the component that will be displayed
+    self.header = ko.observable();
 
     self.showComponent = ko.observable(params.showComponent);
     self.activeComponent = ko.observable(params.component);

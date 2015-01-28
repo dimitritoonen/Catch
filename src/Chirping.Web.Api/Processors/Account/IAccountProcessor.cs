@@ -23,7 +23,8 @@ namespace Chirping.Web.Api.Processors.Account
         Task<IdentityResult> ConfirmEmailAsync(string userId, string code);
 
         Task<bool> IsEmailConfirmedAsync(string userId);
-        Task SendResetPasswordEmail(string userId);
+        Task SendResetPasswordEmail(string email, string userId);
+        Task<IdentityResult> ResetPassword(ResetPasswordBindingModel model);
 
         Client FindClient(string clientId);
 

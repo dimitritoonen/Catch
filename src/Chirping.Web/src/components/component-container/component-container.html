@@ -1,8 +1,11 @@
 <div class="page-wrap" data-bind="click: closeSelf"></div>
 <div>
     <div id="register-container" class="show-container center-block" data-bind="if: showComponent">
-        <div class="component-container-controls center-block">
-            <div id="selectedComponent" class="component component-container-controls center-block" data-bind="component: getActiveComponent()"></div>
+        <div id="selectedComponent" class="component center-block">
+            <div class="text-center">
+                <h2 data-bind="text: header"></h2>
+            </div>
+            <div class="component-container-controls" data-bind="component: getActiveComponent()"></div>
         </div>
     </div>
 </div>

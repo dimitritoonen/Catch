@@ -5,6 +5,8 @@ define(['knockout', 'text!./forgot-password.html', 'services/webapi-service'], f
     var self = this;
     var container = params.container;
 
+    container.header('Reset password');
+
     // email address to reset
     self.EmailAddress = ko.observable().extend({
       required: true,

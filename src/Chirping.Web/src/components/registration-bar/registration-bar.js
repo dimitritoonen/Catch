@@ -5,6 +5,8 @@ define(['knockout', 'text!./registration-bar.html', './registration-model', 'ser
     var self = this;
     self.container = params.container;
 
+    self.container.header('Register');
+
     // indicates if all wizards are validated and registration form is completely filled in
 
     var minSteps = 1;
