@@ -1,11 +1,10 @@
-<div class="page-wrap" data-bind="click: closeSelf"></div>
-<div>
-    <div id="register-container" class="show-container center-block" data-bind="if: showComponent">
-        <div id="selectedComponent" class="component center-block">
-            <div class="text-center">
-                <h2 data-bind="text: header"></h2>
-            </div>
-            <div class="component-container-controls" data-bind="component: getActiveComponent()"></div>
+<div id="container-component" class="container-wrap show-cursor" data-bind="click: closeViaBackground"></div>
+<div id="register-container" class="show-container center-block" data-bind="if: showComponent">
+    <div id="selectedComponent" class="component center-block">
+        <div class="pull-right component-container-close-button" data-bind="click: closeSelf">x</div>
+        <div class="text-center">
+            <h2 data-bind="text: header"></h2>
         </div>
+        <div class="component-container-controls" data-bind="component: getActiveComponent()"></div>
     </div>
 </div>

@@ -6,6 +6,7 @@ define(['knockout', 'text!./registration-bar.html', './registration-model', 'ser
     self.container = params.container;
 
     self.container.header('Register');
+    self.container.canCloseSelf(false);
 
     // indicates if all wizards are validated and registration form is completely filled in
 

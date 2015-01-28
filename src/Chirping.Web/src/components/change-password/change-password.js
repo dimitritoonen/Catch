@@ -5,6 +5,7 @@ define(['knockout', 'text!./change-password.html', 'services/webapi-service'], f
     var self = this;
     var container = params.container;
     container.header('Change password');
+    container.canCloseSelf(true);
     
     self.errorTitle = ko.observable();
     self.errorDescription = ko.observable();
@@ -12,7 +13,7 @@ define(['knockout', 'text!./change-password.html', 'services/webapi-service'], f
     
     // get a value from the querystring and return 'value_not_found' is the value is not present
     var GetValueFromQuerystring = function (value) {
-      var querystring = params.container.querystring;
+      var querystring = container.querystring;
 
       if (querystring === undefined ||
         querystring[value] === undefined) {
@@ -98,8 +99,6 @@ define(['knockout', 'text!./change-password.html', 'services/webapi-service'], f
         webapi.Post(url, data).done(function () {
           container.updateActiveComponent('password-changed');
         }).error(function (result) {
-
-          console.log(result);
           self.showErrorBox(true);
         });
       }

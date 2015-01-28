@@ -5,9 +5,8 @@ define(['knockout', 'text!./password-changed.html'], function(ko, templateMarkup
     var self = this;
 
     var container = params.container;
-
     container.header('Hooooraaahh!');
-
+    container.canCloseSelf(true);
 
     self.loadLoginComponent = function () {
       container.updateActiveComponent('login-bar');

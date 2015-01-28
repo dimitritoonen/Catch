@@ -5,9 +5,10 @@ define(['knockout', 'text!./reset-password-sent.html'], function (ko, templateMa
   function ResetPasswordSent(params) {
    
     var self = this;
-    var container = params.container;
 
+    var container = params.container;
     container.header('Login');
+    container.canCloseSelf(true);
 
     self.closeContainer = function () {
       container.closeSelf();

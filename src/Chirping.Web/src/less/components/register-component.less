@@ -85,3 +85,129 @@
 .full-height {
     height: 100%;
 }
+
+
+.register-bar-nav {
+    opacity: 0.75;
+    cursor: pointer;
+    position:relative;
+    top:95px;
+}
+
+.register-bar-nav.left {
+    left:8px;
+}
+
+.register-bar-nav.right {
+    right:8px;
+}
+
+
+
+#wizardIndication.progress-image {
+    background-repeat: no-repeat;
+    width: 64px;
+    height: 27px;
+}
+
+#wizardIndication.image-step1 {
+    background-image: url(/images/wizardStep1.gif);
+}
+
+#wizardIndication.image-step2 {
+    background-image: url(/images/wizardStep2.gif);
+}
+
+#wizardIndication.image-step3 {
+    background-image: url(/images/wizardStep3.gif);
+}
+
+.gender-male-icon {
+    background-image: url('../images/maleSign.gif');
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 56px;
+}
+
+.gender-female-icon {
+    background-image: url('../images/femaleSign.gif');
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 56px;
+}
+
+.empty-profile-image-small {
+    background-image: url('../images/emptyProfileSmall.jpg');
+    background-repeat: no-repeat;
+    padding: 2px;
+    width: 75px;
+    height: 91px;
+}
+
+
+
+
+.wizard-profileImage:hover {
+    background-image: url('../images/emptyProfileSmalls-selected.jpg');
+    cursor: pointer;
+}
+
+.wizard-profile-image-thumb {
+    position:relative;
+    z-index:120;
+    left: 1px;
+    top: -64px;
+    width: 67px;
+    height: 67px;
+    border: none;
+    padding: 0px;
+}
+
+
+.loading-icon-background {
+    position:relative;
+    top: 3px;
+    left: 1px;
+    width: 67px;
+    height: 67px;
+    background: white;
+    opacity: 0.75;
+}
+
+
+.loading-icon {
+    background: url('../images/loading.png') repeat 0 0;
+    z-index: 121;
+    top: 10px;
+    left: 9px;
+    position: relative;
+    width:50px;
+    height:50px;
+}
+
+.loading-icon-animation {
+    -webkit-animation: rotateThis 1s infinite linear;
+    animation: rotateThis 1s infinite linear;
+    -moz-animation: rotateThis 1s infinite linear;
+    -o-animation:  rotateThis 1s infinite linear;
+}
+
+@-webkit-keyframes rotateThis {
+  from { transform: scale( 1 ) rotate( 0deg );   }
+  to   { transform: scale( 1 ) rotate( 360deg ); }
+}
+
+@keyframes rotateThis {
+  from { transform: scale( 1 ) rotate( 0deg );   }
+  to   { transform: scale( 1 ) rotate( 360deg ); }
+}
+
+@-moz-keyframes rotateThis {
+  from { transform: scale( 1 ) rotate( 0deg );   }
+  to   { transform: scale( 1 ) rotate( 360deg ); }
+}
+
+@-o-keyframes rotateThis {
+  from { transform: scale( 1 ) rotate( 0deg );   }
+  to   { transform: scale( 1 ) rotate( 360deg ); }
+}

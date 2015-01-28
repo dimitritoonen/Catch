@@ -4,6 +4,8 @@ define(['knockout', 'text!./account-activated.html'], function (ko, templateMark
   
     var self = this;
     var container = params.container;
+    container.header('Hoooraahh!');
+    container.canCloseSelf(true);
 
     self.loadLoginComponent = function () {
       container.updateActiveComponent('login-bar');

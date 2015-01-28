@@ -139,7 +139,6 @@
     <Content Include="src\images\wizardStep3.gif" />
     <Content Include="src\pages\intro-page\intro-page.html" />
     <Content Include="src\pages\intro-page\intro-page.js" />
-    <Content Include="src\pages\about-page\about.html" />
     <Content Include="src\components\login-bar\login-bar.js" />
     <Content Include="src\components\registration-bar\facebook-registration-model.js" />
     <Content Include="src\components\registration-bar\profile-image-upload\profile-image-upload.html" />
@@ -374,7 +373,7 @@
     <Content Include="test\bower_modules\requirejs\README.md" />
     <Content Include="bower.json" />
     <Content Include="package.json" />
-    <Content Include="src\app\ko-validation-config.js" />
+    <Content Include="src\validation\ko-validation-config.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\less\pages\intro-page.less" />
@@ -384,8 +383,7 @@
     <Content Include="src\fonts\OpenSans-Bold.ttf" />
     <Content Include="src\fonts\OpenSans-Light.ttf" />
     <Content Include="src\fonts\OpenSans-Regular.ttf" />
-    <Content Include="src\less\font-awesome.less" />
-    <Content Include="src\less\pages\registration-bar.less" />
+    <Content Include="src\less\vendor\font-awesome.less" />
     <None Include="src\less\styles.less" />
     <Content Include="src\Web.config" />
     <Content Include="src\less\vendor\jcrop.less" />
@@ -395,9 +393,6 @@
     <Content Include="src\less\variables.less" />
     <Content Include="src\less\vendor-prefixes.less" />
     <None Include="src\less\vendor\bootstrap.less" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\less\pages\intro-page-old.less" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\less\components\register-component.less" />

@@ -34,10 +34,10 @@
 
       var $element = $('#loadingIconBackground' + self.identifier);
 
-      if ($element.hasClass('visibility-hide'))
-        $element.removeClass('visibility-hide');
+      if ($element.hasClass('hide-visibility'))
+        $element.removeClass('hide-visibility');
       else
-        $element.addClass('visibility-hide');
+        $element.addClass('hide-visibility');
     }
 
 

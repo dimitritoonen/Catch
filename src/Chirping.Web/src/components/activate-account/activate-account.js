@@ -4,12 +4,16 @@ define(['knockout', 'text!./activate-account.html', 'services/webapi-service'], 
     
     var self = this;
 
+    var container = params.container;
+    container.header('Activating account');
+    container.canCloseSelf(true);
+
     self.showErrorBox = ko.observable(false);
     self.errorTitle = ko.observable();
     self.errorDescription = ko.observable();
 
     // the container contains the querystring
-    var querystring = params.container.querystring;
+    var querystring = container.querystring;
 
     var url = 'api/Account/ConfirmEmail';
     var data = {
@@ -19,7 +23,7 @@ define(['knockout', 'text!./activate-account.html', 'services/webapi-service'], 
 
     // activate the account by confirming the userId and Code
     webapi.Post(url, data).done(function (result) {
-      params.container.updateActiveComponent('account-activated');
+      container.updateActiveComponent('account-activated');
     }).error(function (result) {
       
       toggleError();

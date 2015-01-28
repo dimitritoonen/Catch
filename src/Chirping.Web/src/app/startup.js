@@ -1,5 +1,5 @@
 define(['jquery', 'knockout', './router', 'services/auth-service', 'bootstrap',
-  'knockout-projections', 'knockout-validation', 'app/ko-validation-config', 'qtip2', 'bindingHandlers/bindingHandlers'],
+  'knockout-projections', 'knockout-validation', 'validation/ko-validation-config', 'qtip2', 'bindingHandlers/bindingHandlers'],
   function ($, ko, router, auth) {
 
     var viewModel = {
