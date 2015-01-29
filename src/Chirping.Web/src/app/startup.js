@@ -21,26 +21,26 @@ define(['jquery', 'knockout', './router', 'bootstrap', 'validation/ko-validation
     // components //
 
     // intro-page -> login 
-    ko.components.register('component-container', { require: 'components/component-container/component-container' });
-    ko.components.register('login-bar', { require: 'components/login-bar/login-bar' });
-    ko.components.register('forgot-password', { require: 'components/forgot-password/forgot-password' });
-    ko.components.register('reset-password-sent', { require: 'components/forgot-password/reset-password-sent/reset-password-sent' });
-    ko.components.register('error-box', { require: 'components/component-container/error-box/error-box' });
+    ko.components.register('component-container', { require: 'components/intro-page/component-container/component-container' });
+    ko.components.register('login-bar', { require: 'components/intro-page/login-bar/login-bar' });
+    ko.components.register('forgot-password', { require: 'components/intro-page/forgot-password/forgot-password' });
+    ko.components.register('reset-password-sent', { require: 'components/intro-page/forgot-password/reset-password-sent/reset-password-sent' });
+    ko.components.register('error-box', { require: 'components/intro-page/component-container/error-box/error-box' });
 
     // intro-page -> change password
-    ko.components.register('change-password', { require: 'components/change-password/change-password' });
-    ko.components.register('password-changed', { require: 'components/change-password/password-changed/password-changed' });
+    ko.components.register('change-password', { require: 'components/intro-page/change-password/change-password' });
+    ko.components.register('password-changed', { require: 'components/intro-page/change-password/password-changed/password-changed' });
 
     // intro-page -> activate account
-    ko.components.register('activate-account', { require: 'components/activate-account/activate-account' });
-    ko.components.register('account-activated', { require: 'components/activate-account/account-activated/account-activated' });
+    ko.components.register('activate-account', { require: 'components/intro-page/activate-account/activate-account' });
+    ko.components.register('account-activated', { require: 'components/intro-page/activate-account/account-activated/account-activated' });
 
     // intro-page -> registration
-    ko.components.register('register', { require: 'components/registration-bar/registration-bar' });
-    ko.components.register('wizard-step1', { require: 'components/registration-bar/wizard-step1/wizard-step1' });
-    ko.components.register('wizard-step2', { require: 'components/registration-bar/wizard-step2/wizard-step2' });
-    ko.components.register('wizard-step3', { require: 'components/registration-bar/wizard-step3/wizard-step3' });
-    ko.components.register('profile-image-upload', { require: 'components/registration-bar/profile-image-upload/profile-image-upload' });
+    ko.components.register('register', { require: 'components/intro-page/registration-bar/registration-bar' });
+    ko.components.register('wizard-step1', { require: 'components/intro-page/registration-bar/wizard-step1/wizard-step1' });
+    ko.components.register('wizard-step2', { require: 'components/intro-page/registration-bar/wizard-step2/wizard-step2' });
+    ko.components.register('wizard-step3', { require: 'components/intro-page/registration-bar/wizard-step3/wizard-step3' });
+    ko.components.register('profile-image-upload', { require: 'components/intro-page/registration-bar/profile-image-upload/profile-image-upload' });
     
 
     // [Scaffolded component registrations will be inserted here. To retain this feature, don't remove this comment.]

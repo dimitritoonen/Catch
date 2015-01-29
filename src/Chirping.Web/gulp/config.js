@@ -230,31 +230,31 @@ module.exports = {
         include: [
             'requireLib',
             'pages/intro-page/intro-page',
-            'components/login-bar/login-bar',
-            'components/component-container/component-container',
-            'components/component-container/error-box/error-box',
-            'components/forgot-password/forgot-password',
-            'components/forgot-password/reset-password-sent/reset-password-sent'
+            'components/intro-page/login-bar/login-bar',
+            'components/intro-page/component-container/component-container',
+            'components/intro-page/component-container/error-box/error-box',
+            'components/intro-page/forgot-password/forgot-password',
+            'components/intro-page/forgot-password/reset-password-sent/reset-password-sent'
         ],
         insertRequire: ['app/startup'],
         bundles: {
           'account-activated': [
-            'components/activate-account/activate-account',
-            'components/activate-account/account-activated/account-activated'
+            'components/intro-page/activate-account/activate-account',
+            'components/intro-page/activate-account/account-activated/account-activated'
           ],
           'change-password': [
-          'components/change-password/change-password',
-          'components/change-password/password-changed/password-changed'
+          'components/intro-page/change-password/change-password',
+          'components/intro-page/change-password/password-changed/password-changed'
           ],
           'registration-page': [
             'services/auth-service',
             'services/auth-storage',
             'services/chunked-uploader',
-            'components/registration-bar/registration-bar',
-            'components/registration-bar/profile-image-upload/profile-image-upload',
-            'components/registration-bar/wizard-step1/wizard-step1',
-            'components/registration-bar/wizard-step2/wizard-step2',
-            'components/registration-bar/wizard-step3/wizard-step3'
+            'components/intro-page/registration-bar/registration-bar',
+            'components/intro-page/registration-bar/profile-image-upload/profile-image-upload',
+            'components/intro-page/registration-bar/wizard-step1/wizard-step1',
+            'components/intro-page/registration-bar/wizard-step2/wizard-step2',
+            'components/intro-page/registration-bar/wizard-step3/wizard-step3'
           ],
           'auth-complete': ['authentication/auth-complete']
         }
