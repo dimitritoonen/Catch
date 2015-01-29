@@ -15,7 +15,8 @@ var require = {
       "signals":              "bower_modules/js-signals/dist/signals.min",
       "text":                 "bower_modules/requirejs-text/text",
       "qtip2":                "bower_modules/qtip2/jquery.qtip.min",
-      "jcrop":                "bower_modules/jcrop/js/jquery.Jcrop.min"
+      "jcrop":                "bower_modules/jcrop/js/jquery.Jcrop.min",
+      "modernizr":            "modernizr"
     },
     shim: {
       "bootstrap": { deps: ["jquery"] },

@@ -66,6 +66,8 @@
     <Content Include="gulp\tasks\default.js" />
     <Content Include="gulp\tasks\dev-build\copy-auth.js" />
     <Content Include="gulp\tasks\dev-build\css-vendor.js" />
+    <Content Include="gulp\tasks\dev-build\modernizr.js" />
+    <Content Include="gulp\tasks\dev-build\svgmin.js" />
     <Content Include="gulp\tasks\_exclude-from-publish\recess.js" />
     <Content Include="gulp\tasks\dev-optimized-build\optimize-html.js" />
     <Content Include="gulp\tasks\dev-build\base64.js" />

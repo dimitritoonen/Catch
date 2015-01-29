@@ -92,7 +92,7 @@
     self.profileImage = ko.observable();
     self.profileImageThumb = ko.observable();
 
-    self.gender = ko.observable('Male');
+    self.gender = ko.observable('male');
 
     self.city = ko.observable().extend({
       required: true
@@ -106,7 +106,7 @@
       min: 16
     });
 
-    self.interestedIn = ko.observable('Female');
+    self.interestedIn = ko.observable('female');
 
     self.validationGroupStep2 = ko.validatedObservable({
       nickName: self.nickName,

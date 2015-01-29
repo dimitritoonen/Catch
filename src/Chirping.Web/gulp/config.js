@@ -113,15 +113,35 @@ module.exports = {
       dest: dest
     }
   },
+  modernizr: {
+    development: {
+      src: [
+        '!' + src + '/bower_modules/**/*.js',
+        src + '/**/*.js'
+      ],
+      dest: dest
+    },
+    production: {
+      src: src,
+      dest: production + '/modernizer-custom.js'
+    }
+  },
   components: {
     src: src + '/components/**/*.html',
     dest: dest
   },
   images: {
     src: [
-      src + '/images/**/*',
+      src + '/images/**/*.{jpg,jpeg,png,gif}',
       src + '/bower_modules/jcrop/css/*'
       ],
+    dest: dest + '/images/'
+  },
+  svgmin: {
+    src: [
+      '!' + src + '/bower_modules/**/*.svg',
+      src + '/images/**/*.svg'
+    ],
     dest: dest + '/images/'
   },
   fonts: {
@@ -146,7 +166,6 @@ module.exports = {
   // specifies the which files trigger the watch mechanism
   watch: {
     less: [
-      //'!' + src + '/less/vendor/bootstrap.less',
       src + '/less/**/*.less'
     ],
     scripts: src + '/**/*.js',

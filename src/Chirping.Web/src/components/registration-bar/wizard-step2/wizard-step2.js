@@ -1,22 +1,17 @@
 define(['knockout', 'bootstrap-dialog', 'text!./wizard-step2.html', 'jcrop'], function (ko, bootstrapDialog, templateMarkup) {
 
   function WizardStep2(params) {
-    
-    // constants
-    var genderMaleIcon = 'gender-male-icon';
-    var genderFemaleIcon = 'gender-female-icon';
-    var genderBothIcon = 'gender-both-icon';
 
     var self = this;
 
     self.registration = params.registration;
     
     self.CurrentGenderIcon = ko.computed(function () {
-      return (self.registration.gender() == 'Male' ? genderMaleIcon : genderFemaleIcon);
+      return 'gender-' + self.registration.gender() + '-icon';
     });
 
     self.CurrentInterestedInIcon = ko.computed(function () {
-      return (self.registration.interestedIn() == 'Male' ? genderMaleIcon : genderFemaleIcon);
+      return 'gender-' + self.registration.interestedIn() + '-icon';
     });
 
     var validationGroup = ko.validatedObservable({

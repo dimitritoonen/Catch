@@ -9,7 +9,7 @@ gulp.task('build:production', function (callback) {
     [
       'scripts:publish',
       'optimize:html',
-      'less',
+      'less:optimized',
       'images',
       'fonts'
     ],
