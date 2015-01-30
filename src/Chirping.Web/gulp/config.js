@@ -113,19 +113,6 @@ module.exports = {
       dest: dest
     }
   },
-  modernizr: {
-    development: {
-      src: [
-        '!' + src + '/bower_modules/**/*.js',
-        src + '/**/*.js'
-      ],
-      dest: dest
-    },
-    production: {
-      src: src,
-      dest: production + '/modernizer-custom.js'
-    }
-  },
   components: {
     src: src + '/components/**/*.html',
     dest: dest
