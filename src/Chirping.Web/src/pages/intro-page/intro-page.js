@@ -25,7 +25,7 @@ define(['knockout', 'text!./intro-page.html', 'qtip2'], function (ko, templateMa
       self.showComponent(!self.showComponent());
     };
 
-    //self.loadComponent('password-changed');
+    //self.loadComponent('register');
 
     initializeIntroPage(params.component);
 

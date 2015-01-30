@@ -20,7 +20,9 @@ gulp.task('build:acceptance', function (callback) {
       'copy:fonts:publish'
     ],
     'copy:web:config',
-    //'revision',
-    //'rev:collect',
+    'revision',
+    'revision:collect',
+    'revision:cleanup',
+    'revision:requireJs:collect',
     callback);
 });
