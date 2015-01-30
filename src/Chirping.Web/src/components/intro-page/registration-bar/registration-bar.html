@@ -1,30 +1,30 @@
 ﻿<div id="loginScreen">
-    <div class="row"><br /></div>
+    <div class="hidden-xs row"><br /></div>
     <div class="row">
         <div id="wizardIndication" data-bind="css: currentStepImage" class="progress-image center-block"></div>
     </div>
-    <div class="row">
-        <div class="col-xs-1"></div>
-        <div class="col-xs-10">
-            <hr>
-        </div>
-        <div class="col-xs-1"></div>
-    </div>
+    <br />
     <div id="loginSpinner" class="login-loader text-center hide">
         <i class="fa fa-spinner fa-4x spin icon-lighter"></i>
         <br /><br />
         registering...
     </div>
-    <div class="row"> <!--style="border: 1px solid red;">-->
-        <div class="col-xs-1">
-            <i class="fa fa-angle-left fa-4x pull-right register-bar-nav left" data-bind="click: PreviousStep, visible: currentStep() > 2"></i>
+    <div class="row">
+        <div class="hidden-xs col-xs-1">
+            <i class="hidden-xs fa fa-angle-left fa-4x pull-right register-bar-nav left" data-bind="click: PreviousStep, css: { 'hide-visibility' : currentStep() != 3 }"></i>
         </div>
-        <div class="col-xs-10 center-block">
+        <div class="col-xs-12 col-ms-10 col-sm-10 col-md-10 col-lg-10 center-block">
             <div id="wizardStep" data-bind="component: { name: currentWizardStep, params: { registration: registration, container: container } }"></div>
         </div>
-        <div class="col-xs-1">
-            <i class="fa fa-angle-right fa-4x pull-left register-bar-nav right" data-bind="click: NextStep, visible: currentStep() < 3"></i>
+        <div class="hidden-xs col-xs-1">
+            <i class="hidden-xs fa fa-angle-right fa-4x pull-left register-bar-nav right" data-bind="click: NextStep, css: { 'hide-visibility': currentStep() == 3 }"></i>
         </div>
+    </div>
+    <div class="row visible-xs">
+        <div class="col-xs-12">
+            <button class="btn pull-left" data-bind="click: PreviousStep, css: { 'hide-visibility' : currentStep() != 3 }"><< Previous</button>
+            <button class="btn pull-right" data-bind="click: NextStep, css: { 'hide-visibility' : currentStep() == 3 }">Next >></button>
+        </div>  
     </div>
     <div id="registrationRegisterButton" data-bind="visible: currentStep() == 3" class="row">
         <div class="col-xs-12 text-center">
@@ -35,10 +35,11 @@
         </div>
     </div><br />
     <div class="row">
-        <div class="col-xs-1"></div>
-        <div class="col-xs-10">
+        <div class="col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10 center-xs">
             Already registered?&nbsp;<a data-bind="click: showLoginComponent">Click here!</a>
         </div>
-        <div class="col-xs-1"></div>
+        <div class="col-sm-1"></div>
     </div>
+    <br />
 </div>

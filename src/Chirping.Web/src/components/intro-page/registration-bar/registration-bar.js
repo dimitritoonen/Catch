@@ -81,6 +81,8 @@ define(['knockout', 'text!./registration-bar.html', './registration-model', 'ser
       } else {
 
         toggleLoading();
+        self.container.clearHeader();
+        self.container.hideCloseButton();
 
         var data = self.registration.GetUserData();
       
