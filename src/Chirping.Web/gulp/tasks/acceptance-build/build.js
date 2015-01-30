@@ -9,6 +9,7 @@ gulp.task('build:acceptance', function (callback) {
       'optimize:html',
       'less:optimized',
       'images',
+      'svgmin',
       'fonts'
     ],
     'base64',

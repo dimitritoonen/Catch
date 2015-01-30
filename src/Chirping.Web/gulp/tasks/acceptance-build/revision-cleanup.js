@@ -19,11 +19,12 @@ gulp.task('revision:cleanup', function () {
     sources.push('./' + manifestConfig.path + '/' + oldFile);
   })
 
+  console.log(sources);
+
   // add the manifest file itself
   sources.push('./' + manifestConfig.path + '/' + manifestConfig.name);
 
   return gulp.src(sources)
-    .pipe(gulp.dest('./build/publish/'))
     .pipe(vinylPaths(del));
   
 });
