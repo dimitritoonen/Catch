@@ -270,16 +270,24 @@ module.exports = {
       }
     },
     revision: {
-      src: {
-        base: production
-      },
-      dest: {
-        dest: production,
-        manifest: {
-          name: 'manifest.json',
-          path: production
-        }
+      src: [
+        production + '/**/*.css',
+        production + '/**/*.js',
+        production + '/images/**/*'
+      ],
+      dest: production,
+      manifest: {
+        name: 'manifest.json',
+        path: production
       }
+    },
+    revisionCollect: {
+      src: [
+        '!' + production + '/feed.xml',
+        production + '/manifest.json',
+        production + '/**/*.{html,xml,txt,json,css,js}'
+      ],
+      dest: production
     }
   }
 };

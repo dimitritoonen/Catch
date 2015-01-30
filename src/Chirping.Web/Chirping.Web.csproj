@@ -60,7 +60,11 @@
     <Content Include="gulpfile-publish.js" />
     <Content Include="gulpfile.js" />
     <Content Include="gulp\config.js" />
+    <Content Include="gulp\tasks\acceptance-build\revision-requireJs-collect.js" />
     <Content Include="gulp\tasks\acceptance-build\copy-web-config.js" />
+    <Content Include="gulp\tasks\acceptance-build\revision-cleanup.js" />
+    <Content Include="gulp\tasks\acceptance-build\revision-collect.js" />
+    <Content Include="gulp\tasks\acceptance-build\revision.js" />
     <Content Include="gulp\tasks\acceptance-build\scripts-publish.js" />
     <Content Include="gulp\tasks\acceptance.js" />
     <Content Include="gulp\tasks\default.js" />

@@ -22,7 +22,9 @@ gulp.task('build:production', function (callback) {
       'copy:fonts:publish'
     ],
     'copy:web:config',
-    //'revision',
-    //'rev:collect',
+    'revision',
+    'revision:collect',
+    'revision:cleanup',
+    'revision:requireJs:collect',
     callback);
 });
