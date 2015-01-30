@@ -248,7 +248,7 @@ module.exports = {
       }
     },
     images: {
-      src: dest + '/images/**/*.{jpg,jpeg,png,gif}',
+      src: dest + '/images/**/*.{jpg,jpeg,png,gif,svg}',
       dest: production + '/images',
       options: {
         optimizationLevel: 3,
