@@ -31,7 +31,9 @@
     window.$windowScope = loginService;
     loginService.loginCallback = callback;
 
-    var oauthWindows = window.open(externalProviderUrl, "Authenticate Account", "location=0,status=0,width=750,height=600");
+    //var window = window.open(externalProviderUrl, "Authenticate Account", "location=0,status=0,width=750,height=600");
+    var win = window.open(externalProviderUrl, "_blank");
+    win.focus();
   };
 
   // complete the authentication after the logon of the external provider
