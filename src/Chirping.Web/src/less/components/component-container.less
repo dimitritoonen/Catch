@@ -18,7 +18,7 @@
     position: relative;
     z-index:999;
     min-height: 100vh !important;
-    background-color: #f4f4f4;// @grey-background;
+    background-color: @grey-background;
     width:100%;
     overflow: auto;
     @media (min-width: @screen-xs-min) {
@@ -34,7 +34,7 @@
     width:90%;
     opacity: 0;
     padding-top: 75px;
-    .transition(~"opacity .3s ease-out, top .3s ease-out");
+    .transition(~"opacity .3s ease-out, padding-top .3s ease-out");
 
     @media (max-width: @screen-xs-min) {
         padding-top:50px;
