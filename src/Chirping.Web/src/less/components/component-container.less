@@ -18,10 +18,11 @@
     position: relative;
     z-index:999;
     min-height: 100vh !important;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: #f4f4f4;// @grey-background;
     width:100%;
     overflow: auto;
     @media (min-width: @screen-xs-min) {
+        background-color: rgba(255, 255, 255, 0.95);
         width:450px;
     }
 }
@@ -32,11 +33,11 @@
     position:relative;
     width:90%;
     opacity: 0;
-    top: 75px;
+    padding-top: 75px;
     .transition(~"opacity .3s ease-out, top .3s ease-out");
 
     @media (max-width: @screen-xs-min) {
-        top:50px;
+        padding-top:50px;
     }
 }
 
@@ -46,10 +47,10 @@
 
 .component.show {
     opacity: 1;
-    top: 100px;
+    padding-top: 100px;
 
     @media (max-width: @screen-xs-min) {
-        top: 75px;
+        padding-top: 75px;
     }
 }
 
