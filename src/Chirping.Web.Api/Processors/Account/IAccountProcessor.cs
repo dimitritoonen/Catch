@@ -1,6 +1,7 @@
 ﻿#region using directives
 
 using Chirping.Web.Api.BindingModels.Account;
+using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Common.Domain;
 using Chirping.Web.Api.Data.Entities;
 using Microsoft.AspNet.Identity;
@@ -17,7 +18,13 @@ namespace Chirping.Web.Api.Processors.Account
     {
         Task<IdentityResult> RegisterUser(RegisterBindingModel registerUser);
         void Logout(HttpRequestMessage request);
+
         Task<IdentityResult> ChangePassword(ChangePasswordBindingModel changedPassword);
+        Task<IdentityResult> ConfirmEmailAsync(string userId, string code);
+
+        Task<bool> IsEmailConfirmedAsync(string userId);
+        Task SendResetPasswordEmail(string email, string userId);
+        Task<IdentityResult> ResetPassword(ResetPasswordBindingModel model);
 
         Client FindClient(string clientId);
 
@@ -25,9 +32,10 @@ namespace Chirping.Web.Api.Processors.Account
 
         Task<UserAccountEntity> FindAsync(UserLoginInfo loginInfo);
         Task<UserAccountEntity> FindByEmailAsync(string email);
-        Task<IdentityResult> CreateAsync(UserAccountEntity user);
+        Task<IdentityResult> CreateAsync(RegisterExternalBindingModel registerUser);
         Task<IdentityResult> AddLoginAsync(string userId, UserLoginInfo login);
 
         #endregion
+
     }
 }

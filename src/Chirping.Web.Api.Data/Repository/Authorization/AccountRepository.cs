@@ -1,78 +1,85 @@
 ﻿#region using directives
 
+using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Common.Domain;
+using Chirping.Web.Api.Common.Security;
 using Chirping.Web.Api.Data.Context;
-using Chirping.Web.Api.Data.Entities;
-
+using Chirping.Web.Api.Security.Data.Context;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-
+using Microsoft.AspNet.Identity.Owin;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Web;
 
 #endregion
 
-namespace Chirping.Web.Api.Data.Repository
+namespace Chirping.Web.Api.Data.Repository.Authorization
 {
     public class AccountRepository : IAccountRepository, IDisposable
     {
         private ChirpingContext _context;
+        private ApplicationUserManager _userManager;
 
-        private UserManager<UserAccountEntity> _userManager;
+        #region constructor
+        
+        public AccountRepository(ApplicationUserManager userManager)
+            : base()
+        {
+            this._userManager = userManager;
+        }
 
         public AccountRepository()
         {
             _context = new ChirpingContext();
+        }
+        
+        #endregion
 
-            _userManager = GetUserManager();
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
         }
 
-        private UserManager<UserAccountEntity> GetUserManager()
+
+        // register the user via the UserManager (ASP.NET Identity 2.0)
+        public async Task<RegisterUserResult> RegisterUser(UserAccount user)
         {
-            var manager = new UserManager<UserAccountEntity>(new UserStore<UserAccountEntity>(_context));
+            RegisterUserResult result = new RegisterUserResult();
 
-            // Configure validation logic for usernames
-            manager.UserValidator = new UserValidator<UserAccountEntity>(manager)
-            {
-                AllowOnlyAlphanumericUserNames = false,
-                RequireUniqueEmail = true
-            };
-
-            // Configure validation logic for passwords
-            manager.PasswordValidator = new PasswordValidator
-            {
-                RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
-                RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true,
-            };
-
-            return manager;
-        }
-
-        public async Task<IdentityResult> RegisterUser(UserAccount user)
-        {
-            UserAccountEntity newUser = new UserAccountEntity
-            {
-                UserName = user.Email,
-                Email = user.Email,
-                NickName = user.NickName,
-                Age = user.Age,
-                Gender = user.Gender,
-                City = user.City,
-                InterestedIn = user.InterestedIn,
-                ProfileImage = user.ProfileImage
-            };
-
-            var result = await _userManager.CreateAsync(newUser, user.Password);
+            UserAccountEntity newUser = GetUserEntityFromUser(user);
+            result.UserId = newUser.Id;
+            result.IdentityResult = await TryRegisteringUser(newUser, user);
 
             return result;
         }
 
+        private async Task<IdentityResult> TryRegisteringUser(UserAccountEntity newUser, UserAccount user)
+        {
+            try
+            {
+                return await UserManager.CreateAsync(newUser, user.Password);
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError("Error occurred while registering user with id: '{0}', and e-mail: '{1}', Exception: {2}", newUser.Id, newUser.Email, ex.ToString());
+
+                throw ex;
+            }
+        }
+        
+
         public async Task<UserAccountEntity> FindUser(string email, string password)
         {
-            UserAccountEntity user = await _userManager.FindAsync(email, password);
+            UserAccountEntity user = await UserManager.FindAsync(email, password);
 
             return user;
         }
@@ -93,42 +100,107 @@ namespace Chirping.Web.Api.Data.Repository
             };
         }
 
+
+        #region e-mail confirmation and password reset
+
+        public async Task<IdentityResult> ConfirmEmailAsync(string userId, string code)
+        {
+            return await UserManager.ConfirmEmailAsync(userId, code);
+        }
+
+        public async Task<string> GenerateEmailConfirmationTokenAsync(string userid)
+        {
+            return await UserManager.GenerateEmailConfirmationTokenAsync(userid);
+        }
+
+        public async Task<bool> IsEmailConfirmedAsync(string userId)
+        {
+            return await UserManager.IsEmailConfirmedAsync(userId);
+        }
+
+        public async Task SendEmailAsync(string userId, string subject, string body)
+        {
+            await UserManager.SendEmailAsync(userId, subject, body);
+        }
+
+        public async Task<string> GeneratePasswordResetTokenAsync(string userId)
+        {
+            return await UserManager.GeneratePasswordResetTokenAsync(userId);
+        }
+
+        public async Task<IdentityResult> ResetPassword(string userId, string token, string newPassword)
+        {
+            return await UserManager.ResetPasswordAsync(userId, token, newPassword);
+        }
+
+        #endregion
+
+
         #region operations for external logon (Facebook, Google, etc)
 
         public async Task<UserAccountEntity> FindAsync(UserLoginInfo loginInfo)
         {
-            UserAccountEntity user = await _userManager.FindAsync(loginInfo);
+            UserAccountEntity user = await UserManager.FindAsync(loginInfo);
 
             return user;
         }
 
         public async Task<UserAccountEntity> FindByEmailAsync(string email)
         {
-            UserAccountEntity user = await _userManager.FindByEmailAsync(email);
+            UserAccountEntity user = await UserManager.FindByEmailAsync(email);
 
             return user;
         }
 
-        public async Task<IdentityResult> CreateAsync(UserAccountEntity user)
+        public async Task<RegisterUserResult> CreateAsync(UserAccount user)
         {
-            var result = await _userManager.CreateAsync(user);
+            RegisterUserResult result = new RegisterUserResult();
+
+            UserAccountEntity newUser = GetUserEntityFromUser(user);
+            result.UserId = newUser.Id;
+
+            result.IdentityResult = await UserManager.CreateAsync(newUser);
 
             return result;
         }
 
+        private UserAccountEntity GetUserEntityFromUser(UserAccount user)
+        {
+            return new UserAccountEntity
+            {
+                UserName = user.Email,
+                Email = user.Email,
+                NickName = user.NickName,
+                Age = user.Age,
+                Gender = user.Gender,
+                City = user.City,
+                InterestedIn = user.InterestedIn,
+                ProfileImage = user.ProfileImage
+            };
+        }
+
         public async Task<IdentityResult> AddLoginAsync(string userId, UserLoginInfo login)
         {
-            var result = await _userManager.AddLoginAsync(userId, login);
+            var result = await UserManager.AddLoginAsync(userId, login);
 
             return result;
         }
 
         #endregion
 
+
+        #region disposal operations
+
         public void Dispose()
         {
             _context.Dispose();
-            _userManager.Dispose();
+
+            if (_userManager != null)
+            {
+                _userManager.Dispose();
+            }
         }
+
+        #endregion
     }
 }

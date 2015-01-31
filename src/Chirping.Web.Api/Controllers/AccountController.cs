@@ -1,7 +1,8 @@
 ﻿#region using directives
 
+using Chirping.Web.Api.ActionFilters;
 using Chirping.Web.Api.BindingModels.Account;
-using Chirping.Web.Api.Data.Entities;
+using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Processors.Account;
 using Chirping.Web.Api.Results;
 using Microsoft.AspNet.Identity;
@@ -13,6 +14,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Configuration;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -44,16 +46,10 @@ namespace Chirping.Web.Api.Controllers
         [AllowAnonymous]
         [Route("Register")]
         [HttpPost]
-        public async Task<IHttpActionResult> Register(RegisterBindingModel user)
+        [CheckModelForNull]
+        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            IdentityResult result = null;
-
-            result = await _processor.RegisterUser(user);
+            IdentityResult result = await _processor.RegisterUser(model);
             
             IHttpActionResult errorResult = GetErrorResult(result);
 
@@ -62,20 +58,94 @@ namespace Chirping.Web.Api.Controllers
                 return errorResult;
             }
 
+            var accessTokenResponse = GenerateLocalAccessTokenResponse(model.Email);
+
+            return Ok(accessTokenResponse);
+        }
+
+
+        [AllowAnonymous]
+        [Route("ConfirmEmail")]
+        [HttpPost]
+        [CheckModelForNull]
+        public async Task<IHttpActionResult> ConfirmEmail(ConfirmEmailBindingModel model)
+        {
+            var result = await _processor.ConfirmEmailAsync(model.UserId, model.Code);
+
+            IHttpActionResult errorResult = GetErrorResult(result);
+
+            if (errorResult != null)
+            {
+                var response = GetConfirmEmailResponse();
+                throw new HttpResponseException(response);
+            }
+
             return Ok();
         }
+
+        private HttpResponseMessage GetConfirmEmailResponse()
+        {
+            return new HttpResponseMessage(HttpStatusCode.NotFound)
+            {
+                Content = new StringContent("The incorrect confirm code has been provided. Please request another one"),
+                ReasonPhrase = "Invalid confirm code"
+            };
+        }
+
+
+        
+        [AllowAnonymous]
+        [Route("ForgotPassword")]
+        [HttpPost]
+        [CheckModelForNull]
+        public async Task<IHttpActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            var user = await _processor.FindByEmailAsync(model.Email);
+            if (user == null || 
+                !(await _processor.IsEmailConfirmedAsync(user.Id)))
+            {
+                // Don't reveal that the user does not exist or is not confirmed
+                return Ok();
+            }
+
+            await _processor.SendResetPasswordEmail(model.Email, user.Id);
+
+            return Ok();
+        }
+
+        [AllowAnonymous]
+        [Route("ResetPassword")]
+        [HttpPost]
+        [CheckModelForNull]
+        public async Task<IHttpActionResult> ResetPassword(ResetPasswordBindingModel model)
+        {
+            var user = await _processor.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                // don't reveal to the user that the e-mail address is not registered
+                return Ok();
+            }
+
+            var result = await _processor.ResetPassword(model);
+
+            IHttpActionResult errorResult = GetErrorResult(result);
+            
+            if (!result.Succeeded)
+            {
+                return BadRequest();
+            }
+
+            return Ok();
+        }
+
 
 
         // POST api/Account/Logout
         [Route("ChangePassword")]
         [HttpPost]
+        [CheckModelForNull]
         public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel changedPassword)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             IdentityResult result = await _processor.ChangePassword(changedPassword);
 
             IHttpActionResult errorResult = GetErrorResult(result);
@@ -87,6 +157,7 @@ namespace Chirping.Web.Api.Controllers
 
             return Ok();
         }
+
 
         #region operations for external login (Google, Facebook, etc)
 
@@ -129,32 +200,41 @@ namespace Chirping.Web.Api.Controllers
                 return new ChallengeResult(provider, null);
             }
 
-            bool hasRegistered = await IsUserRegistered(externalLogin);
-            //bool hasRegistered = (user != null);
+            IdentityUser user = await IsUserRegistered(externalLogin);
+            bool hasRegistered = (user != null);
+            bool isRegisteredAsExternal = IsRegisteredAsExternal(user);
 
             var email = HttpUtility.UrlEncode(externalLogin.Email);
 
-            redirectUri = string.Format("{0}#external_access_token={1}&provider={2}&haslocalaccount={3}&external_email={4}",
+            redirectUri = string.Format("{0}#external_access_token={1}&provider={2}&haslocalaccount={3}&external_email={4}&isregisteredasexternal={5}",
                redirectUri,
                externalLogin.ExternalAccessToken,
                externalLogin.LoginProvider,
                hasRegistered.ToString(),
-               email);
+               email,
+               isRegisteredAsExternal);
 
             return Redirect(redirectUri);
         }
 
-        private async Task<bool> IsUserRegistered(ExternalLoginData externalLogin)
+
+        // checks if the user is registered with username and password (ergo. Not registered with external provider)
+        private static bool IsRegisteredAsExternal(IdentityUser user)
+        {
+            return (user != null && user.PasswordHash == null);
+        }
+
+        private async Task<IdentityUser> IsUserRegistered(ExternalLoginData externalLogin)
         {
             // check user existence by provider id
             IdentityUser user = await _processor.FindAsync(new UserLoginInfo(externalLogin.LoginProvider, externalLogin.ProviderKey));
             if (user != null)
-                return true;
+                return user;
 
             // if user is not registered via facebook, maybe the e-mail address is still used for manual registration.
-            user = await _processor.FindByEmailAsync(externalLogin.Email);
+            return await _processor.FindByEmailAsync(externalLogin.Email);
 
-            return (user != null);
+            //return (user != null);
         }
 
         [AllowAnonymous]
@@ -183,9 +263,9 @@ namespace Chirping.Web.Api.Controllers
                 return BadRequest("External user is already registered");
             }
 
-            user = new UserAccountEntity() { UserName = model.Email, Email = model.Email };
+            //user = new UserAccountEntity() { UserName = model.Email, Email = model.Email };
 
-            IdentityResult result = await _processor.CreateAsync(user);
+            IdentityResult result = await _processor.CreateAsync(model);
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -197,6 +277,8 @@ namespace Chirping.Web.Api.Controllers
                 Login = new UserLoginInfo(provider, verifiedAccessToken.user_id)
             };
 
+            user = await _processor.FindByEmailAsync(model.Email);
+
             result = await _processor.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
@@ -207,6 +289,7 @@ namespace Chirping.Web.Api.Controllers
 
             return Ok(accessTokenResponse);
         }
+
 
         [AllowAnonymous]
         [HttpGet]
@@ -311,7 +394,6 @@ namespace Chirping.Web.Api.Controllers
         }
 
         #endregion
-
 
         #region helpers
 

@@ -9,6 +9,7 @@ namespace Chirping.Web.Api.BindingModels.Account
     public class RegisterBindingModel
     {
         [Required]
+        [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 

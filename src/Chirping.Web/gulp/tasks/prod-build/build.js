@@ -9,7 +9,7 @@ gulp.task('build:production', function (callback) {
     [
       'scripts:publish',
       'optimize:html',
-      'less',
+      'less:optimized',
       'images',
       'fonts'
     ],
@@ -22,7 +22,9 @@ gulp.task('build:production', function (callback) {
       'copy:fonts:publish'
     ],
     'copy:web:config',
-    //'revision',
-    //'rev:collect',
+    'revision',
+    'revision:collect',
+    'revision:cleanup',
+    'revision:requireJs:collect',
     callback);
 });

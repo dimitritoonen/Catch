@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Chirping.Web.Api.Data.Entities
 {
     [Table("User")]
-    public class UserAccountEntity : IdentityUser
+    public class UserAccountEntity_old : IdentityUser
     {
         public string NickName { get; set; }
         public string Age { get; set; }

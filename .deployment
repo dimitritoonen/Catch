@@ -1,2 +1,5 @@
 [config]
 command = deploy.cmd
+
+# Don't track nuget libraries
+lib/

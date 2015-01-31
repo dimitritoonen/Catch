@@ -2,12 +2,11 @@
 
 using Chirping.Web.Api.AutoMapperConfigurators;
 using Chirping.Web.Api.Common;
-using Chirping.Web.Api.Common.Logging;
 using Chirping.Web.Api.Common.TypeMapping;
 using Chirping.Web.Api.Data.Repository;
+using Chirping.Web.Api.Data.Repository.Authorization;
 using Chirping.Web.Api.Processors;
 using Chirping.Web.Api.Processors.Account;
-using log4net.Config;
 using Ninject;
 using Ninject.Web.Common;
 
@@ -24,7 +23,6 @@ namespace Chirping.Web.Api.Infrastructure
 
         private void ConfigureBindings(IKernel kernel)
         {
-            ConfigureLogging(kernel);
             ConfigureAutoMapper(kernel);
 
             // repositories
@@ -35,15 +33,6 @@ namespace Chirping.Web.Api.Infrastructure
             // processors
             kernel.Bind<IUserProcessor>().To<UserProcessor>().InRequestScope();
             kernel.Bind<IAccountProcessor>().To<AccountProcessor>().InRequestScope();
-        }
-
-        private void ConfigureLogging(IKernel kernel)
-        {
-            // configures the log4net logging
-            XmlConfigurator.Configure();
-
-            var logManager = new LogManagerAdapter();
-            kernel.Bind<ILogManager>().ToConstant(logManager);
         }
 
         private void ConfigureAutoMapper(IKernel kernel)
@@ -60,6 +49,10 @@ namespace Chirping.Web.Api.Infrastructure
 
             kernel.Bind<IAutoMapperTypeConfigurator>()
                 .To<RegisterUserToAccountUserMapping>()
+                .InSingletonScope();
+
+            kernel.Bind<IAutoMapperTypeConfigurator>()
+                .To<RegisterExternalUserToAccountUserMapping>()
                 .InSingletonScope();
         }
     }

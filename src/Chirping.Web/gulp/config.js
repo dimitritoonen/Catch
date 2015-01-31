@@ -119,9 +119,16 @@ module.exports = {
   },
   images: {
     src: [
-      src + '/images/**/*',
+      src + '/images/**/*.{jpg,jpeg,png,gif}',
       src + '/bower_modules/jcrop/css/*'
       ],
+    dest: dest + '/images/'
+  },
+  svgmin: {
+    src: [
+      '!' + src + '/bower_modules/**/*.svg',
+      src + '/images/**/*.svg'
+    ],
     dest: dest + '/images/'
   },
   fonts: {
@@ -146,7 +153,6 @@ module.exports = {
   // specifies the which files trigger the watch mechanism
   watch: {
     less: [
-      //'!' + src + '/less/vendor/bootstrap.less',
       src + '/less/**/*.less'
     ],
     scripts: src + '/**/*.js',
@@ -211,33 +217,38 @@ module.exports = {
         include: [
             'requireLib',
             'pages/intro-page/intro-page',
-            'components/user-bar/user-bar',
-            'components/login-bar/login-bar'
+            'components/intro-page/login-bar/login-bar',
+            'components/intro-page/component-container/component-container',
+            'components/intro-page/component-container/error-box/error-box',
+            'components/intro-page/forgot-password/forgot-password',
+            'components/intro-page/forgot-password/reset-password-sent/reset-password-sent'
         ],
         insertRequire: ['app/startup'],
         bundles: {
-          'register-container': [
-            'components/component-container/component-container',
-            'components/login-bar/login-bar',
-            'components/forgot-password/forgot-password',
-            'components/component-container/error-box/error-box'
+          'account-activated': [
+            'components/intro-page/activate-account/activate-account',
+            'components/intro-page/activate-account/account-activated/account-activated'
+          ],
+          'change-password': [
+          'components/intro-page/change-password/change-password',
+          'components/intro-page/change-password/password-changed/password-changed'
           ],
           'registration-page': [
             'services/auth-service',
             'services/auth-storage',
             'services/chunked-uploader',
-            'components/registration-bar/registration-bar',
-            'components/registration-bar/profile-image-upload/profile-image-upload',
-            'components/registration-bar/wizard-step1/wizard-step1',
-            'components/registration-bar/wizard-step2/wizard-step2',
-            'components/registration-bar/wizard-step3/wizard-step3'
+            'components/intro-page/registration-bar/registration-bar',
+            'components/intro-page/registration-bar/profile-image-upload/profile-image-upload',
+            'components/intro-page/registration-bar/wizard-step1/wizard-step1',
+            'components/intro-page/registration-bar/wizard-step2/wizard-step2',
+            'components/intro-page/registration-bar/wizard-step3/wizard-step3'
           ],
           'auth-complete': ['authentication/auth-complete']
         }
       }
     },
     images: {
-      src: dest + '/images/**/*.{jpg,jpeg,png,gif}',
+      src: dest + '/images/**/*.{jpg,jpeg,png,gif,svg}',
       dest: production + '/images',
       options: {
         optimizationLevel: 3,
@@ -246,16 +257,24 @@ module.exports = {
       }
     },
     revision: {
-      src: {
-        base: production
-      },
-      dest: {
-        dest: production,
-        manifest: {
-          name: 'manifest.json',
-          path: production
-        }
+      src: [
+        production + '/**/*.css',
+        production + '/**/*.js',
+        production + '/images/**/*'
+      ],
+      dest: production,
+      manifest: {
+        name: 'manifest.json',
+        path: production
       }
+    },
+    revisionCollect: {
+      src: [
+        '!' + production + '/feed.xml',
+        production + '/manifest.json',
+        production + '/**/*.{html,xml,txt,json,css,js}'
+      ],
+      dest: production
     }
   }
 };

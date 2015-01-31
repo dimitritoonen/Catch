@@ -1,6 +1,10 @@
 ﻿#region using directives
 
+using Chirping.Web.Api.ActionFilters;
+using Chirping.Web.Api.Common.Security;
 using Chirping.Web.Api.Common.TypeMapping;
+using Chirping.Web.Api.Security.Data.Context;
+using Chirping.Web.Api.ExceptionHandling;
 using Chirping.Web.Api.Infrastructure;
 using Chirping.Web.Api.Providers;
 using Microsoft.AspNet.Identity;
@@ -12,6 +16,7 @@ using Owin;
 using System;
 using System.Configuration;
 using System.Web.Http;
+using System.Web.Http.ExceptionHandling;
 
 #endregion
 
@@ -25,16 +30,27 @@ namespace Chirping.Web.Api
         public static FacebookAuthenticationOptions FacebookAuthOptions { get; private set; }
 
         public void Configuration(IAppBuilder app)
-        {
+        { 
             var config = GlobalConfiguration.Configuration;
 
+            ConfigureUserManager(app);
             ConfigureOAuth(app);
 
             WebApiConfig.Register(config);
             app.UseCors(CorsOptions.AllowAll);
             app.UseWebApi(config);
             config.EnsureInitialized();
+
+            // configure filters and exception handlers/loggers
+            ConfigureFilters(config);
         }
+
+        private void ConfigureUserManager(IAppBuilder app)
+        {
+            app.CreatePerOwinContext(ChirpingIdentityContext.Create);
+            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+        }
+
 
         public void ConfigureOAuth(IAppBuilder app)
         {
@@ -65,6 +81,13 @@ namespace Chirping.Web.Api
             };
             FacebookAuthOptions.Scope.Add("email");
             app.UseFacebookAuthentication(FacebookAuthOptions);
+        }
+
+
+        private void ConfigureFilters(HttpConfiguration config)
+        {
+            //config.Filters.Add(new CheckModelForNullAttribute());
+            config.Filters.Add(new ValidateModelStateAttribute());
         }
     }
 }

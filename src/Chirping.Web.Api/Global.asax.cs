@@ -1,14 +1,16 @@
-﻿using Chirping.Web.Api.Common.TypeMapping;
-using Chirping.Web.Api.Data;
+﻿#region using directives
+
+using Chirping.Web.Api.Common.TypeMapping;
+using Chirping.Web.Api.ExceptionHandling;
 using Chirping.Web.Api.Infrastructure;
 using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+using System.Diagnostics;
 using System.Web.Http;
-using System.Web.Security;
-using System.Web.SessionState;
+using System.Web.Http.ExceptionHandling;
+// http://brockallen.com/2013/02/18/configuring-machine-key-protection-of-session-tokens-in-wif-and-thinktecture-identitymodel/
+using Thinktecture.IdentityModel.Web;
+
+#endregion
 
 namespace Chirping.Web.Api
 {
@@ -18,6 +20,26 @@ namespace Chirping.Web.Api
         {
             new AutoMapperConfigurator().Config(
                 WebContainerManager.GetAll<IAutoMapperTypeConfigurator>());
+
+            // see Thinktecture.IdentityModel.Web using
+            PassiveSessionConfiguration.ConfigureMackineKeyProtectionForSessionTokens();
+
+            RegisterExceptionHandler();
+        }
+
+        protected void Application_Error()
+        {
+            var exception = Server.GetLastError();
+
+            if (exception != null)
+            {
+                Trace.TraceError(exception.ToString());
+            }
+        }
+
+        private void RegisterExceptionHandler()
+        {
+            GlobalConfiguration.Configuration.Services.Replace(typeof(IExceptionHandler), new GlobalExceptionHandler());
         }
     }
 }

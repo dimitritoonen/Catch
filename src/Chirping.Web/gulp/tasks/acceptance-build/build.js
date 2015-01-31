@@ -9,6 +9,7 @@ gulp.task('build:acceptance', function (callback) {
       'optimize:html',
       'less:optimized',
       'images',
+      'svgmin',
       'fonts'
     ],
     'base64',
@@ -20,7 +21,9 @@ gulp.task('build:acceptance', function (callback) {
       'copy:fonts:publish'
     ],
     'copy:web:config',
-    //'revision',
-    //'rev:collect',
+    'revision',
+    'revision:collect',
+    'revision:cleanup',
+    'revision:requireJs:collect',
     callback);
 });

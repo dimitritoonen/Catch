@@ -28,6 +28,8 @@ namespace Chirping.Web.Api
 
             //var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
             //jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
+            //config.EnableSystemDiagnosticsTracing();
         }
     }
 }
