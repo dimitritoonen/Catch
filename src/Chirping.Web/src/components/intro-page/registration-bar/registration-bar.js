@@ -105,6 +105,9 @@ define(['knockout', 'text!./registration-bar.html', './registration-model', 'ser
     this.registration.dispose();
   };
 
-  return { viewModel: RegistrationBar, template: templateMarkup };
+  return {
+    viewModel: RegistrationBar,
+    template: templateMarkup
+  };
 
 });

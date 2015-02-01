@@ -196,10 +196,6 @@
 
 hr {
   height: 1px;
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .35), rgba(0, 0, 0, 0));
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .35), rgba(0, 0, 0, 0));
-  background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .35), rgba(0, 0, 0, 0));
-  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .35), rgba(0, 0, 0, 0));
   border: 0;
 }
 
@@ -256,3 +252,15 @@ hr {
 @font-size-h1: 50px;
 @headings-font-weight: 100;
 @btn-primary-bg: @blue;
+
+
+/* Boostrap nav-bar */
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    @media (min-width: @screen-xs-min) {
+        border-bottom: 2px solid @gray-light;
+    }
+}
+
+// changes the nav-bar collapse point at mobile width
+@grid-float-breakpoint: @screen-ms;

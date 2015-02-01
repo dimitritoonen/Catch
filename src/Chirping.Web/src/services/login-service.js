@@ -16,7 +16,7 @@
       data: loginData,
       contentType: 'application/x-www-form-urlencoded'
     }).done(function (data) {
-      authStorage.storeToken(data.access_token);
+      authStorage.StoreToken(data.access_token);
     });
   };
 

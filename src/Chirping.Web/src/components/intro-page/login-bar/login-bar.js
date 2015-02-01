@@ -15,7 +15,7 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service', 'services/
     self.showErrorBox = ko.observable(false);
 
     var redirectToDashboard = function () {
-      alert('open dashboard');
+      window.location.href = '#Workspace';
     };
 
     // display and hide the loading screen
@@ -29,6 +29,8 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service', 'services/
     self.login = function () {
 
       toggleLoading();
+      container.clearHeader();
+      container.hideCloseButton();
 
       var data = {
         grant_type: 'password',

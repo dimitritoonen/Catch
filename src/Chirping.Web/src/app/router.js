@@ -1,4 +1,4 @@
-define(["knockout", "crossroads", "hasher"], function (ko, crossroads, hasher) {
+define(['knockout', 'crossroads', 'hasher', 'services/auth-service'], function (ko, crossroads, hasher, auth) {
 
   // This module configures crossroads.js, a routing library. If you prefer, you
   // can use any other routing library (or none at all) as Knockout is designed to
@@ -11,7 +11,9 @@ define(["knockout", "crossroads", "hasher"], function (ko, crossroads, hasher) {
 
   return new Router({
     routes: [
-        { url: '', params: { page: 'intro-page' } },
+        { url: '', params: { page: 'workspace-page' } },
+        { url: 'Workspace', params: { page: 'workspace-page' } },
+        { url: 'Intro', params: { page: 'intro-page' } },
         { url: 'ActivateAccount{?query}', params: { page: 'intro-page', component: 'activate-account' } },
         { url: 'ChangePassword{?query}', params: { page: 'intro-page', component: 'change-password' } }
     ]
@@ -25,6 +27,9 @@ define(["knockout", "crossroads", "hasher"], function (ko, crossroads, hasher) {
       crossroads.addRoute(route.url, function (requestParams) {
         currentRoute(ko.utils.extend(requestParams, route.params));
       });
+
+      // check if the user is authenticated and redirect if not
+      crossroads.routed.add(AuthenticateUser);
     });
 
     activateCrossroads();
@@ -43,5 +48,16 @@ define(["knockout", "crossroads", "hasher"], function (ko, crossroads, hasher) {
     hasher.initialized.add(parseHash);
     hasher.changed.add(parseHash);
     hasher.init();
+  }
+
+  function AuthenticateUser(request, data) {
+    
+    var environment = '/*@echo NODE_ENV*/';
+
+    auth.IsUserAuthenticated().done(function (result) {
+      if (environment !== 'development' && result === false) {
+        window.location.replace('#intro');
+      }
+    });
   }
 });

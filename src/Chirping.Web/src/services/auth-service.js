@@ -1,4 +1,4 @@
-﻿define(['jquery', './auth-storage', 'app/app.config'], function ($, authStorage, config) {
+﻿define(['jquery', './auth-storage', './webapi-service', 'app/app.config'], function ($, authStorage, webapi, config) {
 
   // defines the entry points for the authentication with the back-end
   var authService = {
@@ -76,17 +76,28 @@
       data: data
     }).success(function (data) {
 
-      authStorage.storeToken({ token: data.access_token, userName: data.userName });
+      authStorage.StoreToken({ token: data.access_token, userName: data.userName });
 
     }).error(function(err, status) {
       authService.logOut();
     });
   };
 
+
+  // checks if the users bearer token is present
+  authService.IsUserAuthenticated = function () {
+        
+    var url = 'api/Account/IsUserAuthenticated';
+
+    var isAuthenticated = false;
+    
+    return webapi.Get(url);
+  };
+
   // remove the session token and logout the user
   authService.logOut = function () {
 
-    authStorage.removeToken();
+    authStorage.RemoveToken();
 
   };
 

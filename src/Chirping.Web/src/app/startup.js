@@ -16,6 +16,7 @@ define(['jquery', 'knockout', './router', 'bootstrap', 'validation/ko-validation
     // pages //
 
     ko.components.register('intro-page', { require: 'pages/intro-page/intro-page' });
+    ko.components.register('workspace-page', { require: 'pages/workspace-page/workspace-page' });
     
 
     // components //
@@ -41,7 +42,12 @@ define(['jquery', 'knockout', './router', 'bootstrap', 'validation/ko-validation
     ko.components.register('wizard-step2', { require: 'components/intro-page/registration-bar/wizard-step2/wizard-step2' });
     ko.components.register('wizard-step3', { require: 'components/intro-page/registration-bar/wizard-step3/wizard-step3' });
     ko.components.register('profile-image-upload', { require: 'components/intro-page/registration-bar/profile-image-upload/profile-image-upload' });
-    
+        
+
+    // workspace-page 
+    ko.components.register('nav-bar', { require: 'components/workspace-page/nav-bar/nav-bar' });
+
+        
 
     // [Scaffolded component registrations will be inserted here. To retain this feature, don't remove this comment.]
 
