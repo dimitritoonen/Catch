@@ -1,9 +1,4 @@
-<!--
-  The navigation UI that is docked to the top of the window. Most of this markup simply
-  follows Bootstrap conventions. The only Knockout-specific parts are the data-bind
-  attributes on the <li> elements.
--->
-<div class="navbar navbar-default" role="navigation">
+<div class="navbar navbar-default workspace-navbar" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -28,6 +23,11 @@
                     <a href="#Contact">contacts</a>
                 </li>
             </ul>
+            <div class="navbar-form navbar-right" role="search">
+                <div class="form-group workspace-search">
+                    <input type="text" class="form-control input-sm workspace-search-input" placeholder="search activities" />
+                </div>
+            </div>
         </div>
     </div>
 </div>

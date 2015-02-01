@@ -16,17 +16,55 @@
     overflow: hidden;
 }
 
+.workspace-content-page {
+    margin: 0px 20px 0px 20px;
+}
+
+
 .workspace-component {
     background-color: rgba(0, 0, 0, 0.75);
     height: 100vh;
     width: 300px;
-    padding-top:8px;
 }
 
 .workspace-component.left {
+    padding-top: 15px;
     float: left;
 }
 
 .workspace-component.right {
     float: right;
+}
+
+.workspace-line {
+    background-color: @grey-background;
+    width: 100%;
+}
+
+.workspace-navbar {
+    @media (min-width: @screen-xs-min) {
+        padding-top: 10px;
+    }
+}
+
+.workspace-profile-control-container {
+    width: 95%;
+    height:61px;
+    color: @grey-background;
+    border-bottom: 1px solid @grey-background;
+}
+
+.workspace-profile-controls {
+    padding-top: 25px;
+    padding-left: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.workspace-search {
+    width: 250px;
+}
+
+.workspace-search-input {
+    min-width:100%;
 }
