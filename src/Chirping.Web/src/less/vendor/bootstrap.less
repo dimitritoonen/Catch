@@ -1,4 +1,8 @@
-﻿// Core variables and mixins
+﻿// bootstrap variables/mixins and custom screen-ms viewport
+@import "viewpoints/screen-ms.less";
+@import "viewpoints/screen-workspace-navbar.less";
+
+
 @import "../../bower_modules/bootstrap/less/variables.less";
 @import "../../bower_modules/bootstrap/less/mixins.less";
 
@@ -11,7 +15,7 @@
 @import "../../bower_modules/bootstrap/less/type.less";
 @import "../../bower_modules/bootstrap/less/code.less";
 @import "../../bower_modules/bootstrap/less/grid.less";
-@import "../../bower_modules/bootstrap/less/tables.less";
+//@import "../../bower_modules/bootstrap/less/tables.less";
 @import "../../bower_modules/bootstrap/less/forms.less";
 @import "../../bower_modules/bootstrap/less/buttons.less";
 
@@ -23,26 +27,26 @@
 @import "../../bower_modules/bootstrap/less/input-groups.less";
 @import "../../bower_modules/bootstrap/less/navs.less";
 @import "../../bower_modules/bootstrap/less/navbar.less";
-@import "../../bower_modules/bootstrap/less/breadcrumbs.less";
-@import "../../bower_modules/bootstrap/less/pagination.less";
-@import "../../bower_modules/bootstrap/less/pager.less";
-@import "../../bower_modules/bootstrap/less/labels.less";
-@import "../../bower_modules/bootstrap/less/badges.less";
-@import "../../bower_modules/bootstrap/less/jumbotron.less";
-@import "../../bower_modules/bootstrap/less/thumbnails.less";
-@import "../../bower_modules/bootstrap/less/alerts.less";
-@import "../../bower_modules/bootstrap/less/progress-bars.less";
-@import "../../bower_modules/bootstrap/less/media.less";
-@import "../../bower_modules/bootstrap/less/list-group.less";
-@import "../../bower_modules/bootstrap/less/panels.less";
-@import "../../bower_modules/bootstrap/less/wells.less";
-@import "../../bower_modules/bootstrap/less/close.less";
+//@import "../../bower_modules/bootstrap/less/breadcrumbs.less";
+//@import "../../bower_modules/bootstrap/less/pagination.less";
+//@import "../../bower_modules/bootstrap/less/pager.less";
+//@import "../../bower_modules/bootstrap/less/labels.less";
+//@import "../../bower_modules/bootstrap/less/badges.less";
+//@import "../../bower_modules/bootstrap/less/jumbotron.less";
+//@import "../../bower_modules/bootstrap/less/thumbnails.less";
+//@import "../../bower_modules/bootstrap/less/alerts.less";
+//@import "../../bower_modules/bootstrap/less/progress-bars.less";
+//@import "../../bower_modules/bootstrap/less/media.less";
+//@import "../../bower_modules/bootstrap/less/list-group.less";
+//@import "../../bower_modules/bootstrap/less/panels.less";
+//@import "../../bower_modules/bootstrap/less/wells.less";
+//@import "../../bower_modules/bootstrap/less/close.less";
 
 // Components w/ JavaScript
 @import "../../bower_modules/bootstrap/less/modals.less";
 @import "../../bower_modules/bootstrap/less/tooltip.less";
-@import "../../bower_modules/bootstrap/less/popovers.less";
-@import "../../bower_modules/bootstrap/less/carousel.less";
+//@import "../../bower_modules/bootstrap/less/popovers.less";
+//@import "../../bower_modules/bootstrap/less/carousel.less";
 
 // Utility classes
 @import "../../bower_modules/bootstrap/less/utilities.less";
@@ -53,6 +57,8 @@
 // Bootstrap dialog
 @import "../../bower_modules/bootstrap-dialog/dist/less/bootstrap-dialog.less";
 
+
+
 // remove borders
 @border-radius-base: 0px;
 @border-radius-large: 5px;
@@ -60,135 +66,6 @@
 
 @modal-title-padding: 8px;
 @modal-inner-padding: 8px;
-
-
-
-
-// Mid-Small breakpoint
-
-@screen-ms: 480px;
-@screen-ms-min: @screen-ms;
-@screen-ms-max: (@screen-sm-min - 1);
-
-// Redefined Extra Small max value
-@screen-xs-max-new: (@screen-ms-min - 1);
-
-// Common styles (see make-grid-columns() in bootstrap/mixins/_grid-framework.less)
-
-.col-ms-1,
-.col-ms-2,
-.col-ms-3,
-.col-ms-4,
-.col-ms-5,
-.col-ms-6,
-.col-ms-7,
-.col-ms-8,
-.col-ms-9,
-.col-ms-10,
-.col-ms-11,
-.col-ms-12 {
-    position: relative;
-    // Prevent columns from collapsing when empty
-    min-height: 1px;
-    // Inner gutter via padding
-    padding-left: (@grid-gutter-width / 2);
-    padding-right: (@grid-gutter-width / 2);
-}
-
-// Misc. class adjustments for col-ms
-
-@media (min-width: @screen-ms) and (max-width: @screen-ms-max) {
-    .container {
-        max-width: @screen-sm - 20px;
-    }
-    .hidden-xs {
-        display: block !important;
-    }
-}
-
-// col-ms grid
-
-@media (min-width: @screen-ms-min) and (max-width: @screen-ms-max) {
-    .make-grid(ms);
-}
-
-// Visibility utilities
-
-.visible-xs, .visible-ms {
-    // set to no display so we have a fresh start
-    .responsive-invisibility;
-}
-
-.visible-xs-block,
-.visible-xs-inline,
-.visible-xs-inline-block,
-.visible-ms-block,
-.visible-ms-inline,
-.visible-ms-inline-block {
-    display: none !important;
-}
-
-@media (max-width: @screen-xs-max-new) {
-    .visible-xs {
-        .responsive-visibility;
-    }
-}
-.visible-xs-block {
-    @media (max-width: @screen-xs-max-new) {
-        display: block !important;
-    }
-}
-.visible-xs-inline {
-    @media (max-width: @screen-xs-max-new) {
-        display: inline !important;
-    }
-}
-.visible-xs-inline-block {
-    @media (max-width: @screen-xs-max-new) {
-        display: inline-block !important;
-    }
-}
-
-@media (min-width: @screen-ms-min) and (max-width: @screen-ms-max) {
-    .visible-ms {
-        .responsive-visibility;
-    }
-}
-.visible-ms-block {
-    @media (min-width: @screen-ms-min) and (max-width: @screen-ms-max) {
-        display: block !important;
-    }
-}
-.visible-ms-inline {
-    @media (min-width: @screen-ms-min) and (max-width: @screen-ms-max) {
-        display: inline !important;
-    }
-}
-.visible-ms-inline-block {
-    @media (min-width: @screen-ms-min) and (max-width: @screen-ms-max) {
-        display: inline-block !important;
-    }
-}
-
-@media (max-width: @screen-xs-max-new) {
-    .hidden-xs {
-        .responsive-invisibility;
-    }
-}
-
-@media (min-width: @screen-ms-min) and (max-width: @screen-ms-max) {
-    .hidden-ms {
-        .responsive-invisibility;
-    }
-}
-
-
-.center-xs
-{
-    @media (max-width: @screen-xs-min) {
-        .text-center()
-    }
-}
 
 
 
@@ -220,6 +97,14 @@ hr {
 
 .modal-body-text {
     padding: 0px 0px 0px 10px;
+}
+
+
+.center-xs
+{
+    @media (max-width: @screen-xs-min) {
+        .text-center()
+    }
 }
 
 
@@ -258,12 +143,23 @@ hr {
 .navbar-default .navbar-nav > li > a {
     border-bottom: 2px solid transparent;
 }
+
+.navbar-default .navbar-nav > li > a {
+    font-weight: 700;
+}
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    @media (min-width: @screen-xs-min) {
+    @media (min-width: @screen-workspace-navbar) {
         border-bottom: 2px solid @gray-light;
     }
 }
 
+.navbar-default,
+.navbar-nav,
+.navbar-brand {
+    background-color: @grey-background;
+}
+
 // changes the nav-bar collapse point at mobile width
-@grid-float-breakpoint: @screen-ms;
+@grid-float-breakpoint: @screen-workspace-navbar;
+

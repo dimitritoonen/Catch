@@ -152,8 +152,10 @@
     <Content Include="src\images\wizardStep1.png" />
     <Content Include="src\images\wizardStep2.png" />
     <Content Include="src\images\wizardStep3.png" />
-    <Content Include="src\components\nav-bar\nav-bar.html" />
-    <Content Include="src\components\nav-bar\nav-bar.js" />
+    <Content Include="src\components\workspace-page\nav-bar\nav-bar.html" />
+    <Content Include="src\components\workspace-page\nav-bar\nav-bar.js" />
+    <Content Include="src\less\vendor\viewpoints\screen-ms.less" />
+    <Content Include="src\less\vendor\bootstrap.less" />
     <Content Include="src\pages\workspace-page\workspace-page.html" />
     <Content Include="src\pages\workspace-page\workspace-page.js" />
     <Content Include="src\pages\intro-page\intro-page.html" />
@@ -408,15 +410,21 @@
     <Content Include="src\fonts\opensans-regular-webfont.woff" />
     <Content Include="src\fonts\opensans-regular-webfont.woff2" />
     <Content Include="src\less\pages\workspace.less" />
+    <Content Include="src\less\components\workspace\component-left.less" />
+    <Content Include="src\less\components\workspace\component-right.less" />
+    <Content Include="src\less\components\workspace\component-main.less" />
+    <Content Include="src\less\components\workspace\navbar.less" />
     <None Include="src\less\styles.less" />
     <Content Include="src\Web.config" />
     <Content Include="src\less\vendor\jcrop.less" />
+    <Content Include="src\less\vendor\viewpoints\screen-workspace-right.less" />
+    <Content Include="src\less\vendor\viewpoints\screen-workspace-left.less" />
+    <Content Include="src\less\vendor\viewpoints\screen-workspace-navbar.less" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <Content Include="src\less\variables.less" />
     <Content Include="src\less\vendor-prefixes.less" />
-    <None Include="src\less\vendor\bootstrap.less" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\less\components\register-component.less" />

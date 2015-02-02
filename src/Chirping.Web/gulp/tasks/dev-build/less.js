@@ -4,6 +4,7 @@ var gulpFilter = require('gulp-filter');
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var config = require('../../config').less.development;
+var plumber = require('gulp-plumber');
 
 // add plugins for piping css files
 var concat = require('gulp-concat');
@@ -15,6 +16,7 @@ gulp.task('less', function () {
   var filter = gulpFilter(['*.css', '!*.map']);
   
   var lessFiles = gulp.src(config.src)
+    .pipe(plumber())
     .pipe(less())
     .pipe(sourcemaps.init())
     .pipe(filter) // Don’t write sourcemaps of sourcemaps
