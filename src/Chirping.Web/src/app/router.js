@@ -107,10 +107,16 @@ define(['knockout', 'crossroads', 'hasher', 'services/auth-service', './app.conf
       //if (environment !== 'development') {
         auth.IsUserAuthenticated().done(function (result) {
           if (result === false) {
-            window.location.replace('#' + appConfig.HOMEPAGE);
+            RedirectToHomepage();
           }
+        }).error(function (result) {
+          RedirectToHomepage()
         })
       //}
     }
+  }
+
+  function RedirectToHomepage() {
+    window.location.replace('#' + appConfig.HOMEPAGE);
   }
 });
