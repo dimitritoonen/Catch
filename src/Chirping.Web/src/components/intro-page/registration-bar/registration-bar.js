@@ -72,6 +72,11 @@ define(['knockout', 'text!./registration-bar.html', './registration-model', 'ser
     };
 
 
+    var redirectToDashboard = function () {
+      window.location.href = '#Workspace';
+    };
+
+
     // registers the user on the back-end
     self.RegisterUser = function () {
 
@@ -88,8 +93,9 @@ define(['knockout', 'text!./registration-bar.html', './registration-model', 'ser
       
         var viaFacebook = self.registration.UseFacebookAuthentication();
 
-        auth.RegisterUser(data, viaFacebook).done(function (data) {
-          alert('User is registered');
+        auth.RegisterUser(data, viaFacebook)
+          .done(function (data) {
+            redirectToDashboard();
         });
       }
     };

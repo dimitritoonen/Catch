@@ -38,6 +38,8 @@
       type: 'POST',
       url: config.BaseUrl + 'api/account/registerexternal',
       data: JSON.stringify(data)
+    }).done(function (result) {
+      authStorage.StoreToken(result.access_token);
     });
 
   };
@@ -47,6 +49,8 @@
       type: 'POST',
       url: config.BaseUrl + 'api/Account/Register',
       data: JSON.stringify(data)
+    }).done(function (result) {
+      authStorage.StoreToken(result.access_token);
     });
   };
 
@@ -74,10 +78,8 @@
       type: 'GET',
       url: config.BaseUrl + 'api/Account/ObtainLocalAccessToken',
       data: data
-    }).success(function (data) {
-
-      authStorage.StoreToken({ token: data.access_token, userName: data.userName });
-
+    }).done(function (result) {
+      authStorage.StoreToken(result.access_token);
     }).error(function(err, status) {
       authService.logOut();
     });
