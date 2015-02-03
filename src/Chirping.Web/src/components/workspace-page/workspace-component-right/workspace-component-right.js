@@ -1,12 +1,18 @@
-define(['knockout', 'text!./workspace-component-right.html'], function(ko, templateMarkup) {
+define(['knockout', 'text!./workspace-component-right.html', 'services/auth-service'], function (ko, templateMarkup, auth) {
 
-  function WorkspaceComponentRight(params) {
+  function WorkspaceRight(params) {
   
+    var self = this;
+
   }
 
-  WorkspaceComponentRight.prototype.dispose = function () {
+  WorkspaceRight.prototype.LogOut = function () {
+    auth.LogOut();
+  };
+
+  WorkspaceRight.prototype.dispose = function () {
   };
   
-  return { viewModel: WorkspaceComponentRight, template: templateMarkup };
+  return { viewModel: WorkspaceRight, template: templateMarkup };
 
 });

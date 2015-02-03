@@ -11,6 +11,8 @@ define(['knockout', 'text!./wizard-step3.html'], function(ko, templateMarkup) {
       'I swear to drunk, I am not god'
     ]);
 
+    $('#wizardMottotextbox').focus();
+
     self.registration = params.registration;
 
     // updates the textbox with the value selected from the Motto options

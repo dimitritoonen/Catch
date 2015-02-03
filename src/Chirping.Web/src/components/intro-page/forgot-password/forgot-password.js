@@ -14,6 +14,9 @@ define(['knockout', 'text!./forgot-password.html', 'services/webapi-service'], f
       email: true
     });
 
+    // auto-focus on the e-mail textbox
+    $('#emailAddress').focus();
+
 
     // if email address is valid, send the reset password email
     self.SendResetPasswordLink = function () {

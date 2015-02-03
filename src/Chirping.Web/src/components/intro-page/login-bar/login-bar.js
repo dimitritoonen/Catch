@@ -11,6 +11,9 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service', 'services/
     self.username = ko.observable();
     self.password = ko.observable();
 
+    // auto-focus username textbox
+    $('#username').focus();
+
     self.error = ko.observable();
     self.showErrorBox = ko.observable(false);
 
@@ -46,6 +49,8 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service', 'services/
         var err = JSON.parse(data.responseText);
         self.error(err);
         self.showErrorBox(true);
+
+        $('#username').focus();
       });
     };
 

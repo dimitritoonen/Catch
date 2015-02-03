@@ -1,12 +1,12 @@
 define(['knockout', 'text!./workspace-component-left.html'], function(ko, templateMarkup) {
 
-  function WorkspaceComponentLeft(params) {
+  function WorkspaceLeft(params) {
     
   }
 
-  WorkspaceComponentLeft.prototype.dispose = function () {
+  WorkspaceLeft.prototype.dispose = function () {
   };
   
-  return { viewModel: WorkspaceComponentLeft, template: templateMarkup };
+  return { viewModel: WorkspaceLeft, template: templateMarkup };
 
 });

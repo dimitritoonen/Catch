@@ -95,10 +95,11 @@
   };
 
   // remove the session token and logout the user
-  authService.logOut = function () {
+  authService.LogOut = function () {
 
     authStorage.RemoveToken();
 
+    window.location.href = '#' + config.HOMEPAGE;
   };
 
   return authService;

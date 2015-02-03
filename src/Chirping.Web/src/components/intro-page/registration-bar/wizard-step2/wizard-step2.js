@@ -6,6 +6,9 @@ define(['knockout', 'bootstrap-dialog', 'text!./wizard-step2.html', 'jcrop'], fu
 
     self.registration = params.registration;
     
+    // auto-focus on nickname
+    $('#NickNameTextbox').focus();
+
     self.CurrentGenderIcon = ko.computed(function () {
       return 'gender-' + self.registration.gender() + '-icon';
     });

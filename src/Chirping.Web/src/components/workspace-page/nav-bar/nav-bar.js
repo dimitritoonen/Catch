@@ -1,14 +1,16 @@
-define(['knockout', 'text!./nav-bar.html'], function (ko, template) {
+define(['knockout', 'text!./nav-bar.html', 'services/auth-service'], function (ko, template, auth) {
 
-  function NavBarViewModel(params) {
+  function NavBar(params) {
 
     var self = this;
-
-    //self.route = params.route;
-    self.route = ko.observable({
-      page: ''
-    });
+    
+    self.route = params.route;
   }
 
-  return { viewModel: NavBarViewModel, template: template };
+
+  NavBar.prototype.LogOut = function () {
+    auth.LogOut();
+  };
+
+  return { viewModel: NavBar, template: template };
 });

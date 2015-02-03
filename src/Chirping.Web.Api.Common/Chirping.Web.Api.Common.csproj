@@ -103,6 +103,7 @@
   <ItemGroup>
     <Compile Include="Account\ApplicationTypes.cs" />
     <Compile Include="Data\EntityModel.cs" />
+    <Compile Include="Data\Profile.cs" />
     <Compile Include="Data\UserAccountEntity.cs" />
     <Compile Include="Domain\Client.cs" />
     <Compile Include="Domain\UserAccount.cs" />

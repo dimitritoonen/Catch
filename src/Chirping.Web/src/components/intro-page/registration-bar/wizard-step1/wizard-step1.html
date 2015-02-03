@@ -13,25 +13,26 @@
         <p class="text-center">Register with your e-mail address</p>
     </div>
 </div>
-<div class="row form-group has-feedback">
-    <div class="col-ms-12" data-bind="validationElement: registration.emailAddress">
-        <input data-bind="value: registration.emailAddress, qtipValMessage: registration.emailAddress" class="form-control"
-               placeholder="E-mail" type="text" id="wizardEmailTextbox" />
-        <span id="wizardEmailTextboxIcon" class="glyphicon form-control-feedback"></span>
+<form class="form-horizontal">
+    <div class="form-group">
+        <div class="col-ms-12 has-feedback" data-bind="validationElement: registration.emailAddress">
+            <input data-bind="value: registration.emailAddress, qtipValMessage: registration.emailAddress" class="form-control"
+                   placeholder="E-mail" type="text" id="wizardEmailTextbox" />
+            <span id="wizardEmailTextboxIcon" class="glyphicon form-control-feedback" aria-hidden="true"></span>
+        </div>
     </div>
-</div>
-<div class="row form-group has-feedback">
-    <div class="col-ms-12" data-bind="validationElement: registration.confirmEmail">
-        <input data-bind="value: registration.confirmEmail, qtipValMessage: registration.confirmEmail" class="form-control"
-               placeholder="Confirm e-mail" type="text" id="wizardEmailConfirmTextbox" />
-        <span id="wizardEmailConfirmTextboxIcon" class="glyphicon form-control-feedback"></span>
+    <div class="form-group">
+        <div class="col-ms-12 has-feedback" data-bind="validationElement: registration.confirmEmail">
+            <input data-bind="value: registration.confirmEmail, qtipValMessage: registration.confirmEmail" class="form-control"
+                   placeholder="Confirm e-mail" type="text" id="wizardEmailConfirmTextbox" />
+            <span id="wizardEmailConfirmTextboxIcon" class="glyphicon form-control-feedback"></span>
+        </div>
     </div>
-</div>
-
-<div class="row form-group has-feedback">
-    <div class="col-ms-12" data-bind="validationElement: registration.password">
-        <input data-bind="value: registration.password, qtipValMessage: registration.password" class="form-control"
-               placeholder="password" type="password" id="wizardPasswordTextbox" />
-        <span id="wizardPasswordTextboxIcon" class="glyphicon form-control-feedback"></span>
+    <div class="form-group">
+        <div class="col-ms-12 has-feedback" data-bind="validationElement: registration.password">
+            <input data-bind="value: registration.password, qtipValMessage: registration.password" class="form-control"
+                   placeholder="password" type="password" id="wizardPasswordTextbox" />
+            <span id="wizardPasswordTextboxIcon" class="glyphicon form-control-feedback"></span>
+        </div>
     </div>
-</div>
+</form>

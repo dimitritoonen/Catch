@@ -10,6 +10,9 @@ define(['jquery', 'knockout', 'text!./wizard-step1.html', 'app/app.config', 'ser
     self.registration = params.registration;
     self.container = params.container;
 
+    // auto-focus on e-mail
+    $('#wizardEmailTextbox').focus();
+
     // validation group to determine if all control on step 1 are valid
     var validationGroup = ko.validatedObservable({
       emailAddress: self.registration.emailAddress,

@@ -6,6 +6,8 @@ define(['knockout', 'text!./change-password.html', 'services/webapi-service'], f
     var container = params.container;
     container.header('Change password');
     container.canCloseSelf(true);
+
+    $('#newPassword').focus();
     
     self.errorTitle = ko.observable();
     self.errorDescription = ko.observable();

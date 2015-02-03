@@ -1,9 +1,5 @@
-define(['knockout', 'crossroads', 'hasher', 'services/auth-service'], function (ko, crossroads, hasher, auth) {
-
-  // defines the 
-  var HOMEPAGE = 'Intro';
-
-
+define(['knockout', 'crossroads', 'hasher', 'services/auth-service', './app.config'], function (ko, crossroads, hasher, auth, appConfig) {
+  
   // return CrossroadsJS routing combined with Hasher for history enabled browsing
   return new Router({
     routes: [
@@ -17,7 +13,7 @@ define(['knockout', 'crossroads', 'hasher', 'services/auth-service'], function (
         { url: 'Workspace/Profile', params: { page: 'workspace-page', subPage: 'profile-page' } },
 
         // intro page routing
-        { url: 'Intro', params: { page: 'intro-page' } },
+        { url: appConfig.HOMEPAGE, params: { page: 'intro-page' } },
         { url: 'ActivateAccount{?query}', params: { page: 'intro-page', component: 'activate-account' } },
         { url: 'ChangePassword{?query}', params: { page: 'intro-page', component: 'change-password' } }
     ]
@@ -107,14 +103,14 @@ define(['knockout', 'crossroads', 'hasher', 'services/auth-service'], function (
     
     var environment = '/*@echo NODE_ENV*/';
 
-    if (request != HOMEPAGE) {
-      if (environment !== 'development') {
+    if (request != appConfig.HOMEPAGE) {
+      //if (environment !== 'development') {
         auth.IsUserAuthenticated().done(function (result) {
           if (result === false) {
-            window.location.replace('#' + HOMEPAGE);
+            window.location.replace('#' + appConfig.HOMEPAGE);
           }
         })
-      }
+      //}
     }
   }
 });
