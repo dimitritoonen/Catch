@@ -4,7 +4,7 @@
   "main": "./",
   "private": true,
   "dependencies": {
-    "bootstrap": "3.1.1",
+    "bootstrap": "~3.3.2",
     "bootstrap-dialog": "1.33.5",
     "components-bootstrap": "~3.1.1",
     "crossroads": "~0.12.0",
@@ -16,7 +16,7 @@
     "js-signals": "1.0.0",
     "hasher": "~1.2.0",
     "knockout-projections": "1.1.0",
-    "knockout": "~3.2.0",
+    "knockout": "3.3.0-alpha",
     "knockout-mapping": "2.4.1",
     "knockout-validation": "1.0.2",
     "qtip2": "2.2.1",
@@ -25,6 +25,6 @@
     "font-awesome": "~4.2.0"
   },
   "resolutions": {
-    "knockout": "~3.2.0"
+    "knockout": "3.2.0"
   }
 }

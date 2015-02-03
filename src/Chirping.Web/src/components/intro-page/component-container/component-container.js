@@ -21,6 +21,14 @@ define(['knockout', 'text!./component-container.html'], function (ko, templateMa
 
     // defines the header of the component that will be displayed
     self.header = ko.observable();
+
+    self.clearHeader = function () {
+      self.header('');
+    };
+
+    self.hideCloseButton = function () {
+      $('#container-component-close-button').hide();
+    };
     
     self.showComponent = ko.observable(params.showComponent);
     self.activeComponent = ko.observable(params.component);

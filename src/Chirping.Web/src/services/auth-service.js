@@ -1,4 +1,4 @@
-﻿define(['jquery', './auth-storage', 'app/app.config'], function ($, authStorage, config) {
+﻿define(['jquery', './auth-storage', './webapi-service', 'app/app.config'], function ($, authStorage, webapi, config) {
 
   // defines the entry points for the authentication with the back-end
   var authService = {
@@ -38,6 +38,8 @@
       type: 'POST',
       url: config.BaseUrl + 'api/account/registerexternal',
       data: JSON.stringify(data)
+    }).done(function (result) {
+      authStorage.StoreToken(result.access_token);
     });
 
   };
@@ -47,6 +49,8 @@
       type: 'POST',
       url: config.BaseUrl + 'api/Account/Register',
       data: JSON.stringify(data)
+    }).done(function (result) {
+      authStorage.StoreToken(result.access_token);
     });
   };
 
@@ -74,20 +78,30 @@
       type: 'GET',
       url: config.BaseUrl + 'api/Account/ObtainLocalAccessToken',
       data: data
-    }).success(function (data) {
-
-      authStorage.storeToken({ token: data.access_token, userName: data.userName });
-
+    }).done(function (result) {
+      authStorage.StoreToken(result.access_token);
     }).error(function(err, status) {
       authService.logOut();
     });
   };
 
+
+  // checks if the users bearer token is present
+  authService.IsUserAuthenticated = function () {
+        
+    var url = 'api/Account/IsUserAuthenticated';
+
+    var isAuthenticated = false;
+    
+    return webapi.Get(url);
+  };
+
   // remove the session token and logout the user
-  authService.logOut = function () {
+  authService.LogOut = function () {
 
-    authStorage.removeToken();
+    authStorage.RemoveToken();
 
+    window.location.href = '#' + config.HOMEPAGE;
   };
 
   return authService;

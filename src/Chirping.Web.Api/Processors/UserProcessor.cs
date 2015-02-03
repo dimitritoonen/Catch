@@ -27,13 +27,13 @@ namespace Chirping.Web.Api.Processors
         /// checks if a particular e-mail is already registered
         public bool EmailAddressInUse(string emailAddress)
         {
-            return _repository.EmailAddressInUse(emailAddress);
+            return true;
         }
 
         // checks if a particular nickname is already registered
         public bool NickNameInUse(string nickname)
         {
-            return _repository.NicknameInUse(nickname);
+            return true;
         }
     }
 }

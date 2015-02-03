@@ -158,6 +158,16 @@ namespace Chirping.Web.Api.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
+        [Route("IsUserAuthenticated")]
+        [HttpGet]
+        public bool IsUserAuthenticated()
+        {
+            return User != null &&
+                    User.Identity != null &&
+                    User.Identity.IsAuthenticated;
+        }
+
 
         #region operations for external login (Google, Facebook, etc)
 

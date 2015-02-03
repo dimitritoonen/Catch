@@ -132,6 +132,15 @@
     <Content Include="src\components\intro-page\registration-bar\registration-bar.html" />
     <Content Include="src\components\intro-page\forgot-password\reset-password-sent\reset-password-sent.html" />
     <Content Include="src\components\intro-page\forgot-password\reset-password-sent\reset-password-sent.js" />
+    <Content Include="src\components\workspace-page\workspace-component-left\workspace-component-left.html" />
+    <Content Include="src\components\workspace-page\workspace-component-left\workspace-component-left.js" />
+    <Content Include="src\components\workspace-page\workspace-component-main\workspace-component-main.html" />
+    <Content Include="src\components\workspace-page\workspace-component-main\workspace-component-main.js" />
+    <Content Include="src\components\workspace-page\workspace-component-right\workspace-component-right.html" />
+    <Content Include="src\components\workspace-page\workspace-component-right\workspace-component-right.js" />
+    <Content Include="src\fonts\opensans-bold-webfont.svg" />
+    <Content Include="src\fonts\opensans-light-webfont.svg" />
+    <Content Include="src\fonts\opensans-regular-webfont.svg" />
     <Content Include="src\images\backgrounds\background1.jpg" />
     <Content Include="src\images\backgrounds\background2.jpg" />
     <Content Include="src\images\backgrounds\background3.jpg" />
@@ -143,6 +152,22 @@
     <Content Include="src\images\wizardStep1.png" />
     <Content Include="src\images\wizardStep2.png" />
     <Content Include="src\images\wizardStep3.png" />
+    <Content Include="src\components\workspace-page\nav-bar\nav-bar.html" />
+    <Content Include="src\components\workspace-page\nav-bar\nav-bar.js" />
+    <Content Include="src\less\vendor\viewpoints\screen-ms.less" />
+    <Content Include="src\less\vendor\bootstrap.less" />
+    <Content Include="src\pages\workspace-page\activities-page\activities-page.html" />
+    <Content Include="src\pages\workspace-page\activities-page\activities-page.js" />
+    <Content Include="src\pages\workspace-page\contacts-page\contacts-page.html" />
+    <Content Include="src\pages\workspace-page\contacts-page\contacts-page.js" />
+    <Content Include="src\pages\workspace-page\dashboard-page\dashboard-page.html" />
+    <Content Include="src\pages\workspace-page\dashboard-page\dashboard-page.js" />
+    <Content Include="src\pages\workspace-page\notifications-page\notifications-page.html" />
+    <Content Include="src\pages\workspace-page\notifications-page\notifications-page.js" />
+    <Content Include="src\pages\workspace-page\profile-page\profile-page.html" />
+    <Content Include="src\pages\workspace-page\profile-page\profile-page.js" />
+    <Content Include="src\pages\workspace-page\workspace-page.html" />
+    <Content Include="src\pages\workspace-page\workspace-page.js" />
     <Content Include="src\pages\intro-page\intro-page.html" />
     <Content Include="src\pages\intro-page\intro-page.js" />
     <Content Include="src\components\intro-page\login-bar\login-bar.js" />
@@ -371,13 +396,10 @@
     <Content Include="src\validation\ko-validation-config.js" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\less\pages\intro-page.less" />
+    <Content Include="src\less\pages\intro.less" />
     <Content Include="src\less\animation\animation.less" />
-    <Content Include="src\less\components\component-container.less" />
+    <Content Include="src\less\components\intro\component-container.less" />
     <Content Include="src\less\fonts.less" />
-    <Content Include="src\fonts\OpenSans-Bold.ttf" />
-    <Content Include="src\fonts\OpenSans-Light.ttf" />
-    <Content Include="src\fonts\OpenSans-Regular.ttf" />
     <Content Include="src\less\vendor\font-awesome.less" />
     <Content Include="src\images\bothSign.svg" />
     <Content Include="src\images\femaleSign.svg" />
@@ -385,18 +407,37 @@
     <Content Include="src\images\wizardStep1.svg" />
     <Content Include="src\images\wizardStep2.svg" />
     <Content Include="src\images\wizardStep3.svg" />
+    <Content Include="src\fonts\opensans-bold-webfont.eot" />
+    <Content Include="src\fonts\opensans-bold-webfont.ttf" />
+    <Content Include="src\fonts\opensans-bold-webfont.woff" />
+    <Content Include="src\fonts\opensans-bold-webfont.woff2" />
+    <Content Include="src\fonts\opensans-light-webfont.eot" />
+    <Content Include="src\fonts\opensans-light-webfont.ttf" />
+    <Content Include="src\fonts\opensans-light-webfont.woff" />
+    <Content Include="src\fonts\opensans-light-webfont.woff2" />
+    <Content Include="src\fonts\opensans-regular-webfont.eot" />
+    <Content Include="src\fonts\opensans-regular-webfont.ttf" />
+    <Content Include="src\fonts\opensans-regular-webfont.woff" />
+    <Content Include="src\fonts\opensans-regular-webfont.woff2" />
+    <Content Include="src\less\pages\workspace.less" />
+    <Content Include="src\less\components\workspace\component-left.less" />
+    <Content Include="src\less\components\workspace\component-right.less" />
+    <Content Include="src\less\components\workspace\component-main.less" />
+    <Content Include="src\less\components\workspace\navbar.less" />
     <None Include="src\less\styles.less" />
     <Content Include="src\Web.config" />
     <Content Include="src\less\vendor\jcrop.less" />
+    <Content Include="src\less\vendor\viewpoints\screen-workspace-right.less" />
+    <Content Include="src\less\vendor\viewpoints\screen-workspace-left.less" />
+    <Content Include="src\less\vendor\viewpoints\screen-workspace-navbar.less" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <Content Include="src\less\variables.less" />
     <Content Include="src\less\vendor-prefixes.less" />
-    <None Include="src\less\vendor\bootstrap.less" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\less\components\register-component.less" />
+    <None Include="src\less\components\intro\register-component.less" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

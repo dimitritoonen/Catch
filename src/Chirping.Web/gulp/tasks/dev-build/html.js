@@ -2,10 +2,12 @@
 var htmlreplace = require('gulp-html-replace');
 var config = require('../../config').html.development;
 var preprocess = require('gulp-preprocess');
+var plumber = require('gulp-plumber');
 
 // Copies index.html, replacing <script> and <link> tags to reference production URLs
 gulp.task('html', function () {
   return gulp.src(config.src)
+    .pipe(plumber())
     .pipe(preprocess({ context: { NODE_ENV: 'development'} }))
     .pipe(htmlreplace({
       'css': '/css/styles.css',

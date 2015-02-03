@@ -11,11 +11,14 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service', 'services/
     self.username = ko.observable();
     self.password = ko.observable();
 
+    // auto-focus username textbox
+    $('#username').focus();
+
     self.error = ko.observable();
     self.showErrorBox = ko.observable(false);
 
     var redirectToDashboard = function () {
-      alert('open dashboard');
+      window.location.href = '#Workspace';
     };
 
     // display and hide the loading screen
@@ -29,6 +32,8 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service', 'services/
     self.login = function () {
 
       toggleLoading();
+      container.clearHeader();
+      container.hideCloseButton();
 
       var data = {
         grant_type: 'password',
@@ -44,6 +49,8 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service', 'services/
         var err = JSON.parse(data.responseText);
         self.error(err);
         self.showErrorBox(true);
+
+        $('#username').focus();
       });
     };
 

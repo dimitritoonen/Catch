@@ -171,8 +171,8 @@ module.exports = {
   },
   recess: {
     src: [
-      src + '/less/**/*.less',
-      '!' + src + '/less/vendor/bootstrap.less'
+      src + '/less/**/*.less'//,
+      //'!' + src + '/less/vendor/bootstrap.less'
     ],
     options: {
       noIDs: false
@@ -243,7 +243,16 @@ module.exports = {
             'components/intro-page/registration-bar/wizard-step2/wizard-step2',
             'components/intro-page/registration-bar/wizard-step3/wizard-step3'
           ],
-          'auth-complete': ['authentication/auth-complete']
+          'auth-complete': [
+            'authentication/auth-complete'
+          ],
+          'workspace': [
+            'pages/workspace-page/workspace-page',
+            'components/workspace-page/nav-bar/nav-bar',
+            'components/workspace-page/workspace-component-left/workspace-component-left',
+            'components/workspace-page/workspace-component-right/workspace-component-right',
+            'components/workspace-page/workspace-component-main/workspace-component-main',
+          ]
         }
       }
     },

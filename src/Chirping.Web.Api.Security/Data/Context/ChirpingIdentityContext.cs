@@ -13,7 +13,7 @@ namespace Chirping.Web.Api.Security.Data.Context
     public class ChirpingIdentityContext : IdentityDbContext<UserAccountEntity>
     {
         public ChirpingIdentityContext()
-            : base("ChirpingIdentityContext")
+            : base("ChirpingContext")
         {
         }
         
@@ -22,6 +22,12 @@ namespace Chirping.Web.Api.Security.Data.Context
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<UserAccountEntity>().ToTable("User");
+            modelBuilder.Entity<IdentityUserRole>().ToTable("UserRole");
+            modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogin");
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaim");
+            modelBuilder.Entity<IdentityRole>().ToTable("Role");
         }
 
         public static ChirpingIdentityContext Create()

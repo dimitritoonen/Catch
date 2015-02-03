@@ -10,6 +10,9 @@ define(['jquery', 'knockout', 'text!./wizard-step1.html', 'app/app.config', 'ser
     self.registration = params.registration;
     self.container = params.container;
 
+    // auto-focus on e-mail
+    $('#wizardEmailTextbox').focus();
+
     // validation group to determine if all control on step 1 are valid
     var validationGroup = ko.validatedObservable({
       emailAddress: self.registration.emailAddress,
@@ -72,19 +75,24 @@ define(['jquery', 'knockout', 'text!./wizard-step1.html', 'app/app.config', 'ser
     //this.callApi = function () {
 
     //  // If we already have a bearer token, set the Authorization header.
-    //  var token = sessionStorage.getItem(tokenKey);
     //  var headers = {};
-    //  if (token) {
-    //    headers.Authorization = 'Bearer ' + token;
-    //  }
+    //  //if (token) {
+    //  //  headers.Authorization = 'Bearer ' + authStorage.GetToken;
+    //  //}
+
+    //  headers.Authorization = 'Bearer ' + authStorage.GetToken();
 
     //  $.ajax({
     //    type: 'GET',
     //    url: 'http://localhost:4421/api/values/1',
     //    headers: headers
     //  }).done(function (data) {
-    //    self.result(data);
-    //  }).fail(showError);
+    //    console.log('done');
+    //    console.log(data);
+    //  }).fail(function (data) {
+    //    console.log('error');
+    //    console.log(data)
+    //  });
 
     //};
   }

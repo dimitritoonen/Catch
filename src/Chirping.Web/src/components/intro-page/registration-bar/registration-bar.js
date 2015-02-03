@@ -72,6 +72,11 @@ define(['knockout', 'text!./registration-bar.html', './registration-model', 'ser
     };
 
 
+    var redirectToDashboard = function () {
+      window.location.href = '#Workspace';
+    };
+
+
     // registers the user on the back-end
     self.RegisterUser = function () {
 
@@ -81,13 +86,16 @@ define(['knockout', 'text!./registration-bar.html', './registration-model', 'ser
       } else {
 
         toggleLoading();
+        self.container.clearHeader();
+        self.container.hideCloseButton();
 
         var data = self.registration.GetUserData();
       
         var viaFacebook = self.registration.UseFacebookAuthentication();
 
-        auth.RegisterUser(data, viaFacebook).done(function (data) {
-          alert('User is registered');
+        auth.RegisterUser(data, viaFacebook)
+          .done(function (data) {
+            redirectToDashboard();
         });
       }
     };
@@ -103,6 +111,9 @@ define(['knockout', 'text!./registration-bar.html', './registration-model', 'ser
     this.registration.dispose();
   };
 
-  return { viewModel: RegistrationBar, template: templateMarkup };
+  return {
+    viewModel: RegistrationBar,
+    template: templateMarkup
+  };
 
 });

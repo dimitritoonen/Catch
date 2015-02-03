@@ -127,6 +127,14 @@
     <Compile Include="Migrations\201501270916195_Moved_UserApplicationManager.Designer.cs">
       <DependentUpon>201501270916195_Moved_UserApplicationManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502031609164_Change_Identity_Table_Names.cs" />
+    <Compile Include="Migrations\201502031609164_Change_Identity_Table_Names.Designer.cs">
+      <DependentUpon>201502031609164_Change_Identity_Table_Names.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502031622524_Add_Profile_Table.cs" />
+    <Compile Include="Migrations\201502031622524_Add_Profile_Table.Designer.cs">
+      <DependentUpon>201502031622524_Add_Profile_Table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ApplicationUserManager.cs" />
@@ -150,6 +158,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501270916195_Moved_UserApplicationManager.resx">
       <DependentUpon>201501270916195_Moved_UserApplicationManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502031609164_Change_Identity_Table_Names.resx">
+      <DependentUpon>201502031609164_Change_Identity_Table_Names.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502031622524_Add_Profile_Table.resx">
+      <DependentUpon>201502031622524_Add_Profile_Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
