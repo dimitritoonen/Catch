@@ -156,6 +156,16 @@
     <Content Include="src\components\workspace-page\nav-bar\nav-bar.js" />
     <Content Include="src\less\vendor\viewpoints\screen-ms.less" />
     <Content Include="src\less\vendor\bootstrap.less" />
+    <Content Include="src\pages\workspace-page\activities-page\activities-page.html" />
+    <Content Include="src\pages\workspace-page\activities-page\activities-page.js" />
+    <Content Include="src\pages\workspace-page\contacts-page\contacts-page.html" />
+    <Content Include="src\pages\workspace-page\contacts-page\contacts-page.js" />
+    <Content Include="src\pages\workspace-page\dashboard-page\dashboard-page.html" />
+    <Content Include="src\pages\workspace-page\dashboard-page\dashboard-page.js" />
+    <Content Include="src\pages\workspace-page\notifications-page\notifications-page.html" />
+    <Content Include="src\pages\workspace-page\notifications-page\notifications-page.js" />
+    <Content Include="src\pages\workspace-page\profile-page\profile-page.html" />
+    <Content Include="src\pages\workspace-page\profile-page\profile-page.js" />
     <Content Include="src\pages\workspace-page\workspace-page.html" />
     <Content Include="src\pages\workspace-page\workspace-page.js" />
     <Content Include="src\pages\intro-page\intro-page.html" />

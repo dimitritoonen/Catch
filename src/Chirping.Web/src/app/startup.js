@@ -1,11 +1,6 @@
 define(['jquery', 'knockout', './router', 'bootstrap', 'validation/ko-validation-config', 'bindingHandlers/bindingHandlers'],
   function ($, ko, router, auth) {
 
-    var viewModel = {
-      route: router.currentRoute,
-      auth: auth
-    };
-
     $.ajaxSetup({
       contentType: 'application/json; charset=utf-8'
     });
@@ -17,7 +12,11 @@ define(['jquery', 'knockout', './router', 'bootstrap', 'validation/ko-validation
 
     ko.components.register('intro-page', { require: 'pages/intro-page/intro-page' });
     ko.components.register('workspace-page', { require: 'pages/workspace-page/workspace-page' });
-    
+    ko.components.register('dashboard-page', { require: 'pages/workspace-page/dashboard-page/dashboard-page' });
+    ko.components.register('activities-page', { require: 'pages/workspace-page/activities-page/activities-page' });
+    ko.components.register('contacts-page', { require: 'pages/workspace-page/contacts-page/contacts-page' });
+    ko.components.register('notifications-page', { require: 'pages/workspace-page/notifications-page/notifications-page' });
+    ko.components.register('profile-page', { require: 'pages/workspace-page/profile-page/profile-page' });
 
     // components //
 
@@ -49,11 +48,11 @@ define(['jquery', 'knockout', './router', 'bootstrap', 'validation/ko-validation
     ko.components.register('workspace-component-left', { require: 'components/workspace-page/workspace-component-left/workspace-component-left' });
     ko.components.register('workspace-component-right', { require: 'components/workspace-page/workspace-component-right/workspace-component-right' });
     ko.components.register('workspace-component-main', { require: 'components/workspace-page/workspace-component-main/workspace-component-main' });
-        
+            
 
     // [Scaffolded component registrations will be inserted here. To retain this feature, don't remove this comment.]
-
-
+    
+    
     // Start the application
-    ko.applyBindings(viewModel);
+    ko.applyBindings({ route: router.currentRoute });
   });

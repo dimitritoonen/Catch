@@ -3,9 +3,9 @@ define(['knockout', 'text!./workspace-page.html'], function (ko, templateMarkup)
   function WorkspacePage(params) {
     
     var self = this;
-
-    self.route = params.route;
-
+    
+    // catches the sub page for the workspace
+    self.route = params.route.subRoute;
   }
 
   WorkspacePage.prototype.dispose = function () {

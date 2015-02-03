@@ -20,7 +20,7 @@
         
     </head>
     <body>
-        <div id="page" data-bind="component: { name: route().page, params: route() }"></div>
+        <div id="page" data-bind="component: { name: route().page, params: { route: route() } }"></div>
 
         <!-- build:js -->
         <script src="app/require.config.js"></script>

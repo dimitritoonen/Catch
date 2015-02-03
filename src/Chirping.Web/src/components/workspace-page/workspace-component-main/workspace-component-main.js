@@ -3,9 +3,8 @@ define(['knockout', 'text!./workspace-component-main.html'], function(ko, templa
   function WorkspaceComponentMain(params) {
     
     var self = this;
-
+    
     self.route = params.route;
-
   }
 
   WorkspaceComponentMain.prototype.dispose = function () {
