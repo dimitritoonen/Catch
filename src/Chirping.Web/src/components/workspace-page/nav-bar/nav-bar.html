@@ -1,0 +1,84 @@
+<div class="navbar navbar-default workspace-navbar" role="navigation">
+    <div class="container-fluid">
+        <!-- contains the collapsed button -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand hidden-workspace-left" href="#Workspace">&lt;3 chirping</a>
+        </div>
+
+        <!-- contains the menu items (both collapsed as expanded) -->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li data-bind="css: { active: route() === 'dashboard-page' }">
+                    <a href="#Workspace/Dashboard">
+                        <div class="workspace-navbar-item-icon visible-workspace-navbar-inline"><i class="fa fa-home fa-lg fa-fw"></i></div>
+                        <div class="workspace-navbar-item-text">dashboard</div>
+                    </a>
+                </li>
+                <li data-bind="css: { active: route() === 'activities-page' }">
+                    <a href="#Workspace/Activities">
+                        <div class="workspace-navbar-item-icon visible-workspace-navbar-inline"><i class="fa fa-bicycle fa-lg fa-fw"></i></div>
+                        <div class="workspace-navbar-item-text">activities</div>
+                    </a>
+                </li>
+                <li data-bind="css: { active: route() === 'notifications-page' }">
+                    <a href="#Workspace/Notifications">
+                        <div class="workspace-navbar-item-icon visible-workspace-navbar-inline"><i class="fa fa-envelope-o fa-lg fa-fw"></i></div>
+                        <div class="workspace-navbar-item-text">notifications</div>
+                    </a>
+                </li>
+                <li data-bind="css: { active: route() === 'contacts-page' }">
+                    <a href="#Workspace/Contacts">
+                        <div class="workspace-navbar-item-icon visible-workspace-navbar-inline"><i class="fa fa-users fa-lg fa-fw"></i></div>
+                        <div class="workspace-navbar-item-text">contacts</div>
+                    </a>
+                </li>
+                <li class="visible-workspace-navbar">
+                    <a href="#Workspace/Profile">
+                        <div class="workspace-navbar-item-icon visible-workspace-navbar-inline"><i class="fa fa-cog fa-lg fa-fw"></i></div>
+                        <div class="workspace-navbar-item-text">settings</div>
+                    </a>
+                </li>
+                <li class="visible-workspace-navbar">
+                    <a href="#Workspace/Logout">
+                        <div class="workspace-navbar-item-icon visible-workspace-navbar-inline"><i class="fa fa-sign-out fa-lg fa-fw"></i></div>
+                        <div class="workspace-navbar-item-text">sign out</div>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- pull down menu -> visible when left bar is hidden, and hidden when navbar is collapsed  -->
+            <ul class="nav navbar-nav navbar-right hidden-workspace-navbar hidden-workspace-right pull-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#Workspace/Profile">
+                                <div class="visible-workspace-right-inline"><i class="fa fa-cog fa-lg fa-fw"></i></div>
+                                <div class="workspace-navbar-dropdown-text">settings</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <div class="visible-workspace-right-inline"><i class="fa fa-sign-out fa-lg fa-fw"></i></div>
+                                <div class="workspace-navbar-dropdown-text" data-bind="click: LogOut">sign out</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- contains the search text box -->
+            <div class="navbar-form navbar-left workspace-search-container hidden-ms hidden-xs pull-right" role="search">
+                <div class="workspace-search">
+                    <input type="text" maxlength="255" class="form-control workspace-search-input" placeholder="search activities" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

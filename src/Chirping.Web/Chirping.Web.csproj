@@ -132,6 +132,7 @@
     <Content Include="src\components\intro-page\registration-bar\registration-bar.html" />
     <Content Include="src\components\intro-page\forgot-password\reset-password-sent\reset-password-sent.html" />
     <Content Include="src\components\intro-page\forgot-password\reset-password-sent\reset-password-sent.js" />
+    <Content Include="src\components\workspace-page\nav-bar\nav-bar.html" />
     <Content Include="src\components\workspace-page\workspace-component-left\workspace-component-left.html" />
     <Content Include="src\components\workspace-page\workspace-component-left\workspace-component-left.js" />
     <Content Include="src\components\workspace-page\workspace-component-main\workspace-component-main.html" />
@@ -152,7 +153,6 @@
     <Content Include="src\images\wizardStep1.png" />
     <Content Include="src\images\wizardStep2.png" />
     <Content Include="src\images\wizardStep3.png" />
-    <Content Include="src\components\workspace-page\nav-bar\nav-bar.html" />
     <Content Include="src\components\workspace-page\nav-bar\nav-bar.js" />
     <Content Include="src\less\vendor\viewpoints\screen-ms.less" />
     <Content Include="src\less\vendor\bootstrap.less" />
