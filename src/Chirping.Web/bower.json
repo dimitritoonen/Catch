@@ -25,6 +25,7 @@
     "font-awesome": "~4.2.0"
   },
   "resolutions": {
-    "knockout": "3.2.0"
+    "knockout": "3.3.0-alpha",
+    "bootstrap":  "3.3.2"
   }
 }
