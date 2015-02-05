@@ -1,21 +1,36 @@
-﻿body, html {
+﻿
+.header-page {
     height: 100%;
     background: url(../../images/backgrounds/background3.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size : cover;
     -o-background-size: cover;
     background-size: cover;
+
+    border:1px solid red;
+    z-index:0;
+    position:fixed;
+    width: 100%;
 }
 
 .intro-page-top-beam {
-    z-index:0;  
+    overflow: hidden;
+    z-index:0;
     padding: 0px 10px 0px 0px;
-    position:absolute;
-    line-height: 75px;
-    width:100%;
+    margin-top: 40px;
+    width:70%;
     height:75px;
     background-color: transparent;
 }
+
+.intro-header-logo {
+    float: left;
+    left: 15px;
+    font-size: x-large;
+    color:white;
+    text-align:center;
+}
+
 
 .intro-page-content {
     font-weight:100;
@@ -25,6 +40,19 @@
     color:white;
 }
 
-.header-text {
-    max-width:1000px;
+
+.intro-header {
+    font-family: Open-sans bold;
+    font-size: 3em;
+    font-weight: 900;
+    letter-spacing: -2px;
+    padding-bottom: 1rem;
+}
+
+.intro-header-text {
+    text-shadow: 0 1px 10px rgba(0,0,0,0.5);
+    font-family: Open-sans;
+    font-size: 1.5em;
+    max-width: 850px;
+    font-weight: 200;
 }

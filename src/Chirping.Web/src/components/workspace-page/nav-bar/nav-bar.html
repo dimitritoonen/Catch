@@ -1,4 +1,4 @@
-<div class="navbar navbar-default workspace-navbar" role="navigation">
+<div class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <!-- contains the collapsed button -->
         <div class="navbar-header">
@@ -12,7 +12,7 @@
         </div>
 
         <!-- contains the menu items (both collapsed as expanded) -->
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse workspace-navbar left">
             <ul class="nav navbar-nav">
                 <li data-bind="css: { active: route() === 'dashboard-page' }">
                     <a href="#Workspace/Dashboard">
@@ -51,9 +51,10 @@
                     </a>
                 </li>
             </ul>
-
+        </div>
+        <div class="workspace-navbar right">
             <!-- pull down menu -> visible when left bar is hidden, and hidden when navbar is collapsed  -->
-            <ul class="nav navbar-nav navbar-right hidden-workspace-navbar hidden-workspace-right pull-right">
+            <ul class="nav navbar-nav navbar-right hidden-workspace-navbar hidden-workspace-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
                     <ul class="dropdown-menu" role="menu">
@@ -72,12 +73,12 @@
                     </ul>
                 </li>
             </ul>
+        </div>
 
+        <div class="workspace-navbar search">
             <!-- contains the search text box -->
-            <div class="navbar-form navbar-left workspace-search-container hidden-ms hidden-xs pull-right" role="search">
-                <div class="workspace-search">
-                    <input type="text" maxlength="255" class="form-control workspace-search-input" placeholder="search activities" />
-                </div>
+            <div class="navbar-form hidden-ms hidden-xs" role="search">
+                <input type="text" maxlength="255" class="form-control workspace-search-input" placeholder="search activities" />
             </div>
         </div>
     </div>

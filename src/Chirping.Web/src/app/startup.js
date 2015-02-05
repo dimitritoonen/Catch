@@ -50,6 +50,8 @@ define(['jquery', 'knockout', './router', 'bootstrap', 'validation/ko-validation
     // workspace-page 
     ko.components.register('nav-bar', { require: 'components/workspace-page/nav-bar/nav-bar' });
     ko.components.register('profile-bar', { require: 'components/workspace-page/workspace-component-left/profile-bar/profile-bar' });
+    ko.components.register('interesting-activities', { require: 'components/workspace-page/dashboard-page/interesting-activities/interesting-activities' });
+    ko.components.register('activity-thumb', { require: 'components/workspace-page/dashboard-page/activity-thumb/activity-thumb' });
 
             
 

@@ -1,4 +1,6 @@
-﻿// bootstrap variables/mixins and custom screen-ms viewport
+﻿@import "../vendor-prefixes";
+
+// bootstrap variables/mixins and custom screen-ms viewport
 @import "viewpoints/screen-ms.less";
 @import "viewpoints/screen-workspace-navbar.less";
 
@@ -125,6 +127,11 @@ hr {
     .button-variant(white, transparent, white);
 }
 
+.btn-shine-through:hover {
+    background-color: white;
+    color: black;
+}
+
 .top-buffer { margin-top: 10px; }
 
 
@@ -137,7 +144,7 @@ hr {
 /* Boostrap nav-bar */
 .navbar-default {
     font-family: Open-sans;
-    color: @grey-background-dark;
+    color: @workspace-navbar-text;
     padding-right:0px;
 }
 
@@ -151,13 +158,13 @@ hr {
 .navbar-default .navbar-nav > li.active > a,
 .navbar-default .navbar-nav > .open > a {
     @media (min-width: @screen-workspace-navbar) {
-        border-bottom: 2px solid @gray-light;
+        border-bottom: 2px solid @workspace-navbar-hover;
     }
 }
 
 // defines a line below the entire navbar
 .navbar-default {
-    border-bottom: 1px solid @gray-light;
+    .shadow(0px 1px 3px @workspace-navbar-underline);
 }
 
 // set the brand settings
@@ -167,7 +174,7 @@ hr {
     font-weight: 700;
     cursor: pointer;
     margin-top: -2px;
-    color: @gray-light;
+    color: @workspace-navbar-hover;
 }
 
 // sets the background color for the full size navbar and the brand
@@ -177,7 +184,7 @@ hr {
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-nav > li.active > a,
 .navbar-default .navbar-nav > li.active > a:hover {
-    background-color: @grey-background;
+    background-color: @workspace-navbar-bg;
 }
 
 // defines the navbar style when collapsed
@@ -186,17 +193,17 @@ hr {
 .navbar-default .navbar-nav > li.active > a,
 .navbar-default .navbar-nav > li.active > a:hover {
     @media (max-width: @screen-workspace-navbar-max) {
-        background-color: @grey-background-dark;
+        background-color: @workspace-navbar-collapsed-hover;
     }
 }
 
 
 .navbar-default .navbar-nav > li > .dropdown-menu {
-    background-color: @grey-background;
+    background-color: @workspace-navbar-bg;
 }
 
 .navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover {
-    background-color: @grey-background-dark;
+    background-color: @workspace-navbar-hover;
 }
 
 

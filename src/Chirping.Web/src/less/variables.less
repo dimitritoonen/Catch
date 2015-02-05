@@ -10,8 +10,27 @@
 @blue: #2f6ea2;
 @blue-light: lighten(@blue, 30%);
 
+@chalkboard-grey: #393836;
 
 // Defines the grey color used for the backgrounds
+@grey-background-darker: darken(@grey-background, 15%);
 @grey-background-dark: darken(@grey-background, 5%);
 @grey-background: #F4F4F4;
 @grey-background-light: lighten(@grey-background, 30%);
+
+
+// workspace variables
+@workspace-bg: @chalkboard-grey;
+@workspace-left-bg: @chalkboard-grey;
+@workspace-right-bg: @chalkboard-grey;
+@workspace-main-bg: @grey-background-dark;
+
+@workspace-profile-bg: @grey-background-dark;
+
+// workspace navbar
+@workspace-navbar-bg: @grey-background;
+@workspace-navbar-selected: @grey-background-dark;
+@workspace-navbar-text: @grey-background-dark;
+@workspace-navbar-hover: @gray-light;
+@workspace-navbar-underline: darken(@grey-background, 32%);
+@workspace-navbar-collapsed-hover: @grey-background-dark;

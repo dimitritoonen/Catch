@@ -1,24 +1,22 @@
-﻿<div class="intro-page-top-beam">
-    <div class="logo-text">
-        <p>&lt;3 chirping</p>
-    </div>
-    <div class="pull-right">
-        <button data-bind="click: function() { loadComponent('register') }" class="btn btn-shine-through">register</button>
-        <button data-bind="click: function() { loadComponent('login-bar') }" class=" btn btn-shine-through">login</button>
-    </div>
-</div>
-<div class="intro-page-content text-center">
-    <div class="header-text center-block">
-        <h1>One place for all the importance in your life</h1>
-        <br /><br />
-        <p>
-            <h4>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec
-            </h4>
-        </p>
-    </div>
-</div>
-<div data-bind="if: showComponent">
+﻿<div data-bind="if: showComponent">
     <div data-bind="component: { name: 'component-container', params: getComponentParams() }"></div>
+</div>
+<div class="header-page">
+    <div class="intro-page-top-beam center-block">
+        <div class="intro-header-logo">
+            <p>&lt;3 chirping</p>
+        </div>
+        <div class="pull-right">
+            <button data-bind="click: function() { loadComponent('register') }" class="btn btn-shine-through">register</button>
+            <button data-bind="click: function() { loadComponent('login-bar') }" class=" btn btn-shine-through">login</button>
+        </div>
+    </div>
+    <div class="intro-page-content text-center">
+        <div class="intro-header-text center-block">
+            <span class="intro-header">Really meet people...</span>
+            <p>
+                Get the social from social media by meeting new people through activities.
+            </p>
+        </div>
+    </div>
 </div>
