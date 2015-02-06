@@ -111,9 +111,8 @@ hr {
 }
 
 
+
 /* Bootstrap Glyphicon changes */
-
-
 .glyphicon {
     opacity: 0.40;
 }
@@ -135,7 +134,7 @@ hr {
 .top-buffer { margin-top: 10px; }
 
 
-@font-family-base: Open-sans light, Verdana, Arial;
+@font-family-base: Open-sans, Arial;
 @font-size-h1: 50px;
 @headings-font-weight: 100;
 @btn-primary-bg: @blue;
@@ -158,8 +157,12 @@ hr {
 .navbar-default .navbar-nav > li.active > a,
 .navbar-default .navbar-nav > .open > a {
     @media (min-width: @screen-workspace-navbar) {
-        border-bottom: 2px solid @workspace-navbar-hover;
+        border-bottom: 3px solid @blue-light;
     }
+}
+
+.navbar-default .navbar-nav > li.active > a {
+    font-weight: 900;
 }
 
 // defines a line below the entire navbar
@@ -209,4 +212,3 @@ hr {
 
 // changes the nav-bar collapse point at mobile width
 @grid-float-breakpoint: @screen-workspace-navbar;
-

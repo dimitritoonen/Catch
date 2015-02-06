@@ -1,7 +1,4 @@
-﻿<div data-bind="if: showComponent">
-    <div data-bind="component: { name: 'component-container', params: getComponentParams() }"></div>
-</div>
-<div class="header-page">
+﻿<div class="header-page">
     <div class="intro-page-top-beam center-block">
         <div class="intro-header-logo">
             <p>&lt;3 chirping</p>
@@ -19,4 +16,7 @@
             </p>
         </div>
     </div>
+</div>
+<div data-bind="if: showComponent">
+    <div data-bind="component: { name: 'component-container', params: getComponentParams() }"></div>
 </div>

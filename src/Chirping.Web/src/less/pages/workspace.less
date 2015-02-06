@@ -5,17 +5,16 @@
 */
 
 .page-wrap {
+    position:relative;
     background-color: @workspace-bg;
     width:100%;
     float:left;
-    overflow: hidden;
 }
 
 .workspace-content {
     background-color: @workspace-main-bg;
     height: 100vh;
     overflow: hidden;
-    margin-top: 10px;
 }
 
 .workspace-logo {
@@ -29,34 +28,27 @@
 }
 
 
+.workspace-top-beam {
+    background-color: @chalkboard-grey;
+    height:10px;
+}
+
 .workspace-component {
+    position: relative;
     height: 100vh;
     width: 230px;
 }
 
 .workspace-component.left {
+    position: relative;
+    overflow: hidden;
     background-color: @workspace-left-bg;
     float: left;
+    height: 100vh;
 }
 
 .workspace-component.right {
+    overflow: hidden;
     background-color: @workspace-right-bg;
     float: right;
-}
-
-
-/* */
-.workspace-container {
-    background-color: @grey-background;
-    border: 1px solid @grey-background-darker;
-    border-radius: 4px;
-}
-
-.workspace-container:hover {
-    .box-shadow(0 0 0 1px @blue-light);
-}
-
-
-.workspace-container-wrap {
-    margin: 10px;
 }

@@ -22,10 +22,13 @@
     "qtip2": "2.2.1",
     "requirejs": "~2.1.11",
     "requirejs-text": "~2.0.10",
-    "font-awesome": "~4.2.0"
+    "font-awesome": "~4.2.0",
+    "eonasdan-bootstrap-datetimepicker": "~4.0.0",
+    "moment": "~2.9.0",
+    "metro-ui-css": "~2.0.23"
   },
   "resolutions": {
     "knockout": "3.3.0-alpha",
-    "bootstrap":  "3.3.2"
+    "bootstrap": "3.3.2"
   }
 }

@@ -52,7 +52,8 @@ module.exports = {
     src: [
         src + '/bower_modules/qtip2/jquery.qtip.min.css',
         src + '/bower_modules/font-awesome/css/font-awesome.min.css',
-        src + '/bower_modules/jcrop/css/jquery.Jcrop.min.css'
+        src + '/bower_modules/jcrop/css/jquery.Jcrop.min.css',
+        src + '/bower_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css'
       ]
   },
   autoprefixer: {
