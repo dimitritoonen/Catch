@@ -12,11 +12,12 @@ gulp.task('html', function () {
     .pipe(htmlreplace({
       'css': '/css/styles.css',
       'vendor-css': '/css/vendor-styles.css',
-      js: {
+      'js': {
         src: 'app/startup',
         tpl: '<script src="app/require.config.js"></script>' +
               '<script data-main="%s" src="bower_modules/requirejs/require.js"></script>'
-      }
+      },
+      'modernizr': '<script src="bower_modules/modernizr/modernizr.js"></script>'
     }))
     .pipe(gulp.dest(config.dest));
 });

@@ -3,14 +3,15 @@
 var require = {
   baseUrl: ".",
   paths: {
+    "modernizr": "bower_modules/modernizr/modernizr",
     "bootstrap": "bower_modules/components-bootstrap/js/bootstrap.min",
     "bootstrap-dialog": "bower_modules/bootstrap-dialog/dist/js/bootstrap-dialog.min",
     "datetimepicker": "bower_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min",
-    "metro-slider" : "bower_modules/metro-ui-css/js/metro-slider",
     "moment": "bower_modules/moment/min/moment-with-locales.min",
     "crossroads": "bower_modules/crossroads/dist/crossroads.min",
     "hasher": "bower_modules/hasher/dist/js/hasher.min",
     "jquery": "bower_modules/jquery/dist/jquery",
+    "jquery-ui": "bower_modules/jquery-ui/jquery-ui",
     "knockout": "bower_modules/knockout/dist/knockout",
     "knockout-projections": "bower_modules/knockout-projections/dist/knockout-projections.min",
     "knockout-validation": "bower_modules/knockout-validation/dist/knockout.validation.min",
@@ -18,13 +19,22 @@ var require = {
     "signals": "bower_modules/js-signals/dist/signals.min",
     "text": "bower_modules/requirejs-text/text",
     "qtip2": "bower_modules/qtip2/jquery.qtip.min",
-    "jcrop": "bower_modules/jcrop/js/jquery.Jcrop.min"
+    "jcrop": "bower_modules/jcrop/js/jquery.Jcrop.min",
+
+    // metro interface
+    "metro-touch-handler": "bower_modules/metro-ui-css/js/metro-touch-handler",
+    "metro-slider": "bower_modules/metro-ui-css/js/metro-slider"
   },
   shim: {
     "bootstrap": { deps: ["jquery"] },
     "qtip2": { deps: ["jquery"] },
-    "metro-slider": { deps: ["jquery"] }
-    //"bower_modules/metro-ui-css/js/metro-slider": { exports: "metro-slider" }
+    "metro-slider": {
+      deps: [
+        "jquery",
+        "jquery-ui",
+        "metro-touch-handler"
+      ]
+    }
   },
   urlArgs: "bust=" + (new Date()).getTime()
 };

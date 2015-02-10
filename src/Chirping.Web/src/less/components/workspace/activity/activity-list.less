@@ -1,0 +1,139 @@
+﻿@import "../../../vendor/viewpoints/screen-ms.less";
+@import "../../../variables.less";
+@import "../../../../bower_modules/font-awesome/less/font-awesome.less";
+
+/*
+    Defines the styles for the activity list
+*/
+
+// defines the base namespace for the workspace activity styles
+.workspace {
+    &.activity {
+        
+        // change bootstrap cell padding
+        [class*='col-']  {
+            //  TRBL
+            padding: 0 8px 0px 8px !important;
+
+            @media (min-width: @screen-md) {
+                padding: 0 8px 0px 11px !important;
+            }
+        }
+
+        // style for the list item tile
+        .tile {
+            position: relative;
+            background-color: @grey-background;
+            width: 100%;
+            min-height: 200px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid @grey-background-darker;
+            border-radius: @border-radius-base;
+
+            .image {
+                margin-bottom:10px;
+                border: 1px solid red;
+                float:left;
+                border: 1px solid @gray-dark;
+                height: 100px;
+                width: 100px;
+                margin-right: 10px;
+            }
+
+            .category {
+
+                padding-top: 10px;
+
+                .title {
+                    padding-right: 7px; 
+                    font-weight: 900;
+                }
+            }
+
+            .text {
+                margin-top: -5px;
+            }
+
+            // helps the info div to position properly
+            .info-wrapper {
+
+                position: relative;
+                margin-top: 20px;
+
+                // styles for the Where, When and Participants info of the item tile
+                .info {
+                    position: relative;
+                    width: 100%;
+                    min-height: 25px;
+                    overflow:hidden;
+                    padding-bottom: 5px;
+                    margin-top: 10px;
+                    
+                    .where {
+                        position: relative;
+                        width: 100%;
+
+                        @media (min-width: @screen-ms) {
+                            width: 40%;
+                            float:left;
+                        }
+                    }
+
+                    .participants {
+                        text-align: left;
+                        width: 100%;
+
+                        @media (min-width: @screen-ms) {
+                            max-width: 100px;
+                            text-align: right;
+                            width: 25%;
+                            float: right;
+                        }
+                    }
+
+                    .when {
+                        position: relative;
+                        padding-bottom: 2px;
+                        padding-top: 2px;
+
+                        @media (min-width: @screen-ms) {
+                            padding-bottom: 0;
+                            padding-top: 0;
+                        }
+                    }
+                }
+            }
+
+            // footer styles of the item tile
+            .footer {
+                padding: 10px 0 10px 5px;
+                width: 100%;
+                height: 50px;
+                border-top: 1px solid @grey-background-dark;
+
+                .text {
+                    font-size: 0.9em;
+                    cursor: pointer;
+                }
+
+                // icons styles in the footer of the itme tile
+                .icon {
+                    color: @blue;
+                    font-size: 1.4em;
+                    margin-top: 10px;
+
+                    &.bookmark:hover:before {
+                        cursor: pointer;
+                        color: @blue;
+                        content: @fa-var-bookmark !important;
+                    }
+
+                    &.share {
+                        padding-left: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

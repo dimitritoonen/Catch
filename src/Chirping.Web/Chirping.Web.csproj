@@ -60,6 +60,7 @@
     <Content Include="gulpfile-publish.js" />
     <Content Include="gulpfile.js" />
     <Content Include="gulp\config.js" />
+    <Content Include="gulp\tasks\acceptance-build\gulp-modernizr.js" />
     <Content Include="gulp\tasks\acceptance-build\revision-requireJs-collect.js" />
     <Content Include="gulp\tasks\acceptance-build\copy-web-config.js" />
     <Content Include="gulp\tasks\acceptance-build\revision-cleanup.js" />
@@ -71,6 +72,7 @@
     <Content Include="gulp\tasks\dev-build\copy-auth.js" />
     <Content Include="gulp\tasks\dev-build\css-vendor.js" />
     <Content Include="gulp\tasks\dev-build\svgmin.js" />
+    <Content Include="gulp\tasks\dev-optimized-build\copy-modernizr.js" />
     <Content Include="gulp\tasks\_exclude-from-publish\recess.js" />
     <Content Include="gulp\tasks\dev-optimized-build\optimize-html.js" />
     <Content Include="gulp\tasks\dev-build\base64.js" />
@@ -113,6 +115,13 @@
     <Content Include="src\bindingHandlers\bindingHandlers.js" />
     <Content Include="src\bindingHandlers\invokeOnEnter.js" />
     <Content Include="src\bindingHandlers\qtipValMessage.js" />
+    <Content Include="src\bower_modules\metro-ui-css\js\metro-slider.js" />
+    <Content Include="src\bower_modules\metro-ui-css\js\metro-touch-handler.js" />
+    <Content Include="src\bower_modules\metro-ui-css\less\funcs.less" />
+    <Content Include="src\bower_modules\metro-ui-css\less\reset.less" />
+    <Content Include="src\bower_modules\metro-ui-css\less\slider.less" />
+    <Content Include="src\bower_modules\metro-ui-css\less\utils.less" />
+    <Content Include="src\bower_modules\metro-ui-css\less\variables.less" />
     <Content Include="src\components\intro-page\activate-account\activate-account.html" />
     <Content Include="src\components\intro-page\activate-account\activate-account.js" />
     <Content Include="src\components\intro-page\change-password\change-password.html" />
@@ -132,6 +141,8 @@
     <Content Include="src\components\intro-page\registration-bar\registration-bar.html" />
     <Content Include="src\components\intro-page\forgot-password\reset-password-sent\reset-password-sent.html" />
     <Content Include="src\components\intro-page\forgot-password\reset-password-sent\reset-password-sent.js" />
+    <Content Include="src\components\workspace-page\activity-page\activity-add\activity-add.html" />
+    <Content Include="src\components\workspace-page\activity-page\activity-add\activity-add.js" />
     <Content Include="src\components\workspace-page\activity-page\activity-filter\activity-filter-dropdown\activity-filter-dropdown.html" />
     <Content Include="src\components\workspace-page\activity-page\activity-filter\activity-filter-dropdown\activity-filter-dropdown.js" />
     <Content Include="src\components\workspace-page\dashboard-page\activity-thumb\activity-thumb.html" />
@@ -443,6 +454,7 @@
     <Content Include="src\less\components\workspace\profile-bar.less" />
     <Content Include="src\less\components\workspace\dashboard\activity-thumb.less" />
     <Content Include="src\less\components\workspace\activity\activity-filter.less" />
+    <Content Include="src\less\components\workspace\activity\activity-list.less" />
     <None Include="src\less\styles.less" />
     <Content Include="src\Web.config" />
     <Content Include="src\less\vendor\jcrop.less" />

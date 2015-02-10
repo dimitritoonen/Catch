@@ -1,0 +1,33 @@
+<div class="workspace activity filter">
+    <div class="row">
+        <div class="col-md-6">
+            <!-- categories -->
+            <activity-filter-dropdown params='listItems: categoryList, label: "Category"'></activity-filter-dropdown>
+        </div>
+        <div class="col-md-6">
+            <div class="activity-filter-label">Date</div>
+            <input type="text" class="form-control activity-filter-date" id="ActivityDatePicker" placeholder="When?" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="workspace-default-slider col-md-6 metro">
+            Participants:<b><span class="workspace-participant-text" data-bind="html: participants"></span></b>
+            <div id="participantsSlider" class="participant-slider slider permanent-hint"
+                 data-position="0"
+                 data-accuracy="1"
+                 data-role="slider"
+                 data-max="10"
+                 data-colors="#2f6ea2"
+                 data-animate="false"></div>
+        </div>
+        <div class="workspace-comptable-slider col-md-6 hide">
+            <!-- participants -->
+            <activity-filter-dropdown params='listItems: participantList, label: "Participants"'></activity-filter-dropdown>
+        </div>
+        <div class="col-md-6">
+            <div class="activity-filter-label">Time</div>
+            <input type="text" class="form-control activity-filter-time" id="ActivityTimePicker" placeholder="When?" />
+        </div>
+    </div>
+</div>

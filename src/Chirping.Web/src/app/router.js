@@ -104,7 +104,7 @@ define(['knockout', 'crossroads', 'hasher', 'services/auth-service', './app.conf
     var environment = '/*@echo NODE_ENV*/';
 
     if (request != appConfig.HOMEPAGE) {
-      //if (environment !== 'development') {
+      if (environment !== 'development') {
         auth.IsUserAuthenticated().done(function (result) {
           if (result === false) {
             RedirectToHomepage();
@@ -112,7 +112,7 @@ define(['knockout', 'crossroads', 'hasher', 'services/auth-service', './app.conf
         }).error(function (result) {
           RedirectToHomepage()
         })
-      //}
+      }
     }
   }
 
