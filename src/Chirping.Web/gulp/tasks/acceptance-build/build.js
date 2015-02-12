@@ -12,7 +12,8 @@ gulp.task('build:acceptance', function (callback) {
       'svgmin',
       'fonts'
     ],
-    'build:modernizr',
+    //'build:modernizr',
+    'copy:modernizr',
     'base64',
     [
       'optimize:js:acceptance',

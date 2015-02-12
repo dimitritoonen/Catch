@@ -1,4 +1,6 @@
-define(['knockout', 'text!./activity-filter-slider.html'], function(ko, templateMarkup) {
+define(['knockout', 'text!./activity-filter-slider.html', 'metro-touch-handler', 'metro-slider'], function (ko, templateMarkup) {
+
+  //, 'metro-slider' 
 
   // constant - the width of the marker in pixels
   var MarkerWidth = 12;

@@ -124,7 +124,7 @@ module.exports = {
         '!' + src + '/bower_modules/**/*.js',
         src + '/**/*.js'
       ],
-      dest: dest
+      dest: dest + '/modernizr.js'
     }
   },
   components: {
@@ -260,12 +260,36 @@ module.exports = {
           'auth-complete': [
             'authentication/auth-complete'
           ],
-          'workspace': [
+          'workspace-page': [
             'pages/workspace-page/workspace-page',
             'components/workspace-page/nav-bar/nav-bar',
+            'components/workspace-page/workspace-component-left/profile-bar/profile-bar',
             'components/workspace-page/workspace-component-left/workspace-component-left',
             'components/workspace-page/workspace-component-right/workspace-component-right',
             'components/workspace-page/workspace-component-main/workspace-component-main',
+          ],
+          'dashboard-page' : [
+            'pages/workspace-page/dashboard-page/dashboard-page',
+            'components/workspace-page/dashboard-page/interesting-activities/interesting-activities',
+            'components/workspace-page/dashboard-page/activity-thumb/activity-thumb'
+          ],
+          'activities-page': [
+            'pages/workspace-page/activities-page/activities-page',
+            'components/workspace-page/activity-page/activity-filter/activity-filter',
+            'components/workspace-page/activity-page/activity-filter/activity-filter-dropdown/activity-filter-dropdown',
+            'components/workspace-page/activity-page/activity-listitem/activity-listitem',
+            'components/workspace-page/activity-page/activity-list/activity-list',
+            'components/workspace-page/activity-page/activity-add/activity-add',
+            'components/workspace-page/activity-page/activity-filter/activity-filter-slider/activity-filter-slider'
+          ],
+          'notifications-page': [
+            'pages/workspace-page/notifications-page/notifications-page'
+          ],
+          'contacts-page': [
+            'pages/workspace-page/contacts-page/contacts-page'
+          ],
+          'profile-page': [
+            'pages/workspace-page/profile-page/profile-page'
           ]
         }
       }

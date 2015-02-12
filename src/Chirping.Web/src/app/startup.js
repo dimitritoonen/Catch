@@ -1,5 +1,5 @@
-define(['jquery', 'knockout', './router', 'bootstrap', 'validation/ko-validation-config', 'bindingHandlers/bindingHandlers'],
-  function ($, ko, router, auth) {
+define(['jquery', 'jquery-ui', 'knockout', './router', 'bootstrap', 'validation/ko-validation-config', 'bindingHandlers/bindingHandlers'],
+  function ($, ui, ko, router, auth) {
 
     $.ajaxSetup({
       contentType: 'application/json; charset=utf-8'
