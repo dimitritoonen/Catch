@@ -3,7 +3,7 @@ var runSequence = require('run-sequence');
 
 /* Run all tasks needed for a build in defined order */
 gulp.task('build:acceptance', function (callback) {
-  runSequence('delete', 'less:vendor',
+  runSequence('delete', 'less:vendor', 'copy:modernizr',
     [
       'scripts:publish',
       'optimize:html',
@@ -12,8 +12,6 @@ gulp.task('build:acceptance', function (callback) {
       'svgmin',
       'fonts'
     ],
-    //'build:modernizr',
-    'copy:modernizr',
     'base64',
     [
       'optimize:js:acceptance',

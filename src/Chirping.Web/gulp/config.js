@@ -38,6 +38,7 @@ module.exports = {
     optimized: {
       src: [
           '!' + src + '/less/vendor/bootstrap.less',
+          '!' + src + '/less/vendor/metro-bootstrap.less', // compiled manually and added the css class
           src + '/less/**/*.less'
       ],
       dest: dest + '/css',
@@ -53,7 +54,8 @@ module.exports = {
         src + '/bower_modules/qtip2/jquery.qtip.min.css',
         src + '/bower_modules/font-awesome/css/font-awesome.min.css',
         src + '/bower_modules/jcrop/css/jquery.Jcrop.min.css',
-        src + '/bower_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css'
+        src + '/bower_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+        src + '/bower_modules/metro-ui-css/min/metro-slider.min.css'
       ]
   },
   autoprefixer: {
