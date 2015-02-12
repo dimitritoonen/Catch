@@ -15,3 +15,15 @@
     -moz-animation: @transform;
     -o-animation: @transform;
 }
+
+.shadow(@shadow) {
+    box-shadow: @shadow;
+    -webkit-box-shadow: @shadow;
+    -moz-box-shadow: @shadow;
+}
+
+.clear-shadow() {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+}

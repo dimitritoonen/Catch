@@ -4,34 +4,106 @@
     Defines the styles for the workspace page
 */
 
+body,html {
+    background-color: @workspace-main-bg;
+}
+
 .page-wrap {
-    width:100%;
-    float:left;
-    overflow: hidden;
+    position: absolute;
+    top:0;
+    left: 0;
+    background-color: @workspace-bg;
+    min-width:100%;
+    min-height: 100vh;
 }
 
 .workspace-content {
-    background-color: @grey-background-dark;
-    height: 100vh;
+    position: absolute;
     overflow: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: @workspace-main-bg;
+    min-height: 100vh;
+
+    @media (min-width: @screen-workspace-right) {
+        right: @workspace-right-pos !important;
+    }
+
+    @media (min-width: @screen-md) {
+        left: @workspace-left-pos;
+    }
+
+    .navbar {
+        position: fixed;
+        z-index: 500;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        @media (min-width: @screen-workspace-right) {
+            right: @workspace-right-pos !important;
+        }
+
+        @media (min-width: @screen-md) {
+            left: @workspace-left-pos;
+            top: 10px;
+        }
+    }
+
+    .top-beam {
+        position: fixed;
+        top: 0;
+        left: @workspace-left-pos;
+        right: 0;
+        z-index: 500;
+        background-color: @chalkboard-grey;
+        height: 10px;
+
+        @media (min-width: @screen-workspace-right) {
+            right: @workspace-right-pos !important;
+        }
+    }
+}
+
+.workspace-logo {
+    margin-top: 10px;
+    font-size: x-large;
+    color:white;
+
+    &.dark {
+        color: @gray-dark;
+    }
 }
 
 .workspace-content-page {
-    margin: 0px 20px 0px 20px;
+    position: relative;
+    top: 65px;
+    margin-bottom: 75px;
+
+    @media (max-width: @screen-md) {
+        top: 55px;
+        margin-bottom: 65px;
+    }
 }
 
 
 .workspace-component {
-    background-color: rgba(0, 0, 0, 0.75);
-    height: 100vh;
-    width: 300px;
+    position: fixed;
+    top: 0;
+    min-height: 100vh;
 }
 
 .workspace-component.left {
-    line-height: 75px;
-    float: left;
+    width: @workspace-left-pos;
+    left: 0;
+    background-color: @workspace-left-bg;
+    height: 100vh;
 }
 
 .workspace-component.right {
+    width: @workspace-right-pos;
+    right: 0;
+    background-color: @workspace-right-bg;
     float: right;
 }

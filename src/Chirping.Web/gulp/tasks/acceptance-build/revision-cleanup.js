@@ -19,8 +19,6 @@ gulp.task('revision:cleanup', function () {
     sources.push('./' + manifestConfig.path + '/' + oldFile);
   })
 
-  console.log(sources);
-
   // add the manifest file itself
   sources.push('./' + manifestConfig.path + '/' + manifestConfig.name);
 

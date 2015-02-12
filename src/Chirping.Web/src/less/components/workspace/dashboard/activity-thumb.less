@@ -1,0 +1,23 @@
+﻿@import "../../../variables.less";
+@import "../../../vendor-prefixes";
+
+/*
+    Contains the styles for the activity thumb on the dashboard
+*/
+
+.activity-thumb-wrap {
+    width: 300px;
+    height: 275px;
+    background-color: @grey-background;
+    .shadow(5px 5px 10px 0px @grey-background-darker);
+    border-radius: 3px;
+    cursor:pointer;
+}
+
+.activity-thumb-container {
+    padding: 10px;
+}
+
+.activity-thumb-wrap:hover {
+    background-color: @blue-light;
+}

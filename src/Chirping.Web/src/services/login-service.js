@@ -24,6 +24,8 @@
   // authenticate user via an external provider
   loginService.authExternalProvider = function (provider, callback) {
     
+    console.log('loginService.authExternalProvider');
+
     var redirectUri = window.location.protocol + "//" + window.location.host + '/authcomplete.html';
     var externalProviderUrl = config.BaseUrl + 'api/Account/ExternalLogin?provider=' + provider +
                                                '&response_type=token&client_id=ChirpingWeb&redirect_uri=' + redirectUri;

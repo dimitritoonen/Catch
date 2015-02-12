@@ -3,6 +3,8 @@
 
 .container-wrap {
     position:fixed;
+    top: 0;
+    left: 0;
     z-index: 1;
     width:100%;
     height:100vh;
@@ -16,11 +18,13 @@
 
 .show-container {
     position: relative;
-    z-index:999;
-    width:100%;
-    min-height: 100vh !important;
-    overflow: auto;
+    overflow:hidden;
+    z-index: 2;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
     background-color: @grey-background;
+
     @media (min-width: @screen-xs-min) {
         background-color: rgba(255, 255, 255, 0.95);
         width:450px;
@@ -32,25 +36,27 @@
 .component {
     position:relative;
     width:90%;
-    margin-top: 75px;
+    top: 75px;
     opacity: 0;
-    .transition(~"opacity .3s ease-out, margin-top .3s ease-out");
+    .transition(~"opacity .3s ease-out, top .3s ease-out");
 
     @media (max-width: @screen-xs-min) {
-        margin-top:50px;
+        top: 50px;
     }
 }
 
 .component-container-controls {
-    margin-top: 35px;
+    position: relative;
+    top: 35px;
 }
 
 .component.show {
-    margin-top: 100px;
+    position: relative;
+    top: 100px;
     opacity: 1;
 
     @media (max-width: @screen-xs-min) {
-        margin-top: 75px;
+        top: 100px;
     }
 }
 

@@ -14,6 +14,7 @@ gulp.task('build:production', function (callback) {
       'fonts'
     ],
     'base64',
+    'build:modernizr',
     [
       'optimize:js:production',
       'optimize:css',

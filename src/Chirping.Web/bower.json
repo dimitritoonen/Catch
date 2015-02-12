@@ -13,6 +13,7 @@
     "imagesloaded": "3.1.8",
     "jcrop": "v0.9.12",
     "jquery": "2.1.1",
+    "jquery-ui": "~1.11.2",
     "js-signals": "1.0.0",
     "hasher": "~1.2.0",
     "knockout-projections": "1.1.0",
@@ -22,10 +23,14 @@
     "qtip2": "2.2.1",
     "requirejs": "~2.1.11",
     "requirejs-text": "~2.0.10",
-    "font-awesome": "~4.2.0"
+    "font-awesome": "~4.2.0",
+    "eonasdan-bootstrap-datetimepicker": "~4.0.0",
+    "moment": "~2.9.0",
+    //"metro-ui-css": "2.0.23",
+    "modernizr": "~2.8.3"
   },
   "resolutions": {
     "knockout": "3.3.0-alpha",
-    "bootstrap":  "3.3.2"
+    "bootstrap": "3.3.2"
   }
 }

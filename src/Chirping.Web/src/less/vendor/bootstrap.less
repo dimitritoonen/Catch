@@ -1,6 +1,7 @@
-﻿// bootstrap variables/mixins and custom screen-ms viewport
+﻿@import "../vendor-prefixes";
+
+// bootstrap variables/mixins and custom screen-ms viewport
 @import "viewpoints/screen-ms.less";
-@import "viewpoints/screen-workspace-navbar.less";
 
 // Variables/Mixins
 @import "../../bower_modules/bootstrap/less/variables.less";
@@ -68,6 +69,14 @@
 @modal-title-padding: 8px;
 @modal-inner-padding: 8px;
 
+/* Set default font and header variables */
+
+@font-family-base: Open-sans, Arial;
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open-sans light', Arial
+}
+@font-size-h1: 50px;
+@btn-primary-bg: @blue;
 
 
 /* Bootstrap general visual apperance */
@@ -109,9 +118,8 @@ hr {
 }
 
 
+
 /* Bootstrap Glyphicon changes */
-
-
 .glyphicon {
     opacity: 0.40;
 }
@@ -125,19 +133,23 @@ hr {
     .button-variant(white, transparent, white);
 }
 
+.btn-shine-through:hover {
+    background-color: white;
+    color: black;
+}
+
 .top-buffer { margin-top: 10px; }
 
 
-@font-family-base: Open-sans light, Verdana, Arial;
-@font-size-h1: 50px;
-@headings-font-weight: 100;
-@btn-primary-bg: @blue;
-
 
 /* Boostrap nav-bar */
+.navbar {
+    border:0;
+}
+
 .navbar-default {
     font-family: Open-sans;
-    color: @grey-background-dark;
+    color: @workspace-navbar-text;
     padding-right:0px;
 }
 
@@ -145,19 +157,35 @@ hr {
     border-bottom: 2px solid transparent;
 }
 
+.navbar-default .navbar-collapse {
+    border: 0;
+    border-bottom: 1px solid @grey-background-darker;
+}
+
+.navbar-default .navbar-header {
+    border-bottom: 1px solid @grey-background-darker;
+}
+
+
 // defines an 2px border for selected and hovered items
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-nav > li.active > a,
 .navbar-default .navbar-nav > .open > a {
-    @media (min-width: @screen-workspace-navbar) {
-        border-bottom: 2px solid @gray-light;
+    @media (min-width: @screen-sm) {
+        border-bottom: 3px solid @blue-light;
     }
+}
+
+.navbar-default .navbar-nav > li.active > a {
+    font-weight: 900;
 }
 
 // defines a line below the entire navbar
 .navbar-default {
-    border-bottom: 1px solid @gray-light;
+    @media (min-width: @screen-sm) {
+        .shadow(0px 1px 3px @workspace-navbar-underline);
+    }
 }
 
 // set the brand settings
@@ -167,7 +195,7 @@ hr {
     font-weight: 700;
     cursor: pointer;
     margin-top: -2px;
-    color: @gray-light;
+    color: @workspace-navbar-hover;
 }
 
 // sets the background color for the full size navbar and the brand
@@ -177,7 +205,7 @@ hr {
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-nav > li.active > a,
 .navbar-default .navbar-nav > li.active > a:hover {
-    background-color: @grey-background;
+    background-color: @workspace-navbar-bg;
 }
 
 // defines the navbar style when collapsed
@@ -185,21 +213,17 @@ hr {
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-nav > li.active > a,
 .navbar-default .navbar-nav > li.active > a:hover {
-    @media (max-width: @screen-workspace-navbar-max) {
-        background-color: @grey-background-dark;
+    @media (max-width: @screen-sm) {
+        background-color: @workspace-navbar-collapsed-hover;
     }
 }
 
 
 .navbar-default .navbar-nav > li > .dropdown-menu {
-    background-color: @grey-background;
+    background-color: @workspace-navbar-bg;
 }
 
 .navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover {
-    background-color: @grey-background-dark;
+    background-color: @workspace-navbar-hover;
 }
-
-
-// changes the nav-bar collapse point at mobile width
-@grid-float-breakpoint: @screen-workspace-navbar;
 

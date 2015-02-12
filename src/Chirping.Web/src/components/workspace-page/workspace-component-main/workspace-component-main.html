@@ -1,4 +1,5 @@
 <div class="workspace-content">
-    <div data-bind="component: { name: 'nav-bar', params: { route: route } }" />
+    <div class="top-beam visible-md visible-lg"></div>
+    <div class="navbar" data-bind="component: { name: 'nav-bar', params: { route: route } }" />
     <div class="workspace-content-page" data-bind="component: { name: route() }"></div>
 </div>
