@@ -12,7 +12,7 @@
     if (token) {
       headers.Authorization = 'Bearer ' + token;
     }
-
+    
     return $.ajax({
       type: 'GET',
       url: config.BaseUrl + url,

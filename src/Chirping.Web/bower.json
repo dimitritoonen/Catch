@@ -26,10 +26,14 @@
     "font-awesome": "~4.2.0",
     "eonasdan-bootstrap-datetimepicker": "~4.0.0",
     "moment": "~2.9.0",
-    "modernizr": "~2.8.3"
+    "modernizr": "~2.8.3",
+    "jquery-dateFormat": "~1.0.2"
   },
   "resolutions": {
     "knockout": "3.3.0-alpha",
     "bootstrap": "3.3.2"
+  },
+  "devDependencies": {
+    "jquery-mockjax": "~1.6.1"
   }
 }

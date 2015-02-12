@@ -9,7 +9,7 @@ define(['knockout', 'text!./account-activated.html'], function (ko, templateMark
 
     self.loadLoginComponent = function () {
       container.updateActiveComponent('login-bar');
-    }
+    };
   }
   
   return { viewModel: AccountActivated, template: templateMarkup };

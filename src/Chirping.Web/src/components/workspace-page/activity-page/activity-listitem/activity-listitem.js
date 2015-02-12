@@ -1,24 +1,24 @@
-define(['knockout', 'text!./activity-listitem.html'], function(ko, templateMarkup) {
+define(['knockout', 'text!./activity-listitem.html', '../category-icon-mapping', 'dateformat'], function (ko, templateMarkup, categoryMap) {
 
   function ActivityListitem(params) {
    
     var self = this;
 
-    self.content = ko.observable('orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium');
+    self.activity = params.activity;
+    
+    var map = categoryMap;
+
+    self.iconMap = map.Get(params.activity.category.code);
+
+    // convert datetime format
+    var date = new Date(self.activity.date);
+    self.timestamp = $.format.date(date, 'dd MMMM / HH:mm');
+   
 
     self.expandTile = function () {
       $('.text').toggleClass('line-clamp');
     };
-
   }
-
-  //ActivityListitem.prototype.expandTile = function (self) {
-    
-  //  console.log(self);
-
-  //  $('.text').toggleClass('line-clamp');
-
-  //};
   
   return { viewModel: ActivityListitem, template: templateMarkup };
 

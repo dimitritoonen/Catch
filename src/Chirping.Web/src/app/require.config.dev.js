@@ -1,4 +1,4 @@
-/// <reference path="../.js" />
+﻿/// <reference path="../.js" />
 // require.js looks for the following global when initializing
 var require = {
   baseUrl: ".",
@@ -22,11 +22,17 @@ var require = {
     "jcrop": "bower_modules/jcrop/js/jquery.Jcrop.min",
     "dateformat": "bower_modules/jquery-dateFormat/dist/jquery-dateFormat.min",
 
+    // mockjax
+    "jquery-mockjax": "bower_modules/jquery-mockjax/jquery.mockjax",
+    "mock-server": "mock_server/mock-server",
+    "mock-activities": "mock_server/mock-activities",
+
     // metro interface
     "metro-touch-handler": "bower_modules/metro-ui-css/js/metro-touch-handler",
     "metro-slider": "bower_modules/metro-ui-css/js/metro-slider"
   },
   shim: {
+    "jquery-mockjax": { deps: ["jquery"] },
     "jquery-ui": {
       exports: "$",
       deps: ["jquery"]

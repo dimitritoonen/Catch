@@ -4,13 +4,15 @@
     </div>
     <div class="content">
         <div class="header">
-            <div class="where">Hendrik-Ido-Ambacht</div>
+            <div class="where" data-bind="html: activity.location"></div>
             <div class="category">
-                <i class="fa fa-heart-o fa-lg" style="color: red; cursor: pointer;" id="itemCategoryIcon" data-placement="top" title="Dating"></i>
+                <i class="fa fa-lg"
+                   data-bind="css: iconMap.icon, style: { color: iconMap.color }"
+                   id="itemCategoryIcon" data-placement="top" title="Dating"></i>
             </div>
-            <div class="when">25 maart / 19:00</div>
+            <div class="when" data-bind="html: timestamp"></div><!--25 maart / 19:00-->
         </div>
-        <div class="text line-clamp" data-bind="html: content"></div>
+        <div class="text line-clamp" data-bind="html: activity.content"></div>
         <div class="footer">
             <div class="icons">
                 <i class="fa fa-bookmark-o icon bookmark" title="Bookmark this page"></i>

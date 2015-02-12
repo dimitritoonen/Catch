@@ -5,7 +5,7 @@ define(['knockout', 'text!./component-container.html'], function (ko, templateMa
     var self = this;
     var parent = params.parent;
     
-    self.canCloseSelf = ko.observable(true)
+    self.canCloseSelf = ko.observable(true);
     self.subscription = self.canCloseSelf.subscribe(function () {
 
       if (self.canCloseSelf() === false) {

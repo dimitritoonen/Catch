@@ -19,7 +19,7 @@ define(['knockout', 'text!./change-password.html', 'services/webapi-service'], f
 
       if (querystring === undefined ||
         querystring[value] === undefined) {
-        return 'value_not_found'
+        return 'value_not_found';
       }
 
       return querystring[value];

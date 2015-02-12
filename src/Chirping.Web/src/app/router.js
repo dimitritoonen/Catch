@@ -4,7 +4,7 @@ define(['knockout', 'crossroads', 'hasher', 'services/auth-service', './app.conf
   return new Router({
     routes: [
         // default/workspace routing
-        { url: '', params: { page: 'workspace-page' } },
+        { url: '', params: { page: 'workspace-page', subPage: 'activities-page' } },
         { url: 'Workspace', params: { page: 'workspace-page', subPage: 'dashboard-page' } },
         { url: 'Workspace/Dashboard', params: { page: 'workspace-page', subPage: 'dashboard-page' } },
         { url: 'Workspace/Activities', params: { page: 'workspace-page', subPage: 'activities-page' } },
@@ -110,8 +110,8 @@ define(['knockout', 'crossroads', 'hasher', 'services/auth-service', './app.conf
             RedirectToHomepage();
           }
         }).error(function (result) {
-          RedirectToHomepage()
-        })
+          RedirectToHomepage();
+        });
       }
     }
   }
