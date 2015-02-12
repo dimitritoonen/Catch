@@ -4,7 +4,7 @@ var require = {
   baseUrl: ".",
   paths: {
     "modernizr": "bower_modules/modernizr/modernizr",
-    "bootstrap": "bower_modules/components-bootstrap/js/bootstrap.min",
+    "bootstrap": "bower_modules/bootstrap/dist/js/bootstrap.min",
     "bootstrap-dialog": "bower_modules/bootstrap-dialog/dist/js/bootstrap-dialog.min",
     "datetimepicker": "bower_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min",
     "moment": "bower_modules/moment/min/moment-with-locales.min",

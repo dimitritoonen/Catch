@@ -1,14 +1,18 @@
 <div class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
+
         <!-- contains the collapsed button -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand visible-xs visible-ms" href="#Workspace">&lt;3 chirping</a>
+        <div class="navbar-header hidden-sm hidden-md hidden-lg">
+            <div class="pull-left" style="padding-left: 10px;">
+                <div class="workspace-navbar-button" data-toggle="collapse" data-target=".navbar-collapse">
+                    <i class="fa fa-bars"></i>
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="workspace-logo dark workspace-navbar logo">
+                    <p>&lt;3 chirping</p>
+                </div>
+            </div>
         </div>
 
         <!-- contains the menu items (both collapsed as expanded) -->
@@ -16,37 +20,37 @@
             <ul class="nav navbar-nav">
                 <li data-bind="css: { active: route() === 'dashboard-page' }">
                     <a href="#Workspace/Dashboard">
-                        <div class="workspace-navbar-item-icon visible-workspace-navbar-inline"><i class="fa fa-home fa-lg fa-fw"></i></div>
+                        <div class="workspace-navbar-item-icon visible-sm-inline visible-ms-inline visible-xs-inline"><i class="fa fa-home fa-lg fa-fw"></i></div>
                         <div class="workspace-navbar-item-text">Dashboard</div>
                     </a>
                 </li>
                 <li data-bind="css: { active: route() === 'activities-page' }">
                     <a href="#Workspace/Activities">
-                        <div class="workspace-navbar-item-icon visible-workspace-navbar-inline"><i class="fa fa-bicycle fa-lg fa-fw"></i></div>
+                        <div class="workspace-navbar-item-icon visible-sm-inline visible-ms-inline visible-xs-inline"><i class="fa fa-bicycle fa-lg fa-fw"></i></div>
                         <div class="workspace-navbar-item-text">Activities</div>
                     </a>
                 </li>
                 <li data-bind="css: { active: route() === 'notifications-page' }">
                     <a href="#Workspace/Notifications">
-                        <div class="workspace-navbar-item-icon visible-workspace-navbar-inline"><i class="fa fa-envelope-o fa-lg fa-fw"></i></div>
+                        <div class="workspace-navbar-item-icon visible-sm-inline visible-ms-inline visible-xs-inline"><i class="fa fa-envelope-o fa-lg fa-fw"></i></div>
                         <div class="workspace-navbar-item-text">Notifications</div>
                     </a>
                 </li>
                 <li data-bind="css: { active: route() === 'contacts-page' }">
                     <a href="#Workspace/Contacts">
-                        <div class="workspace-navbar-item-icon visible-workspace-navbar-inline"><i class="fa fa-users fa-lg fa-fw"></i></div>
+                        <div class="workspace-navbar-item-icon visible-sm-inline visible-ms-inline visible-xs-inline"><i class="fa fa-users fa-lg fa-fw"></i></div>
                         <div class="workspace-navbar-item-text">Contacts</div>
                     </a>
                 </li>
-                <li class="visible-workspace-navbar">
+                <li class="visible-xs visible-ms" data-bind="css: { active: route() === 'profile-page' }">
                     <a href="#Workspace/Profile">
-                        <div class="workspace-navbar-item-icon visible-workspace-navbar-inline"><i class="fa fa-cog fa-lg fa-fw"></i></div>
+                        <div class="workspace-navbar-item-icon visible-sm-inline visible-ms-inline visible-xs-inline"><i class="fa fa-cog fa-lg fa-fw"></i></div>
                         <div class="workspace-navbar-item-text">Settings</div>
                     </a>
                 </li>
-                <li class="visible-workspace-navbar">
+                <li class="visible-xs visible-ms">
                     <a href="#Workspace/Logout">
-                        <div class="workspace-navbar-item-icon visible-workspace-navbar-inline"><i class="fa fa-sign-out fa-lg fa-fw"></i></div>
+                        <div class="workspace-navbar-item-icon visible-sm-inline visible-ms-inline visible-xs-inline"><i class="fa fa-sign-out fa-lg fa-fw"></i></div>
                         <div class="workspace-navbar-item-text">Sign out</div>
                     </a>
                 </li>
@@ -54,7 +58,7 @@
         </div>
         <div class="workspace-navbar right">
             <!-- pull down menu -> visible when left bar is hidden, and hidden when navbar is collapsed  -->
-            <ul class="nav navbar-nav navbar-right hidden-workspace-navbar hidden-workspace-right">
+            <ul class="nav navbar-nav navbar-right hidden-ms hidden-xs hidden-workspace-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
                     <ul class="dropdown-menu" role="menu">
@@ -75,9 +79,9 @@
             </ul>
         </div>
 
-        <div class="workspace-navbar search">
+        <div class="workspace-navbar search hidden-xs hidden-ms">
             <!-- contains the search text box -->
-            <div class="navbar-form hidden-ms hidden-xs" role="search">
+            <div class="navbar-form" role="search">
                 <input type="text" maxlength="255" class="form-control workspace-search-input" placeholder="search activities" />
             </div>
         </div>

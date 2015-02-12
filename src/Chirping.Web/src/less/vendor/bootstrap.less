@@ -2,7 +2,6 @@
 
 // bootstrap variables/mixins and custom screen-ms viewport
 @import "viewpoints/screen-ms.less";
-@import "viewpoints/screen-workspace-navbar.less";
 
 // Variables/Mixins
 @import "../../bower_modules/bootstrap/less/variables.less";
@@ -144,6 +143,10 @@ hr {
 
 
 /* Boostrap nav-bar */
+.navbar {
+    border:0;
+}
+
 .navbar-default {
     font-family: Open-sans;
     color: @workspace-navbar-text;
@@ -154,12 +157,22 @@ hr {
     border-bottom: 2px solid transparent;
 }
 
+.navbar-default .navbar-collapse {
+    border: 0;
+    border-bottom: 1px solid @grey-background-darker;
+}
+
+.navbar-default .navbar-header {
+    border-bottom: 1px solid @grey-background-darker;
+}
+
+
 // defines an 2px border for selected and hovered items
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-nav > li.active > a,
 .navbar-default .navbar-nav > .open > a {
-    @media (min-width: @screen-workspace-navbar) {
+    @media (min-width: @screen-sm) {
         border-bottom: 3px solid @blue-light;
     }
 }
@@ -170,7 +183,9 @@ hr {
 
 // defines a line below the entire navbar
 .navbar-default {
-    .shadow(0px 1px 3px @workspace-navbar-underline);
+    @media (min-width: @screen-sm) {
+        .shadow(0px 1px 3px @workspace-navbar-underline);
+    }
 }
 
 // set the brand settings
@@ -198,7 +213,7 @@ hr {
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-nav > li.active > a,
 .navbar-default .navbar-nav > li.active > a:hover {
-    @media (max-width: @screen-workspace-navbar-max) {
+    @media (max-width: @screen-sm) {
         background-color: @workspace-navbar-collapsed-hover;
     }
 }
@@ -212,6 +227,3 @@ hr {
     background-color: @workspace-navbar-hover;
 }
 
-
-// changes the nav-bar collapse point at mobile width
-@grid-float-breakpoint: @screen-workspace-navbar;

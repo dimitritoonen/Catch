@@ -1,33 +1,30 @@
 <div class="workspace activity filter">
-    <div class="row">
-        <div class="col-md-6">
-            <!-- categories -->
-            <activity-filter-dropdown params='listItems: categoryList, label: "Category"'></activity-filter-dropdown>
-        </div>
-        <div class="col-md-6">
-            <div class="activity-filter-label">Date</div>
-            <input type="text" class="form-control activity-filter-date" id="ActivityDatePicker" placeholder="When?" />
-        </div>
+    <div class="filter-icons text-right">
+        <i class="icon fa fa-sliders fa-lg" data-toggle="collapse" data-target=".filter-container-controls"></i>
     </div>
-    <br />
-    <div class="row">
-        <div class="workspace-default-slider col-md-6 metro">
-            Participants:<b><span class="workspace-participant-text" data-bind="html: participants"></span></b>
-            <div id="participantsSlider" class="participant-slider slider permanent-hint"
-                 data-position="0"
-                 data-accuracy="1"
-                 data-role="slider"
-                 data-max="10"
-                 data-colors="#2f6ea2"
-                 data-animate="false"></div>
+    <div class="filter-container-controls collapse">
+        <div class="row">
+            <div class="col-lg-7 col-md-12 col-sm-4 col-ms-5 col-xs-12 padding-bottom">
+                <!-- categories -->
+                <activity-filter-dropdown params='listItems: categoryList, label: "Category"'></activity-filter-dropdown>
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-4 col-ms-4 col-xs-6 padding-bottom">
+                <div class="activity-filter-label">Date</div>
+                <input type="text" class="form-control activity-filter-date" id="ActivityDatePicker" placeholder="When?" />
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-4 col-ms-3 col-xs-6 padding-bottom">
+                <div class="activity-filter-label">Time</div>
+                <input type="text" class="form-control activity-filter-time" id="ActivityTimePicker" placeholder="When?" />
+            </div>
         </div>
-        <div class="workspace-comptable-slider col-md-6 hide">
-            <!-- participants -->
-            <activity-filter-dropdown params='listItems: participantList, label: "Participants"'></activity-filter-dropdown>
-        </div>
-        <div class="col-md-6">
-            <div class="activity-filter-label">Time</div>
-            <input type="text" class="form-control activity-filter-time" id="ActivityTimePicker" placeholder="When?" />
+        <div class="row slider">
+            <div class="workspace-default-slider col-md-12 col-sm-12 col-xs-12">
+                <activity-filter-slider></activity-filter-slider>
+            </div>
+            <div class="workspace-comptable-slider col-md-6 col-sm-6 col-xs-6 hide">
+                <!-- participants -->
+                <activity-filter-dropdown params='listItems: participantList, label: "Participants"'></activity-filter-dropdown>
+            </div>
         </div>
     </div>
 </div>

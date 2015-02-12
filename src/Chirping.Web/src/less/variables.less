@@ -1,5 +1,6 @@
 ﻿@import "../bower_modules/bootstrap/less/variables.less";
 @import "../bower_modules/bootstrap/less/mixins.less";
+@import "vendor/viewpoints/screen-workspace-right.less";
 
 //
 // Variables
@@ -22,13 +23,19 @@
 @grey-background-light: lighten(@grey-background, 30%);
 
 
-// workspace variables
+// workspace colors
 @workspace-bg: @chalkboard-grey;
 @workspace-left-bg: @chalkboard-grey;
 @workspace-right-bg: @chalkboard-grey;
 @workspace-main-bg: @grey-background-dark;
-
 @workspace-profile-bg: @grey-background-dark;
+
+// workspace left/right component
+@workspace-left-pos-clear: 0;
+@workspace-left-pos: 230px;
+@workspace-right-pos-clear: 0;
+@workspace-right-pos: 230px;
+
 
 // workspace navbar
 @workspace-navbar-bg: @grey-background;

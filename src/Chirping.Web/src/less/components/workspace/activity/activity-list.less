@@ -9,70 +9,85 @@
 // defines the base namespace for the workspace activity styles
 .workspace {
     &.activity {
-        
-        // change bootstrap cell padding
-        [class*='col-']  {
-            //  TRBL
-            padding: 0 8px 0px 8px !important;
 
-            @media (min-width: @screen-md) {
-                padding: 0 8px 0px 11px !important;
+        @media (min-width: @screen-sm) {
+            padding: 10px 10px 0 10px;
+        }
+
+        /*.fixed-panel {
+            position: absolute;
+            right: 0;
+        }*/
+
+        .list {
+            z-index: 1;
+            background-color: white;
+
+            @media (min-width: @screen-sm) {
+                border: 1px solid @grey-background-darker;
+                border-radius: @border-radius-base;
+            }
+
+            > .header {
+                padding-top: 10px;
+                padding-left: 20px;
+                padding-bottom: 15px;
+                border-bottom: 1px solid @grey-background-darker;
             }
         }
 
+        // change bootstrap cell padding
+        .list-container {
+            padding-right: 10px;
+
+            @media (max-width: @screen-md) {
+                padding-right: 15px;
+            }
+        }
+
+        // change bootstrap cell padding
+        .filter-container {
+            padding-left: 0;
+        }
+                
         // style for the list item tile
         .tile {
+            cursor: pointer;
             position: relative;
-            background-color: @grey-background;
             width: 100%;
-            min-height: 200px;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid @grey-background-darker;
-            border-radius: @border-radius-base;
+            min-height: 100px;
+            padding: 10px 10px 0 10px;
+
+            @media (max-width: @screen-sm) {
+                border-left: 8px solid @blue;
+            }
 
             .image {
-                margin-bottom:10px;
-                border: 1px solid red;
                 float:left;
                 border: 1px solid @gray-dark;
-                height: 100px;
-                width: 100px;
-                margin-right: 10px;
+                height: 50px;
+                width: 50px;
+                border-radius: @border-radius-base;
             }
 
-            .category {
 
-                padding-top: 10px;
-
-                .title {
-                    padding-right: 7px; 
-                    font-weight: 900;
-                }
-            }
-
-            .text {
-                margin-top: -5px;
-            }
-
-            // helps the info div to position properly
-            .info-wrapper {
-
-                position: relative;
-                margin-top: 20px;
-
-                // styles for the Where, When and Participants info of the item tile
-                .info {
-                    position: relative;
-                    width: 100%;
-                    min-height: 25px;
-                    overflow:hidden;
-                    padding-bottom: 5px;
-                    margin-top: 10px;
+            .content {
+                padding-left: 60px;
+                padding-bottom: 40px;
+                width: 100%;
                     
+                .header {
+
+                    font-weight: 900;
+                    overflow:hidden;
+                
+                    .category {
+                        text-align:right;
+                        float: right;
+                    }
+
                     .where {
-                        position: relative;
-                        width: 100%;
+                        float:left;
 
                         @media (min-width: @screen-ms) {
                             width: 40%;
@@ -80,60 +95,78 @@
                         }
                     }
 
-                    .participants {
-                        text-align: left;
-                        width: 100%;
-
-                        @media (min-width: @screen-ms) {
-                            max-width: 100px;
-                            text-align: right;
-                            width: 25%;
-                            float: right;
-                        }
-                    }
-
                     .when {
-                        position: relative;
-                        padding-bottom: 2px;
-                        padding-top: 2px;
+                        text-align: center;
 
-                        @media (min-width: @screen-ms) {
-                            padding-bottom: 0;
-                            padding-top: 0;
+                        @media (max-width: @screen-sm) {
+                            text-align: left;
+                            clear: both;
                         }
                     }
                 }
-            }
-
-            // footer styles of the item tile
-            .footer {
-                padding: 10px 0 10px 5px;
-                width: 100%;
-                height: 50px;
-                border-top: 1px solid @grey-background-dark;
 
                 .text {
-                    font-size: 0.9em;
-                    cursor: pointer;
+                    padding-top: 5px;
+                    overflow: hidden;
                 }
 
-                // icons styles in the footer of the itme tile
-                .icon {
-                    color: @blue;
-                    font-size: 1.4em;
-                    margin-top: 10px;
+                // allows only 2 lines of text and shows an ellipsis (...)
+                .line-clamp {
+                    @media (max-width: @screen-sm) {
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                    }
+                }
 
-                    &.bookmark:hover:before {
+                
+                /*.participants {
+                    text-align: left;
+                    width: 100%;
+
+                    @media (min-width: @screen-ms) {
+                        max-width: 100px;
+                        text-align: right;
+                        width: 25%;
+                        float: right;
+                    }
+                }*/
+
+                // footer styles of the item tile
+                .footer {
+                    padding-top:10px;
+
+                    // icons styles in the footer of the item tile
+                    .icon {
+                        padding-top: 5px;
+                        float:left;
+                        color: @blue-light;
+                        font-size: 1.4em;
+                        padding-right: 7%;
                         cursor: pointer;
-                        color: @blue;
-                        content: @fa-var-bookmark !important;
+
+                        &.bookmark:hover:before {
+                            color: @blue;
+                            content: @fa-var-bookmark !important;
+                        }
+
+                        &.share:hover:before {
+                            color: @blue;
+                        }
                     }
 
-                    &.share {
-                        padding-left: 20px;
+                    .buttons {
+                        float: right;
                     }
-                }
-            }
+                } // footer
+            } // content
+        } // tile
+
+        .bottom-line {
+            clear: both;
+            background-color: @grey-background-darker;
+            height: 1px !important;
+            width: 99.9% !important;
         }
     }
 }
