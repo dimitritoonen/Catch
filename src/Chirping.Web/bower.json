@@ -26,7 +26,6 @@
     "font-awesome": "~4.2.0",
     "eonasdan-bootstrap-datetimepicker": "~4.0.0",
     "moment": "~2.9.0",
-    //"metro-ui-css": "2.0.23",
     "modernizr": "~2.8.3"
   },
   "resolutions": {
