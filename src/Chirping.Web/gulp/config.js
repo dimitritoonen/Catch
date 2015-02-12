@@ -187,8 +187,10 @@ module.exports = {
   },
   recess: {
     src: [
-      src + '/less/**/*.less'//,
-      //'!' + src + '/less/vendor/bootstrap.less'
+      '!' + src + '/less/vendor/bootstrap.less',
+      '!' + src + '/less/vendor/metro-bootstrap.less',
+      '!' + src + '/less/variables.less',
+      src + '/less/**/*.less'
     ],
     options: {
       noIDs: false
