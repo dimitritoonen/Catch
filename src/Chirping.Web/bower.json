@@ -21,7 +21,7 @@
     "knockout-mapping": "2.4.1",
     "knockout-validation": "1.0.2",
     "qtip2": "2.2.1",
-    "requirejs": "~2.1.11",
+    "requirejs": "~2.1.16",
     "requirejs-text": "~2.0.10",
     "font-awesome": "~4.2.0",
     "eonasdan-bootstrap-datetimepicker": "~4.0.0",

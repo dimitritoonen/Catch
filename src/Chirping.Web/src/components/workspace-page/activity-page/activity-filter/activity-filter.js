@@ -1,4 +1,4 @@
-define(['knockout', 'text!./activity-filter.html', 'datetimepicker', 'metro-slider'], function (ko, templateMarkup) {
+define(['knockout', 'text!./activity-filter.html', 'datetimepicker'], function (ko, templateMarkup) {
 
   function ActivityFilter(params) {
     

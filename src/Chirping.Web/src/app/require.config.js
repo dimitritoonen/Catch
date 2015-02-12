@@ -26,14 +26,14 @@ var require = {
     "metro-slider": "bower_modules/metro-ui-css/js/metro-slider"
   },
   shim: {
+    "jquery-ui": {
+      exports: "$",
+      deps: ["jquery"]
+    },
     "bootstrap": { deps: ["jquery"] },
     "qtip2": { deps: ["jquery"] },
     "metro-slider": {
-      deps: [
-        "jquery",
-        "jquery-ui",
-        "metro-touch-handler"
-      ]
+      deps: ["jquery-ui", "metro-touch-handler"]
     }
   },
   urlArgs: "bust=" + (new Date()).getTime()
