@@ -1,12 +1,10 @@
-﻿define(["jquery", "jquery-mockjax"], function ($) {
+﻿define(['jquery', 'mock-activities', 'jquery-mockjax'], function ($, mockActivities) {
 
   $.mockjax({
     url: 'http://localhost:4421/api/activity',
     responseTime: 30, response: function (settings) {
 
-      console.log('here');
-
-      //this.responseText = mockActivities.GetActivities(settings.data.name);
+      this.responseText = mockActivities.GetActivities();
     }
   });
 

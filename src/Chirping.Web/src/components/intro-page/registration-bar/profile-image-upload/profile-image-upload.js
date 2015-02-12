@@ -93,7 +93,7 @@
           $message.append('</div>');
           $message.append('<div id="wizard-image-loading">');
           $message.append('');
-          $message.append('</div>')
+          $message.append('</div>');
           $message.append('<br /><div class="modal-body-text">Drag the border to cut the image</div>');
           return $message;
         },

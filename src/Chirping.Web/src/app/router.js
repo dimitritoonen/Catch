@@ -110,8 +110,8 @@ define(['knockout', 'crossroads', 'hasher', 'services/auth-service', './app.conf
             RedirectToHomepage();
           }
         }).error(function (result) {
-          RedirectToHomepage()
-        })
+          RedirectToHomepage();
+        });
       }
     }
   }

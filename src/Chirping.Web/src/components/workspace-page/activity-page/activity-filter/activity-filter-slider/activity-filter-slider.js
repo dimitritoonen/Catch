@@ -52,7 +52,7 @@ define(['knockout', 'text!./activity-filter-slider.html', 'metro-touch-handler',
     
     complete.width(markerLocation);
     marker.css('left', markerLocation);
-  };
+  }
   
   return { viewModel: ActivityFilterSlider, template: templateMarkup };
 

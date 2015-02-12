@@ -20,10 +20,12 @@ var require = {
     "text": "bower_modules/requirejs-text/text",
     "qtip2": "bower_modules/qtip2/jquery.qtip.min",
     "jcrop": "bower_modules/jcrop/js/jquery.Jcrop.min",
+    "dateformat": "bower_modules/jquery-dateFormat/dist/jquery-dateFormat.min",
 
     // mockjax
     "jquery-mockjax": "bower_modules/jquery-mockjax/jquery.mockjax",
     "mock-server": "mock_server/mock-server",
+    "mock-activities": "mock_server/mock-activities",
 
     // metro interface
     "metro-touch-handler": "bower_modules/metro-ui-css/js/metro-touch-handler",
@@ -39,7 +41,8 @@ var require = {
     "qtip2": { deps: ["jquery"] },
     "metro-slider": {
       deps: ["jquery-ui", "metro-touch-handler"]
-    }
+    },
+    "dateformat": { deps: ["jquery"] }
   },
   urlArgs: "bust=" + (new Date()).getTime()
 };

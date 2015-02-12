@@ -2,17 +2,7 @@
     <div class="header" data-bind="css: { 'hide': displayHeader }">
         <h4 data-bind="html: header"></h4>
     </div>
-    <activity-listitem></activity-listitem>
-    <!--<activity-listitem></activity-listitem>
-    <activity-listitem></activity-listitem>
-    <activity-listitem></activity-listitem>
-    <activity-listitem></activity-listitem>
-    <activity-listitem></activity-listitem>
-    <activity-listitem></activity-listitem>
-    <activity-listitem></activity-listitem>
-    <activity-listitem></activity-listitem>
-    <activity-listitem></activity-listitem>
-    <activity-listitem></activity-listitem>
-    <activity-listitem></activity-listitem>
-    <activity-listitem></activity-listitem>-->
+    <div data-bind="foreach: activities">
+        <activity-listitem params="activity: $data"></activity-listitem>
+    </div>
 </div>

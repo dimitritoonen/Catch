@@ -1,4 +1,4 @@
-define(['knockout', 'text!./activity-list.html', 'services/webapi-service'], function (ko, templateMarkup, webapi) {
+define(['knockout', 'text!./activity-list.html', '../activity-model'], function (ko, templateMarkup, activityModel) {
 
   function ActivityList(params) {
     
@@ -10,11 +10,7 @@ define(['knockout', 'text!./activity-list.html', 'services/webapi-service'], fun
       return (params.header === undefined);
     });
 
-
-    webapi.Get('api/activity').done(function () {
-
-      console.log('here?');
-    });
+    self.activities = activityModel.activities;    
   }
 
   return { viewModel: ActivityList, template: templateMarkup };

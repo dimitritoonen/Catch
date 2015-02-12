@@ -32,10 +32,10 @@ define(['knockout', 'text!./activate-account.html', 'services/webapi-service'], 
       self.errorDescription(result.responseText);
     });
 
-    var toggleError = function() { 
+    var toggleError = function () {
       self.showErrorBox(true);
       $('#spinner').toggleClass('hide');
-    }
+    };
 
   }
   

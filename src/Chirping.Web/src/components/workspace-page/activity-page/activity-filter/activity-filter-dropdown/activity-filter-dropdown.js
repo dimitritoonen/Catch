@@ -9,7 +9,7 @@ define(['knockout', 'text!./activity-filter-dropdown.html'], function(ko, templa
 
     self.selectItem = function () {
       self.selectedCategory(this.description);
-    }
+    };
   }
 
 

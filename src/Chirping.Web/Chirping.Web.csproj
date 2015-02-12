@@ -145,10 +145,13 @@
     <Content Include="src\components\intro-page\forgot-password\reset-password-sent\reset-password-sent.js" />
     <Content Include="src\components\workspace-page\activity-page\activity-add\activity-add.html" />
     <Content Include="src\components\workspace-page\activity-page\activity-add\activity-add.js" />
+    <Content Include="src\components\workspace-page\activity-page\activity-filter-model.js" />
     <Content Include="src\components\workspace-page\activity-page\activity-filter\activity-filter-dropdown\activity-filter-dropdown.html" />
     <Content Include="src\components\workspace-page\activity-page\activity-filter\activity-filter-dropdown\activity-filter-dropdown.js" />
     <Content Include="src\components\workspace-page\activity-page\activity-filter\activity-filter-slider\activity-filter-slider.html" />
     <Content Include="src\components\workspace-page\activity-page\activity-filter\activity-filter-slider\activity-filter-slider.js" />
+    <Content Include="src\components\workspace-page\activity-page\activity-model.js" />
+    <Content Include="src\components\workspace-page\activity-page\category-icon-mapping.js" />
     <Content Include="src\components\workspace-page\dashboard-page\activity-thumb\activity-thumb.html" />
     <Content Include="src\components\workspace-page\dashboard-page\activity-thumb\activity-thumb.js" />
     <Content Include="src\components\workspace-page\dashboard-page\interesting-activities\interesting-activities.html" />
