@@ -56,7 +56,7 @@ module.exports = {
         src + '/bower_modules/jcrop/css/jquery.Jcrop.min.css',
         src + '/bower_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
         src + '/bower_modules/metro-ui-css/min/metro-slider.min.css'
-      ]
+    ]
   },
   autoprefixer: {
     browsers: [
@@ -87,7 +87,7 @@ module.exports = {
     },
     production: {
       src: dest + '/*.html',
-      dest: production      
+      dest: production
     }
   },
   auth: {
@@ -137,7 +137,7 @@ module.exports = {
     src: [
       src + '/images/**/*.{jpg,jpeg,png,gif}',
       src + '/bower_modules/jcrop/css/*'
-      ],
+    ],
     dest: dest + '/images/'
   },
   svgmin: {
@@ -202,7 +202,7 @@ module.exports = {
       src + '/authentication/**/*.js',
       src + '/app/**/*.js',
       src + '/services/**/*.js'
-      ]
+    ]
   },
 
   /* building, optimization, and add revision for the production build */
@@ -272,7 +272,7 @@ module.exports = {
             'components/workspace-page/workspace-component-right/workspace-component-right',
             'components/workspace-page/workspace-component-main/workspace-component-main',
           ],
-          'dashboard-page' : [
+          'dashboard-page': [
             'pages/workspace-page/dashboard-page/dashboard-page',
             'components/workspace-page/dashboard-page/interesting-activities/interesting-activities',
             'components/workspace-page/dashboard-page/activity-thumb/activity-thumb'
