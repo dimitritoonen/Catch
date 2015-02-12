@@ -31,5 +31,8 @@
   "resolutions": {
     "knockout": "3.3.0-alpha",
     "bootstrap": "3.3.2"
+  },
+  "devDependencies": {
+    "jquery-mockjax": "~1.6.1"
   }
 }

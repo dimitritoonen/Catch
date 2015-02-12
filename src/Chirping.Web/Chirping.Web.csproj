@@ -108,6 +108,7 @@
     <Content Include="karma.conf.js" />
     <Content Include="src\app\app.config.js" />
     <Content Include="src\app\environment-configuration.js" />
+    <Content Include="src\app\require.config.dev.js" />
     <Content Include="src\app\require.config.js" />
     <Content Include="src\app\router.js" />
     <Content Include="src\app\startup.js" />
@@ -180,6 +181,8 @@
     <Content Include="src\components\workspace-page\nav-bar\nav-bar.js" />
     <Content Include="src\less\vendor\viewpoints\screen-ms.less" />
     <Content Include="src\less\vendor\bootstrap.less" />
+    <Content Include="src\mock_server\mock-activities.js" />
+    <Content Include="src\mock_server\mock-server.js" />
     <Content Include="src\pages\workspace-page\activities-page\activities-page.html" />
     <Content Include="src\pages\workspace-page\activities-page\activities-page.js" />
     <Content Include="src\components\workspace-page\activity-page\activity-filter\activity-filter.html" />
