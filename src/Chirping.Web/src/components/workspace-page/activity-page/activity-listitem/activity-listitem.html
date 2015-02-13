@@ -7,23 +7,29 @@
             <div class="where" data-bind="html: activity.location"></div>
             <div class="category">
                 <i class="fa fa-lg"
-                   data-bind="css: iconMap.icon, style: { color: iconMap.color }"
-                   id="itemCategoryIcon" data-placement="top" title="Dating"></i>
+                   data-bind='css: iconMap.icon,
+                              style: { color: iconMap.color },
+                              attr: { title: category.description }'
+                   id="itemCategoryIcon" data-placement="top"></i>
             </div>
-            <div class="when" data-bind="html: timestamp"></div><!--25 maart / 19:00-->
+            <div class="when" data-bind="html: timestamp"></div>
         </div>
-        <div class="text line-clamp" data-bind="html: activity.content"></div>
+        <div class="text" data-bind="html: activity.content, css: { 'line-clamp': allowExpand() === false } "></div>
+        <div class="participants-wrapper">
+            <div class="participants" data-bind="foreach: new Array(activity.maxParticipants)">
+                <div class="profile">
+                    <!-- ko if: $index() <= $parent.activity.participants.length -->
+                    <span data-bind="with: $parent.activity.participants[$index()]">
+                        <img class="image" data-bind='attr: { src: image, title: name } ' />
+                    </span>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
         <div class="footer">
             <div class="icons">
                 <i class="fa fa-bookmark-o icon bookmark" title="Bookmark this page"></i>
                 <i class="fa fa-share-alt icon share" title="Share this activity"></i>
-                <!--<div class="text-right participants">
-                    <i class="fa fa-lg fa-user"></i>
-                    <i class="fa fa-lg fa-user"></i>
-                    <i class="fa fa-lg fa-user"></i>
-                    <i class="fa fa-lg fa-user"></i>
-                    <i class="fa fa-lg fa-user"></i>
-                </div>-->
             </div>
             <div class="buttons">
                 <button class="btn btn-default btn-sm pull-right" style="width: 100px;">Join</button>

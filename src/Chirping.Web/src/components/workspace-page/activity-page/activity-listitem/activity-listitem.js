@@ -5,18 +5,25 @@ define(['knockout', 'text!./activity-listitem.html', '../category-icon-mapping',
     var self = this;
 
     self.activity = params.activity;
+    self.category = params.activity.category;
+    self.participants = params.activity.participants;
     
     var map = categoryMap;
 
-    self.iconMap = map.Get(params.activity.category.code);
-
+    self.iconMap = map.Get(self.category.code);
+    
     // convert datetime format
     var date = new Date(self.activity.date);
     self.timestamp = $.format.date(date, 'dd MMMM / HH:mm');
    
 
-    self.expandTile = function () {
-      $('.text').toggleClass('line-clamp');
+    self.allowExpand = ko.observable(false);
+    self.expandTile = function (data, event) {
+      self.allowExpand(!self.allowExpand());
+
+      // toggle the display of the participants
+      $(event.target).find('.participants-wrapper').toggleClass('expand');
+      $(event.target).siblings('.participants-wrapper').toggleClass('expand');
     };
   }
   

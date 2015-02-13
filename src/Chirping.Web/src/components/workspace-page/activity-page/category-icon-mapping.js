@@ -18,7 +18,7 @@ define(function () {
       { category: 'museum', icon: 'fa-institution', color: 'red' },
       { category: 'hinking', icon: 'fa-tree', color: 'green' },
       { category: 'travelling', icon: 'fa-plane', color: 'red' },
-      { category: 'shopping', icon: 'fa-money', color: 'green' },
+      { category: 'shopping', icon: 'fa-shopping-cart', color: 'green' },
       unknownCategory,
     ];
 
