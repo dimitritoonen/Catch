@@ -31,7 +31,7 @@ var require = {
       exports: "$",
       deps: ["jquery"]
     },
-    "bootstrap": { deps: ["jquery"] },
+    "bootstrap": { deps: ["jquery", "jquery-ui"] },
     "qtip2": { deps: ["jquery"] },
     "metro-slider": {
       deps: ["jquery-ui", "metro-touch-handler"]

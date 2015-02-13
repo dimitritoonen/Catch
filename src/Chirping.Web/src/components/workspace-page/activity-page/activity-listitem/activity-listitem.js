@@ -1,7 +1,7 @@
 define(['knockout', 'text!./activity-listitem.html', '../category-icon-mapping', 'dateformat'], function (ko, templateMarkup, categoryMap) {
 
   function ActivityListitem(params) {
-   
+       
     var self = this;
 
     self.activity = params.activity;
@@ -25,6 +25,10 @@ define(['knockout', 'text!./activity-listitem.html', '../category-icon-mapping',
       $(event.target).find('.participants-wrapper').toggleClass('expand');
       $(event.target).siblings('.participants-wrapper').toggleClass('expand');
     };
+
+    // initialize all bootstrap tooltips on the item
+    $('[data-toggle="tooltip"]').tooltip();
+    
   }
   
   return { viewModel: ActivityListitem, template: templateMarkup };

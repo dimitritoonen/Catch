@@ -91,7 +91,7 @@
                             float:left;
                             color: @blue-light;
                             font-size: 1.4em;
-                            padding-right: 7%;
+                            margin-right: 7%;
                             cursor: pointer;
 
                             &.bookmark:hover:before {
@@ -129,18 +129,16 @@
                         margin-top: 10px; 
                         padding: 10px 0 0 2px;
                         max-height: 200px;
-                        overflow: hidden;
+                        overflow: auto;
 
                         >.profile {
-                            position: relative;
                             margin-bottom: 10px;
                             margin-right: 10px;
                             float: left;
                             width: 30px;
                             height: 30px;
-                            border-radius: 25px;
-                            -webkit-border-radius: 25px;
-                            -moz-border-bottom-radius: 25px;
+                            .border(25px);
+                            background-color: white;
                             .shadow(0 0 3px rgba(0, 0, 0, .8));
                        
                             .image {

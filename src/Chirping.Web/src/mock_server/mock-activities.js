@@ -26,6 +26,7 @@
           { 'id': '3', 'name': 'Remy', 'image': '/images/profile.jpg' },
           { 'id': '4', 'name': 'Jack', 'image': '/images/profile2.jpg' },
           { 'id': '5', 'name': 'Sebastiaan', 'image': '/images/profile.jpg' },
+          { 'id': '6', 'name': 'David', 'image': '/images/profile2.jpg' },
         ],
         maxParticipants: 10
       },

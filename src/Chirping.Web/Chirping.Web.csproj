@@ -116,6 +116,7 @@
     <Content Include="src\bindingHandlers\bindingHandlers.js" />
     <Content Include="src\bindingHandlers\invokeOnEnter.js" />
     <Content Include="src\bindingHandlers\qtipValMessage.js" />
+    <Content Include="src\bindingHandlers\tooltip.js" />
     <Content Include="src\bower_modules\metro-ui-css\js\metro-slider.js" />
     <Content Include="src\bower_modules\metro-ui-css\js\metro-touch-handler.js" />
     <Content Include="src\bower_modules\metro-ui-css\less\funcs.less" />

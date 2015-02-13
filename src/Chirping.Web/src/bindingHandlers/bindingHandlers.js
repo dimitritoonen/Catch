@@ -1,6 +1,7 @@
 ﻿define(['knockout',
   './invokeOnEnter',
-  './qtipValMessage'
+  './qtipValMessage',
+  './tooltip'
 ]
   , function (ko) {
 

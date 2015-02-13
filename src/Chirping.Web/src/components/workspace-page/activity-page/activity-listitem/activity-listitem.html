@@ -9,8 +9,8 @@
                 <i class="fa fa-lg"
                    data-bind='css: iconMap.icon,
                               style: { color: iconMap.color },
-                              attr: { title: category.description }'
-                   id="itemCategoryIcon" data-placement="top"></i>
+                              tooltip: { title: category.description, placement: "left" }'
+                   id="itemCategoryIcon"></i>
             </div>
             <div class="when" data-bind="html: timestamp"></div>
         </div>
@@ -18,18 +18,22 @@
         <div class="participants-wrapper">
             <div class="participants" data-bind="foreach: new Array(activity.maxParticipants)">
                 <div class="profile">
-                    <!-- ko if: $index() <= $parent.activity.participants.length -->
+                    <!-- ko if: $index() < $parent.activity.participants.length -->
                     <span data-bind="with: $parent.activity.participants[$index()]">
-                        <img class="image" data-bind='attr: { src: image, title: name } ' />
+                        <img class="image" data-toggle="tooltip" data-placement="top" data-bind='attr: { src: image, title: name } ' />
                     </span>
+                    <!-- /ko -->
+
+                    <!-- ko if: $index() >= $parent.activity.participants.length -->
+                    <div class="image" data-toggle="tooltip" data-placement="top" title="this could be you ;-)"></div>
                     <!-- /ko -->
                 </div>
             </div>
         </div>
         <div class="footer">
             <div class="icons">
-                <i class="fa fa-bookmark-o icon bookmark" title="Bookmark this page"></i>
-                <i class="fa fa-share-alt icon share" title="Share this activity"></i>
+                <i class="fa fa-bookmark-o icon bookmark" data-toggle="tooltip" data-placement="top" title="Bookmark this page"></i>
+                <i class="fa fa-share-alt icon share" data-toggle="tooltip" data-placement="top" title="Share this activity"></i>
             </div>
             <div class="buttons">
                 <button class="btn btn-default btn-sm pull-right" style="width: 100px;">Join</button>
