@@ -3,12 +3,20 @@ define(['knockout', 'text!./activity-filter-dropdown.html'], function(ko, templa
   function ActivityFilterDropdown(params) {
     var self = this;
 
+    self.activityModel = params.activityModel;
     self.label = params.label;
-    self.categories = ko.observableArray(params.listItems);
-    self.selectedCategory = ko.observable(self.categories()[0].description);
+    
+    self.items = params.listItems();
 
-    self.selectItem = function () {
-      self.selectedCategory(this.description);
+    self.items.unshift({ 'code': undefined, 'description': '' });
+
+    self.selectedItem = ko.observable(self.items[0].description);
+
+    self.selectItem = function (data, event) {
+      
+      self.activityModel.SetFilterCategory(data.code);
+
+      self.selectedItem(this.description);
     };
   }
 

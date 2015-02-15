@@ -8,7 +8,7 @@
     self.Category = ko.observable();
     self.Date = ko.observable();
     self.Time = ko.observable();
-    self.Participants = ko.observable(2);
+    self.Participants = ko.observable();
 
     self.Category.extend({ rateLimit: 500 });
     self.Date.extend({ rateLimit: 500 });

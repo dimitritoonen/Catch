@@ -26,6 +26,7 @@ var require = {
     "jquery-mockjax": "bower_modules/jquery-mockjax/jquery.mockjax",
     "mock-server": "mock_server/mock-server",
     "mock-activities": "mock_server/mock-activities",
+    "mock-categories": "mock_server/mock-categories",
 
     // metro interface
     "metro-touch-handler": "bower_modules/metro-ui-css/js/metro-touch-handler",

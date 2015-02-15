@@ -8,6 +8,8 @@ define(['knockout', 'text!./activity-filter-slider.html', 'metro-touch-handler',
   function ActivityFilterSlider(params) {
     
     var self = this;
+    
+    self.activityModel = params.activityModel;
 
     self.participants = ko.observable(2);
     self.relativeMarkerLocation = ko.observable();
@@ -15,8 +17,11 @@ define(['knockout', 'text!./activity-filter-slider.html', 'metro-touch-handler',
     // initialize the Metro UI CSS slider component
     $('.participant-slider').slider({
       min: self.participants(),
+      changed: function (value, ui) {
+        self.activityModel.SetFilterParticipants(value);
+      },
       change: function (value, ui) {
-
+        
         self.relativeMarkerLocation(GetMarkerLocation(self));
 
         self.participants(value);

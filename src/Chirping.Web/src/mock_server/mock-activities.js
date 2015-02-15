@@ -118,7 +118,21 @@
 
     ]; // activities
 
-    this.GetActivities = function () {
+    this.GetActivities = function (settings) {
+
+      var filter = settings.data;
+
+      console.log(filter);
+
+      if (filter === undefined || filter == null) {
+        return activities;
+      }
+      
+      return ko.utils.arrayFilter(activities, function (item) {
+        return ((filter.category === undefined || item.category.code === filter.category) && 
+          (filter.participants === undefined || item.participants.length <= filter.participants));
+      });
+
       return activities;
     };
   }

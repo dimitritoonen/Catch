@@ -6,7 +6,11 @@
         <div class="row">
             <div class="col-lg-7 col-md-12 col-sm-4 col-ms-5 col-xs-12 padding-bottom">
                 <!-- categories -->
-                <activity-filter-dropdown params='listItems: categoryList, label: "Category"'></activity-filter-dropdown>
+                <activity-filter-dropdown 
+                    params='activityModel: activityModel,
+                            listItems: categories,
+                            label: "Category"'>
+                </activity-filter-dropdown>
             </div>
             <div class="col-lg-5 col-md-6 col-sm-4 col-ms-4 col-xs-6 padding-bottom">
                 <div class="activity-filter-label">Date</div>
@@ -19,11 +23,15 @@
         </div>
         <div class="row slider">
             <div class="workspace-default-slider col-md-12 col-sm-12 col-xs-12">
-                <activity-filter-slider></activity-filter-slider>
+                <activity-filter-slider params="activityModel: activityModel"></activity-filter-slider>
             </div>
             <div class="workspace-comptable-slider col-md-6 col-sm-6 col-xs-6 hide">
                 <!-- participants -->
-                <activity-filter-dropdown params='listItems: participantList, label: "Participants"'></activity-filter-dropdown>
+                <activity-filter-dropdown 
+                    params='activityModel: activityModel,
+                            listItems: participantList,
+                            label: "Participants"'>
+                </activity-filter-dropdown>
             </div>
         </div>
     </div>

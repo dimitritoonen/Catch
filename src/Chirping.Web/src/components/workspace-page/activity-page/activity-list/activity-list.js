@@ -1,4 +1,4 @@
-define(['knockout', 'text!./activity-list.html', '../activity-model'], function (ko, templateMarkup, activityModel) {
+define(['knockout', 'text!./activity-list.html'], function (ko, templateMarkup) {
 
   function ActivityList(params) {
     
@@ -10,7 +10,7 @@ define(['knockout', 'text!./activity-list.html', '../activity-model'], function 
       return (params.header === undefined);
     });
 
-    self.activities = activityModel.activities;    
+    self.activities = params.activityModel.activities;
   }
 
   return { viewModel: ActivityList, template: templateMarkup };
