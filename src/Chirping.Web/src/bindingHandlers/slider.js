@@ -5,7 +5,7 @@
   ko.bindingHandlers.slider = {
 
     init: function (element, valueAccessor) {
-
+      
       var local = ko.utils.unwrapObservable(valueAccessor());
       var options = {};
 

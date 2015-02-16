@@ -18,16 +18,31 @@ define(['knockout', 'text!./activity-filter.html', 'datetimepicker'], function (
       { 'value': '9', 'description': 'More' }
     ]);
     
-    $('.activity-filter-date').datetimepicker({
+
+    var onDateChanged = function (e) {
+      if (e.date === null) {
+        // hide
+
+        self.activityModel.ResetFilterDate();
+      } else if (e.date !== null) {
+        self.activityModel.SetFilterDate(e.date._d);
+      }
+
+      // unfocus after a date has been chosen
+      datepicker.blur();
+    };
+    
+    var datepicker = $('.activity-filter-date').datetimepicker({
       defaultDate: Date.now(),
       minDate: Date.now() - 1,
       format: 'YYYY-MM-DD',
-      collapse: true
-    });
+      toolbarPlacement: 'bottom',
+      useCurrent: true,
+      showClear: true
+    }).on('dp.change', onDateChanged);
 
 
     $('.activity-filter-time').datetimepicker({
-      defaultDate: Date.now(),
       format: 'HH:ss',
       collapse: true
     });

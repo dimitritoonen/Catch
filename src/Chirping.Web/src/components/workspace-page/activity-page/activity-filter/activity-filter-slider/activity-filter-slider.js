@@ -7,11 +7,7 @@ define(['knockout', 'text!./activity-filter-slider.html', 'metro-touch-handler',
     
     var self = this;
     
-    self.filter = params.activityModel.Filter;
-
-    params.activityModel.SliderMarkerPosition.subscribe(function () {
-      console.log('changed: ' + params.activityModel.SliderMarkerPosition());
-    });
+    self.participants = params.activityModel.GetFilterParticipants();
     
     // gets the element upon slider initialization
     self.onSliderInit = function (slider) {
@@ -25,7 +21,7 @@ define(['knockout', 'text!./activity-filter-slider.html', 'metro-touch-handler',
 
     // stores the chosen value on slider changed
     self.onSliderChanged = function (value, slider) {
-      self.filter.Participants(value);
+      params.activityModel.SetFilterParticipants(value)
 
       params.activityModel.SliderMarkerPosition(GetMarkerLocation(slider));
     }

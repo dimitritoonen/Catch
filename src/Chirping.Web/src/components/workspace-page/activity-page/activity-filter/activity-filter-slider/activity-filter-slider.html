@@ -1,7 +1,6 @@
 <div class="metro">
-    Participants:<b><span class="workspace-participant-text" data-bind="html: filter.Participants()"></span></b>
-    <div data-bind="slider: { options: { min: filter.Participants(), changed: onSliderChanged }, init: onSliderInit }" class="participant-slider slider permanent-hint"
-         data-position="0"
+    Participants:<b><span class="workspace-participant-text" data-bind="html: participants()"></span></b>
+    <div data-bind="slider: { options: { min: 2, position: participants(), changed: onSliderChanged }, init: onSliderInit }" class="participant-slider slider permanent-hint"
          data-accuracy="1"
          data-role="slider"
          data-max="10"

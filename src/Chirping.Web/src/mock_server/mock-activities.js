@@ -1,20 +1,18 @@
-﻿define(['jquery', 'knockout'], function ($, ko) {
+﻿define(['jquery', 'knockout', 'dateformat'], function ($, ko) {
 
   function MockActivities() {
 
     var activities = [
       {
-        id: 883, category: { code: 'sport', description: 'Sport' }, date: '2015-02-14 19:00', location: 'Rotterdam',
+        id: 883, category: { code: 'sport', description: 'Sport' }, date: '2015-02-28 19:00', location: 'Rotterdam',
         content: 'orem ipsum dolor sit amet, consectetuer adipiscing elit.',
         image: '',
         participants: [
           { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile.jpg' },
           { 'id': '2', 'name': 'Esme', 'image': '/images/profile.jpg' },
-          { 'id': '3', 'name': 'Remy', 'image': '/images/profile.jpg' },
           { 'id': '4', 'name': 'Jack', 'image': '/images/profile.jpg' },
-          { 'id': '5', 'name': 'Sebastiaan', 'image': '/images/profile.jpg' },
         ],
-        maxParticipants: 8
+        maxParticipants: 4
       },
       {
         id: 23, category: { code: 'dating', description: 'Dating' }, date: '2015-02-20 14:00', location: 'Hendrik-ido-ambacht',
@@ -44,16 +42,15 @@
         maxParticipants: 6
       },
       {
-        id: 461, category: { code: 'party', description: 'Entertainment' }, date: '2015-08-01 15:00', location: 'Sliedrecht',
+        id: 461, category: { code: 'entertainment', description: 'Entertainment' }, date: '2015-08-01 15:00', location: 'Sliedrecht',
         content: 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. pellentesque eu, pretium',
         image: '',
         participants: [
           { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile.jpg' },
           { 'id': '2', 'name': 'Esme', 'image': '/images/profile2.jpg' },
-          { 'id': '3', 'name': 'Remy', 'image': '/images/profile2.jpg' },
           { 'id': '4', 'name': 'Jack', 'image': '/images/profile.jpg' },
         ],
-        maxParticipants: 6
+        maxParticipants: 4
       },
       {
         id: 556, category: { code: 'party', description: 'Party/Disco' }, date: '2015-07-22 15:00', location: 'Rotterdam',
@@ -122,15 +119,20 @@
 
       var filter = settings.data;
 
-      console.log(filter);
-
       if (filter === undefined || filter == null) {
         return activities;
       }
       
       return ko.utils.arrayFilter(activities, function (item) {
+
+        if (filter.date !== undefined) {
+          var itemDate = $.format.date(item.date, 'YYYY-MM-dd');
+          var filterDate = $.format.date(filter.date, 'YYYY-MM-dd');
+        }
+
         return ((filter.category === undefined || item.category.code === filter.category) && 
-          (filter.participants === undefined || item.participants.length <= filter.participants));
+          (filter.participants === undefined || item.maxParticipants <= filter.participants) &&
+          (filter.date === undefined || itemDate <= filterDate));
       });
 
       return activities;

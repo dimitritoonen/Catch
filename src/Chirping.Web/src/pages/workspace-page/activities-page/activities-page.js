@@ -6,6 +6,9 @@ define(['knockout', 'text!./activities-page.html', 'services/webapi-service', '.
 
     webapi.Get('api/categories').done(function (result) {
       self.categories(result);
+
+      // add empty item to the beginning of the list to reset
+      self.categories.unshift({ 'code': undefined, 'description': '' });
     });
 
     self.categories = ko.observableArray();
