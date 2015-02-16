@@ -23,12 +23,24 @@
                 border-left: 8px solid @blue;
             }
 
-            > .image {
+            > .image-wrapper {
                 float:left;
-                border: 1px solid @gray-dark;
+                //border: 1px solid @gray-dark;
                 height: 50px;
                 width: 50px;
-                border-radius: @border-radius-base;
+                .border(25px);
+                background-color: white;
+                .shadow(0 0 3px rgba(0, 0, 0, .8));
+                border-radius: 25px;
+                -webkit-border-radius: 25px;
+                -moz-border-bottom-radius: 25px;
+                //border-radius: @border-radius-base;
+
+                >.image {
+                    border-radius: 25px;
+                    -webkit-border-radius: 25px;
+                    -moz-border-bottom-radius: 25px;
+                }
             }
 
 

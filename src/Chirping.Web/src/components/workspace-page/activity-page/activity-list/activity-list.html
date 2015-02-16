@@ -1,8 +1,13 @@
-<div class="list">
-    <div class="header" data-bind="css: { 'hide': displayHeader }">
-        <h4 data-bind="html: header"></h4>
+<div data-bind="if: activities().length > 0">
+    <div class="list">
+        <div class="header" data-bind="css: { 'hide': displayHeader }">
+            <h4 data-bind="html: header"></h4>
+        </div>
+        <div data-bind="foreach: activities">
+            <activity-listitem params="activity: $data"></activity-listitem>
+        </div>
     </div>
-    <div data-bind="foreach: activities">
-        <activity-listitem params="activity: $data"></activity-listitem>
-    </div>
+</div>
+<div class="no-activities-found" data-bind="if: activities().length == 0">
+    No activities found...
 </div>
