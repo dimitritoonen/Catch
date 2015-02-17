@@ -26,6 +26,11 @@
           SetValidationStateControl(elementId, observable, valid);
         });
       }
+
+      ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
+        observable.isModified.dispose();
+        observable.isValid.dispose();
+      });
     }
   };
 

@@ -1,4 +1,4 @@
-<div data-bind="if: activities().length > 0">
+<!-- ko if: activities().length > 0 -->
     <div class="list">
         <div class="header" data-bind="css: { 'hide': displayHeader }">
             <h4 data-bind="html: header"></h4>
@@ -7,7 +7,9 @@
             <activity-listitem params="activity: $data"></activity-listitem>
         </div>
     </div>
-</div>
-<div class="no-activities-found" data-bind="if: activities().length == 0">
-    No activities found...
-</div>
+<!-- /ko -->
+<!-- ko if: activities().length == 0 -->
+    <div class="no-activities-found">
+        No activities found...
+    </div>
+<!-- /ko -->

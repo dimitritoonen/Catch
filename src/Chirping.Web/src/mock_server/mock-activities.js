@@ -110,7 +110,7 @@
       {
         id: 96, category: { code: 'museum', description: 'Museum' }, date: '2015-05-30 10:00', location: 'Sliedrecht',
         owner: { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile.jpg' },
-        content: 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo Donec quam felis, ultricies nec, pellentesque eu, pretium',
+        content: 'Come and join us!',
         image: '',
         participants: [
           { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile2.jpg' },
@@ -141,7 +141,8 @@
 
         return ((filter.category === undefined || item.category.code === filter.category) && 
           (filter.participants === undefined || item.maxParticipants <= filter.participants) &&
-          (filter.date === undefined || itemDate <= filterDate));
+          (filter.date === undefined || itemDate <= filterDate) &&
+          (filter.search === undefined || item.content.indexOf(filter.search) > -1));
       });
 
       return activities;

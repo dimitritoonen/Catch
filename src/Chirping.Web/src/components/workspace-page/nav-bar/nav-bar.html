@@ -82,7 +82,10 @@
         <div class="workspace-navbar search hidden-xs hidden-ms">
             <!-- contains the search text box -->
             <div class="navbar-form" role="search">
-                <input type="text" maxlength="255" class="form-control workspace-search-input" placeholder="search activities" />
+                <input type="text"
+                       data-bind="textInput: search, invokeOnEnter: { funct: loadActivities }"
+                       maxlength="255" class="form-control workspace-search-input"
+                       placeholder="search activities" />
             </div>
         </div>
     </div>

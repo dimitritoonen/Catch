@@ -5,15 +5,14 @@
     var self = this;
 
     // filter fields -> which reload the activities
+    self.Search = ko.observable();
     self.Category = ko.observable();
     self.Date = ko.observable();
     self.Time = ko.observable();
-    self.Participants = ko.observable(4);
+    self.Participants = ko.observable(10);
 
-    //self.Category.extend({ rateLimit: 500 });
-    //self.Date.extend({ rateLimit: 500 });
-    //self.Time.extend({ rateLimit: 500 });
-    //self.Participants.extend({ rateLimit: 500 });
+    // set the reaction time to 500ms so that not every key enter will start a new search
+    self.Search.extend({ rateLimit: 500 });
   }
 
 

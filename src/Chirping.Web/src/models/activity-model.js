@@ -5,6 +5,8 @@
 
     var self = this;
 
+    self.disposables = [];
+
     // contains the observable list of activities
     self.activities = ko.observableArray();
 
@@ -27,6 +29,7 @@
     // get the filter object
     var GetFilter = function () {
       return {
+        search: filter.Search(),
         category: filter.Category(),
         participants: filter.Participants(),
         date: filter.Date(),
@@ -40,16 +43,19 @@
     self.SetFilterParticipants = function (participants) { filter.Participants(participants); };
     self.SetFilterDate = function (date) { filter.Date(date); };
     self.SetFilterTime = function (time) { filter.Time(time); };
+    self.SetFilterSearch = function (search) { filter.Search(search); };
 
     self.GetFilterParticipants = function () { return filter.Participants; }
+    self.GetFilterSearch = function () { return filter.Search; }
 
     self.ResetFilterDate = function () { self.SetFilterDate(undefined); };
 
     // update activites based on filters
-    filter.Category.subscribe(function () { GetActivities(); });
-    filter.Participants.subscribe(function () { GetActivities(); });
-    filter.Date.subscribe(function () { GetActivities(); });
-    filter.Time.subscribe(function () { GetActivities(); });
+    self.disposables.push(filter.Category.subscribe(function () { GetActivities(); }));
+    self.disposables.push(filter.Participants.subscribe(function () { GetActivities(); }));
+    self.disposables.push(filter.Date.subscribe(function () { GetActivities(); }));
+    self.disposables.push(filter.Time.subscribe(function () { GetActivities(); }));
+    self.disposables.push(filter.Search.subscribe(function () { GetActivities(); }));
     
     // add activity
     self.AddActivity = function (activity) {
@@ -59,6 +65,13 @@
     // initialize the activities
     GetActivities();
   }
+
+  // dispose subscriptions
+  ActivityModel.prototype.dispose = function () {
+    ko.utils.arrayForEach(this.disposables, function (item) {
+      item.dispose();
+    });
+  };
   
   return new ActivityModel();
 

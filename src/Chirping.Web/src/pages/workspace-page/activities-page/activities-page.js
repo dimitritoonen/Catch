@@ -1,8 +1,10 @@
-define(['knockout', 'text!./activities-page.html', 'services/webapi-service', './activity-model'], function (ko, templateMarkup, webapi, activityModel) {
+define(['knockout', 'text!./activities-page.html', 'services/webapi-service', 'models/activity-model'], function (ko, templateMarkup, webapi, activityModel) {
 
   function ActivitiesPage(params) {
     
     var self = this;
+
+    self.activityModel = activityModel;
 
     webapi.Get('api/categories').done(function (result) {
       self.categories(result);
@@ -12,8 +14,6 @@ define(['knockout', 'text!./activities-page.html', 'services/webapi-service', '.
     });
 
     self.categories = ko.observableArray();
-
-    self.activityModel = activityModel;
   }
 
 

@@ -1,10 +1,21 @@
-define(['knockout', 'text!./nav-bar.html', 'services/auth-service'], function (ko, template, auth) {
+define(['knockout', 'text!./nav-bar.html', 'services/auth-service', 'models/activity-model'], function (ko, template, auth, activityModel) {
 
   function NavBar(params) {
 
     var self = this;
     
     self.route = params.route;
+    self.search = activityModel.GetFilterSearch();
+
+    // navigate to activities page when searching for activities
+    self.loadActivities = function () {
+
+      if (self.search() !== undefined && self.route() !== 'activities-page') {
+
+        console.log('test');
+        window.location.href = '#Workspace/Activities';
+      }
+    };
   }
 
 

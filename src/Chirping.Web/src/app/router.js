@@ -39,7 +39,6 @@ define(['knockout', 'crossroads', 'hasher', 'services/auth-service', './app.conf
       crossroads.routed.add(AuthenticateUser);
     });
 
-
     activateCrossroads();
   }
 

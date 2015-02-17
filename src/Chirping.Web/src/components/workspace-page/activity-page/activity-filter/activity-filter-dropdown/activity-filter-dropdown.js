@@ -16,6 +16,7 @@ define(['knockout', 'text!./activity-filter-dropdown.html'], function(ko, templa
       //self.activityModel.Filter.Category(data.code);
 
       self.selectedItem(this.description);
+
     };
   }
 
