@@ -1,6 +1,6 @@
-define(['knockout', 'text!./activity-filter-slider.html'], function (ko, templateMarkup) {
+define(['knockout', 'text!./participant-slider.html'], function (ko, templateMarkup) {
 
-  function ActivityFilterSlider(params) {
+  function ParticipantSlider(params) {
 
     var self = this;
 
@@ -10,12 +10,11 @@ define(['knockout', 'text!./activity-filter-slider.html'], function (ko, templat
     self.onSliderInit = function (slider) {
 
       slider.on('slideStop', function (slider) {
-        console.log(slider.value);
         params.activityModel.SetFilterParticipants(slider.value)
       });
     }
   }
 
-  return { viewModel: ActivityFilterSlider, template: templateMarkup };
+  return { viewModel: ParticipantSlider, template: templateMarkup };
 
 });

@@ -33,7 +33,7 @@
         category: filter.Category(),
         participants: filter.Participants(),
         date: filter.Date(),
-        time: filter.Time()
+        time: { beginTime: filter.BeginTime(), endTime: filter.EndTime() }
       };
     };
 
@@ -42,19 +42,21 @@
     self.SetFilterCategory = function (category) { filter.Category(category); };
     self.SetFilterParticipants = function (participants) { filter.Participants(participants); };
     self.SetFilterDate = function (date) { filter.Date(date); };
-    self.SetFilterTime = function (time) { filter.Time(time); };
+    self.SetFilterTime = function (beginTime, endTime) { filter.EndTime(endTime); filter.BeginTime(beginTime); };
     self.SetFilterSearch = function (search) { filter.Search(search); };
 
+    // get filters
     self.GetFilterParticipants = function () { return filter.Participants; }
     self.GetFilterSearch = function () { return filter.Search; }
-
+    self.GetFilterTime = function () { return { beginTime: filter.BeginTime, endTime: filter.EndTime } };
     self.ResetFilterDate = function () { self.SetFilterDate(undefined); };
 
     // update activites based on filters
     self.disposables.push(filter.Category.subscribe(function () { GetActivities(); }));
     self.disposables.push(filter.Participants.subscribe(function () { GetActivities(); }));
     self.disposables.push(filter.Date.subscribe(function () { GetActivities(); }));
-    self.disposables.push(filter.Time.subscribe(function () { GetActivities(); }));
+    self.disposables.push(filter.BeginTime.subscribe(function () { GetActivities(); }));
+    self.disposables.push(filter.EndTime.subscribe(function () { GetActivities(); }));
     self.disposables.push(filter.Search.subscribe(function () { GetActivities(); }));
     
     // add activity

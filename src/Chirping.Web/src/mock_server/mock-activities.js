@@ -139,10 +139,13 @@
           var filterDate = $.format.date(filter.date, 'YYYY-MM-dd');
         }
 
+        var itemTime = $.format.date(new Date(item.date), 'HH');
+
         return ((filter.category === undefined || item.category.code === filter.category) && 
           (filter.participants === undefined || item.maxParticipants <= filter.participants) &&
           (filter.date === undefined || itemDate <= filterDate) &&
-          (filter.search === undefined || item.content.indexOf(filter.search) > -1));
+          (filter.search === undefined || item.content.indexOf(filter.search) > -1) &&
+          (filter.time.beginTime <= itemTime && filter.time.endTime >= itemTime));
       });
 
       return activities;

@@ -16,14 +16,18 @@
                 <div class="activity-filter-label">Till</div>
                 <input type="text" class="form-control activity-filter-date" id="ActivityDatePicker" placeholder="When?" />
             </div>
-            <div class="col-lg-5 col-md-6 col-sm-4 col-ms-3 col-xs-6 padding-bottom">
-                <div class="activity-filter-label">Time</div>
-                <input type="text" class="form-control activity-filter-time" id="ActivityTimePicker" placeholder="When?" />
+        </div>
+        <div class="row">
+            <!--<div class="col-lg-5 col-md-6 col-sm-4 col-ms-3 col-xs-6 padding-bottom">-->
+            <div class="col-xs-12 padding-bottom">
+                <!--<div class="activity-filter-label">Time</div>
+        <input type="text" class="form-control activity-filter-time" id="ActivityTimePicker" placeholder="When?" />-->
+                <time-slider params="activityModel: activityModel"></time-slider>
             </div>
         </div>
         <div class="row">
             <div class="workspace-default-slider col-md-12 col-sm-12 col-xs-12">
-                <activity-filter-slider params="activityModel: activityModel"></activity-filter-slider>
+                <participant-slider params="activityModel: activityModel"></participant-slider>
             </div>
             <div class="workspace-comptable-slider col-md-6 col-sm-6 col-xs-6 hide">
                 <!-- participants -->

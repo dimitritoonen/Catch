@@ -61,7 +61,9 @@ define(['jquery', 'knockout', './router', 'bootstrap', 'validation/ko-validation
     ko.components.register('activity-listitem', { require: 'components/workspace-page/activity-page/activity-listitem/activity-listitem' });
     ko.components.register('activity-list', { require: 'components/workspace-page/activity-page/activity-list/activity-list' });
     ko.components.register('activity-add', { require: 'components/workspace-page/activity-page/activity-add/activity-add' });
-    ko.components.register('activity-filter-slider', { require: 'components/workspace-page/activity-page/activity-filter/activity-filter-slider/activity-filter-slider' });
+    ko.components.register('participant-slider', { require: 'components/workspace-page/activity-page/activity-filter/participant-slider/participant-slider' });
+    ko.components.register('time-slider', { require: 'components/workspace-page/activity-page/activity-filter/time-slider/time-slider' });
+
 
             
 
