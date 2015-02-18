@@ -118,14 +118,6 @@
     <Content Include="src\bindingHandlers\qtipValMessage.js" />
     <Content Include="src\bindingHandlers\slider.js" />
     <Content Include="src\bindingHandlers\tooltip.js" />
-    <Content Include="src\bower_modules\metro-ui-css\js\metro-slider.js" />
-    <Content Include="src\bower_modules\metro-ui-css\js\metro-touch-handler.js" />
-    <Content Include="src\bower_modules\metro-ui-css\less\funcs.less" />
-    <Content Include="src\bower_modules\metro-ui-css\less\reset.less" />
-    <Content Include="src\bower_modules\metro-ui-css\less\slider.less" />
-    <Content Include="src\bower_modules\metro-ui-css\less\utils.less" />
-    <Content Include="src\bower_modules\metro-ui-css\less\variables.less" />
-    <Content Include="src\bower_modules\metro-ui-css\min\metro-slider.min.css" />
     <Content Include="src\components\intro-page\activate-account\activate-account.html" />
     <Content Include="src\components\intro-page\activate-account\activate-account.js" />
     <Content Include="src\components\intro-page\change-password\change-password.html" />
@@ -472,7 +464,7 @@
     <Content Include="src\Web.config" />
     <Content Include="src\less\vendor\jcrop.less" />
     <Content Include="src\less\vendor\viewpoints\screen-workspace-right.less" />
-    <Content Include="src\less\vendor\metro-bootstrap.less" />
+    <Content Include="src\less\vendor\bootstrap-slider.less" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

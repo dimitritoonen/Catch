@@ -27,7 +27,8 @@
     "eonasdan-bootstrap-datetimepicker": "~4.0.0",
     "moment": "~2.9.0",
     "modernizr": "~2.8.3",
-    "jquery-dateFormat": "~1.0.2"
+    "jquery-dateFormat": "~1.0.2",
+    "seiyria-bootstrap-slider": "~4.4.2"
   },
   "resolutions": {
     "knockout": "3.3.0-alpha",

@@ -1,4 +1,4 @@
-define(['knockout', 'text!./activity-filter.html', 'datetimepicker'], function (ko, templateMarkup) {
+define(['knockout', 'text!./activity-filter.html', 'datetimepicker', 'bootstrap-slider'], function (ko, templateMarkup) {
 
   function ActivityFilter(params) {
 
@@ -7,6 +7,7 @@ define(['knockout', 'text!./activity-filter.html', 'datetimepicker'], function (
     self.activityModel = params.activityModel;
     
     self.categories = params.categories;
+
 
     self.participantList = ko.observableArray([
       { 'value': '2', 'description': '2 participants' },

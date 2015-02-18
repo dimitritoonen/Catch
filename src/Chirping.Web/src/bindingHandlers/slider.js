@@ -1,4 +1,4 @@
-﻿define(['knockout', 'metro-touch-handler', 'metro-slider'], function (ko) {
+﻿define(['knockout', 'bootstrap-slider'], function (ko) {
 
   // knockout binding handler to dynamically load a bootstrap tooltip and the title
 
@@ -20,7 +20,7 @@
 
     // default options
     options: {
-      min: 2
+      tooltip: 'hide'
     }
   };
 

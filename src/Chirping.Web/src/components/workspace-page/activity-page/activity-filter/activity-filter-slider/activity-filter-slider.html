@@ -1,9 +1,6 @@
-<div class="metro">
-    Participants:<b><span class="workspace-participant-text" data-bind="html: participants()"></span></b>
-    <div data-bind="slider: { options: { min: 2, position: participants(), changed: onSliderChanged }, init: onSliderInit }" class="participant-slider slider permanent-hint"
-         data-accuracy="1"
-         data-role="slider"
-         data-max="10"
-         data-colors="#2f6ea2"
-         data-animate="false"></div>
-</div>
+Participants:<b><span class="workspace-participant-text" data-bind="html: participants()"></span></b>
+<input type="text" class="slider" id="TestSlider" data-slider-id='ex1Slider'
+       data-bind="slider: { options: { min: 2, value: participants() }, init: onSliderInit }"
+       data-slider-min="2"
+       data-slider-max="10"
+       data-slider-step="1" />

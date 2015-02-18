@@ -11,7 +11,6 @@ var require = {
     "crossroads": "bower_modules/crossroads/dist/crossroads.min",
     "hasher": "bower_modules/hasher/dist/js/hasher.min",
     "jquery": "bower_modules/jquery/dist/jquery",
-    "jquery-ui": "bower_modules/jquery-ui/jquery-ui",
     "knockout": "bower_modules/knockout/dist/knockout",
     "knockout-projections": "bower_modules/knockout-projections/dist/knockout-projections.min",
     "knockout-validation": "bower_modules/knockout-validation/dist/knockout.validation.min",
@@ -28,21 +27,13 @@ var require = {
     "mock-activities": "mock_server/mock-activities",
     "mock-categories": "mock_server/mock-categories",
 
-    // metro interface
-    "metro-touch-handler": "bower_modules/metro-ui-css/js/metro-touch-handler",
-    "metro-slider": "bower_modules/metro-ui-css/js/metro-slider"
+    "bootstrap-slider": "bower_modules/seiyria-bootstrap-slider/dist/bootstrap-slider.min"
   },
   shim: {
     "jquery-mockjax": { deps: ["jquery"] },
-    "jquery-ui": {
-      exports: "$",
-      deps: ["jquery"]
-    },
-    "bootstrap": { deps: ["jquery", "jquery-ui"] },
+    "bootstrap": { deps: ["jquery" ] },
     "qtip2": { deps: ["jquery"] },
-    "metro-slider": {
-      deps: ["jquery-ui", "metro-touch-handler"]
-    },
+    "bootstrap-slider": { deps: ["jquery"] },
     "dateformat": { deps: ["jquery"] }
   },
   urlArgs: "bust=" + (new Date()).getTime()
