@@ -1,4 +1,4 @@
-define(['knockout', 'text!./activity-filter.html', 'datetimepicker', 'bootstrap-slider'], function (ko, templateMarkup) {
+define(['knockout', 'text!./activity-filter.html', 'moment', 'bindingHandlers/datetimepicker'], function (ko, templateMarkup, moment) {
 
   function ActivityFilter(params) {
 
@@ -7,7 +7,6 @@ define(['knockout', 'text!./activity-filter.html', 'datetimepicker', 'bootstrap-
     self.activityModel = params.activityModel;
     
     self.categories = params.categories;
-
 
     self.participantList = ko.observableArray([
       { 'value': '2', 'description': '2 participants' },
@@ -20,33 +19,53 @@ define(['knockout', 'text!./activity-filter.html', 'datetimepicker', 'bootstrap-
     ]);
     
 
-    var onDateChanged = function (e) {
-      if (e.date === null) {
-        // hide
+    self.fromDate = moment();
+    self.tillDate = moment().add(1, 'month');
 
-        self.activityModel.ResetFilterDate();
-      } else if (e.date !== null) {
-        self.activityModel.SetFilterDate(e.date._d);
-      }
+    // initializes the models till date
+    self.activityModel.SetFilterTillDate(self.tillDate.format());
 
-      // unfocus after a date has been chosen
-      datepicker.blur();
-    };
-    
-    var datepicker = $('.activity-filter-date').datetimepicker({
-      defaultDate: Date.now(),
-      minDate: Date.now() - 1,
-      format: 'YYYY-MM-DD',
-      toolbarPlacement: 'bottom',
-      useCurrent: true,
-      showClear: true
-    }).on('dp.change', onDateChanged);
+    var fromPicker, tillPicker;
 
+    // initializes the from picker 
+    self.onFromInit = function (picker) {
 
-    $('.activity-filter-time').datetimepicker({
-      format: 'HH:ss',
-      collapse: true
-    });
+      fromPicker = picker;
+
+      $(picker).on('dp.change', function (e) {
+        
+        if (e.date === null) {
+          self.activityModel.ResetFilterFromDate();
+        } else {
+          $(tillPicker).data('DateTimePicker').minDate(e.date);
+
+          self.activityModel.SetFilterFromDate(e.date.format());
+        }
+
+        // unfocus after a date has been chosen
+        $(fromPicker).blur();
+      });
+    }
+
+    // initializes the till picker 
+    self.onTillInit = function (picker) {
+
+       tillPicker = picker;
+
+       $(picker).on('dp.change', function (e) {
+         
+         if (e.date === null) {
+           self.activityModel.ResetFilterTillDate();
+         } else {
+           $(fromPicker).data('DateTimePicker').maxDate(e.date);
+
+           self.activityModel.SetFilterTillDate(e.date.format());
+         }
+
+         // unfocus after a date has been chosen
+         $(tillPicker).blur();
+      });
+    }
   }
 
     

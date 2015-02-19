@@ -32,7 +32,7 @@
         search: filter.Search(),
         category: filter.Category(),
         participants: filter.Participants(),
-        date: filter.Date(),
+        date: { fromDate: filter.FromDate(), tillDate: filter.TillDate() },
         time: { beginTime: filter.BeginTime(), endTime: filter.EndTime() }
       };
     };
@@ -41,7 +41,8 @@
     // set filters for activities
     self.SetFilterCategory = function (category) { filter.Category(category); };
     self.SetFilterParticipants = function (participants) { filter.Participants(participants); };
-    self.SetFilterDate = function (date) { filter.Date(date); };
+    self.SetFilterFromDate = function (fromDate) { filter.FromDate(fromDate); };
+    self.SetFilterTillDate = function (tillDate) { filter.TillDate(tillDate); };
     self.SetFilterTime = function (beginTime, endTime) { filter.EndTime(endTime); filter.BeginTime(beginTime); };
     self.SetFilterSearch = function (search) { filter.Search(search); };
 
@@ -49,12 +50,16 @@
     self.GetFilterParticipants = function () { return filter.Participants; }
     self.GetFilterSearch = function () { return filter.Search; }
     self.GetFilterTime = function () { return { beginTime: filter.BeginTime, endTime: filter.EndTime } };
-    self.ResetFilterDate = function () { self.SetFilterDate(undefined); };
+
+    // reset dates
+    self.ResetFilterFromDate = function () { self.SetFilterFromDate(undefined); };
+    self.ResetFilterTillDate = function () { self.SetFilterTillDate(undefined); };
 
     // update activites based on filters
     self.disposables.push(filter.Category.subscribe(function () { GetActivities(); }));
     self.disposables.push(filter.Participants.subscribe(function () { GetActivities(); }));
-    self.disposables.push(filter.Date.subscribe(function () { GetActivities(); }));
+    self.disposables.push(filter.FromDate.subscribe(function () { GetActivities(); }));
+    self.disposables.push(filter.TillDate.subscribe(function () { GetActivities(); }));
     self.disposables.push(filter.BeginTime.subscribe(function () { GetActivities(); }));
     self.disposables.push(filter.EndTime.subscribe(function () { GetActivities(); }));
     self.disposables.push(filter.Search.subscribe(function () { GetActivities(); }));

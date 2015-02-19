@@ -19,7 +19,6 @@ var require = {
     "text": "bower_modules/requirejs-text/text",
     "qtip2": "bower_modules/qtip2/jquery.qtip.min",
     "jcrop": "bower_modules/jcrop/js/jquery.Jcrop.min",
-    "dateformat": "bower_modules/jquery-dateFormat/dist/jquery-dateFormat.min",
 
     // mockjax
     "jquery-mockjax": "bower_modules/jquery-mockjax/jquery.mockjax",
@@ -33,8 +32,7 @@ var require = {
     "jquery-mockjax": { deps: ["jquery"] },
     "bootstrap": { deps: ["jquery" ] },
     "qtip2": { deps: ["jquery"] },
-    "bootstrap-slider": { deps: ["jquery"] },
-    "dateformat": { deps: ["jquery"] }
+    "bootstrap-slider": { deps: ["jquery"] }
   },
   urlArgs: "bust=" + (new Date()).getTime()
 };

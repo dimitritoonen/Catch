@@ -18,13 +18,11 @@ var require = {
     "signals": "bower_modules/js-signals/dist/signals.min",
     "text": "bower_modules/requirejs-text/text",
     "qtip2": "bower_modules/qtip2/jquery.qtip.min",
-    "jcrop": "bower_modules/jcrop/js/jquery.Jcrop.min",
-    "dateformat": "bower_modules/jquery-dateFormat/dist/jquery-dateFormat.min"
+    "jcrop": "bower_modules/jcrop/js/jquery.Jcrop.min"
   },
   shim: {
     "bootstrap": { deps: ["jquery"] },
-    "qtip2": { deps: ["jquery"] },
-    "dateformat": { deps: ["jquery"] }
+    "qtip2": { deps: ["jquery"] }
   },
   urlArgs: "bust=" + (new Date()).getTime()
 };

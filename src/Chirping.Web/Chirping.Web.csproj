@@ -114,6 +114,7 @@
     <Content Include="src\app\startup.js" />
     <Content Include="src\authentication\authcomplete.html" />
     <Content Include="src\bindingHandlers\bindingHandlers.js" />
+    <Content Include="src\bindingHandlers\datetimepicker.js" />
     <Content Include="src\bindingHandlers\invokeOnEnter.js" />
     <Content Include="src\bindingHandlers\qtipValMessage.js" />
     <Content Include="src\bindingHandlers\slider.js" />

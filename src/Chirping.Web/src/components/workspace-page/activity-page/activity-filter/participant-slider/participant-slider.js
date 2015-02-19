@@ -1,4 +1,4 @@
-define(['knockout', 'text!./participant-slider.html'], function (ko, templateMarkup) {
+define(['knockout', 'text!./participant-slider.html', 'bindingHandlers/slider'], function (ko, templateMarkup) {
 
   function ParticipantSlider(params) {
 

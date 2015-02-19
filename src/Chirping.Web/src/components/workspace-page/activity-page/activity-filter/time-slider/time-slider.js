@@ -1,4 +1,4 @@
-define(['knockout', 'text!./time-slider.html'], function(ko, templateMarkup) {
+define(['knockout', 'text!./time-slider.html', 'bindingHandlers/slider'], function(ko, templateMarkup) {
 
   function TimeSlider(params) {
     

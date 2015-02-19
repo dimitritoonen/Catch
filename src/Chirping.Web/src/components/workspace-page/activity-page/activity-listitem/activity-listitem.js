@@ -1,4 +1,4 @@
-define(['knockout', 'text!./activity-listitem.html', '../category-icon-mapping', 'dateformat'], function (ko, templateMarkup, categoryMap) {
+define(['knockout', 'text!./activity-listitem.html', '../category-icon-mapping', 'moment'], function (ko, templateMarkup, categoryMap, moment) {
 
   function ActivityListitem(params) {
        
@@ -15,7 +15,7 @@ define(['knockout', 'text!./activity-listitem.html', '../category-icon-mapping',
     
     // convert datetime format
     var date = new Date(self.activity.date);
-    self.timestamp = $.format.date(date, 'dd MMMM / HH:mm');
+    self.timestamp = moment(date).format('D MMMM / HH:mm');
    
 
     self.allowExpand = ko.observable(false);

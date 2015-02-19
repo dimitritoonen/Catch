@@ -1,4 +1,4 @@
-﻿define(['jquery', 'knockout', 'dateformat'], function ($, ko) {
+﻿define(['jquery', 'knockout', 'moment'], function ($, ko, moment) {
 
   function MockActivities() {
 
@@ -124,6 +124,10 @@
 
     ]; // activities
 
+
+    var defaultDateFormat = 'YYYY-MM-DD';
+
+    // filter activities
     this.GetActivities = function (settings) {
 
       var filter = settings.data;
@@ -132,18 +136,24 @@
         return activities;
       }
       
+      // filter activites based on chosen filter
       return ko.utils.arrayFilter(activities, function (item) {
+        
+        var itemDate = moment(item.date).format('');
 
-        if (filter.date !== undefined) {
-          var itemDate = $.format.date(item.date, 'YYYY-MM-dd');
-          var filterDate = $.format.date(filter.date, 'YYYY-MM-dd');
+        if (filter.date.fromDate !== undefined) {
+          var filterFromDate = moment(filter.date.fromDate).format(defaultDateFormat);
+        }
+        if (filter.date.tillDate !== undefined) {
+          var filterTillDate = moment(filter.date.tillDate).format(defaultDateFormat);
         }
 
-        var itemTime = $.format.date(new Date(item.date), 'HH');
-
+        var itemTime = moment(item.date).format('HH');
+        
         return ((filter.category === undefined || item.category.code === filter.category) && 
           (filter.participants === undefined || item.maxParticipants <= filter.participants) &&
-          (filter.date === undefined || itemDate <= filterDate) &&
+          (filter.date.fromDate === undefined || itemDate >= filterFromDate) &&
+          (filter.date.tillDate === undefined || itemDate <= filterTillDate) &&
           (filter.search === undefined || item.content.indexOf(filter.search) > -1) &&
           (filter.time.beginTime <= itemTime && filter.time.endTime >= itemTime));
       });

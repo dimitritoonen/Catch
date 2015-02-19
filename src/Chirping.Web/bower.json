@@ -17,7 +17,7 @@
     "js-signals": "1.0.0",
     "hasher": "~1.2.0",
     "knockout-projections": "1.1.0",
-    "knockout": "3.3.0-alpha",
+    "knockout": "~3.3.0",
     "knockout-mapping": "2.4.1",
     "knockout-validation": "1.0.2",
     "qtip2": "2.2.1",
@@ -27,11 +27,10 @@
     "eonasdan-bootstrap-datetimepicker": "~4.0.0",
     "moment": "~2.9.0",
     "modernizr": "~2.8.3",
-    "jquery-dateFormat": "~1.0.2",
     "seiyria-bootstrap-slider": "~4.4.2"
   },
   "resolutions": {
-    "knockout": "3.3.0-alpha",
+    "knockout": "~3.3.0",
     "bootstrap": "3.3.2"
   },
   "devDependencies": {
