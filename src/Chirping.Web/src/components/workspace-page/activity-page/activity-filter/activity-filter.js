@@ -23,7 +23,7 @@ define(['knockout', 'text!./activity-filter.html', 'moment', 'bindingHandlers/da
     self.tillDate = moment().add(1, 'month');
 
     // initializes the models till date
-    self.activityModel.SetFilterTillDate(self.tillDate.format());
+    self.activityModel.Filter.TillDate(self.tillDate.format());
 
     var fromPicker, tillPicker;
 
@@ -39,7 +39,7 @@ define(['knockout', 'text!./activity-filter.html', 'moment', 'bindingHandlers/da
         } else {
           $(tillPicker).data('DateTimePicker').minDate(e.date);
 
-          self.activityModel.SetFilterFromDate(e.date.format());
+          self.activityModel.Filter.FromDate(e.date.format());
         }
 
         // unfocus after a date has been chosen
@@ -59,13 +59,30 @@ define(['knockout', 'text!./activity-filter.html', 'moment', 'bindingHandlers/da
          } else {
            $(fromPicker).data('DateTimePicker').maxDate(e.date);
 
-           self.activityModel.SetFilterTillDate(e.date.format());
+           self.activityModel.Filter.TillDate(e.date.format());
          }
 
          // unfocus after a date has been chosen
          $(tillPicker).blur();
       });
     }
+
+
+    $(window).on('resize', function () {
+      if (fromPicker !== undefined) {
+        var tillDate = self.activityModel.Filter.TillDate();
+
+        tillDate = (tillDate === undefined ? null : tillDate);
+        $(tillPicker).data('DateTimePicker').date(tillDate);
+      }
+
+      if (fromPicker !== undefined) {
+        var fromDate = self.activityModel.Filter.FromDate();
+
+        fromDate = (fromDate === undefined ? null : fromDate);
+        $(fromPicker).data('DateTimePicker').date(fromDate);
+      }
+    });
   }
 
     

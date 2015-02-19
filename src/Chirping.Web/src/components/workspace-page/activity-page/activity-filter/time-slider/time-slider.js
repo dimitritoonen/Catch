@@ -4,13 +4,17 @@ define(['knockout', 'text!./time-slider.html', 'bindingHandlers/slider'], functi
     
     var self = this;
 
-    var time = params.activityModel.GetFilterTime();
+    self.activityModel = params.activityModel;
 
-    self.beginTime = ko.observable(time.beginTime());
-    self.endTime = ko.observable(time.endTime());
+    self.beginTime = ko.observable(self.activityModel.Filter.BeginTime());
+    self.endTime = ko.observable(self.activityModel.Filter.EndTime());
+
+    var timeSlider;
 
     // gets the element upon slider initialization
     self.onSliderInit = function (slider) {
+
+      timeSlider = slider;
 
       // update the user interface when sliding
       slider.on('change', function (slider) {
@@ -26,10 +30,21 @@ define(['knockout', 'text!./time-slider.html', 'bindingHandlers/slider'], functi
         var beginTime = slider.value[0];
         var endTime = slider.value[1];
 
-        params.activityModel.SetFilterTime(beginTime, endTime);
+        params.activityModel.Filter.BeginTime(beginTime);
+        params.activityModel.Filter.EndTime(endTime);
       });
     }
 
+    
+    // set the value of the time slider when the browser is resizing
+    $(window).on('resize', function (event) {
+      if (timeSlider !== null) {
+        
+        var t = [params.activityModel.Filter.BeginTime(), params.activityModel.Filter.EndTime()];
+
+        $(timeSlider).slider('setValue', t);
+      }
+    });
   }
   
   return { viewModel: TimeSlider, template: templateMarkup };

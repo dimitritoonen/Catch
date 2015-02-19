@@ -5,7 +5,7 @@ define(['knockout', 'text!./nav-bar.html', 'services/auth-service', 'models/acti
     var self = this;
     
     self.route = params.route;
-    self.search = activityModel.GetFilterSearch();
+    self.search = activityModel.Filter.Search;
 
     // navigate to activities page when searching for activities
     self.loadActivities = function () {

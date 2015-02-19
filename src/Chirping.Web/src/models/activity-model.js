@@ -11,7 +11,7 @@
     self.activities = ko.observableArray();
 
     // filter fields -> which reload the activities
-    var filter = new filterModel();
+    self.Filter = new filterModel();
 
     // defines the marker position of the filter slider
     self.SliderMarkerPosition = ko.observable();
@@ -29,40 +29,26 @@
     // get the filter object
     var GetFilter = function () {
       return {
-        search: filter.Search(),
-        category: filter.Category(),
-        participants: filter.Participants(),
-        date: { fromDate: filter.FromDate(), tillDate: filter.TillDate() },
-        time: { beginTime: filter.BeginTime(), endTime: filter.EndTime() }
+        search: self.Filter.Search(),
+        category: (self.Filter.Category() === undefined ? undefined : self.Filter.Category().code),
+        participants: self.Filter.Participants(),
+        date: { fromDate: self.Filter.FromDate(), tillDate: self.Filter.TillDate() },
+        time: { beginTime: self.Filter.BeginTime(), endTime: self.Filter.EndTime() }
       };
     };
 
-
-    // set filters for activities
-    self.SetFilterCategory = function (category) { filter.Category(category); };
-    self.SetFilterParticipants = function (participants) { filter.Participants(participants); };
-    self.SetFilterFromDate = function (fromDate) { filter.FromDate(fromDate); };
-    self.SetFilterTillDate = function (tillDate) { filter.TillDate(tillDate); };
-    self.SetFilterTime = function (beginTime, endTime) { filter.EndTime(endTime); filter.BeginTime(beginTime); };
-    self.SetFilterSearch = function (search) { filter.Search(search); };
-
-    // get filters
-    self.GetFilterParticipants = function () { return filter.Participants; }
-    self.GetFilterSearch = function () { return filter.Search; }
-    self.GetFilterTime = function () { return { beginTime: filter.BeginTime, endTime: filter.EndTime } };
-
     // reset dates
-    self.ResetFilterFromDate = function () { self.SetFilterFromDate(undefined); };
-    self.ResetFilterTillDate = function () { self.SetFilterTillDate(undefined); };
+    self.ResetFilterFromDate = function () { self.Filter.FromDate(undefined); };
+    self.ResetFilterTillDate = function () { self.Filter.TillDate(undefined); };
 
     // update activites based on filters
-    self.disposables.push(filter.Category.subscribe(function () { GetActivities(); }));
-    self.disposables.push(filter.Participants.subscribe(function () { GetActivities(); }));
-    self.disposables.push(filter.FromDate.subscribe(function () { GetActivities(); }));
-    self.disposables.push(filter.TillDate.subscribe(function () { GetActivities(); }));
-    self.disposables.push(filter.BeginTime.subscribe(function () { GetActivities(); }));
-    self.disposables.push(filter.EndTime.subscribe(function () { GetActivities(); }));
-    self.disposables.push(filter.Search.subscribe(function () { GetActivities(); }));
+    self.disposables.push(self.Filter.Category.subscribe(function () { GetActivities(); }));
+    self.disposables.push(self.Filter.Participants.subscribe(function () { GetActivities(); }));
+    self.disposables.push(self.Filter.FromDate.subscribe(function () { GetActivities(); }));
+    self.disposables.push(self.Filter.TillDate.subscribe(function () { GetActivities(); }));
+    self.disposables.push(self.Filter.BeginTime.subscribe(function () { GetActivities(); }));
+    self.disposables.push(self.Filter.EndTime.subscribe(function () { GetActivities(); }));
+    self.disposables.push(self.Filter.Search.subscribe(function () { GetActivities(); }));
     
     // add activity
     self.AddActivity = function (activity) {
