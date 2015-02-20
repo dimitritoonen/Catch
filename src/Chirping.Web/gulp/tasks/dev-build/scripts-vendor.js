@@ -8,7 +8,7 @@ var merge = require('deeply');
 
 // get the requireJs configuration paths
 var requireJsRuntimeConfig =
-  vm.runInNewContext(fs.readFileSync('src/app/require.config.dev.js') + '; require;').paths;
+  vm.runInNewContext(fs.readFileSync('src/app/require.config.js') + '; require;').paths;
 
 // add additional paths to the requireJs config
 requireJsRuntimeConfig = merge(requireJsRuntimeConfig, config.vendor.paths);

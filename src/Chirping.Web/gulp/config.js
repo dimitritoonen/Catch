@@ -103,7 +103,8 @@ module.exports = {
     development: {
       vendor: {
         paths: {
-          'require-js': 'bower_modules/requirejs/require'
+          'require-js': 'bower_modules/requirejs/require',
+          'jquery-mockjax': 'bower_modules/jquery-mockjax/jquery.mockjax'
         }
       },
 
@@ -282,7 +283,8 @@ module.exports = {
             'components/workspace-page/activity-page/activity-listitem/activity-listitem',
             'components/workspace-page/activity-page/activity-list/activity-list',
             'components/workspace-page/activity-page/activity-add/activity-add',
-            'components/workspace-page/activity-page/activity-filter/activity-filter-slider/activity-filter-slider'
+            'components/workspace-page/activity-page/activity-filter/participant-slider/participant-slider',
+            'components/workspace-page/activity-page/activity-filter/time-slider/time-slider'
           ],
           'notifications-page': [
             'pages/workspace-page/notifications-page/notifications-page'

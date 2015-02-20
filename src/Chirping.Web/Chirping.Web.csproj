@@ -361,8 +361,8 @@
     <Content Include="test\bower_modules\jasmine\src\html\ResultsNode.js" />
     <Content Include="test\bower_modules\jasmine\src\version.js" />
     <Content Include="test\bower_modules\requirejs\require.js" />
-    <Content Include="test\components\home-page.js" />
     <Content Include="test\index.html" />
+    <Content Include="test\components\activity-model.js" />
     <Content Include="test\require.config.js" />
     <Content Include="test\SpecRunner.browser.js" />
     <Content Include="test\SpecRunner.karma.js" />
@@ -469,7 +469,9 @@
     <Content Include="src\less\vendor\viewpoints\screen-workspace-right.less" />
     <Content Include="src\less\vendor\bootstrap-slider.less" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="test\models\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="src\less\variables.less" />
     <Content Include="src\less\vendor-prefixes.less" />

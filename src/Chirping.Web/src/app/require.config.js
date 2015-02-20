@@ -7,7 +7,7 @@ var require = {
     "bootstrap": "bower_modules/bootstrap/dist/js/bootstrap.min",
     "bootstrap-dialog": "bower_modules/bootstrap-dialog/dist/js/bootstrap-dialog.min",
     "datetimepicker": "bower_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min",
-    "moment": "bower_modules/moment/min/moment-with-locales.min",
+    "moment": "bower_modules/moment/min/moment.min",
     "crossroads": "bower_modules/crossroads/dist/crossroads.min",
     "hasher": "bower_modules/hasher/dist/js/hasher.min",
     "jquery": "bower_modules/jquery/dist/jquery",
@@ -18,11 +18,13 @@ var require = {
     "signals": "bower_modules/js-signals/dist/signals.min",
     "text": "bower_modules/requirejs-text/text",
     "qtip2": "bower_modules/qtip2/jquery.qtip.min",
-    "jcrop": "bower_modules/jcrop/js/jquery.Jcrop.min"
+    "jcrop": "bower_modules/jcrop/js/jquery.Jcrop.min",
+    "bootstrap-slider": "bower_modules/seiyria-bootstrap-slider/dist/bootstrap-slider.min"
   },
   shim: {
     "bootstrap": { deps: ["jquery"] },
-    "qtip2": { deps: ["jquery"] }
-  },
-  urlArgs: "bust=" + (new Date()).getTime()
+    "qtip2": { deps: ["jquery"] },
+    "bootstrap-slider": { deps: ["jquery"] }
+  }
+  //,urlArgs: "bust=" + (new Date()).getTime()
 };
