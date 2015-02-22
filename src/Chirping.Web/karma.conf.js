@@ -23,7 +23,7 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
-      'build/mock-server/**/*.js'
+      //'build/mock-server/**/*.js'
     ],
 
 

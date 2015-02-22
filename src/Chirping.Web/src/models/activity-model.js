@@ -8,7 +8,7 @@
     self.disposables = [];
 
     // contains the observable list of activities
-    self.activities = ko.observableArray();
+    self.Activities = ko.observableArray();
 
     // filter fields -> which reload the activities
     self.Filter = new filterModel();
@@ -18,11 +18,11 @@
 
     
     var GetActivities = function () {
-
+      
       var filter = GetFilter();
 
       webapi.Get('api/activity', filter).done(function (result) {
-        self.activities(result);
+        self.Activities(result);
       });
     }
 
