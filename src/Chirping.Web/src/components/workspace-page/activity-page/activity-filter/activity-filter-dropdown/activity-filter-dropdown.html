@@ -1,14 +1,18 @@
 <div class="activity-filter-label" data-bind="text: label"></div>
 <div class="dropdown">
     <button class="btn btn-default dropdown-toggle activity-dropdown-button" type="button"
-            id="CategoryDropdown" data-toggle="dropdown" aria-expanded="true">
-        <span data-bind="text: selectedCategory"></span>
+            data-toggle="dropdown" aria-expanded="true">
+
+        <!-- ko with: activityModel.Filter.Category -->
+        <span data-bind="text: description"></span>
+        <!-- /ko -->
+
         <span class="caret"></span>
     </button>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="CategoryDropdown"
-        data-bind="foreach: categories">
+    <ul class="dropdown-menu" role="menu"
+        data-bind="foreach: items">
         <li role="presentation">
-            <a role="menuitem" tabindex="-1" data-bind="click: $parent.selectItem">
+            <a role="menuitem" class="menu-item" tabindex="-1" data-bind="click: $parent.selectItem">
                 <span data-bind="text: description"></span>
             </a>
         </li>

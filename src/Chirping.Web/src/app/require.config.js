@@ -7,11 +7,10 @@ var require = {
     "bootstrap": "bower_modules/bootstrap/dist/js/bootstrap.min",
     "bootstrap-dialog": "bower_modules/bootstrap-dialog/dist/js/bootstrap-dialog.min",
     "datetimepicker": "bower_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min",
-    "moment": "bower_modules/moment/min/moment-with-locales.min",
+    "moment": "bower_modules/moment/min/moment.min",
     "crossroads": "bower_modules/crossroads/dist/crossroads.min",
     "hasher": "bower_modules/hasher/dist/js/hasher.min",
     "jquery": "bower_modules/jquery/dist/jquery",
-    "jquery-ui": "bower_modules/jquery-ui/jquery-ui",
     "knockout": "bower_modules/knockout/dist/knockout",
     "knockout-projections": "bower_modules/knockout-projections/dist/knockout-projections.min",
     "knockout-validation": "bower_modules/knockout-validation/dist/knockout.validation.min",
@@ -20,23 +19,12 @@ var require = {
     "text": "bower_modules/requirejs-text/text",
     "qtip2": "bower_modules/qtip2/jquery.qtip.min",
     "jcrop": "bower_modules/jcrop/js/jquery.Jcrop.min",
-    "dateformat": "bower_modules/jquery-dateFormat/dist/jquery-dateFormat.min",
-
-    // metro interface
-    "metro-touch-handler": "bower_modules/metro-ui-css/js/metro-touch-handler",
-    "metro-slider": "bower_modules/metro-ui-css/js/metro-slider"
+    "bootstrap-slider": "bower_modules/seiyria-bootstrap-slider/dist/bootstrap-slider.min"
   },
   shim: {
-    "jquery-ui": {
-      exports: "$",
-      deps: ["jquery"]
-    },
     "bootstrap": { deps: ["jquery"] },
     "qtip2": { deps: ["jquery"] },
-    "metro-slider": {
-      deps: ["jquery-ui", "metro-touch-handler"]
-    },
-    "dateformat": { deps: ["jquery"] }
-  },
-  urlArgs: "bust=" + (new Date()).getTime()
+    "bootstrap-slider": { deps: ["jquery"] }
+  }
+  //,urlArgs: "bust=" + (new Date()).getTime()
 };

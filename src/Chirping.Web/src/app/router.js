@@ -3,19 +3,19 @@ define(['knockout', 'crossroads', 'hasher', 'services/auth-service', './app.conf
   // return CrossroadsJS routing combined with Hasher for history enabled browsing
   return new Router({
     routes: [
-        // default/workspace routing
-        { url: '', params: { page: 'workspace-page', subPage: 'activities-page' } },
+        // default/intro page routing
+        { url: '', params: { page: 'intro-page' } },
+        { url: appConfig.HOMEPAGE, params: { page: 'intro-page' } },
+        { url: 'ActivateAccount{?query}', params: { page: 'intro-page', component: 'activate-account' } },
+        { url: 'ChangePassword{?query}', params: { page: 'intro-page', component: 'change-password' } },
+
+        // workspace routing
         { url: 'Workspace', params: { page: 'workspace-page', subPage: 'dashboard-page' } },
         { url: 'Workspace/Dashboard', params: { page: 'workspace-page', subPage: 'dashboard-page' } },
         { url: 'Workspace/Activities', params: { page: 'workspace-page', subPage: 'activities-page' } },
         { url: 'Workspace/Notifications', params: { page: 'workspace-page', subPage: 'notifications-page' } },
         { url: 'Workspace/Contacts', params: { page: 'workspace-page', subPage: 'contacts-page' } },
-        { url: 'Workspace/Profile', params: { page: 'workspace-page', subPage: 'profile-page' } },
-
-        // intro page routing
-        { url: appConfig.HOMEPAGE, params: { page: 'intro-page' } },
-        { url: 'ActivateAccount{?query}', params: { page: 'intro-page', component: 'activate-account' } },
-        { url: 'ChangePassword{?query}', params: { page: 'intro-page', component: 'change-password' } }
+        { url: 'Workspace/Profile', params: { page: 'workspace-page', subPage: 'profile-page' } }
     ]
   });
 
@@ -38,7 +38,6 @@ define(['knockout', 'crossroads', 'hasher', 'services/auth-service', './app.conf
       // check if the user is authenticated and redirect if not
       crossroads.routed.add(AuthenticateUser);
     });
-
 
     activateCrossroads();
   }

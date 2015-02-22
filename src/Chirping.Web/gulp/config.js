@@ -38,7 +38,6 @@ module.exports = {
     optimized: {
       src: [
           '!' + src + '/less/vendor/bootstrap.less',
-          '!' + src + '/less/vendor/metro-bootstrap.less', // compiled manually and added the css class
           src + '/less/**/*.less'
       ],
       dest: dest + '/css',
@@ -55,7 +54,7 @@ module.exports = {
         src + '/bower_modules/font-awesome/css/font-awesome.min.css',
         src + '/bower_modules/jcrop/css/jquery.Jcrop.min.css',
         src + '/bower_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
-        src + '/bower_modules/metro-ui-css/min/metro-slider.min.css'
+        src + '/bower_modules/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css'
     ]
   },
   autoprefixer: {
@@ -104,7 +103,8 @@ module.exports = {
     development: {
       vendor: {
         paths: {
-          'require-js': 'bower_modules/requirejs/require'
+          'require-js': 'bower_modules/requirejs/require',
+          'jquery-mockjax': 'bower_modules/jquery-mockjax/jquery.mockjax'
         }
       },
 
@@ -188,7 +188,6 @@ module.exports = {
   recess: {
     src: [
       '!' + src + '/less/vendor/bootstrap.less',
-      '!' + src + '/less/vendor/metro-bootstrap.less',
       '!' + src + '/less/variables.less',
       src + '/less/**/*.less'
     ],
@@ -284,7 +283,8 @@ module.exports = {
             'components/workspace-page/activity-page/activity-listitem/activity-listitem',
             'components/workspace-page/activity-page/activity-list/activity-list',
             'components/workspace-page/activity-page/activity-add/activity-add',
-            'components/workspace-page/activity-page/activity-filter/activity-filter-slider/activity-filter-slider'
+            'components/workspace-page/activity-page/activity-filter/participant-slider/participant-slider',
+            'components/workspace-page/activity-page/activity-filter/time-slider/time-slider'
           ],
           'notifications-page': [
             'pages/workspace-page/notifications-page/notifications-page'

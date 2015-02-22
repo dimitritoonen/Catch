@@ -14,7 +14,8 @@ gulp.task('html', function () {
       'vendor-css': '/css/vendor-styles.css',
       'js': {
         src: 'app/startup',
-        tpl: '<script src="app/require.config.dev.js"></script>' +
+        tpl: '<script src="app/require.config.js"></script>' +
+              '<script src="app/require.config.dev.js"></script>' +
               '<script data-main="%s" src="bower_modules/requirejs/require.js"></script>'
       },
       'modernizr': '<script src="bower_modules/modernizr/modernizr.js"></script>'

@@ -1,4 +1,5 @@
-﻿@import "../../../vendor/viewpoints/screen-ms.less";
+﻿@import "../../../vendor-prefixes.less";
+@import "../../../vendor/viewpoints/screen-ms.less";
 @import "../../../variables.less";
 @import "../../../../bower_modules/font-awesome/less/font-awesome.less";
 
@@ -49,128 +50,18 @@
         .filter-container {
             padding-left: 0;
         }
-                
-        // style for the list item tile
-        .tile {
-            cursor: pointer;
-            position: relative;
-            width: 100%;
-            min-height: 100px;
-            padding: 10px 10px 0 10px;
 
-            @media (max-width: @screen-sm) {
-                border-left: 8px solid @blue;
-            }
-
-            .image {
-                float:left;
-                border: 1px solid @gray-dark;
-                height: 50px;
-                width: 50px;
-                border-radius: @border-radius-base;
-            }
-
-
-            .content {
-                padding-left: 60px;
-                padding-bottom: 40px;
-                width: 100%;
-                    
-                .header {
-
-                    font-weight: 900;
-                    overflow:hidden;
-                
-                    .category {
-                        text-align:right;
-                        float: right;
-                    }
-
-                    .where {
-                        float:left;
-
-                        @media (min-width: @screen-ms) {
-                            width: 40%;
-                            float:left;
-                        }
-                    }
-
-                    .when {
-                        text-align: center;
-
-                        @media (max-width: @screen-sm) {
-                            text-align: left;
-                            clear: both;
-                        }
-                    }
-                }
-
-                .text {
-                    padding-top: 5px;
-                    overflow: hidden;
-                }
-
-                // allows only 2 lines of text and shows an ellipsis (...)
-                .line-clamp {
-                    @media (max-width: @screen-sm) {
-                        display: -webkit-box;
-                        -webkit-line-clamp: 2;
-                        -webkit-box-orient: vertical;
-                    }
-                }
-
-                
-                /*.participants {
-                    text-align: left;
-                    width: 100%;
-
-                    @media (min-width: @screen-ms) {
-                        max-width: 100px;
-                        text-align: right;
-                        width: 25%;
-                        float: right;
-                    }
-                }*/
-
-                // footer styles of the item tile
-                .footer {
-                    padding-top:10px;
-
-                    // icons styles in the footer of the item tile
-                    .icon {
-                        padding-top: 5px;
-                        float:left;
-                        color: @blue-light;
-                        font-size: 1.4em;
-                        padding-right: 7%;
-                        cursor: pointer;
-
-                        &.bookmark:hover:before {
-                            color: @blue;
-                            content: @fa-var-bookmark !important;
-                        }
-
-                        &.share:hover:before {
-                            color: @blue;
-                        }
-                    }
-
-                    .buttons {
-                        float: right;
-                    }
-                } // footer
-            } // content
-        } // tile
-
-        .tile:hover {
-            background-color: @grey-background;
-        }
 
         .bottom-line {
             clear: both;
             background-color: @grey-background-darker;
             height: 1px !important;
             width: 99.9% !important;
+        }
+
+        .no-activities-found {
+            margin-top: 30px;
+            text-align: center;
         }
     }
 }

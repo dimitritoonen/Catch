@@ -114,16 +114,11 @@
     <Content Include="src\app\startup.js" />
     <Content Include="src\authentication\authcomplete.html" />
     <Content Include="src\bindingHandlers\bindingHandlers.js" />
+    <Content Include="src\bindingHandlers\datetimepicker.js" />
     <Content Include="src\bindingHandlers\invokeOnEnter.js" />
     <Content Include="src\bindingHandlers\qtipValMessage.js" />
-    <Content Include="src\bower_modules\metro-ui-css\js\metro-slider.js" />
-    <Content Include="src\bower_modules\metro-ui-css\js\metro-touch-handler.js" />
-    <Content Include="src\bower_modules\metro-ui-css\less\funcs.less" />
-    <Content Include="src\bower_modules\metro-ui-css\less\reset.less" />
-    <Content Include="src\bower_modules\metro-ui-css\less\slider.less" />
-    <Content Include="src\bower_modules\metro-ui-css\less\utils.less" />
-    <Content Include="src\bower_modules\metro-ui-css\less\variables.less" />
-    <Content Include="src\bower_modules\metro-ui-css\min\metro-slider.min.css" />
+    <Content Include="src\bindingHandlers\slider.js" />
+    <Content Include="src\bindingHandlers\tooltip.js" />
     <Content Include="src\components\intro-page\activate-account\activate-account.html" />
     <Content Include="src\components\intro-page\activate-account\activate-account.js" />
     <Content Include="src\components\intro-page\change-password\change-password.html" />
@@ -145,12 +140,15 @@
     <Content Include="src\components\intro-page\forgot-password\reset-password-sent\reset-password-sent.js" />
     <Content Include="src\components\workspace-page\activity-page\activity-add\activity-add.html" />
     <Content Include="src\components\workspace-page\activity-page\activity-add\activity-add.js" />
-    <Content Include="src\components\workspace-page\activity-page\activity-filter-model.js" />
+    <Content Include="src\components\workspace-page\activity-page\activity-filter\time-slider\time-slider.html" />
+    <Content Include="src\components\workspace-page\activity-page\activity-filter\time-slider\time-slider.js" />
+    <Content Include="src\mock_server\mock-categories.js" />
+    <Content Include="src\models\activity-filter-model.js" />
     <Content Include="src\components\workspace-page\activity-page\activity-filter\activity-filter-dropdown\activity-filter-dropdown.html" />
     <Content Include="src\components\workspace-page\activity-page\activity-filter\activity-filter-dropdown\activity-filter-dropdown.js" />
-    <Content Include="src\components\workspace-page\activity-page\activity-filter\activity-filter-slider\activity-filter-slider.html" />
-    <Content Include="src\components\workspace-page\activity-page\activity-filter\activity-filter-slider\activity-filter-slider.js" />
-    <Content Include="src\components\workspace-page\activity-page\activity-model.js" />
+    <Content Include="src\components\workspace-page\activity-page\activity-filter\participant-slider\participant-slider.html" />
+    <Content Include="src\components\workspace-page\activity-page\activity-filter\participant-slider\participant-slider.js" />
+    <Content Include="src\models\activity-model.js" />
     <Content Include="src\components\workspace-page\activity-page\category-icon-mapping.js" />
     <Content Include="src\components\workspace-page\dashboard-page\activity-thumb\activity-thumb.html" />
     <Content Include="src\components\workspace-page\dashboard-page\activity-thumb\activity-thumb.js" />
@@ -363,8 +361,8 @@
     <Content Include="test\bower_modules\jasmine\src\html\ResultsNode.js" />
     <Content Include="test\bower_modules\jasmine\src\version.js" />
     <Content Include="test\bower_modules\requirejs\require.js" />
-    <Content Include="test\components\home-page.js" />
     <Content Include="test\index.html" />
+    <Content Include="test\components\activity-model.js" />
     <Content Include="test\require.config.js" />
     <Content Include="test\SpecRunner.browser.js" />
     <Content Include="test\SpecRunner.karma.js" />
@@ -464,13 +462,16 @@
     <Content Include="src\less\components\workspace\dashboard\activity-thumb.less" />
     <Content Include="src\less\components\workspace\activity\activity-filter.less" />
     <Content Include="src\less\components\workspace\activity\activity-list.less" />
+    <Content Include="src\less\components\workspace\activity\activity-listitem.less" />
     <None Include="src\less\styles.less" />
     <Content Include="src\Web.config" />
     <Content Include="src\less\vendor\jcrop.less" />
     <Content Include="src\less\vendor\viewpoints\screen-workspace-right.less" />
-    <Content Include="src\less\vendor\metro-bootstrap.less" />
+    <Content Include="src\less\vendor\bootstrap-slider.less" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="test\models\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="src\less\variables.less" />
     <Content Include="src\less\vendor-prefixes.less" />

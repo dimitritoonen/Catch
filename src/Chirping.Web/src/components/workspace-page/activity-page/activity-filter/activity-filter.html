@@ -4,26 +4,59 @@
     </div>
     <div class="filter-container-controls collapse">
         <div class="row">
-            <div class="col-lg-7 col-md-12 col-sm-4 col-ms-5 col-xs-12 padding-bottom">
+            <div class="col-lg-6 col-md-12 col-sm-6 col-ms-6 col-xs-12 padding-bottom">
                 <!-- categories -->
-                <activity-filter-dropdown params='listItems: categoryList, label: "Category"'></activity-filter-dropdown>
-            </div>
-            <div class="col-lg-5 col-md-6 col-sm-4 col-ms-4 col-xs-6 padding-bottom">
-                <div class="activity-filter-label">Date</div>
-                <input type="text" class="form-control activity-filter-date" id="ActivityDatePicker" placeholder="When?" />
-            </div>
-            <div class="col-lg-5 col-md-6 col-sm-4 col-ms-3 col-xs-6 padding-bottom">
-                <div class="activity-filter-label">Time</div>
-                <input type="text" class="form-control activity-filter-time" id="ActivityTimePicker" placeholder="When?" />
+                <activity-filter-dropdown params='activityModel: activityModel,
+                            listItems: categories,
+                            label: "Category"'>
+                </activity-filter-dropdown>
             </div>
         </div>
-        <div class="row slider">
+        <div class="row">
+            <div class="col-xs-6 padding-bottom">
+                <div class="activity-filter-label">From</div>
+                <input type="text"
+                       data-bind='datetimepicker: {
+                                    options: {
+                                        maxDate: tillDate,
+                                        showClear: true,
+                                        widgetPositioning: { horizontal: "left", vertical: "auto" }
+                                    },
+                                    init: onFromInit
+                                  }'
+                       class="form-control activity-filter-date" placeholder="From" />
+            </div>
+            <div class="col-xs-6 padding-bottom">
+                <div class="activity-filter-label">Till</div>
+                <input type="text"
+                       data-bind='datetimepicker: { 
+                                    options: { 
+                                        defaultDate: tillDate, 
+                                        minDate: fromDate,
+                                        widgetPositioning: { horizontal: "right", vertical: "auto" }
+                                    }, 
+                                    init: onTillInit
+                                  }'
+                       class="form-control activity-filter-date" placeholder="Till" />
+            </div>
+        </div>
+        <div class="row">
+            <!--<div class="col-lg-5 col-md-6 col-sm-4 col-ms-3 col-xs-6 padding-bottom">-->
+            <div class="col-xs-12 padding-bottom">
+                <time-slider params="activityModel: activityModel"></time-slider>
+            </div>
+        </div>
+        <div class="row">
             <div class="workspace-default-slider col-md-12 col-sm-12 col-xs-12">
-                <activity-filter-slider></activity-filter-slider>
+                <participant-slider params="activityModel: activityModel"></participant-slider>
             </div>
             <div class="workspace-comptable-slider col-md-6 col-sm-6 col-xs-6 hide">
                 <!-- participants -->
-                <activity-filter-dropdown params='listItems: participantList, label: "Participants"'></activity-filter-dropdown>
+                <activity-filter-dropdown 
+                    params='activityModel: activityModel,
+                            listItems: participantList,
+                            label: "Participants"'>
+                </activity-filter-dropdown>
             </div>
         </div>
     </div>

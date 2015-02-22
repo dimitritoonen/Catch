@@ -1,38 +1,87 @@
-define(['knockout', 'text!./activity-filter.html', 'datetimepicker'], function (ko, templateMarkup) {
+define(['knockout', 'text!./activity-filter.html', 'moment', 'bindingHandlers/datetimepicker'], function (ko, templateMarkup, moment) {
 
   function ActivityFilter(params) {
-    
+
     var self = this;
+
+    self.activityModel = params.activityModel;
     
-    self.categoryList = [
-      { value: 'games', description: 'Games' },
-      { value: 'food', description: 'Food & Drinks' },
-      { value: 'entertainment', description: 'Entertainment' },
-      { value: 'dating', description: 'Dating' }
-    ];
+    self.categories = params.categories;
 
-    self.participantList = [
-      { value: '2', description: '2 participants' },
-      { value: '4', description: '4 participants' },
-      { value: '5', description: '5 participants' },
-      { value: '6', description: '6 participants' },
-      { value: '7', description: '7 participants' },
-      { value: '8', description: '8 participants' },
-      { value: '9', description: 'More' }
-    ];
+    self.participantList = ko.observableArray([
+      { 'value': '2', 'description': '2 participants' },
+      { 'value': '4', 'description': '4 participants' },
+      { 'value': '5', 'description': '5 participants' },
+      { 'value': '6', 'description': '6 participants' },
+      { 'value': '7', 'description': '7 participants' },
+      { 'value': '8', 'description': '8 participants' },
+      { 'value': '9', 'description': 'More' }
+    ]);
     
-    $('.activity-filter-date').datetimepicker({
-      defaultDate: Date.now(),
-      minDate: Date.now() - 1,
-      format: 'YYYY-MM-DD',
-      collapse: true
-    });
+
+    self.fromDate = moment();
+    self.tillDate = moment().add(1, 'month');
+
+    // initializes the models till date
+    self.activityModel.Filter.TillDate(self.tillDate.format());
+
+    var fromPicker, tillPicker;
+
+    // initializes the from picker 
+    self.onFromInit = function (picker) {
+
+      fromPicker = picker;
+
+      $(picker).on('dp.change', function (e) {
+        
+        if (e.date === null) {
+          self.activityModel.ResetFilterFromDate();
+        } else {
+          $(tillPicker).data('DateTimePicker').minDate(e.date);
+
+          self.activityModel.Filter.FromDate(e.date.format());
+        }
+
+        // unfocus after a date has been chosen
+        $(fromPicker).blur();
+      });
+    }
+
+    // initializes the till picker 
+    self.onTillInit = function (picker) {
+
+       tillPicker = picker;
+
+       $(picker).on('dp.change', function (e) {
+         
+         if (e.date === null) {
+           self.activityModel.ResetFilterTillDate();
+         } else {
+           $(fromPicker).data('DateTimePicker').maxDate(e.date);
+
+           self.activityModel.Filter.TillDate(e.date.format());
+         }
+
+         // unfocus after a date has been chosen
+         $(tillPicker).blur();
+      });
+    }
 
 
-    $('.activity-filter-time').datetimepicker({
-      defaultDate: Date.now(),
-      format: 'HH:ss',
-      collapse: true
+    $(window).on('resize', function () {
+      if (fromPicker !== undefined) {
+        var tillDate = self.activityModel.Filter.TillDate();
+
+        tillDate = (tillDate === undefined ? null : tillDate);
+        $(tillPicker).data('DateTimePicker').date(tillDate);
+      }
+
+      if (fromPicker !== undefined) {
+        var fromDate = self.activityModel.Filter.FromDate();
+
+        fromDate = (fromDate === undefined ? null : fromDate);
+        $(fromPicker).data('DateTimePicker').date(fromDate);
+      }
     });
   }
 

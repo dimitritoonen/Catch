@@ -2,15 +2,15 @@
 
   // defines the acceptance configuration used throughout the SPA
   var config = environmentConfig['/*@echo NODE_ENV*/'];
-
+    
   // load the mockjax component in development
   if ('/*@echo NODE_ENV*/' === 'development') {
-    require(['mock-server'], function () { } );
+    require(['mock-server'], function () { });
   }
-  
+
   // constructor
   var configuration = {
-
+    
     BaseUrl: config.baseUrl,
 
     HomePage: '#Intro'

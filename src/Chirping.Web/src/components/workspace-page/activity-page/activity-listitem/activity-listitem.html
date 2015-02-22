@@ -1,29 +1,41 @@
 <div class="tile" data-bind="click: expandTile">
-    <div class="image">
-        <img src="/images/activity-bike.jpg" />
+    <div class="image-wrapper" data-bind='tooltip: { title: owner.name, placement: "right" }'>
+        <img class="image" data-bind='attr: { src: owner.image }' />
     </div>
     <div class="content">
         <div class="header">
             <div class="where" data-bind="html: activity.location"></div>
             <div class="category">
                 <i class="fa fa-lg"
-                   data-bind="css: iconMap.icon, style: { color: iconMap.color }"
-                   id="itemCategoryIcon" data-placement="top" title="Dating"></i>
+                   data-bind='css: iconMap.icon,
+                              style: { color: iconMap.color },
+                              tooltip: { title: category.description, placement: "left" }'
+                   id="itemCategoryIcon"></i>
             </div>
-            <div class="when" data-bind="html: timestamp"></div><!--25 maart / 19:00-->
+            <div class="when" data-bind="html: timestamp"></div>
         </div>
-        <div class="text line-clamp" data-bind="html: activity.content"></div>
+        <div class="text" data-bind="html: activity.content, css: { 'line-clamp': allowExpand() === false } "></div>
+        <div class="participants-wrapper">
+            <div class="participants" data-bind="foreach: new Array(activity.maxParticipants)">
+                <div class="profile">
+                    <!-- ko if: $index() < $parent.activity.participants.length -->
+                    <span data-bind="with: $parent.activity.participants[$index()]">
+                        <img class="image" data-bind='attr: { src: image }, tooltip: { title: name } ' />
+                    </span>
+                    <!-- /ko -->
+
+                    <!-- ko if: $index() >= $parent.activity.participants.length -->
+                    <div class="image" data-toggle="tooltip" data-placement="top" title="this could be you ;-)"></div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
         <div class="footer">
             <div class="icons">
-                <i class="fa fa-bookmark-o icon bookmark" title="Bookmark this page"></i>
-                <i class="fa fa-share-alt icon share" title="Share this activity"></i>
-                <!--<div class="text-right participants">
-                    <i class="fa fa-lg fa-user"></i>
-                    <i class="fa fa-lg fa-user"></i>
-                    <i class="fa fa-lg fa-user"></i>
-                    <i class="fa fa-lg fa-user"></i>
-                    <i class="fa fa-lg fa-user"></i>
-                </div>-->
+                <i class="fa fa-bookmark-o icon bookmark" data-toggle="tooltip" data-placement="top" 
+                   title="Bookmark this activity"></i>
+                <i class="fa fa-share-alt icon share" data-toggle="tooltip" data-placement="top" 
+                   title="Share this activity"></i>
             </div>
             <div class="buttons">
                 <button class="btn btn-default btn-sm pull-right" style="width: 100px;">Join</button>
