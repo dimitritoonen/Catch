@@ -10,9 +10,9 @@
   require.paths['jasmine'] = jasminePath + 'jasmine';
   require.paths['jasmine-html'] = jasminePath + 'jasmine-html';
   require.paths['jasmine-boot'] = jasminePath + 'boot';
-
-  //require.paths['knockout'] = 'bower_modules/knockout/dist/knockout';
-  //require.paths['jquery'] = 'bower_modules/jquery/dist/jquery';
+ 
+  require.paths['knockout'] = 'bower_modules/knockout/dist/knockout';
+  require.paths['jquery'] = 'bower_modules/jquery/dist/jquery';
 
   // add mockjack
   require.paths["jquery-mockjax"] = "bower_modules/jquery-mockjax/jquery.mockjax";
