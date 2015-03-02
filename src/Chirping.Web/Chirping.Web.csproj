@@ -184,6 +184,7 @@
     <Content Include="src\less\vendor\bootstrap.less" />
     <Content Include="src\mock_server\mock-activities.js" />
     <Content Include="src\mock_server\mock-server.js" />
+    <Content Include="src\models\test-model.js" />
     <Content Include="src\pages\workspace-page\activities-page\activities-page.html" />
     <Content Include="src\pages\workspace-page\activities-page\activities-page.js" />
     <Content Include="src\components\workspace-page\activity-page\activity-filter\activity-filter.html" />
@@ -361,6 +362,7 @@
     <Content Include="test\bower_modules\jasmine\src\html\ResultsNode.js" />
     <Content Include="test\bower_modules\jasmine\src\version.js" />
     <Content Include="test\bower_modules\requirejs\require.js" />
+    <Content Include="test\components\test-model.js" />
     <Content Include="test\index.html" />
     <Content Include="test\components\activity-model.js" />
     <Content Include="test\require.config.js" />
