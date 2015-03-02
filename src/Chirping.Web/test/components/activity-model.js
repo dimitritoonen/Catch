@@ -1,70 +1,109 @@
 ﻿define(['jquery', 'knockout', 'models/activity-model', 'mock-activities', 'jquery-mockjax'], function ($, ko, ActivityModel, mockActivities) {
 
+  //beforeEach(function () {
+  //  $.mockjax({
+  //    url: 'http://localhost:4421/api/activity',
+  //    responseTime: 10, responseText: mockActivities.GetActivities({
+  //      search: undefined,
+  //      category: undefined,
+  //      participants: 4
+  //    })
+  //  });
+  //});
+
+  //afterEach(function () {
+  //  $.mockjax.clear();
+  //});
+
   describe('activity model - ', function () {
     
-    beforeEach(function () {
-      $.mockjax({
-        url: 'http://localhost:4421/api/activity',
-        responseTime: 10, responseText: mockActivities.GetActivities({})
-      });
-    });
-
-    afterEach(function () {
-      $.mockjax.clear();
-    });
-
-    it('should reset Filter From Date', function (done) {
-      $.mockjax({
-        url: 'http://localhost:4421/api/activity',
-        responseTime: 10, responseText: mockActivities.GetActivities({})
-      });
+    it('should reset Filter From/till Date', function () {
       
       // arrange
       var instance = ActivityModel;
+      instance.Filter.FromDate('2015-02-03');
+      instance.Filter.TillDate('2015-02-05');
 
-      console.log('1');
+      // act
+      instance.ResetFilterFromDate();
+      instance.ResetFilterTillDate();
 
-      setTimeout(function () {
-
-        console.log('2');
-        expect(instance.Activities().length).toEqual(1);
-
-        done();
-      }, 5);
+      // assert
+      expect(instance.Filter.FromDate()).toBeUndefined();
+      expect(instance.Filter.TillDate()).toBeUndefined();
     });
 
 
     
-    //describe('filtering activities', function () { 
+    describe('filtering activities', function () { 
       
-    //  // arrange
-    //  var instance;
+      it('should filter on category', function () {
+       
+        // arrange 
+        var instance = ActivityModel;
 
-    //  beforeEach(function (done) {
-        
-    //    instance = ActivityModel;
+        // act
+        instance.Filter.Category('test-category');
 
-    //    // act
-    //    console.log('test1');
-    //    //instance.Filter.Search('Come and join us');
+        // assert
+        expect(instance.Filter.Category()).toEqual('test-category');
+      });
 
-    //    setTimeout(function () { done(); }, 200);
-    //  });
 
-    //  it('should filter on text search', function (done) {
-    //    setTimeout(function () {
-    //      //console.log(instance.Activities().length);
-    //      console.log('done');
+      it('should filter on participants', function () {
 
-    //      //done();
-    //    }, 20);
-    //    // assert
+        // arrange 
+        var instance = ActivityModel;
 
-    //    //var activity = instance.Activities()[0];
-    //    //expect(activity.id).toEqual(159);
-    //  });
+        // act
+        instance.Filter.Participants(5);
 
-    //}); // filtering activites
+        // assert
+        expect(instance.Filter.Participants()).toEqual(5);
+      });
+
+      it('should filter on from and till dates', function () {
+
+        // arrange 
+        var instance = ActivityModel;
+
+        // act
+        instance.Filter.FromDate('2015-02-03');
+        instance.Filter.TillDate('2015-02-05');
+
+        // assert
+        expect(instance.Filter.FromDate()).toEqual('2015-02-03');
+        expect(instance.Filter.TillDate()).toEqual('2015-02-05');
+      });
+
+      it('should filter on begin and end times', function () {
+
+        // arrange 
+        var instance = ActivityModel;
+
+        // act
+        instance.Filter.BeginTime(1);
+        instance.Filter.EndTime(23);
+
+        // assert
+        expect(instance.Filter.BeginTime()).toEqual(1);
+        expect(instance.Filter.EndTime()).toEqual(23);
+      });
+
+
+      it('should filter on text search', function () {
+
+        // arrange 
+        var instance = ActivityModel;
+
+        // act
+        instance.Filter.Search('text search');
+
+        // assert
+        expect(instance.Filter.Search()).toEqual('text search');
+      });
+
+    }); // filtering activites
 
   }); // activity model
 

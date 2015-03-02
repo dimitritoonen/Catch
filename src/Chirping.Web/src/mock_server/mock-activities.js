@@ -129,12 +129,15 @@
 
     // filter activities
     this.GetActivities = function (settings) {
-
+      
       var filter = settings.data;
 
       if (filter === undefined || filter == null) {
         return activities;
       }
+
+      console.log('setting: -----------------------------------------------------------------------------');
+      console.log(settings.data.participants);
       
       // filter activites based on chosen filter
       return ko.utils.arrayFilter(activities, function (item) {
