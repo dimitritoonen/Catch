@@ -1,7 +1,9 @@
 var tests = [];
 for (var file in window.__karma__.files) {
   if (window.__karma__.files.hasOwnProperty(file)) {
-    if (/test\/components\/.*\.js$/.test(file)) {
+
+    // loads tests from all the folders defines in test (i.e. test/components/*.js, test/models/*.js, etc).
+    if (/test\/([a-z]+)\/.*\.js$/.test(file)) {
       tests.push(file);
     }
   }

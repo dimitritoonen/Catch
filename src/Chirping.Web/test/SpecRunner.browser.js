@@ -1,8 +1,7 @@
 (function() {
   // Reference your test modules here
   var testModules = [
-    'components/activity-model',
-    'components/test-model',
+    'models/activity-model'
   ];
 
   // After the 'jasmine-boot' module creates the Jasmine environment, load all test modules then run them

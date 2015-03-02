@@ -226,8 +226,9 @@
     <Content Include="src\services\auth-storage.js" />
     <Content Include="src\services\chunked-uploader.js" />
     <Content Include="src\services\login-service.js" />
+    <Content Include="test\components\category-icon-mapping.js" />
     <Content Include="test\index.html" />
-    <Content Include="test\components\activity-model.js" />
+    <Content Include="test\models\activity-model.js" />
     <Content Include="test\require.config.js" />
     <Content Include="test\SpecRunner.browser.js" />
     <Content Include="test\SpecRunner.karma.js" />
@@ -282,9 +283,7 @@
     <Content Include="src\less\vendor\viewpoints\screen-workspace-right.less" />
     <Content Include="src\less\vendor\bootstrap-slider.less" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="test\models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="src\less\variables.less" />
     <Content Include="src\less\vendor-prefixes.less" />
