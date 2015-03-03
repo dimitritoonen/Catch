@@ -1,21 +1,26 @@
-﻿using System;
+﻿#region using directives
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+#endregion
 
 namespace Chirping.Web.Api.Common.Domain
 {
-    public class UserAccount
+    public class Profile : DomainModel
     {
-        public string Email { get; set; }
-        public string Password { get; set; }
-        
+        public Profile(int id)
+        {
+            this.Id = id;
+        }
+
+        public int Id { get; private set; }
+
         public string NickName { get; set; }
         public int Age { get; set; }
         public string Gender { get; set; }
         public string City { get; set; }
-        public string InterestedIn { get; set; }
         public string ProfileImage { get; set; }
     }
 }

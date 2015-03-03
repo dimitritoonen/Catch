@@ -1,9 +1,9 @@
 ﻿#region using directives
 
 using Chirping.Web.Api.Common.Data;
+using Chirping.Web.Api.Data.Context;
 using Chirping.Web.Api.Data.Entities;
 using Chirping.Web.Api.Domain;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +18,10 @@ namespace Chirping.Web.Api.Data.Repository
     {
         public bool EmailAddressInUse(string emailAddress)
         {
-            var user = this.Context.Users.Where(x => string.Compare(x.Email, emailAddress, true) == 0).FirstOrDefault();
+            return true;
+            //var user = this.Context.Users.Where(x => string.Compare(x.Email, emailAddress, true) == 0).FirstOrDefault();
 
-            return (user == null);
+            //return (user == null);
         }
 
         public bool NicknameInUse(string nickname)

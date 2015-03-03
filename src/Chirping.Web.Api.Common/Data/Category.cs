@@ -7,9 +7,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 #endregion
 
-namespace Chirping.Web.Api.Data.Entities
+namespace Chirping.Web.Api.Common.Data.Entities
 {
-    public class Category
+    [Table("Category")]
+    public class CategoryEntity
     {
         [Key]
         public int Id { get; set; }

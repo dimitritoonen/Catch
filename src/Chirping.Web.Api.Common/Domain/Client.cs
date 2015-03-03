@@ -8,7 +8,7 @@ using System;
 
 namespace Chirping.Web.Api.Common.Domain
 {
-    public class Client
+    public class Client : DomainModel
     {
         public string Id { get; set; }
         public string Secret { get; set; }

@@ -1,14 +1,15 @@
-﻿using Chirping.Web.Api.Common.Data;
+﻿#region using directives
+
+using Chirping.Web.Api.Common.Data;
 using Chirping.Web.Api.Common.Domain;
 using Chirping.Web.Api.Common.Repository;
-using Chirping.Web.Api.Security.Data.Context;
+using Chirping.Web.Api.Data.Context;
+
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+#endregion
 
 namespace Chirping.Web.Api.Data.Repository
 {
@@ -18,11 +19,16 @@ namespace Chirping.Web.Api.Data.Repository
     {
         #region Db context
 
-        public ChirpingIdentityContext Context { get; private set; }
+        public DbContext Context { get; private set; }
 
         public AbstractRepository()
         {
-            Context = new ChirpingIdentityContext();
+            Context = new ChirpingContext();
+        }
+
+        public AbstractRepository(DbContext context)
+        {
+            Context = context;
         }
 
         #endregion

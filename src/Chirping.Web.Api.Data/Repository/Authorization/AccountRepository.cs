@@ -170,7 +170,7 @@ namespace Chirping.Web.Api.Data.Repository.Authorization
             {
                 UserName = user.Email,
                 Email = user.Email,
-                Profile = new Profile
+                Profile = new ProfileEntity
                 {
                     NickName = user.NickName,
                     Age = user.Age,

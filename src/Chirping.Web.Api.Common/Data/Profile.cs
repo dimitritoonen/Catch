@@ -1,6 +1,7 @@
 ﻿#region using directives
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -8,10 +9,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Chirping.Web.Api.Common.Data.Entities
 {
-    public class Profile
+    [Table("Profile")]
+    public class ProfileEntity
     {
+        public ProfileEntity() { }
+
         [Key]
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [Index(IsUnique=true)]
@@ -19,8 +23,7 @@ namespace Chirping.Web.Api.Common.Data.Entities
         public string NickName { get; set; }
 
         [Required]
-        [MaxLength(2)]
-        public string Age { get; set; }
+        public int Age { get; set; }
 
         [Required]
         public string Gender { get; set; }
@@ -33,5 +36,8 @@ namespace Chirping.Web.Api.Common.Data.Entities
         public string InterestedIn { get; set; }
 
         public string ProfileImage { get; set; }
+
+        public virtual ICollection<ActivityEntity> Activities { get; set; }
     }
 }
+ 

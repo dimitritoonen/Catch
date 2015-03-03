@@ -7,13 +7,13 @@ namespace Chirping.Web.Api.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.2-31219")]
-    public sealed partial class Add_Category_and_Activity_entities : IMigrationMetadata
+    public sealed partial class Add_Activity_Category_tables : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Add_Category_and_Activity_entities));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Add_Activity_Category_tables));
         
         string IMigrationMetadata.Id
         {
-            get { return "201503022006308_Add_Category_and_Activity_entities"; }
+            get { return "201503031236203_Add_Activity_Category_tables"; }
         }
         
         string IMigrationMetadata.Source

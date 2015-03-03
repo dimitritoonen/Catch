@@ -18,7 +18,5 @@ namespace Chirping.Web.Api.Data.Entities
         public string Age { get; set; }
         public string InterestedIn { get; set; }
         public string ProfileImage { get; set; }
-
-        public virtual Activity Activity { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 #region using directives
 
 using Chirping.Web.Api.Common.Account;
+using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Data.Context;
 using Chirping.Web.Api.Data.Entities;
 using System;
@@ -51,15 +52,15 @@ namespace Chirping.Web.Api.Data.Migrations
         {
             if (context.Categories.Count() == 0)
             {
-                context.Categories.Add(new Category { Code = "dating", Description = "Dating" });
-                context.Categories.Add(new Category { Code = "sport", Description = "Sport" });
-                context.Categories.Add(new Category { Code = "entertainment", Description = "Entertainment" });
-                context.Categories.Add(new Category { Code = "food", Description = "Food and Drinks" });
-                context.Categories.Add(new Category { Code = "party", Description = "Party" });
-                context.Categories.Add(new Category { Code = "museum", Description = "Museum" });
-                context.Categories.Add(new Category { Code = "hiking", Description = "Hicking" });
-                context.Categories.Add(new Category { Code = "travelling", Description = "Travelling" });
-                context.Categories.Add(new Category { Code = "shopping", Description = "Shopping" });
+                context.Categories.Add(new CategoryEntity { Code = "dating", Description = "Dating" });
+                context.Categories.Add(new CategoryEntity { Code = "sport", Description = "Sport" });
+                context.Categories.Add(new CategoryEntity { Code = "entertainment", Description = "Entertainment" });
+                context.Categories.Add(new CategoryEntity { Code = "food", Description = "Food and Drinks" });
+                context.Categories.Add(new CategoryEntity { Code = "party", Description = "Party" });
+                context.Categories.Add(new CategoryEntity { Code = "museum", Description = "Museum" });
+                context.Categories.Add(new CategoryEntity { Code = "hiking", Description = "Hicking" });
+                context.Categories.Add(new CategoryEntity { Code = "travelling", Description = "Travelling" });
+                context.Categories.Add(new CategoryEntity { Code = "shopping", Description = "Shopping" });
             }
         }
     }

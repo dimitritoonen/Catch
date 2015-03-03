@@ -1,5 +1,6 @@
 ﻿#region using directives
 
+using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Data.Entities;
 using System;
 using System.Collections.Generic;
@@ -23,9 +24,9 @@ namespace Chirping.Web.Api.Data.Context
 
         public DbSet<ClientEntity> Clients { get; set; }
 
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<CategoryEntity> Categories { get; set; }
 
-        public DbSet<Activity> Activities { get; set; }
+        public DbSet<ActivityEntity> Activities { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -37,9 +38,10 @@ namespace Chirping.Web.Api.Data.Context
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
+
         private static void AddManyToManyActivityProfile(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Activity>()
+            modelBuilder.Entity<ActivityEntity>()
                 .HasMany(x => x.Participants)
                 .WithMany(x => x.Activities)
                 .Map(m =>
