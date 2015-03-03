@@ -20,13 +20,34 @@ namespace Chirping.Web.Api.Data.Context
         {
         }
 
+
         public DbSet<ClientEntity> Clients { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Activity> Activities { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            AddManyToManyActivityProfile(modelBuilder);
+
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+
+        private static void AddManyToManyActivityProfile(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Activity>()
+                .HasMany(x => x.Participants)
+                .WithMany(x => x.Activities)
+                .Map(m =>
+                {
+                    m.ToTable("ActivityProfile");
+                    m.MapLeftKey("ActivityId");
+                    m.MapRightKey("ProfileId");
+                });
         }
     }
 }

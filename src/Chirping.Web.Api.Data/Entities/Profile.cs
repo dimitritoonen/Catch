@@ -1,6 +1,7 @@
 ﻿#region using directives
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 #endregion
@@ -9,7 +10,9 @@ namespace Chirping.Web.Api.Data.Entities
 {
     public class Profile
     {
-        public Guid Id { get; set; }
+        public Profile() { }
+
+        public int Id { get; set; }
 
         [IndexAttribute(IsUnique=true)]
         public string NickName { get; set; }
@@ -23,5 +26,7 @@ namespace Chirping.Web.Api.Data.Entities
         public string InterestedIn { get; set; }
 
         public string ProfileImage { get; set; }
+
+        public virtual ICollection<Activity> Activities { get; set; }
     }
 }

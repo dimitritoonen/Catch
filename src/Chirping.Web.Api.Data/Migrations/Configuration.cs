@@ -22,6 +22,7 @@ namespace Chirping.Web.Api.Data.Migrations
         protected override void Seed(ChirpingContext context)
         {
             SeedClients(context);
+            SeedCategories(context);
         }
 
         private static void SeedClients(ChirpingContext context)
@@ -43,6 +44,22 @@ namespace Chirping.Web.Api.Data.Migrations
                         AllowedOrigin = "http://www.chirping.nl"
                     }
                 );
+            }
+        }
+
+        private static void SeedCategories(ChirpingContext context)
+        {
+            if (context.Categories.Count() == 0)
+            {
+                context.Categories.Add(new Category { Code = "dating", Description = "Dating" });
+                context.Categories.Add(new Category { Code = "sport", Description = "Sport" });
+                context.Categories.Add(new Category { Code = "entertainment", Description = "Entertainment" });
+                context.Categories.Add(new Category { Code = "food", Description = "Food and Drinks" });
+                context.Categories.Add(new Category { Code = "party", Description = "Party" });
+                context.Categories.Add(new Category { Code = "museum", Description = "Museum" });
+                context.Categories.Add(new Category { Code = "hiking", Description = "Hicking" });
+                context.Categories.Add(new Category { Code = "travelling", Description = "Travelling" });
+                context.Categories.Add(new Category { Code = "shopping", Description = "Shopping" });
             }
         }
     }

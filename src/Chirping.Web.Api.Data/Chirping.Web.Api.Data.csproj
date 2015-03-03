@@ -117,12 +117,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\ChirpingContext.cs" />
+    <Compile Include="Entities\Activity.cs" />
+    <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\Profile.cs" />
     <Compile Include="Entities\UserEntity.cs" />
     <Compile Include="Migrations\201501270955087_Add_Clients.cs" />
     <Compile Include="Migrations\201501270955087_Add_Clients.Designer.cs">
       <DependentUpon>201501270955087_Add_Clients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503022006308_Add_Category_and_Activity_entities.cs" />
+    <Compile Include="Migrations\201503022006308_Add_Category_and_Activity_entities.Designer.cs">
+      <DependentUpon>201503022006308_Add_Category_and_Activity_entities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503031118200_Add_Linked_Table_Participants_Activities.cs" />
+    <Compile Include="Migrations\201503031118200_Add_Linked_Table_Participants_Activities.Designer.cs">
+      <DependentUpon>201503031118200_Add_Linked_Table_Participants_Activities.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -155,6 +165,15 @@
     <EmbeddedResource Include="Migrations\201501270955087_Add_Clients.resx">
       <DependentUpon>201501270955087_Add_Clients.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503022006308_Add_Category_and_Activity_entities.resx">
+      <DependentUpon>201503022006308_Add_Category_and_Activity_entities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503031118200_Add_Linked_Table_Participants_Activities.resx">
+      <DependentUpon>201503031118200_Add_Linked_Table_Participants_Activities.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Context\20150302 - Initial load dummy of activities.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
