@@ -26,8 +26,8 @@ namespace Chirping.Web.Api.BindingModels
         [Range(0, 150, ErrorMessage = "Please fill in a proper age")]
         public string Age { get; set; }
 
-        [Required]
-        public string InterestedIn { get; set; }
+        //[Required]
+        //public string InterestedIn { get; set; }
 
         public string ProfileImage { get; set; }
     }

@@ -50,7 +50,6 @@ namespace Chirping.Web.Api.Tests.Processors
                 {
                     NickName = "JohnDoe56",
                     Age = "25 - 35",
-                    InterestedIn = "Female"
                 }
             };
         }

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace Chirping.Web.Api.Processors
+namespace Chirping.Web.Api.Processors.Interfaces
 {
     public interface IUserProcessor
     {

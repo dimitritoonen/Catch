@@ -6,6 +6,7 @@ using Chirping.Web.Api.Processors;
 using System.Web.Http;
 using System;
 using System.Net.Mail;
+using Chirping.Web.Api.Processors.Interfaces;
 
 #endregion
 

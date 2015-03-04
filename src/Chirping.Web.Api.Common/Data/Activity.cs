@@ -24,7 +24,7 @@ namespace Chirping.Web.Api.Common.Data.Entities
         public override int Id { get; set; }
 
         [Required]
-        public CategoryEntity Category { get; set; }
+        public virtual CategoryEntity Category { get; set; }
 
         [Required]
         public DateTime Date { get; set; }
@@ -33,8 +33,12 @@ namespace Chirping.Web.Api.Common.Data.Entities
         [MaxLength(255)]
         public string Location { get; set; }
 
+        [Column("Profile_Id")]
+        public int ProfileId { get; set; }
+
         [Required]
-        public ProfileEntity Owner { get; set; }
+        [ForeignKey("ProfileId")]
+        public virtual ProfileEntity Owner { get; set; }
 
         [Required]
         [MaxLength(250)]

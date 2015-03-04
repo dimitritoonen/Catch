@@ -22,11 +22,11 @@ namespace Chirping.Web.Api.Data.Context
         }
 
 
-        public DbSet<ClientEntity> Clients { get; set; }
+        public IDbSet<ClientEntity> Clients { get; set; }
 
-        public DbSet<CategoryEntity> Categories { get; set; }
+        public IDbSet<CategoryEntity> Categories { get; set; }
 
-        public DbSet<ActivityEntity> Activities { get; set; }
+        public virtual IDbSet<ActivityEntity> Activities { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -47,8 +47,8 @@ namespace Chirping.Web.Api.Data.Context
                 .Map(m =>
                 {
                     m.ToTable("ActivityProfile");
-                    m.MapLeftKey("ActivityId");
-                    m.MapRightKey("ProfileId");
+                    m.MapLeftKey("Activity_Id");
+                    m.MapRightKey("Profile_Id");
                 });
         }
     }

@@ -4,6 +4,7 @@ using Chirping.Web.Api.Common.TypeMapping;
 using Chirping.Web.Api.Data.Repository;
 using Chirping.Web.Api.Domain;
 using Chirping.Web.Api.Models;
+using Chirping.Web.Api.Processors.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -2,11 +2,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 #endregion
 
-namespace Chirping.Web.Api.Common.Domain
+namespace Chirping.Web.Api.Common.Domain.Activity
 {
     public class Activity : DomainModel
     {

@@ -13,7 +13,7 @@ namespace Chirping.Web.Api.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201503031236203_Add_Activity_Category_tables"; }
+            get { return "201503031752167_Add_Activity_Category_tables"; }
         }
         
         string IMigrationMetadata.Source

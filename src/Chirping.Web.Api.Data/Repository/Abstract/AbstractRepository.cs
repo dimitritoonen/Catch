@@ -19,16 +19,16 @@ namespace Chirping.Web.Api.Data.Repository
     {
         #region Db context
 
-        public DbContext Context { get; private set; }
+        public ChirpingContext Context { get; private set; }
 
         public AbstractRepository()
         {
             Context = new ChirpingContext();
         }
 
-        public AbstractRepository(DbContext context)
+        public AbstractRepository(ChirpingContext context)
         {
-            Context = context;
+            this.Context = context;
         }
 
         #endregion
