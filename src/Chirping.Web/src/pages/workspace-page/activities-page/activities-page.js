@@ -8,6 +8,8 @@ define(['knockout', 'text!./activities-page.html', 'services/webapi-service', 'm
 
     webapi.Get('api/category').done(function (result) {
       
+      self.categories(result);
+
       // add empty item to the beginning of the list to reset
       self.categories.unshift({ 'Code': undefined, 'Description': '' });
     });
