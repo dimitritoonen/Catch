@@ -10,8 +10,10 @@
       $(element).attr('title', '');
       $(element).parent().attr('title', '');
 
+      self.disposables = [];
+
       if (observable.isValid) {
-        observable.isModified.subscribe(function (modified) {
+        self.disposables.push(observable.isModified.subscribe(function (modified) {
           if (!observable.isValid()) {
             SetValidationStateControl(elementId, observable, observable.isValid());
           }
@@ -20,16 +22,17 @@
             SetValidationStateControl(elementId, observable, observable.isValid());
           }
 
-        });
+        }));
 
-        observable.isValid.subscribe(function (valid) {
+        self.disposables.push(observable.isValid.subscribe(function (valid) {
           SetValidationStateControl(elementId, observable, valid);
-        });
+        }));
       }
 
       ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
-        observable.isModified.dispose();
-        observable.isValid.dispose();
+        ko.utils.arrayForEach(disposables, function (item) {
+          item.dispose();
+        });
       });
     }
   };
