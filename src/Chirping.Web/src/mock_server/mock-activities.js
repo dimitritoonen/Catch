@@ -4,113 +4,113 @@
 
     var activities = [
       {
-        id: 883, category: { code: 'sport', description: 'Sport' }, date: '2015-02-28 19:00', location: 'Rotterdam',
-        owner: { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile.jpg' },
-        content: 'orem ipsum dolor sit amet, consectetuer adipiscing elit.',
-        participants: [
-          { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile.jpg' },
-          { 'id': '2', 'name': 'Esme', 'image': '/images/profile.jpg' },
-          { 'id': '4', 'name': 'Jack', 'image': '/images/profile.jpg' },
+        Id: 883, Category: { Code: 'sport', Description: 'Sport' }, Date: '2015-02-28 19:00', Location: 'Rotterdam',
+        Owner: { 'Id': '1', 'Name': 'Dimitri', 'Image': '/Images/profile.jpg' },
+        Content: 'orem ipsum dolor sit amet, consectetuer adipiscing elit.',
+        Participants: [
+          { 'Id': '1', 'Name': 'Dimitri', 'Image': '/Images/profile.jpg' },
+          { 'Id': '2', 'Name': 'Esme', 'Image': '/Images/profile.jpg' },
+          { 'Id': '4', 'Name': 'Jack', 'Image': '/Images/profile.jpg' },
         ],
-        maxParticipants: 4
+        MaxParticipants: 4
       },
       {
-        id: 23, category: { code: 'dating', description: 'Dating' }, date: '2015-02-20 14:00', location: 'Hendrik-ido-ambacht',
-        owner: { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile.jpg' },
-        content: 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium',
-        participants: [
-          { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile.jpg' },
-          { 'id': '2', 'name': 'Esme', 'image': '/images/profile2.jpg' },
-          { 'id': '3', 'name': 'Remy', 'image': '/images/profile.jpg' },
-          { 'id': '4', 'name': 'Jack', 'image': '/images/profile2.jpg' },
-          { 'id': '5', 'name': 'Sebastiaan', 'image': '/images/profile.jpg' },
-          { 'id': '6', 'name': 'David', 'image': '/images/profile2.jpg' },
+        Id: 23, Category: { Code: 'dating', Description: 'Dating' }, Date: '2015-02-20 14:00', Location: 'Hendrik-ido-ambacht',
+        Owner: { 'Id': '1', 'Name': 'Dimitri', 'Image': '/Images/profile.jpg' },
+        Content: 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium',
+        Participants: [
+          { 'Id': '1', 'Name': 'Dimitri', 'Image': '/Images/profile.jpg' },
+          { 'Id': '2', 'Name': 'Esme', 'Image': '/Images/profile2.jpg' },
+          { 'Id': '3', 'Name': 'Remy', 'Image': '/Images/profile.jpg' },
+          { 'Id': '4', 'Name': 'Jack', 'Image': '/Images/profile2.jpg' },
+          { 'Id': '5', 'Name': 'Sebastiaan', 'Image': '/Images/profile.jpg' },
+          { 'Id': '6', 'Name': 'DavId', 'Image': '/Images/profile2.jpg' },
         ],
-        maxParticipants: 10
+        MaxParticipants: 10
       },
       {
-        id: 794, category: { code: 'food', description: 'Food and Drinks' }, date: '2015-03-01 13:00', location: 'Amsterdam',
-        owner: { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile.jpg' },
-        content: 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis',
-        participants: [
-          { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile.jpg' },
-          { 'id': '2', 'name': 'Esme', 'image': '/images/profile.jpg' },
-          { 'id': '3', 'name': 'Remy', 'image': '/images/profile2.jpg' },
-          { 'id': '4', 'name': 'Jack', 'image': '/images/profile2.jpg' },
-          { 'id': '5', 'name': 'Sebastiaan', 'image': '/images/profile.jpg' },
+        Id: 794, Category: { Code: 'food', Description: 'Food and Drinks' }, Date: '2015-03-01 13:00', Location: 'Amsterdam',
+        Owner: { 'Id': '1', 'Name': 'Dimitri', 'Image': '/Images/profile.jpg' },
+        Content: 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis',
+        Participants: [
+          { 'Id': '1', 'Name': 'Dimitri', 'Image': '/Images/profile.jpg' },
+          { 'Id': '2', 'Name': 'Esme', 'Image': '/Images/profile.jpg' },
+          { 'Id': '3', 'Name': 'Remy', 'Image': '/Images/profile2.jpg' },
+          { 'Id': '4', 'Name': 'Jack', 'Image': '/Images/profile2.jpg' },
+          { 'Id': '5', 'Name': 'Sebastiaan', 'Image': '/Images/profile.jpg' },
         ],
-        maxParticipants: 6
+        MaxParticipants: 6
       },
       {
-        id: 461, category: { code: 'entertainment', description: 'Entertainment' }, date: '2015-08-01 15:00', location: 'Sliedrecht',
-        owner: { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile.jpg' },
-        content: 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. pellentesque eu, pretium',
-        participants: [
-          { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile.jpg' },
-          { 'id': '2', 'name': 'Esme', 'image': '/images/profile2.jpg' },
-          { 'id': '4', 'name': 'Jack', 'image': '/images/profile.jpg' },
+        Id: 461, Category: { Code: 'entertainment', Description: 'Entertainment' }, Date: '2015-08-01 15:00', Location: 'Sliedrecht',
+        Owner: { 'Id': '1', 'Name': 'Dimitri', 'Image': '/Images/profile.jpg' },
+        Content: 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. pellentesque eu, pretium',
+        Participants: [
+          { 'Id': '1', 'Name': 'Dimitri', 'Image': '/Images/profile.jpg' },
+          { 'Id': '2', 'Name': 'Esme', 'Image': '/Images/profile2.jpg' },
+          { 'Id': '4', 'Name': 'Jack', 'Image': '/Images/profile.jpg' },
         ],
-        maxParticipants: 4
+        MaxParticipants: 4
       },
       {
-        id: 556, category: { code: 'party', description: 'Party/Disco' }, date: '2015-07-22 15:00', location: 'Rotterdam',
-        owner: { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile.jpg' },
-        content: 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium',
-        participants: [
-          { 'id': '2', 'name': 'Esme', 'image': '/images/profile.jpg' },
-          { 'id': '3', 'name': 'Remy', 'image': '/images/profile2.jpg' },
-          { 'id': '4', 'name': 'Jack', 'image': '/images/profile2.jpg' },
-          { 'id': '5', 'name': 'Sebastiaan', 'image': '/images/profile.jpg' },
+        Id: 556, Category: { Code: 'party', Description: 'Party/Disco' }, Date: '2015-07-22 15:00', Location: 'Rotterdam',
+        Owner: { 'Id': '1', 'Name': 'Dimitri', 'Image': '/Images/profile.jpg' },
+        Content: 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium',
+        Participants: [
+          { 'Id': '2', 'Name': 'Esme', 'Image': '/Images/profile.jpg' },
+          { 'Id': '3', 'Name': 'Remy', 'Image': '/Images/profile2.jpg' },
+          { 'Id': '4', 'Name': 'Jack', 'Image': '/Images/profile2.jpg' },
+          { 'Id': '5', 'Name': 'Sebastiaan', 'Image': '/Images/profile.jpg' },
         ],
-        maxParticipants: 5
+        MaxParticipants: 5
       },
       {
-        id: 768, category: { code: 'hiking', description: 'Hiking' }, date: '2015-07-21 14:00', location: 'Rotterdam',
-        owner: { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile.jpg' },
-        content: 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium',
-        participants: [
-          { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile.jpg' },
-          { 'id': '3', 'name': 'Remy', 'image': '/images/profile2.jpg' },
-          { 'id': '4', 'name': 'Jack', 'image': '/images/profile2.jpg' },
-          { 'id': '5', 'name': 'Sebastiaan', 'image': '/images/profile.jpg' },
+        Id: 768, Category: { Code: 'hiking', Description: 'Hiking' }, Date: '2015-07-21 14:00', Location: 'Rotterdam',
+        Owner: { 'Id': '1', 'Name': 'Dimitri', 'Image': '/Images/profile.jpg' },
+        Content: 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium',
+        Participants: [
+          { 'Id': '1', 'Name': 'Dimitri', 'Image': '/Images/profile.jpg' },
+          { 'Id': '3', 'Name': 'Remy', 'Image': '/Images/profile2.jpg' },
+          { 'Id': '4', 'Name': 'Jack', 'Image': '/Images/profile2.jpg' },
+          { 'Id': '5', 'Name': 'Sebastiaan', 'Image': '/Images/profile.jpg' },
         ],
-        maxParticipants: 5
+        MaxParticipants: 5
       },
       {
-        id: 2, category: { code: 'travelling', description: 'Travelling' }, date: '2015-04-22 15:00', location: 'Rotterdam',
-        owner: { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile.jpg' },
-        content: 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium',
-        participants: [
-          { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile.jpg' },
-          { 'id': '2', 'name': 'Esme', 'image': '/images/profile2.jpg' },
-          { 'id': '5', 'name': 'Sebastiaan', 'image': '/images/profile.jpg' },
+        Id: 2, Category: { Code: 'travelling', Description: 'Travelling' }, Date: '2015-04-22 15:00', Location: 'Rotterdam',
+        Owner: { 'Id': '1', 'Name': 'Dimitri', 'Image': '/Images/profile.jpg' },
+        Content: 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium',
+        Participants: [
+          { 'Id': '1', 'Name': 'Dimitri', 'Image': '/Images/profile.jpg' },
+          { 'Id': '2', 'Name': 'Esme', 'Image': '/Images/profile2.jpg' },
+          { 'Id': '5', 'Name': 'Sebastiaan', 'Image': '/Images/profile.jpg' },
         ],
-        maxParticipants: 10
+        MaxParticipants: 10
       },
       {
-        id: 95, category: { code: 'shopping', description: 'Shopping' }, date: '2015-07-22 15:00', location: 'Hendrik-ido-ambacht',
-        owner: { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile.jpg' },
-        content: 'ultricies nec, pellentesque eu, pretium',
-        participants: [
-          { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile2.jpg' },
-          { 'id': '2', 'name': 'Esme', 'image': '/images/profile.jpg' },
-          { 'id': '3', 'name': 'Remy', 'image': '/images/profile2.jpg' },
-          { 'id': '5', 'name': 'Sebastiaan', 'image': '/images/profile.jpg' },
+        Id: 95, Category: { Code: 'shopping', Description: 'Shopping' }, Date: '2015-07-22 15:00', Location: 'Hendrik-ido-ambacht',
+        Owner: { 'Id': '1', 'Name': 'Dimitri', 'Image': '/Images/profile.jpg' },
+        Content: 'ultricies nec, pellentesque eu, pretium',
+        Participants: [
+          { 'Id': '1', 'Name': 'Dimitri', 'Image': '/Images/profile2.jpg' },
+          { 'Id': '2', 'Name': 'Esme', 'Image': '/Images/profile.jpg' },
+          { 'Id': '3', 'Name': 'Remy', 'Image': '/Images/profile2.jpg' },
+          { 'Id': '5', 'Name': 'Sebastiaan', 'Image': '/Images/profile.jpg' },
         ],
-        maxParticipants: 7
+        MaxParticipants: 7
       },
       {
-        id: 96, category: { code: 'museum', description: 'Museum' }, date: '2015-05-30 10:00', location: 'Sliedrecht',
-        owner: { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile.jpg' },
-        content: 'Come and join us!',
-        participants: [
-          { 'id': '1', 'name': 'Dimitri', 'image': '/images/profile2.jpg' },
-          { 'id': '2', 'name': 'Esme', 'image': '/images/profile.jpg' },
-          { 'id': '3', 'name': 'Remy', 'image': '/images/profile.jpg' },
-          { 'id': '4', 'name': 'Jack', 'image': '/images/profile.jpg' },
-          { 'id': '5', 'name': 'Sebastiaan', 'image': '/images/profile2.jpg' },
+        Id: 96, Category: { Code: 'museum', Description: 'Museum' }, Date: '2015-05-30 10:00', Location: 'Sliedrecht',
+        Owner: { 'Dd': '1', 'Name': 'Dimitri', 'Image': '/Images/profile.jpg' },
+        Content: 'Come and join us!',
+        Participants: [
+          { 'Id': '1', 'Name': 'Dimitri', 'Image': '/Images/profile2.jpg' },
+          { 'Id': '2', 'Name': 'Esme', 'Image': '/Images/profile.jpg' },
+          { 'Id': '3', 'Name': 'Remy', 'Image': '/Images/profile.jpg' },
+          { 'Id': '4', 'Name': 'Jack', 'Image': '/Images/profile.jpg' },
+          { 'Id': '5', 'Name': 'Sebastiaan', 'Image': '/Images/profile2.jpg' },
         ],
-        maxParticipants: 5
+        MaxParticipants: 5
       },
 
     ]; // activities
@@ -131,7 +131,7 @@
       // filter activites based on chosen filter
       return ko.utils.arrayFilter(activities, function (item) {
         
-        var itemDate = moment(item.date).format('');
+        var itemDate = moment(item.Date).format('');
 
         if (filter.date.fromDate !== undefined) {
           var filterFromDate = moment(filter.date.fromDate).format(defaultDateFormat);
@@ -140,10 +140,10 @@
           var filterTillDate = moment(filter.date.tillDate).format(defaultDateFormat);
         }
 
-        var itemTime = moment(item.date).format('HH');
+        var itemTime = moment(item.Date).format('HH');
         
-        return ((filter.category === undefined || item.category.code === filter.category) && 
-          (filter.participants === undefined || item.maxParticipants <= filter.participants) &&
+        return ((filter.category === undefined || item.Category.Code === filter.category) && 
+          (filter.participants === undefined || item.MaxParticipants <= filter.participants) &&
           (filter.date.fromDate === undefined || itemDate >= filterFromDate) &&
           (filter.date.tillDate === undefined || itemDate <= filterTillDate) &&
           (filter.search === undefined || item.content.indexOf(filter.search) > -1) &&

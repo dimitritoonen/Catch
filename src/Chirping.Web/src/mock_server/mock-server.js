@@ -14,7 +14,7 @@
   });
 
   $.mockjax({
-    url: 'http://localhost:4421/api/categories',
+    url: 'http://localhost:4421/api/category',
     responseTime: 30,
     response: function (settings) {
 

@@ -31,13 +31,15 @@ namespace Chirping.Web.Api.Infrastructure
             // repositories
             kernel.Bind<IDateTime>().To<DateTimeAdapter>().InSingletonScope();
             kernel.Bind<IUserRepository>().To<UserRepository>();
-            kernel.Bind<IActivityRepository>().To<ActivityRepository>();
             kernel.Bind<IAccountRepository>().To<AccountRepository>().InRequestScope();
+            kernel.Bind<IActivityRepository>().To<ActivityRepository>();
+            kernel.Bind<ICategoryRepository>().To<CategoryRepository>();
 
             // processors
             kernel.Bind<IUserProcessor>().To<UserProcessor>().InRequestScope();
-            kernel.Bind<IActivityProcessor>().To<ActivityProcessor>().InRequestScope();
             kernel.Bind<IAccountProcessor>().To<AccountProcessor>().InRequestScope();
+            kernel.Bind<IActivityProcessor>().To<ActivityProcessor>().InRequestScope();
+            kernel.Bind<ICategoryProcessor>().To<CategoryProcessor>().InRequestScope();
         }
 
         private void ConfigureAutoMapper(IKernel kernel)

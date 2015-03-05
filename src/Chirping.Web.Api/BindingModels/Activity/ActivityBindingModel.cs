@@ -14,6 +14,7 @@ namespace Chirping.Web.Api.BindingModels.Activity
         public CategoryBindingModel Category { get; set; }
         public string Date { get; set; }
         public string Location { get; set; }
+        public string Content { get; set; }
         public ProfileBindingModel Owner { get; set; }
         public List<ProfileBindingModel> Participants { get; set; }
         public int MaxParticipants { get; set; }

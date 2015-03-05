@@ -1,11 +1,8 @@
 ﻿#region using directives
 
 using Chirping.Web.Api.ActionFilters;
-using Chirping.Web.Api.Common.Security;
-using Chirping.Web.Api.Common.TypeMapping;
-using Chirping.Web.Api.Security.Data.Context;
-using Chirping.Web.Api.ExceptionHandling;
-using Chirping.Web.Api.Infrastructure;
+using Chirping.Web.Api.Data.Context;
+using Chirping.Web.Api.Data.Security;
 using Chirping.Web.Api.Providers;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
@@ -16,7 +13,6 @@ using Owin;
 using System;
 using System.Configuration;
 using System.Web.Http;
-using System.Web.Http.ExceptionHandling;
 
 #endregion
 
@@ -47,7 +43,7 @@ namespace Chirping.Web.Api
 
         private void ConfigureUserManager(IAppBuilder app)
         {
-            app.CreatePerOwinContext(ChirpingIdentityContext.Create);
+            app.CreatePerOwinContext(ChirpingContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
         }
 

@@ -10,6 +10,9 @@ namespace Chirping.Web.Api.Common.Domain
 {
     public class Profile : DomainModel
     {
+        // default profile image
+        private string _profileImage = "/images/no_profile.png";
+
         public Profile(int id)
         {
             this.Id = id;
@@ -21,6 +24,20 @@ namespace Chirping.Web.Api.Common.Domain
         public int Age { get; set; }
         public string Gender { get; set; }
         public string City { get; set; }
-        public string ProfileImage { get; set; }
+
+        public string ProfileImage
+        {
+            get
+            {
+                return _profileImage;
+            }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    _profileImage = value;
+                }                
+            }
+        }
     }
 }

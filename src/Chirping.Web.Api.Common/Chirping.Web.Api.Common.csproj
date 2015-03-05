@@ -117,6 +117,7 @@
     <Compile Include="Domain\UserAccount.cs" />
     <Compile Include="DateTimeAdapter.cs" />
     <Compile Include="Domain\DomainModel.cs" />
+    <Compile Include="Exceptions\RegisterUserException.cs" />
     <Compile Include="IDateTime.cs" />
     <Compile Include="Mail\MailMessageBody.cs" />
     <Compile Include="Mail\SendGridWrapper.cs" />

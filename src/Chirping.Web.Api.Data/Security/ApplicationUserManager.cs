@@ -11,13 +11,12 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Chirping.Web.Api.Common.Data.Entities;
 using Microsoft.Owin.Security.DataProtection;
 using Microsoft.AspNet.Identity.Owin;
-using Chirping.Web.Api.Security;
 using Microsoft.Owin;
-using Chirping.Web.Api.Security.Data.Context;
+using Chirping.Web.Api.Data.Context;
 
 #endregion
 
-namespace Chirping.Web.Api.Common.Security
+namespace Chirping.Web.Api.Data.Security
 {
     public class ApplicationUserManager : UserManager<UserAccountEntity>
     {
@@ -28,7 +27,7 @@ namespace Chirping.Web.Api.Common.Security
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
             //var manager = new UserManager<UserAccountEntity>(new UserStore<UserAccountEntity>(_context));
-            var manager = new ApplicationUserManager(new UserStore<UserAccountEntity>(context.Get<ChirpingIdentityContext>()));
+            var manager = new ApplicationUserManager(new UserStore<UserAccountEntity>(context.Get<ChirpingContext>()));
 
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<UserAccountEntity>(manager)

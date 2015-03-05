@@ -5,6 +5,7 @@ define(['knockout', 'text!./activity-list.html'], function (ko, templateMarkup) 
     var self = this;
     
     self.activities = params.activities;
+
     self.header = params.header;
 
     self.displayHeader = ko.computed(function () {

@@ -10,10 +10,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Chirping.Web.Api.Common.Data.Entities
 {
     [Table("Category")]
-    public class CategoryEntity
+    public class CategoryEntity : EntityModel
     {
         [Key]
-        public int Id { get; set; }
+        public override int Id { get; set; }
 
         [IndexAttribute(IsUnique = true)]
         [MaxLength(25)]

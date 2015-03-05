@@ -32,9 +32,6 @@ namespace Chirping.Web.Api.Common.Data.Entities
         [MaxLength(255)]
         public string City { get; set; }
 
-        [Required]
-        public string InterestedIn { get; set; }
-
         public string ProfileImage { get; set; }
 
         public virtual ICollection<ActivityEntity> Activities { get; set; }

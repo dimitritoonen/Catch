@@ -39,12 +39,12 @@ namespace Chirping.Web.Api.Data.Tests.Repository
         public void Can_Map_Entity_To_Domain()
         {
             // arrange
-            var respository = new ActivityRepository();
+            var repository = new ActivityRepository();
             Activity expected = GetDomainModel();
             ActivityEntity entity = GetEntity();
 
             // act
-            PrivateObject repo = new PrivateObject(respository);
+            PrivateObject repo = new PrivateObject(repository);
             Activity actual = (Activity)repo.Invoke("ToDomainModel", entity);
 
             // assert primitives

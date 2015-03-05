@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 #endregion
 
-namespace Chirping.Web.Api.Security
+namespace Chirping.Web.Api.Data.Security
 {
     public class EmailService : IIdentityMessageService
     {

@@ -48,7 +48,7 @@ namespace Chirping.Web.Api.Tests.Processors
                 Password = "Password1!",
                 Profile = new BindingModels.ProfileBindingModel
                 {
-                    NickName = "JohnDoe56",
+                    Name = "JohnDoe56",
                     Age = "25 - 35",
                 }
             };

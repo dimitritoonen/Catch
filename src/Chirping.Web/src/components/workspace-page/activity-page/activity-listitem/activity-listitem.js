@@ -5,16 +5,16 @@ define(['knockout', 'text!./activity-listitem.html', '../category-icon-mapping',
     var self = this;
 
     self.activity = params.activity;
-    self.category = params.activity.category;
-    self.participants = params.activity.participants;
-    self.owner = params.activity.owner;
+    self.category = params.activity.Category;
+    self.participants = params.activity.Participants;
+    self.owner = params.activity.Owner;
     
     var map = categoryMap;
-
-    self.iconMap = map.Get(self.category.code);
+    
+    self.iconMap = map.Get(self.category.Code);
     
     // convert datetime format
-    var date = new Date(self.activity.date);
+    var date = new Date(self.activity.Date);
     self.timestamp = moment(date).format('D MMMM / HH:mm');
    
 

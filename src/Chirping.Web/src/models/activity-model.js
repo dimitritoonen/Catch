@@ -22,6 +22,7 @@
       var filter = GetFilter();
 
       webapi.Get('api/activity', filter).done(function (result) {
+
         self.Activities(result);
       });
     }
@@ -30,7 +31,7 @@
     var GetFilter = function () {
       return {
         search: self.Filter.Search(),
-        category: (self.Filter.Category() === undefined ? undefined : self.Filter.Category().code),
+        category: (self.Filter.Category() === undefined ? undefined : self.Filter.Category().Code),
         participants: self.Filter.Participants(),
         date: { fromDate: self.Filter.FromDate(), tillDate: self.Filter.TillDate() },
         time: { beginTime: self.Filter.BeginTime(), endTime: self.Filter.EndTime() }

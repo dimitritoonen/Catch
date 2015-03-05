@@ -4,7 +4,7 @@
             data-toggle="dropdown" aria-expanded="true">
 
         <!-- ko with: activityModel.Filter.Category -->
-        <span data-bind="text: description"></span>
+        <span data-bind="text: Description"></span>
         <!-- /ko -->
 
         <span class="caret"></span>
@@ -13,7 +13,7 @@
         data-bind="foreach: items">
         <li role="presentation">
             <a role="menuitem" class="menu-item" tabindex="-1" data-bind="click: $parent.selectItem">
-                <span data-bind="text: description"></span>
+                <span data-bind="text: Description"></span>
             </a>
         </li>
     </ul>

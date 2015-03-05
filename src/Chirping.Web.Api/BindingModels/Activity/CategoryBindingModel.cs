@@ -1,7 +1,11 @@
-﻿using System;
+﻿#region using directives
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+
+#endregion
 
 namespace Chirping.Web.Api.BindingModels.Activity
 {

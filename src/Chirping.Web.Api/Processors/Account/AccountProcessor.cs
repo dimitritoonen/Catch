@@ -40,7 +40,7 @@ namespace Chirping.Web.Api.Processors.Account
 
             var user = Mapper.Map<RegisterBindingModel, UserAccount>(registerUser);
 
-            if (ProfileImageSelected(registerUser.Profile.ProfileImage))
+            if (ProfileImageSelected(registerUser.Profile.Image))
             {
                 user.ProfileImage = string.Format("{0}.jpg", System.Uri.EscapeDataString(registerUser.Email));
             }
@@ -53,7 +53,7 @@ namespace Chirping.Web.Api.Processors.Account
                 await SendConfirmationEmail(result.UserId);
 
                 // store the profile picture in Azure cloud storage
-                StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage, result.UserId);
+                StoreProfileImage(registerUser.Profile.Image, user.ProfileImage, result.UserId);
             }
 
             return result.IdentityResult;
@@ -214,7 +214,7 @@ namespace Chirping.Web.Api.Processors.Account
 
             var user = Mapper.Map<RegisterExternalBindingModel, UserAccount>(registerUser);
 
-            if (ProfileImageSelected(registerUser.Profile.ProfileImage))
+            if (ProfileImageSelected(registerUser.Profile.Image))
             {
                 user.ProfileImage = string.Format("{0}.jpg", System.Uri.EscapeDataString(registerUser.Email));
             }
@@ -227,7 +227,7 @@ namespace Chirping.Web.Api.Processors.Account
                 await SendConfirmationEmail(result.UserId);
 
                 // store the profile picture in Azure cloud storage
-                StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage, result.UserId);
+                StoreProfileImage(registerUser.Profile.Image, user.ProfileImage, result.UserId);
             }
 
             return result.IdentityResult;

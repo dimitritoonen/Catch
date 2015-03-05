@@ -1,30 +1,30 @@
 <div class="tile" data-bind="click: expandTile">
-    <div class="image-wrapper" data-bind='tooltip: { title: owner.name, placement: "right" }'>
-        <img class="image" data-bind='attr: { src: owner.image }' />
+    <div class="image-wrapper" data-bind='tooltip: { title: owner.Name, placement: "right" }'>
+        <img class="image" data-bind='attr: { src: owner.Image }' />
     </div>
     <div class="content">
         <div class="header">
-            <div class="where" data-bind="html: activity.location"></div>
+            <div class="where" data-bind="html: activity.Location"></div>
             <div class="category">
                 <i class="fa fa-lg"
                    data-bind='css: iconMap.icon,
                               style: { color: iconMap.color },
-                              tooltip: { title: category.description, placement: "left" }'
+                              tooltip: { title: category.Description, placement: "left" }'
                    id="itemCategoryIcon"></i>
             </div>
             <div class="when" data-bind="html: timestamp"></div>
         </div>
-        <div class="text" data-bind="html: activity.content, css: { 'line-clamp': allowExpand() === false } "></div>
+        <div class="text" data-bind="html: activity.Content, css: { 'line-clamp': allowExpand() === false } "></div>
         <div class="participants-wrapper">
-            <div class="participants" data-bind="foreach: new Array(activity.maxParticipants)">
+            <div class="participants" data-bind="foreach: new Array(activity.MaxParticipants)">
                 <div class="profile">
-                    <!-- ko if: $index() < $parent.activity.participants.length -->
-                    <span data-bind="with: $parent.activity.participants[$index()]">
-                        <img class="image" data-bind='attr: { src: image }, tooltip: { title: name } ' />
+                    <!-- ko if: $index() < $parent.activity.Participants.length -->
+                    <span data-bind="with: $parent.activity.Participants[$index()]">
+                        <img class="image" data-bind='attr: { src: Image }, tooltip: { title: Name } ' />
                     </span>
                     <!-- /ko -->
 
-                    <!-- ko if: $index() >= $parent.activity.participants.length -->
+                    <!-- ko if: $index() >= $parent.activity.Participants.length -->
                     <div class="image" data-toggle="tooltip" data-placement="top" title="this could be you ;-)"></div>
                     <!-- /ko -->
                 </div>

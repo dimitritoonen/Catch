@@ -9,13 +9,13 @@ define(['knockout', 'text!./activity-filter.html', 'moment', 'bindingHandlers/da
     self.categories = params.categories;
 
     self.participantList = ko.observableArray([
-      { 'value': '2', 'description': '2 participants' },
-      { 'value': '4', 'description': '4 participants' },
-      { 'value': '5', 'description': '5 participants' },
-      { 'value': '6', 'description': '6 participants' },
-      { 'value': '7', 'description': '7 participants' },
-      { 'value': '8', 'description': '8 participants' },
-      { 'value': '9', 'description': 'More' }
+      { 'Code': '2', 'Description': '2 participants' },
+      { 'Code': '4', 'Description': '4 participants' },
+      { 'Code': '5', 'Description': '5 participants' },
+      { 'Code': '6', 'Description': '6 participants' },
+      { 'Code': '7', 'Description': '7 participants' },
+      { 'Code': '8', 'Description': '8 participants' },
+      { 'Code': '9', 'Description': 'More' }
     ]);
     
 

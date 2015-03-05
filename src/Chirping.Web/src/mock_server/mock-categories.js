@@ -3,15 +3,15 @@
   function MockCategories() {
 
     var categories = [
-      { 'id': '1', 'code': 'dating', 'description': 'Dating' },
-      { 'id': '2', 'code': 'sport', 'description': 'Sport' },
-      { 'id': '3', 'code': 'entertainment', 'description': 'Entertainment' },
-      { 'id': '4', 'code': 'food', 'description': 'Food and Drinks' },
-      { 'id': '5', 'code': 'party', 'description': 'Party' },
-      { 'id': '6', 'code': 'museum', 'description': 'Museum' },
-      { 'id': '7', 'code': 'hiking', 'description': 'Hicking' },
-      { 'id': '8', 'code': 'travelling', 'description': 'Travelling' },
-      { 'id': '9', 'code': 'shopping', 'description': 'Shopping' }
+      { 'Id': '1', 'Code': 'dating', 'Description': 'Dating' },
+      { 'Id': '2', 'Code': 'sport', 'Description': 'Sport' },
+      { 'Id': '3', 'Code': 'entertainment', 'Description': 'Entertainment' },
+      { 'Id': '4', 'Code': 'food', 'Description': 'Food and Drinks' },
+      { 'Id': '5', 'Code': 'party', 'Description': 'Party' },
+      { 'Id': '6', 'Code': 'museum', 'Description': 'Museum' },
+      { 'Id': '7', 'Code': 'hiking', 'Description': 'Hicking' },
+      { 'Id': '8', 'Code': 'travelling', 'Description': 'Travelling' },
+      { 'Id': '9', 'Code': 'shopping', 'Description': 'Shopping' }
     ];
 
     this.GetCategories = function() {

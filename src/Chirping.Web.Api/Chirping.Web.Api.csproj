@@ -215,12 +215,17 @@
     <Compile Include="BindingModels\Activity\TimeFrameBindingModel.cs" />
     <Compile Include="BindingModels\ProfileBindingModel.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
+    <Compile Include="Controllers\CategoryController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="ExceptionHandling\ErrorMessageResult.cs" />
     <Compile Include="ExceptionHandling\GlobalExceptionHandler.cs" />
     <Compile Include="Infrastructure\AutoMapperExtensionMethods.cs" />
     <Compile Include="Processors\ActivityProcessor.cs" />
+    <Compile Include="Processors\CategoryProcessor.cs" />
     <Compile Include="Processors\Interfaces\IActivityProcessor.cs" />
+    <Compile Include="Processors\Interfaces\ICategoryProcessor.cs" />
     <Compile Include="Providers\FacebookAuthProvider.cs" />
     <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -301,10 +306,6 @@
     <ProjectReference Include="..\Chirping.Web.Api.Domain\Chirping.Web.Api.Domain.csproj">
       <Project>{60ff8476-0a01-4969-9040-45b4c2b06d1d}</Project>
       <Name>Chirping.Web.Api.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Chirping.Web.Api.Security\Chirping.Web.Api.Security.csproj">
-      <Project>{4db0c158-c4f5-408e-9b36-a3f4b241b3bf}</Project>
-      <Name>Chirping.Web.Api.Security</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
