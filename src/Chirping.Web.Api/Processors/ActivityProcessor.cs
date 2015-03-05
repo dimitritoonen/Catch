@@ -30,8 +30,6 @@ namespace Chirping.Web.Api.Processors
             return _repository.GetAll(filter)
                 // map list of Activities to ActivityBindingModel list
                 .Select(activity => Mapper.Map<Activity, ActivityBindingModel>(activity));
-
-            
         }
     }
 }

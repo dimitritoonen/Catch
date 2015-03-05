@@ -1,4 +1,6 @@
-﻿using Chirping.Web.Api.BindingModels.Activity;
+﻿#region using directives
+
+using Chirping.Web.Api.BindingModels.Activity;
 using Chirping.Web.Api.Processors.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -6,6 +8,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+
+#endregion
 
 namespace Chirping.Web.Api.Controllers
 {
@@ -19,6 +23,7 @@ namespace Chirping.Web.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IEnumerable<ActivityBindingModel> Get([FromUri] FilterBindingModel filter)
         {
             return _processor.GetActivities(filter);
