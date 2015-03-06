@@ -179,13 +179,14 @@
 
     // gets profile data 
     var getProfileData = function () {
+
       return {
         NickName: self.nickName(),
         Gender: self.gender(),
         City: self.city(),
         Age: self.age(),
-        InterestedIn: self.interestedIn(),
-        ProfileImage: self.profileImage()
+        //InterestedIn: self.interestedIn(),
+        Image: self.profileImage()
       };
     };
 
