@@ -14,7 +14,7 @@ namespace Chirping.Web.Api.BindingModels
     {
         [Required]
         [Display(Name = "Nick name")]
-        public string Name { get; set; }
+        public string NickName { get; set; }
 
         [Required]
         public string Gender { get; set; }

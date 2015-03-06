@@ -32,7 +32,7 @@ namespace Chirping.Web.Api.AutoMapperConfigurators
             Mapper.CreateMap<Category, CategoryBindingModel>();
 
             Mapper.CreateMap<Common.Domain.Profile, ProfileBindingModel>()
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.NickName))
+                .ForMember(dest => dest.NickName, opt => opt.MapFrom(src => src.NickName))
                 .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Gender))
                 .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City))
                 .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.Age))

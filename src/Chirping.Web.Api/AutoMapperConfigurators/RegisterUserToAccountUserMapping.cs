@@ -19,7 +19,7 @@ namespace Chirping.Web.Api.AutoMapperConfigurators
                 .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password))
                 .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Profile.Gender))
                 .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.Profile.City))
-                .ForMember(dest => dest.NickName, opt => opt.MapFrom(src => src.Profile.Name))
+                .ForMember(dest => dest.NickName, opt => opt.MapFrom(src => src.Profile.NickName))
                 .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.Profile.Age))
                 .ForMember(dest => dest.ProfileImage, opt => opt.MapFrom(src => src.Profile.Image))
                 .IgnoreAllNonExisting();

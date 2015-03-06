@@ -1,5 +1,5 @@
 <div class="tile" data-bind="click: expandTile">
-    <div class="image-wrapper" data-bind='tooltip: { title: owner.Name, placement: "right" }'>
+    <div class="image-wrapper" data-bind='tooltip: { title: owner.NickName, placement: "right" }'>
         <img class="image" data-bind='attr: { src: owner.Image }' />
     </div>
     <div class="content">
@@ -20,7 +20,7 @@
                 <div class="profile">
                     <!-- ko if: $index() < $parent.activity.Participants.length -->
                     <span data-bind="with: $parent.activity.Participants[$index()]">
-                        <img class="image" data-bind='attr: { src: Image }, tooltip: { title: Name } ' />
+                        <img class="image" data-bind='attr: { src: Image }, tooltip: { title: NickName } ' />
                     </span>
                     <!-- /ko -->
 
