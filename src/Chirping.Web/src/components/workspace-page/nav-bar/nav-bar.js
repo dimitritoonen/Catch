@@ -12,7 +12,6 @@ define(['knockout', 'text!./nav-bar.html', 'services/auth-service', 'models/acti
 
       if (self.search() !== undefined && self.route() !== 'activities-page') {
 
-        console.log('test');
         window.location.href = '#Workspace/Activities';
       }
     };

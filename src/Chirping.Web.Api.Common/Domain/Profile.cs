@@ -11,7 +11,7 @@ namespace Chirping.Web.Api.Common.Domain
     public class Profile : DomainModel
     {
         // default profile image
-        private string _profileImage = "/images/no_profile.png";
+        private string _profileImage = "/images/no_profile-051cc221.png";
 
         public Profile(int id)
         {
