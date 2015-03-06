@@ -1,13 +1,11 @@
 ﻿#region using directives
 
 using AutoMapper;
-
 using Chirping.Web.Api.BindingModels;
 using Chirping.Web.Api.BindingModels.Activity;
 using Chirping.Web.Api.Common.Domain;
-using Chirping.Web.Api.Common.Domain.Activity;
 using Chirping.Web.Api.Common.TypeMapping;
-
+using Chirping.Web.Api.Domain;
 using System;
 using System.Linq;
 

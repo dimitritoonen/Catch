@@ -1,8 +1,8 @@
 ﻿#region using directives
 
 using Chirping.Web.Api.Common.Data.Entities;
-using Chirping.Web.Api.Common.Domain.Activity;
 using Chirping.Web.Api.Common.Repository;
+using Chirping.Web.Api.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;

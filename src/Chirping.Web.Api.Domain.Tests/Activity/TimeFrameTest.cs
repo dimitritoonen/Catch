@@ -1,7 +1,5 @@
 ﻿#region using directives
 
-using Chirping.Web.Api.Common.Domain.Activity;
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using System;

@@ -6,7 +6,7 @@ using System.Linq;
 
 #endregion
 
-namespace Chirping.Web.Api.Common.Domain.Activity
+namespace Chirping.Web.Api.Domain
 {
     public class TimeFrame
     {

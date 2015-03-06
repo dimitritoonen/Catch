@@ -68,7 +68,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bookmark.cs" />
+    <Compile Include="Activity.cs" />
+    <Compile Include="Activity\Between.cs" />
+    <Compile Include="Activity\Filter.cs" />
+    <Compile Include="Activity\Timeframe.cs" />
+    <Compile Include="Category.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User\Age.cs" />
     <Compile Include="User\Email.cs" />
@@ -77,9 +83,6 @@
     <Compile Include="User\Name.cs" />
     <Compile Include="User.cs" />
     <Compile Include="User\ProfileImage.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Chirping.Web.Api.Common\Chirping.Web.Api.Common.csproj">

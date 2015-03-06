@@ -103,17 +103,10 @@
   <ItemGroup>
     <Compile Include="Account\ApplicationTypes.cs" />
     <Compile Include="Data\Activity.cs" />
-    <Compile Include="Domain\Activity\Between.cs" />
-    <Compile Include="Domain\Activity\Timeframe.cs" />
-    <Compile Include="Domain\Activity\Filter.cs" />
     <Compile Include="Data\Category.cs" />
     <Compile Include="Data\EntityModel.cs" />
     <Compile Include="Data\Profile.cs" />
     <Compile Include="Data\UserAccountEntity.cs" />
-    <Compile Include="Domain\Activity\Activity.cs" />
-    <Compile Include="Domain\Category.cs" />
-    <Compile Include="Domain\Client.cs" />
-    <Compile Include="Domain\Profile.cs" />
     <Compile Include="Domain\UserAccount.cs" />
     <Compile Include="DateTimeAdapter.cs" />
     <Compile Include="Domain\DomainModel.cs" />

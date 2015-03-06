@@ -2,9 +2,9 @@
 
 using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Common.Domain;
-using Chirping.Web.Api.Common.Domain.Activity;
 using Chirping.Web.Api.Data.Context;
 using Chirping.Web.Api.Data.Repository.Concrete;
+using Chirping.Web.Api.Domain;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;

@@ -12,7 +12,7 @@
 
     $.ajax({
       type: 'GET',
-      url: config.BaseUrl + 'api/Emails/EmailAddressAvailable' + queryString
+      url: config.BaseUrl + 'api/Email/EmailAddressAvailable' + queryString
     }).done(function (data) {
       callback(data);
     });
@@ -25,7 +25,7 @@
 
     $.ajax({
       type: 'GET',
-      url: config.BaseUrl + 'api/Users/NickNameAvailable' + queryString
+      url: config.BaseUrl + 'api/User/NickNameAvailable' + queryString
     }).done(function (data) {
       callback(data);
     });

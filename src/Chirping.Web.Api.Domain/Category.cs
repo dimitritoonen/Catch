@@ -1,12 +1,13 @@
 ﻿#region using directives
 
+using Chirping.Web.Api.Common.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 #endregion
 
-namespace Chirping.Web.Api.Common.Domain
+namespace Chirping.Web.Api.Domain
 {
     public class Category : DomainModel
     {

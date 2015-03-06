@@ -21,7 +21,7 @@
     async: true,
     validator: function (email, enabled, callback) {
       auth.IsEmailAddressAvailable(email, function (result) {
-        callback(result);
+        callback(!result);
       });
     },
     message: 'Email address is invalid or already taken'
@@ -32,7 +32,7 @@
     async: true,
     validator: function (nickname, enabled, callback) {
       auth.IsNickNameAvailable(nickname, function (result) {
-        callback(result);
+        callback(!result);
       });
     },
     message: 'Nick name is already taken'

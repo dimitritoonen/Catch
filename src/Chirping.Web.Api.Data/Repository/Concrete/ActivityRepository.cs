@@ -2,12 +2,10 @@
 
 using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Common.Domain;
-using Chirping.Web.Api.Common.Domain.Activity;
 using Chirping.Web.Api.Data.Context;
 using Chirping.Web.Api.Data.Repository.Abstract;
-
+using Chirping.Web.Api.Domain;
 using LinqKit;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;

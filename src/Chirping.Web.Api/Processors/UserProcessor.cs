@@ -16,25 +16,23 @@ namespace Chirping.Web.Api.Processors
     public class UserProcessor : IUserProcessor
     {
         private IUserRepository _repository;
-        private IAutoMapper _mapper;
 
-        public UserProcessor(IUserRepository repository, IAutoMapper autoMapper)
+        public UserProcessor(IUserRepository repository)
         {
             this._repository = repository;
-            this._mapper = autoMapper;
         }
 
 
         /// checks if a particular e-mail is already registered
         public bool EmailAddressInUse(string emailAddress)
         {
-            return true;
+            return _repository.EmailAddressInUse(emailAddress);
         }
 
         // checks if a particular nickname is already registered
         public bool NickNameInUse(string nickname)
         {
-            return true;
+            return _repository.NicknameInUse(nickname);
         }
     }
 }

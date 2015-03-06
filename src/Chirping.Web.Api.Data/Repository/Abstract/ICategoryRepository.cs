@@ -2,7 +2,7 @@
 
 using Chirping.Web.Api.Common.Domain;
 using Chirping.Web.Api.Common.Repository;
-
+using Chirping.Web.Api.Domain;
 using System;
 using System.Collections.Generic;
 

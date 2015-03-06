@@ -2,13 +2,13 @@
 
 using AutoMapper;
 using Chirping.Web.Api.BindingModels.Activity;
-using Chirping.Web.Api.Common.Domain.Activity;
 using Chirping.Web.Api.Data.Repository.Abstract;
 using Chirping.Web.Api.Processors.Interfaces;
 
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using Chirping.Web.Api.Domain;
 
 #endregion
 

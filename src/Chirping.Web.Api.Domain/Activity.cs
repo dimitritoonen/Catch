@@ -1,5 +1,6 @@
 ﻿#region using directives
 
+using Chirping.Web.Api.Common.Domain;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,7 +8,7 @@ using System.Linq;
 
 #endregion
 
-namespace Chirping.Web.Api.Common.Domain.Activity
+namespace Chirping.Web.Api.Domain
 {
     public class Activity : DomainModel
     {

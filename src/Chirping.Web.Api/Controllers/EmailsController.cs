@@ -13,13 +13,13 @@ using Chirping.Web.Api.Processors.Interfaces;
 namespace Chirping.Web.Api.Controllers
 {
     [Authorize]
-    public class EmailsController : ApiController
+    public class EmailController : ApiController
     {
         #region constructor
 
         private IUserProcessor _processor;
         
-        public EmailsController(IUserProcessor processor)
+        public EmailController(IUserProcessor processor)
         {
             this._processor = processor;
         }

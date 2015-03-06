@@ -18,15 +18,16 @@ namespace Chirping.Web.Api.Data.Repository
     {
         public bool EmailAddressInUse(string emailAddress)
         {
-            return true;
-            //var user = this.Context.Users.Where(x => string.Compare(x.Email, emailAddress, true) == 0).FirstOrDefault();
+            var user = this.Context.Users.Where(x => string.Compare(x.Email, emailAddress, true) == 0).FirstOrDefault();
 
-            //return (user == null);
+            return (user != null);
         }
 
         public bool NicknameInUse(string nickname)
         {
-            return true;
+            var user = this.Context.Users.Where(u => string.Compare(u.Profile.NickName, nickname, true) == 0).FirstOrDefault();
+
+            return (user != null);
         }
 
         #region Mapping operators

@@ -5,6 +5,7 @@ using Chirping.Web.Api.Common.Domain;
 using Chirping.Web.Api.Common.Exceptions;
 using Chirping.Web.Api.Data.Context;
 using Chirping.Web.Api.Data.Security;
+using Chirping.Web.Api.Domain;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;

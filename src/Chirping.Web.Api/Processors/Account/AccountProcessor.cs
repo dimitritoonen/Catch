@@ -5,6 +5,7 @@ using Chirping.Web.Api.BindingModels.Account;
 using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Common.Domain;
 using Chirping.Web.Api.Data.Repository.Authorization;
+using Chirping.Web.Api.Domain;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Configuration;
