@@ -25,7 +25,7 @@ namespace Chirping.Web.Api.Common.Domain
 
         private void InitializeCloudLocation()
         {
-            var setting = ConfigurationManager.AppSettings[""];
+            var setting = ConfigurationManager.AppSettings["CloudStorage.Url"];
 
             if (!string.IsNullOrEmpty(setting))
             {
