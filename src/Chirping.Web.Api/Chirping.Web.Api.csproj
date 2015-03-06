@@ -250,7 +250,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="StorageResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

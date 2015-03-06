@@ -1,28 +1,24 @@
 ﻿#region using directives
 
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.IO;
-
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.Auth;
+
+using System;
+using System.Configuration;
+using System.IO;
 using System.Text;
 
 #endregion
 
-namespace Chirping.Web.Api
+namespace Chirping.Web.Api.Common.Storage
 {
-    public class ImageStore
+    public class ProfileImageStore : IProfileImageStore
     {
         private readonly string _containerName = "profileimages";
 
         private CloudStorageAccount _storage = null;
 
-        public ImageStore()
+        public ProfileImageStore()
         {
             var connectionString = GetCloudConnectionString();
             _storage = CloudStorageAccount.Parse(connectionString);
@@ -30,8 +26,8 @@ namespace Chirping.Web.Api
 
         private string GetCloudConnectionString()
         {
-            var apiKey = ConfigurationManager.AppSettings["CloudStorageApiKey"];
-            var cloudStorageKey = ConfigurationManager.AppSettings["CloudStorage"];
+            var apiKey = ConfigurationManager.AppSettings["CloudStorage.ApiKey"];
+            var cloudStorageKey = ConfigurationManager.AppSettings["CloudStorage.ConnectionString"];
 
             return string.Format(cloudStorageKey, apiKey);
         }

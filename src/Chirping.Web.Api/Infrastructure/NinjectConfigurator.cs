@@ -2,6 +2,7 @@
 
 using Chirping.Web.Api.AutoMapperConfigurators;
 using Chirping.Web.Api.Common;
+using Chirping.Web.Api.Common.Storage;
 using Chirping.Web.Api.Common.TypeMapping;
 using Chirping.Web.Api.Data.Repository;
 using Chirping.Web.Api.Data.Repository.Abstract;
@@ -40,6 +41,9 @@ namespace Chirping.Web.Api.Infrastructure
             kernel.Bind<IAccountProcessor>().To<AccountProcessor>().InRequestScope();
             kernel.Bind<IActivityProcessor>().To<ActivityProcessor>().InRequestScope();
             kernel.Bind<ICategoryProcessor>().To<CategoryProcessor>().InRequestScope();
+
+            // Azure cloud storage
+            kernel.Bind<IProfileImageStore>().To<ProfileImageStore>().InRequestScope();
         }
 
         private void ConfigureAutoMapper(IKernel kernel)

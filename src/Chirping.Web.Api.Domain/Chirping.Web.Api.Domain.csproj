@@ -71,6 +71,7 @@
     <Compile Include="Activity.cs" />
     <Compile Include="Activity\Between.cs" />
     <Compile Include="Activity\Filter.cs" />
+    <Compile Include="Activity\GeoPoint.cs" />
     <Compile Include="Activity\Timeframe.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Client.cs" />
@@ -89,6 +90,9 @@
       <Project>{08429b50-9904-448e-a2b3-e955ec225ff9}</Project>
       <Name>Chirping.Web.Api.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

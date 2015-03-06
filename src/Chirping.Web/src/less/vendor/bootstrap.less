@@ -88,8 +88,17 @@ hr {
 
 /* Bootstrap dialog changes */
 
+
 .modal-body {
     padding: 10px 1px 0px 0px;
+}
+
+.modal { 
+    &.bootstrap-dialog {
+        .modal-dialog {
+            z-index:1050;    
+        }
+    }
 }
 
 .modal-header-grey .modal-content .modal-header {
