@@ -18,72 +18,90 @@ define(['knockout', 'text!./activity-filter.html', 'moment', 'bindingHandlers/da
       { 'Code': '9', 'Description': 'More' }
     ]);
     
-
-    self.fromDate = moment();
-    self.tillDate = moment().add(1, 'month');
-
-    // initializes the models till date
-    self.activityModel.Filter.TillDate(self.tillDate.format());
-
-    var fromPicker, tillPicker;
+    self.fromPicker;
+    self.tillPicker;
 
     // initializes the from picker 
     self.onFromInit = function (picker) {
 
-      fromPicker = picker;
+      self.fromPicker = picker;
 
       $(picker).on('dp.change', function (e) {
-        
+
         if (e.date === null) {
           self.activityModel.ResetFilterFromDate();
         } else {
-          $(tillPicker).data('DateTimePicker').minDate(e.date);
+
+          if (self.IsFromDateChanged(e.date))
+            return;
+
+          $(self.tillPicker).data('DateTimePicker').minDate(e.date.format());
 
           self.activityModel.Filter.FromDate(e.date.format());
         }
+      });
 
+      $(picker).on('dp.hide', function (e) {
         // unfocus after a date has been chosen
-        $(fromPicker).blur();
+        $(self.fromPicker).blur();
       });
     }
+
+    self.IsFromDateChanged = function (date) {
+      return (date.format("YYYY-MM-DD") === moment(self.activityModel.Filter.FromDate()).format("YYYY-MM-DD"));
+    }
+
 
     // initializes the till picker 
     self.onTillInit = function (picker) {
 
-       tillPicker = picker;
+      self.tillPicker = picker;
 
        $(picker).on('dp.change', function (e) {
-         
+
          if (e.date === null) {
            self.activityModel.ResetFilterTillDate();
          } else {
-           $(fromPicker).data('DateTimePicker').maxDate(e.date);
+           $(self.fromPicker).data('DateTimePicker').maxDate(e.date.format());
 
            self.activityModel.Filter.TillDate(e.date.format());
          }
+       });
 
+       $(picker).on('dp.hide', function (e) {
          // unfocus after a date has been chosen
-         $(tillPicker).blur();
-      });
+         $(self.tillPicker).blur();
+       });
     }
 
 
     $(window).on('resize', function () {
-      if (fromPicker !== undefined) {
+      if (self.tillPicker !== undefined) {
         var tillDate = self.activityModel.Filter.TillDate();
 
         tillDate = (tillDate === undefined ? null : tillDate);
-        $(tillPicker).data('DateTimePicker').date(tillDate);
+        $(self.tillPicker).data('DateTimePicker').date(tillDate);
       }
 
-      if (fromPicker !== undefined) {
+      if (self.fromPicker !== undefined) {
         var fromDate = self.activityModel.Filter.FromDate();
 
         fromDate = (fromDate === undefined ? null : fromDate);
-        $(fromPicker).data('DateTimePicker').date(fromDate);
+        $(self.fromPicker).data('DateTimePicker').date(fromDate);
       }
     });
+
   }
+
+  // clear event handlers
+  ActivityFilter.prototype.dispose = function () {
+    $(window).off('resize');
+    $(self.tillPicker).off('db.hide');
+    $(self.tillPicker).off('db.change');
+
+    $(self.fromPicker).off('db.hide');
+    $(self.fromPicker).off('db.change');
+  };
 
     
   return { viewModel: ActivityFilter, template: templateMarkup };

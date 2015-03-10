@@ -18,7 +18,7 @@
                 <input type="text"
                        data-bind='datetimepicker: {
                                     options: {
-                                        maxDate: tillDate,
+                                        maxDate: activityModel.Filter.TillDate(),
                                         showClear: true,
                                         widgetPositioning: { horizontal: "left", vertical: "auto" }
                                     },
@@ -29,12 +29,12 @@
             <div class="col-xs-6 padding-bottom">
                 <div class="activity-filter-label">Till</div>
                 <input type="text"
-                       data-bind='datetimepicker: { 
-                                    options: { 
-                                        defaultDate: tillDate, 
-                                        minDate: fromDate,
+                       data-bind='datetimepicker: {
+                                    options: {
+                                        defaultDate: activityModel.Filter.TillDate(),
+                                        minDate: activityModel.Filter.FromDate(),
                                         widgetPositioning: { horizontal: "right", vertical: "auto" }
-                                    }, 
+                                    },
                                     init: onTillInit
                                   }'
                        class="form-control activity-filter-date" placeholder="Till" />

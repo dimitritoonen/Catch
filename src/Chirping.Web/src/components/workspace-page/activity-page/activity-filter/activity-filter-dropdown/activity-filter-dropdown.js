@@ -8,9 +8,6 @@ define(['knockout', 'text!./activity-filter-dropdown.html'], function(ko, templa
     self.items = params.listItems();
 
     self.selectItem = function (data, event) {
-
-      console.log(data);
-
       params.activityModel.Filter.Category(data);
     };
   }

@@ -20,7 +20,7 @@
     var GetActivities = function () {
       
       var filter = GetFilter();
-
+      
       webapi.Get('api/activity', filter).done(function (result) {
 
         self.Activities(result);

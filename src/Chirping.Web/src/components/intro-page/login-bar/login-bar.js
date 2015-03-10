@@ -30,7 +30,7 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service', 'services/
 
     // try to log in the user
     self.login = function () {
-
+      
       toggleLoading();
       container.clearHeader();
       container.hideCloseButton();
@@ -41,11 +41,13 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service', 'services/
         password: self.password()
       };
 
+      console.log(data);
+
       login.LoginUser(data).done(function () {
         redirectToDashboard();
       }).error(function (data) {
         toggleLoading();
-
+        
         var err = JSON.parse(data.responseText);
         self.error(err);
         self.showErrorBox(true);

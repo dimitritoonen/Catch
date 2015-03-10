@@ -48,7 +48,6 @@ namespace Chirping.Web.Api.Processors.Account
 
             if (ProfileImageSelected(registerUser.Profile.Image))
             {
-                //user.ProfileImage = string.Format("{0}.jpg", Guid.NewGuid().ToString("N"));
                 user.ProfileImage = Guid.NewGuid().ToString("N");
             }
 

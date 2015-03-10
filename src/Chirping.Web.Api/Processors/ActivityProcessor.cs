@@ -9,6 +9,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Chirping.Web.Api.Domain;
+using Chirping.Web.Api.Common.TypeMapping;
 
 #endregion
 
@@ -17,19 +18,21 @@ namespace Chirping.Web.Api.Processors
     public class ActivityProcessor : IActivityProcessor
     {
         private IActivityRepository _repository;
+        private IAutoMapper _automapper;
 
-        public ActivityProcessor(IActivityRepository repository)
+        public ActivityProcessor(IAutoMapper automapper, IActivityRepository repository)
         {
+            this._automapper = automapper;
             this._repository = repository;
         }
 
         public IEnumerable<ActivityBindingModel> GetActivities(FilterBindingModel model)
         {
-            var filter = Mapper.Map<FilterBindingModel, Filter>(model);
+            var filter = _automapper.Map<Filter>(model);
 
             return _repository.GetAll(filter)
                 // map list of Activities to ActivityBindingModel list
-                .Select(activity => Mapper.Map<Activity, ActivityBindingModel>(activity));
+                .Select(activity => _automapper.Map<ActivityBindingModel>(activity));
         }
     }
 }

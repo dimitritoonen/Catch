@@ -1,13 +1,10 @@
 ﻿#region using directives
 
 using AutoMapper;
-using Chirping.Web.Api.BindingModels;
 using Chirping.Web.Api.BindingModels.Activity;
-using Chirping.Web.Api.Common.Domain;
+using Chirping.Web.Api.Common;
 using Chirping.Web.Api.Common.TypeMapping;
 using Chirping.Web.Api.Domain;
-using System;
-using System.Linq;
 
 #endregion
 
@@ -20,7 +17,7 @@ namespace Chirping.Web.Api.AutoMapperConfigurators
             Mapper.CreateMap<Activity, ActivityBindingModel>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Category))
-                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date))
+                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date.ToString(Constants.Formatting.DateTimeFormat)))
                 .ForMember(dest => dest.Location, opt => opt.MapFrom(src => src.Location))
                 .ForMember(dest => dest.Content, opt => opt.MapFrom(src => src.ContentText))
                 .ForMember(dest => dest.Owner, opt => opt.MapFrom(src => src.Owner))
