@@ -65,7 +65,8 @@ namespace Chirping.Web.Api.Data.Tests.Repository
             Assert.AreEqual<string>(actual.Owner.City, expected.Owner.City, "Owner City");
             Assert.AreEqual<string>(actual.Owner.Gender, expected.Owner.Gender, "Owner Gender");
             Assert.AreEqual<string>(actual.Owner.NickName, expected.Owner.NickName, "Owner NickName");
-            Assert.AreEqual<string>(actual.Owner.ProfileImage, expected.Owner.ProfileImage, "Owner ProfileImage");
+            Assert.AreEqual<string>(actual.Owner.ProfileImage.FileName, expected.Owner.ProfileImage.FileName, "Owner ProfileImage");
+            Assert.AreEqual<string>(actual.Owner.ProfileImage.AvatarFileName, expected.Owner.ProfileImage.AvatarFileName, "Owner ProfileImage");
 
             Assert.AreEqual<int>(actual.Participants.Count, expected.Participants.Count, "Participant count doesn't match up");
 
@@ -84,7 +85,8 @@ namespace Chirping.Web.Api.Data.Tests.Repository
                         Assert.AreEqual<string>(actualProfile.City, expectedProfile.City, "Participant Profile City");
                         Assert.AreEqual<string>(actualProfile.Gender, expectedProfile.Gender, "Participant Profile Gender");
                         Assert.AreEqual<string>(actualProfile.NickName, expectedProfile.NickName, "Participant Profile NickName");
-                        Assert.AreEqual<string>(actualProfile.ProfileImage, expectedProfile.ProfileImage, "Participant Profile ProfileImage");
+                        Assert.AreEqual<string>(actualProfile.ProfileImage.FileName, expectedProfile.ProfileImage.FileName, "Participant Profile ProfileImage");
+                        Assert.AreEqual<string>(actualProfile.ProfileImage.AvatarFileName, expectedProfile.ProfileImage.AvatarFileName, "Participant Profile ProfileImage");
 
                         break; // match found, break
                     }
@@ -124,17 +126,17 @@ namespace Chirping.Web.Api.Data.Tests.Repository
         {
             return new List<Profile>
             {
-                new Profile(id: 10) { NickName = "Dimitri", Age = 31, Gender = "Male", City = "Hendrik-Ido-Ambacht", ProfileImage = "someImage.jpg" },
-                new Profile(id: 11) { NickName = "Remy", Age = 28, Gender = "Male", City = "Oud-beijerland", ProfileImage = "someImage.jpg" },
-                new Profile(id: 12) { NickName = "Esme", Age = 32, Gender = "Female", City = "Hendrik-Ido-Ambacht", ProfileImage = "someImage.jpg" },
-                new Profile(id: 13) { NickName = "Jack", Age = 30, Gender = "Male", City = "Noordwijk", ProfileImage = "someImage.jpg" },
-                new Profile(id: 14) { NickName = "Guido", Age = 38, Gender = "Male", City = "Stolwijck", ProfileImage = "someImage.jpg" }
+                new Profile(id: 10) { NickName = "Dimitri", Age = 31, Gender = "Male", City = "Hendrik-Ido-Ambacht", ProfileImage = new ProfileImage("someImage.jpg") },
+                new Profile(id: 11) { NickName = "Remy", Age = 28, Gender = "Male", City = "Oud-beijerland", ProfileImage = new ProfileImage("someImage.jpg") },
+                new Profile(id: 12) { NickName = "Esme", Age = 32, Gender = "Female", City = "Hendrik-Ido-Ambacht", ProfileImage = new ProfileImage("someImage.jpg") },
+                new Profile(id: 13) { NickName = "Jack", Age = 30, Gender = "Male", City = "Noordwijk", ProfileImage = new ProfileImage("someImage.jpg") },
+                new Profile(id: 14) { NickName = "Guido", Age = 38, Gender = "Male", City = "Stolwijck", ProfileImage = new ProfileImage("someImage.jpg") }
             };
         }
 
         private Profile GetDomainOwner()
         {
-            return new Profile(id: 10) { NickName = "Dimitri", Age = 31, Gender = "Male", City = "Hendrik-Ido-Ambacht", ProfileImage = "someImage.jpg" };
+            return new Profile(id: 10) { NickName = "Dimitri", Age = 31, Gender = "Male", City = "Hendrik-Ido-Ambacht", ProfileImage = new ProfileImage("someImage.jpg") };
         }
 
 

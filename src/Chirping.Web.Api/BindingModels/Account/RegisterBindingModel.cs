@@ -25,7 +25,7 @@ namespace Chirping.Web.Api.BindingModels.Account
         public string Password { get; set; }
 
         [Required]
-        public ProfileBindingModel Profile { get; set; }
+        public RegisterProfileBindingModel Profile { get; set; }
     }
 
 }

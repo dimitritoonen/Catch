@@ -2,8 +2,8 @@
 
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
-
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Text;
@@ -32,25 +32,40 @@ namespace Chirping.Web.Api.Common.Storage
             return string.Format(cloudStorageKey, apiKey);
         }
 
-        public void StoreImage(string image, string imageReference)
+        public void StoreImage(string image, string filename)
         {
-            byte[] imageInBytes = null;
+            List<Image> images = ProfileImageInitializer.GenerateImages(image, filename);
 
-            imageInBytes = Convert.FromBase64String(image);
+            StoreImagesInContainer(images);
+        }
 
+        private void StoreImagesInContainer(List<Image> images)
+        {
+            CloudBlobContainer blobContainer = GetBlobContainer();
+
+            foreach (var image in images)
+            {
+                CloudBlockBlob blockBlob = blobContainer.GetBlockBlobReference(image.FileName);
+
+                using (MemoryStream stream = new MemoryStream(image.ImageInBytes))
+                {
+                    blockBlob.UploadFromStream(stream);
+                }
+            }
+        }
+
+        private CloudBlobContainer GetBlobContainer()
+        {
             CloudBlobClient blobClient = _storage.CreateCloudBlobClient();
             CloudBlobContainer blobContainer = blobClient.GetContainerReference(_containerName);
 
             blobContainer.CreateIfNotExists();
             blobContainer.SetPermissions(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
-
-            CloudBlockBlob blockBlob = blobContainer.GetBlockBlobReference(imageReference);
-
-            using (MemoryStream stream = new MemoryStream(imageInBytes))
-            {
-                blockBlob.UploadFromStream(stream);
-            }
+            return blobContainer;
         }
+        
+
+
 
         public string GetImage(string profileImageReference)
         {

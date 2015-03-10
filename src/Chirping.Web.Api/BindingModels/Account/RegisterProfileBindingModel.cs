@@ -8,9 +8,9 @@ using System.Web;
 
 #endregion
 
-namespace Chirping.Web.Api.BindingModels
+namespace Chirping.Web.Api.BindingModels.Account
 {
-    public class ProfileBindingModel
+    public class RegisterProfileBindingModel
     {
         [Required]
         [Display(Name = "Nick name")]

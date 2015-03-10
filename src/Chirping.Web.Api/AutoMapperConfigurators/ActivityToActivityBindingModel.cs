@@ -34,7 +34,8 @@ namespace Chirping.Web.Api.AutoMapperConfigurators
                 .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Gender))
                 .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City))
                 .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.Age))
-                .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.ProfileImage));
+                .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.ProfileImage.FileName))
+                .ForMember(dest => dest.ImageAvatar, opt => opt.MapFrom(src => src.ProfileImage.AvatarFileName));
 
         }
     }

@@ -86,7 +86,7 @@ namespace Chirping.Web.Api.Tests.Processors
                 Email = "johndoe@gmail.com",
                 ConfirmEmail = "johndoe@gmail.com",
                 Password = "Password1!",
-                Profile = new BindingModels.ProfileBindingModel
+                Profile = new RegisterProfileBindingModel
                 {
                     NickName = "JohnDoe56",
                     Age = 25,

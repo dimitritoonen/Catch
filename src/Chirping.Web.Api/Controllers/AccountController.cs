@@ -13,6 +13,8 @@ using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Configuration;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -126,16 +128,33 @@ namespace Chirping.Web.Api.Controllers
                 return Ok();
             }
 
-            var result = await _processor.ResetPassword(model);
-
-            IHttpActionResult errorResult = GetErrorResult(result);
-            
-            if (!result.Succeeded)
+            try
             {
-                return BadRequest();
+                var result = await _processor.ResetPassword(model);
+                IHttpActionResult errorResult = GetErrorResult(result);
+
+                if (!result.Succeeded)
+                {
+                    return BadRequest();
+                }
+            }
+            catch (DbEntityValidationException ex)
+            {
+                TraceErrors(ex);
             }
 
             return Ok();
+        }
+
+        private static void TraceErrors(DbEntityValidationException ex)
+        {
+            foreach (var validationErrors in ex.EntityValidationErrors)
+            {
+                foreach (var validationError in validationErrors.ValidationErrors)
+                {
+                    Trace.TraceError("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                }
+            }
         }
 
 

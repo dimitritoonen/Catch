@@ -1,5 +1,6 @@
 ﻿#region using directives
 
+using Chirping.Web.Api.Domain;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,26 +12,9 @@ namespace Chirping.Web.Api.Common.Domain
 {
     public class Profile : DomainModel
     {
-        // default profile image
-        private string _profileImage = "/images/no_profile-051cc221.png";
-
-        private string _cloudLocation = "";
-
         public Profile(int id)
-        {
-            InitializeCloudLocation();
-            
+        {            
             this.Id = id;
-        }
-
-        private void InitializeCloudLocation()
-        {
-            var setting = ConfigurationManager.AppSettings["CloudStorage.Url"];
-
-            if (!string.IsNullOrEmpty(setting))
-            {
-                _cloudLocation = setting;
-            }
         }
 
         public int Id { get; private set; }
@@ -40,19 +24,6 @@ namespace Chirping.Web.Api.Common.Domain
         public string Gender { get; set; }
         public string City { get; set; }
 
-        public string ProfileImage
-        {
-            get
-            {
-                return _profileImage;
-            }
-            set
-            {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    _profileImage = string.Format("{0}/profileimages/{1}", _cloudLocation, value);
-                }                
-            }
-        }
+        public ProfileImage ProfileImage { get; set; }
     }
 }

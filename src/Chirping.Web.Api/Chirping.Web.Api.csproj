@@ -207,13 +207,14 @@
     <Compile Include="BindingModels\Account\ForgotPasswordViewModel.cs" />
     <Compile Include="BindingModels\Account\ParsedExternalAccessToken.cs" />
     <Compile Include="BindingModels\Account\RegisterExternalBindingModel.cs" />
+    <Compile Include="BindingModels\Account\RegisterProfileBindingModel.cs" />
     <Compile Include="BindingModels\Account\ResetPasswordBindingModel.cs" />
     <Compile Include="BindingModels\Activity\ActivityBindingModel.cs" />
     <Compile Include="BindingModels\Activity\BetweenTimeBindingModel.cs" />
     <Compile Include="BindingModels\Activity\CategoryBindingModel.cs" />
     <Compile Include="BindingModels\Activity\FilterBindingModel.cs" />
     <Compile Include="BindingModels\Activity\TimeFrameBindingModel.cs" />
-    <Compile Include="BindingModels\ProfileBindingModel.cs" />
+    <Compile Include="BindingModels\Activity\ProfileBindingModel.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\CategoryController.cs">
       <SubType>Code</SubType>

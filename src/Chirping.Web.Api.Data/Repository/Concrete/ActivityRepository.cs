@@ -144,7 +144,7 @@ namespace Chirping.Web.Api.Data.Repository.Concrete
                     Gender = dataEntity.Owner.Gender,
                     City = dataEntity.Owner.City,
                     Age = dataEntity.Owner.Age,
-                    ProfileImage = dataEntity.Owner.ProfileImage
+                    ProfileImage = new ProfileImage(dataEntity.Owner.ProfileImage)
                 },
                 ContentText = dataEntity.ContentText,
                 Participants = GetParticipantsFromEntity(dataEntity),
@@ -164,7 +164,7 @@ namespace Chirping.Web.Api.Data.Repository.Concrete
                         Gender = entityParticipant.Gender,
                         City = entityParticipant.City,
                         Age = entityParticipant.Age,
-                        ProfileImage = entityParticipant.ProfileImage
+                        ProfileImage = new ProfileImage(entityParticipant.ProfileImage)
                     });
             }
 

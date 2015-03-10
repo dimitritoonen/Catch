@@ -8,6 +8,8 @@ define(['knockout', 'text!./activity-listitem.html', '../category-icon-mapping',
     self.category = params.activity.Category;
     self.participants = params.activity.Participants;
     self.owner = params.activity.Owner;
+
+    console.log(self.owner.Image);
     
     var map = categoryMap;
     
