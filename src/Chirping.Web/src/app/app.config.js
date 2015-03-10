@@ -5,7 +5,7 @@
     
   // load the mockjax component in development
   if ('/*@echo NODE_ENV*/' === 'development') {
-    //require(['mock-server'], function () { });
+    require(['mock-server'], function () { });
   }
 
   // constructor
