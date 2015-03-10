@@ -29,8 +29,8 @@ namespace Chirping.Web.Api.Domain
         {
             InitializeCloudLocation();
 
-            this.FileName = string.Format("{0}/{1}.jpg", _cloudLocation, filename);
-            this.AvatarFileName = string.Format("{0}/{1}_avatar.jpg", _cloudLocation, filename);
+            this.FileName = string.Format("{0}/profileimages/{1}.jpg", _cloudLocation, filename);
+            this.AvatarFileName = string.Format("{0}/profileimages/{1}_avatar.jpg", _cloudLocation, filename);
         }
 
         // get cloud settings
