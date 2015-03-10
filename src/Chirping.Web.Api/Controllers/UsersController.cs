@@ -1,4 +1,5 @@
 ﻿using Chirping.Web.Api.Processors;
+using Chirping.Web.Api.Processors.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +9,11 @@ using System.Web.Http;
 namespace Chirping.Web.Api.Controllers
 {
     [Authorize]
-    public class UsersController : ApiController
+    public class UserController : ApiController
     {
         IUserProcessor _processor;
 
-        public UsersController(IUserProcessor processor)
+        public UserController(IUserProcessor processor)
         {
             this._processor = processor;
         }

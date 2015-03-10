@@ -3,6 +3,7 @@
 using Chirping.Web.Api.BindingModels.Account;
 using Chirping.Web.Api.Common.Domain;
 using Chirping.Web.Api.Common.TypeMapping;
+using Chirping.Web.Api.Infrastructure;
 
 using System;
 
@@ -20,8 +21,8 @@ namespace Chirping.Web.Api.AutoMapperConfigurators
                 .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.Profile.City))
                 .ForMember(dest => dest.NickName, opt => opt.MapFrom(src => src.Profile.NickName))
                 .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.Profile.Age))
-                .ForMember(dest => dest.InterestedIn, opt => opt.MapFrom(src => src.Profile.InterestedIn))
-                .ForMember(dest => dest.ProfileImage, opt => opt.MapFrom(src => src.Profile.ProfileImage));
+                .ForMember(dest => dest.ProfileImage, opt => opt.MapFrom(src => src.Profile.Image))
+                .IgnoreAllNonExisting();
         }
     }
 }

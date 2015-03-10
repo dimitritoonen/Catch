@@ -1,0 +1,67 @@
+﻿@import "../../../vendor-prefixes.less";
+@import "../../../vendor/viewpoints/screen-ms.less";
+@import "../../../variables.less";
+@import "../../../../bower_modules/font-awesome/less/font-awesome.less";
+
+/*
+    Defines the styles for the activity list
+*/
+
+// defines the base namespace for the workspace activity styles
+.workspace {
+    &.activity {
+
+        @media (min-width: @screen-sm) {
+            padding: 10px 10px 0 10px;
+        }
+
+        /*.fixed-panel {
+            position: absolute;
+            right: 0;
+        }*/
+
+        .list {
+            z-index: 1;
+            background-color: white;
+
+            @media (min-width: @screen-sm) {
+                border: 1px solid @grey-background-darker;
+                border-radius: @border-radius-base;
+            }
+
+            > .header {
+                padding-top: 10px;
+                padding-left: 20px;
+                padding-bottom: 15px;
+                border-bottom: 1px solid @grey-background-darker;
+            }
+        }
+
+        // change bootstrap cell padding
+        .list-container {
+            padding-right: 10px;
+
+            @media (max-width: @screen-md) {
+                padding-right: 15px;
+            }
+        }
+
+        // change bootstrap cell padding
+        .filter-container {
+            padding-left: 0;
+        }
+
+
+        .bottom-line {
+            clear: both;
+            background-color: @grey-background-darker;
+            height: 1px !important;
+            width: 99.9% !important;
+        }
+
+        .no-activities-found {
+            margin-top: 30px;
+            text-align: center;
+        }
+    }
+}

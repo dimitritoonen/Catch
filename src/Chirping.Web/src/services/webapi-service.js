@@ -5,10 +5,19 @@
 
   // returns the result of an jquery ajax GET result
   apiService.Get = function (url, data) {
+
+    var token = authStorage.GetToken();
+    var headers = {};
+
+    if (token) {
+      headers.Authorization = 'Bearer ' + token;
+    }
+    
     return $.ajax({
       type: 'GET',
       url: config.BaseUrl + url,
-      data: data
+      data: data,
+      headers: headers
     });
   };
 

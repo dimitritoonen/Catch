@@ -12,8 +12,8 @@ define(['knockout', 'text!./intro-page.html', 'qtip2'], function (ko, templateMa
     var initializeIntroPage = function (component) {
       if (component !== undefined) {
 
-        // fetch the querystring parsed by crossroadsJs
-        self.querystring = params[0];
+        // fetch the querystring parsed by crossroadsJs route
+        self.querystring = params.route[0];
 
         self.loadComponent(component);
       }
@@ -25,9 +25,9 @@ define(['knockout', 'text!./intro-page.html', 'qtip2'], function (ko, templateMa
       self.showComponent(!self.showComponent());
     };
 
-    //self.loadComponent('password-changed');
+    //self.loadComponent('register');
 
-    initializeIntroPage(params.component);
+    initializeIntroPage(params.route.component);
 
     // closes the loaded component
     self.closeComponent = function () {

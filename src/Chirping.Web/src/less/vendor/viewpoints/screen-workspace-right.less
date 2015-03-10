@@ -1,0 +1,30 @@
+﻿// Core variables and mixins
+@import "../../../bower_modules/bootstrap/less/variables.less";
+@import "../../../bower_modules/bootstrap/less/mixins.less";
+
+@screen-workspace-right: 1400px;
+
+
+// set to no display so we have a fresh start
+.visible-workspace-right,
+.visible-workspace-right-inline {
+    .responsive-invisibility;
+}
+
+@media (min-width: @screen-workspace-right){
+    .visible-workspace-right {
+        display: inline !important;
+    }
+}
+
+@media (max-width: @screen-workspace-right){
+    .visible-workspace-right-inline {
+        display: inline-block !important;
+    }
+}
+
+@media (min-width: @screen-workspace-right){
+    .hidden-workspace-right {
+        display: none !important;
+    }
+}

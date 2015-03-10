@@ -5,12 +5,13 @@ var runSequence = require('run-sequence');
   Run all tasks needed for a build in defined order
 */
 gulp.task('build:production', function (callback) {
-  runSequence('delete', 'less:vendor',
+  runSequence('delete', 'less:vendor', 'copy:modernizr',
     [
       'scripts:publish',
       'optimize:html',
-      'less',
+      'less:optimized',
       'images',
+      'svgmin',
       'fonts'
     ],
     'base64',
@@ -22,7 +23,9 @@ gulp.task('build:production', function (callback) {
       'copy:fonts:publish'
     ],
     'copy:web:config',
-    //'revision',
-    //'rev:collect',
+    'revision',
+    'revision:collect',
+    'revision:cleanup',
+    'revision:requireJs:collect',
     callback);
 });

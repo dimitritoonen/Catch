@@ -7,8 +7,13 @@
       var observable = valueAccessor();
       var elementId = $(element).attr('id');
 
+      $(element).attr('title', '');
+      $(element).parent().attr('title', '');
+
+      self.disposables = [];
+
       if (observable.isValid) {
-        observable.isModified.subscribe(function (modified) {
+        self.disposables.push(observable.isModified.subscribe(function (modified) {
           if (!observable.isValid()) {
             SetValidationStateControl(elementId, observable, observable.isValid());
           }
@@ -17,12 +22,18 @@
             SetValidationStateControl(elementId, observable, observable.isValid());
           }
 
-        });
+        }));
 
-        observable.isValid.subscribe(function (valid) {
+        self.disposables.push(observable.isValid.subscribe(function (valid) {
           SetValidationStateControl(elementId, observable, valid);
-        });
+        }));
       }
+
+      ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
+        ko.utils.arrayForEach(disposables, function (item) {
+          item.dispose();
+        });
+      });
     }
   };
 
@@ -35,17 +46,16 @@
 
       $element.qtip({
         suppress: false,
-        show: { ready: true },
-        hide: { fixed: true },
-        position: { my: 'left center', at: 'right center' },
-        style: { classes: 'qtip-bootstrap qtip-icon qtip-red' },
-        content: {
-          //text: observable.error
-          text: true,
-          attr: 'title',
-          button: false
-        }
+        show: { event: 'click mouseenter focus' },
+        hide: {
+          event: 'mouseleave focusout leave'
+        },
+        position: { my: 'bottom center', at: 'top center' },
+        style: { classes: 'qtip-bootstrap' }
       });
+
+      $element.attr('title', '');
+      $element.parent().attr('title', '');
 
       $element.closest('.form-group').removeClass('has-success');
       $element.next('span').removeClass('glyphicon-ok');

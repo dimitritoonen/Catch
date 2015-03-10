@@ -3,10 +3,10 @@
 //
 
 .transition(@transition) {
-    transition: @transition;
+    -webkit-transform: @transition;
     -moz-transition: @transition;
     -o-transition: @transition;
-    -webkit-transform: @transition;
+    transition: @transition;
 }
 
 .transform(@transform) {
@@ -14,4 +14,22 @@
     -webkit-animation: @transform;
     -moz-animation: @transform;
     -o-animation: @transform;
+}
+
+.shadow(@shadow) {
+    box-shadow: @shadow;
+    -webkit-box-shadow: @shadow;
+    -moz-box-shadow: @shadow;
+}
+
+.clear-shadow() {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+}
+
+.border(@border) {
+    border-radius: @border;
+    -webkit-border-radius: @border;
+    -moz-border-bottom-radius: @border;
 }

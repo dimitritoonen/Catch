@@ -1,10 +1,10 @@
 {
   "name": "chirping",
-  "version": "0.0.0",
+  "version": "0.1.1",
   "main": "./",
   "private": true,
   "dependencies": {
-    "bootstrap": "3.1.1",
+    "bootstrap": "~3.3.2",
     "bootstrap-dialog": "1.33.5",
     "components-bootstrap": "~3.1.1",
     "crossroads": "~0.12.0",
@@ -13,18 +13,27 @@
     "imagesloaded": "3.1.8",
     "jcrop": "v0.9.12",
     "jquery": "2.1.1",
+    "jquery-ui": "~1.11.2",
     "js-signals": "1.0.0",
     "hasher": "~1.2.0",
     "knockout-projections": "1.1.0",
-    "knockout": "~3.2.0",
+    "knockout": "~3.3.0",
     "knockout-mapping": "2.4.1",
     "knockout-validation": "1.0.2",
     "qtip2": "2.2.1",
-    "requirejs": "~2.1.11",
+    "requirejs": "~2.1.16",
     "requirejs-text": "~2.0.10",
-    "font-awesome": "~4.2.0"
+    "font-awesome": "~4.2.0",
+    "eonasdan-bootstrap-datetimepicker": "~4.0.0",
+    "moment": "~2.9.0",
+    "modernizr": "~2.8.3",
+    "seiyria-bootstrap-slider": "~4.4.2"
   },
   "resolutions": {
-    "knockout": "~3.2.0"
+    "knockout": "~3.3.0",
+    "bootstrap": "3.3.2"
+  },
+  "devDependencies": {
+    "jquery-mockjax": "~1.6.1"
   }
 }

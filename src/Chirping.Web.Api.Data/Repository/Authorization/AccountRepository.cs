@@ -2,9 +2,10 @@
 
 using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Common.Domain;
-using Chirping.Web.Api.Common.Security;
+using Chirping.Web.Api.Common.Exceptions;
 using Chirping.Web.Api.Data.Context;
-using Chirping.Web.Api.Security.Data.Context;
+using Chirping.Web.Api.Data.Security;
+using Chirping.Web.Api.Domain;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
@@ -53,13 +54,20 @@ namespace Chirping.Web.Api.Data.Repository.Authorization
         // register the user via the UserManager (ASP.NET Identity 2.0)
         public async Task<RegisterUserResult> RegisterUser(UserAccount user)
         {
-            RegisterUserResult result = new RegisterUserResult();
+            try
+            {
+                RegisterUserResult result = new RegisterUserResult();
 
-            UserAccountEntity newUser = GetUserEntityFromUser(user);
-            result.UserId = newUser.Id;
-            result.IdentityResult = await TryRegisteringUser(newUser, user);
+                UserAccountEntity newUser = GetUserEntityFromUser(user);
+                result.UserId = newUser.Id;
+                result.IdentityResult = await TryRegisteringUser(newUser, user);
 
-            return result;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new RegisterUserException(user, ex);
+            }
         }
 
         private async Task<IdentityResult> TryRegisteringUser(UserAccountEntity newUser, UserAccount user)
@@ -170,12 +178,14 @@ namespace Chirping.Web.Api.Data.Repository.Authorization
             {
                 UserName = user.Email,
                 Email = user.Email,
-                NickName = user.NickName,
-                Age = user.Age,
-                Gender = user.Gender,
-                City = user.City,
-                InterestedIn = user.InterestedIn,
-                ProfileImage = user.ProfileImage
+                Profile = new ProfileEntity
+                {
+                    NickName = user.NickName,
+                    Age = user.Age,
+                    Gender = user.Gender,
+                    City = user.City,
+                    ProfileImage = user.ProfileImage
+                }
             };
         }
 

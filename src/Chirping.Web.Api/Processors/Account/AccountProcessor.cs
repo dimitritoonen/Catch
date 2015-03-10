@@ -1,10 +1,12 @@
 ﻿#region using directives
 
-using AutoMapper;
 using Chirping.Web.Api.BindingModels.Account;
 using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Common.Domain;
+using Chirping.Web.Api.Common.Storage;
+using Chirping.Web.Api.Common.TypeMapping;
 using Chirping.Web.Api.Data.Repository.Authorization;
+using Chirping.Web.Api.Domain;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Configuration;
@@ -22,13 +24,17 @@ namespace Chirping.Web.Api.Processors.Account
     // processes the Http requests related to account/security requests (i.e. registering user, log a user in, etc)
     public class AccountProcessor : IAccountProcessor, IDisposable
     {
-        #region constructor
-
         private IAccountRepository _repository;
+        private IProfileImageStore _store;
+        private IAutoMapper _automapper;
 
-        public AccountProcessor(IAccountRepository repository)
+        #region constructor
+        
+        public AccountProcessor(IAccountRepository repository, IProfileImageStore store, IAutoMapper automapper)
         {
             this._repository = repository;
+            this._store = store;
+            this._automapper = automapper;
         }
 
         #endregion
@@ -38,11 +44,11 @@ namespace Chirping.Web.Api.Processors.Account
         {
             Trace.WriteLine(string.Format("Start registering user with e-mail: '{0}'", registerUser.Email));
 
-            var user = Mapper.Map<RegisterBindingModel, UserAccount>(registerUser);
+            var user = _automapper.Map<UserAccount>(registerUser);
 
-            if (ProfileImageSelected(registerUser.Profile.ProfileImage))
+            if (ProfileImageSelected(registerUser.Profile.Image))
             {
-                user.ProfileImage = string.Format("{0}.jpg", System.Uri.EscapeDataString(registerUser.Email));
+                user.ProfileImage = Guid.NewGuid().ToString("N");
             }
 
             RegisterUserResult result = await _repository.RegisterUser(user);
@@ -53,7 +59,7 @@ namespace Chirping.Web.Api.Processors.Account
                 await SendConfirmationEmail(result.UserId);
 
                 // store the profile picture in Azure cloud storage
-                StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage, result.UserId);
+                StoreProfileImage(registerUser.Profile.Image, user.ProfileImage, result.UserId);
             }
 
             return result.IdentityResult;
@@ -88,12 +94,11 @@ namespace Chirping.Web.Api.Processors.Account
             TryStoringProfileImage(profileImage, imageFileName, userId);
         }
 
-        private static void TryStoringProfileImage(string profileImage, string imageFileName, string userId)
+        private void TryStoringProfileImage(string profileImage, string imageFileName, string userId)
         {
             try
             {
-                var store = new ImageStore();
-                store.StoreImage(profileImage, imageFileName);
+                _store.StoreImage(profileImage, imageFileName);
             }
             catch (Exception ex)
             {
@@ -212,9 +217,9 @@ namespace Chirping.Web.Api.Processors.Account
         {
             Trace.WriteLine(string.Format("Start registering external user with e-mail: '{0}'", registerUser.Email));
 
-            var user = Mapper.Map<RegisterExternalBindingModel, UserAccount>(registerUser);
+            var user = _automapper.Map<UserAccount>(registerUser);
 
-            if (ProfileImageSelected(registerUser.Profile.ProfileImage))
+            if (ProfileImageSelected(registerUser.Profile.Image))
             {
                 user.ProfileImage = string.Format("{0}.jpg", System.Uri.EscapeDataString(registerUser.Email));
             }
@@ -227,7 +232,7 @@ namespace Chirping.Web.Api.Processors.Account
                 await SendConfirmationEmail(result.UserId);
 
                 // store the profile picture in Azure cloud storage
-                StoreProfileImage(registerUser.Profile.ProfileImage, user.ProfileImage, result.UserId);
+                StoreProfileImage(registerUser.Profile.Image, user.ProfileImage, result.UserId);
             }
 
             return result.IdentityResult;

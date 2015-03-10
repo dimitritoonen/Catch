@@ -1,0 +1,20 @@
+<form class="form-horizontal">
+    <div class="row">
+        <div class="col-xs-12">
+            <p>
+                <select id="mottoDropdown" class="form-control" data-bind="
+                options: mottoList,
+                selectedOptions: registration.selectedMottoOption"></select>
+            </p>
+        </div>
+    </div>
+
+    <p></p>
+    <div class="row form-group has-feedback">
+        <div class="col-xs-12" data-bind="validationElement: registration.motto">
+            <textarea data-bind="value: registration.motto, qtipValMessage: registration.motto" class="form-control"
+                      rows="4" id="wizardMottotextbox" placeholder="Choose a motto" required></textarea>
+            <span id="wizardMottotextboxIcon" class="glyphicon form-control-feedback"></span>
+        </div>
+    </div>
+</form>

@@ -73,6 +73,7 @@
       <HintPath>..\..\lib\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -83,14 +84,18 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Activity\BetweenTimeTest.cs" />
+    <Compile Include="Activity\TimeFrameTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserTest.cs" />
     <Compile Include="User\AgeTest.cs" />
     <Compile Include="User\EmailTest.cs" />
     <Compile Include="User\InterestedInTest.cs" />
     <Compile Include="User\NameTest.cs" />
+    <Compile Include="User\ProfileImageTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

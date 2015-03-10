@@ -1,0 +1,83 @@
+﻿@import "../../vendor-prefixes";
+@import "../../variables";
+
+.container-wrap {
+    position:absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width:100%;
+    height:100vh;
+    background-color: black;
+    opacity: 0.5;
+}
+
+.container-wrap.show-cursor {
+    cursor:pointer;
+}
+
+.show-container {
+    position: relative;
+    overflow:hidden;
+    z-index: 2;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: @grey-background;
+
+    @media (min-width: @screen-xs-min) {
+        background-color: rgba(255, 255, 255, 0.95);
+        width:450px;
+    }
+}
+
+// defines the loaded component in the component-container.
+// This class also contains a transition used to fade-in and slide-in the loaded component
+.component {
+    position:relative;
+    width:90%;
+    top: 75px;
+    opacity: 0;
+    .transition(~"opacity .3s ease-out, top .3s ease-out");
+
+    @media (max-width: @screen-xs-min) {
+        top: 50px;
+    }
+}
+
+.component-container-controls {
+    position: relative;
+    top: 35px;
+}
+
+.component.show {
+    position: relative;
+    top: 100px;
+    opacity: 1;
+
+    @media (max-width: @screen-xs-min) {
+        top: 100px;
+    }
+}
+
+.component.disableAnimation {
+    .transition(none);
+}
+
+.error-box {
+    padding: 5px 5px 5px 5px;
+    color:red;
+    border:1px solid red;
+}
+
+.component-container-close-button {
+    position:relative;
+    top:-90px;
+    float:right;
+    font-size:2em;
+    cursor:pointer;
+    @media (max-width: @screen-xs-min) {
+        font-size:2.5em;
+        top: -65px;
+    }
+}

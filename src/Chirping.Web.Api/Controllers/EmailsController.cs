@@ -6,19 +6,20 @@ using Chirping.Web.Api.Processors;
 using System.Web.Http;
 using System;
 using System.Net.Mail;
+using Chirping.Web.Api.Processors.Interfaces;
 
 #endregion
 
 namespace Chirping.Web.Api.Controllers
 {
     [Authorize]
-    public class EmailsController : ApiController
+    public class EmailController : ApiController
     {
         #region constructor
 
         private IUserProcessor _processor;
         
-        public EmailsController(IUserProcessor processor)
+        public EmailController(IUserProcessor processor)
         {
             this._processor = processor;
         }

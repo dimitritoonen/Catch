@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "jasmine": "~2.0.0",
-    "requirejs": "~2.1.11"
+    "jasmine": "~2.2.1",
+    "requirejs": "~2.1.11",
+    "jquery-mockjax": "~1.6.1"
+  },
+  "resolutions": {
+    "jasmine": "~2.2.1"
   }
 }

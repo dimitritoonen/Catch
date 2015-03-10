@@ -15,22 +15,22 @@ module.exports = function(config) {
       'src/app/require.config.js',
       'test/require.config.js',
       'test/SpecRunner.karma.js',
-      { pattern: 'src/**/*.js', included: false },
-      { pattern: 'src/**/*.html', included: false },
+      { pattern: 'build/**/*.js', included: false },
+      { pattern: 'build/**/*.html', included: false },
       { pattern: 'test/**/*.js', included: false }
     ],
 
 
     // list of files to exclude
     exclude: [
-      
+      //'build/mock-server/**/*.js'
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        '**/require.config.js': ['requireglobal']
+      '**/require.config.js': ['requireglobal']
     },
 
 

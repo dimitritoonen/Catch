@@ -4,6 +4,7 @@ using Chirping.Web.Api.Common.TypeMapping;
 using Chirping.Web.Api.Data.Repository;
 using Chirping.Web.Api.Domain;
 using Chirping.Web.Api.Models;
+using Chirping.Web.Api.Processors.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,12 +16,10 @@ namespace Chirping.Web.Api.Processors
     public class UserProcessor : IUserProcessor
     {
         private IUserRepository _repository;
-        private IAutoMapper _mapper;
 
-        public UserProcessor(IUserRepository repository, IAutoMapper autoMapper)
+        public UserProcessor(IUserRepository repository)
         {
             this._repository = repository;
-            this._mapper = autoMapper;
         }
 
 

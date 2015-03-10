@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 #endregion
@@ -13,14 +14,14 @@ namespace Chirping.Web.Api.Common.Data.Entities
     [Table("User")]
     public class UserAccountEntity : IdentityUser
     {
-        public string NickName { get; set; }
-        public string Age { get; set; }
-        public string Gender { get; set; }
-        public string City { get; set; }
-        public string InterestedIn { get; set; }
-        public string ProfileImage { get; set; }
+        [Column("Profile_Id")]
+        public int ProfileId { get; set; }
 
-        [DefaultValue(false)]
+        [Required]
+        [ForeignKey("ProfileId")]
+        public virtual ProfileEntity Profile { get; set; }
+
+        [DefaultValue(true)]
         public bool Active { get; set; }
     }
 }

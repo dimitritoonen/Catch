@@ -2,11 +2,15 @@
 
 using Chirping.Web.Api.AutoMapperConfigurators;
 using Chirping.Web.Api.Common;
+using Chirping.Web.Api.Common.Storage;
 using Chirping.Web.Api.Common.TypeMapping;
 using Chirping.Web.Api.Data.Repository;
+using Chirping.Web.Api.Data.Repository.Abstract;
 using Chirping.Web.Api.Data.Repository.Authorization;
+using Chirping.Web.Api.Data.Repository.Concrete;
 using Chirping.Web.Api.Processors;
 using Chirping.Web.Api.Processors.Account;
+using Chirping.Web.Api.Processors.Interfaces;
 using Ninject;
 using Ninject.Web.Common;
 
@@ -29,15 +33,24 @@ namespace Chirping.Web.Api.Infrastructure
             kernel.Bind<IDateTime>().To<DateTimeAdapter>().InSingletonScope();
             kernel.Bind<IUserRepository>().To<UserRepository>();
             kernel.Bind<IAccountRepository>().To<AccountRepository>().InRequestScope();
+            kernel.Bind<IActivityRepository>().To<ActivityRepository>();
+            kernel.Bind<ICategoryRepository>().To<CategoryRepository>();
 
             // processors
             kernel.Bind<IUserProcessor>().To<UserProcessor>().InRequestScope();
             kernel.Bind<IAccountProcessor>().To<AccountProcessor>().InRequestScope();
+            kernel.Bind<IActivityProcessor>().To<ActivityProcessor>().InRequestScope();
+            kernel.Bind<ICategoryProcessor>().To<CategoryProcessor>().InRequestScope();
+
+            // Azure cloud storage
+            kernel.Bind<IProfileImageStore>().To<ProfileImageStore>().InRequestScope();
         }
 
         private void ConfigureAutoMapper(IKernel kernel)
         {
             kernel.Bind<IAutoMapper>().To<AutoMapperAdapter>().InSingletonScope();
+
+            #region registration/authentication mappings
 
             // configure all AutoMapper type configurators
             kernel.Bind<IAutoMapperTypeConfigurator>()
@@ -54,6 +67,20 @@ namespace Chirping.Web.Api.Infrastructure
             kernel.Bind<IAutoMapperTypeConfigurator>()
                 .To<RegisterExternalUserToAccountUserMapping>()
                 .InSingletonScope();
+
+            #endregion
+
+            #region activity mappings
+
+            kernel.Bind<IAutoMapperTypeConfigurator>()
+                .To<ActivityToActivityBindingModel>()
+                .InSingletonScope();
+
+            kernel.Bind<IAutoMapperTypeConfigurator>()
+                .To<FilterBindingModelToFilterDomain>()
+                .InSingletonScope();
+
+            #endregion
         }
     }
 }

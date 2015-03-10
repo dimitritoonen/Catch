@@ -1,48 +1,54 @@
-﻿// Core variables and mixins
+﻿@import "../vendor-prefixes";
+
+// bootstrap variables/mixins and custom screen-ms viewport
+@import "viewpoints/screen-ms.less";
+
+// Variables/Mixins
 @import "../../bower_modules/bootstrap/less/variables.less";
 @import "../../bower_modules/bootstrap/less/mixins.less";
 
 // Reset
 @import "../../bower_modules/bootstrap/less/normalize.less";
 @import "../../bower_modules/bootstrap/less/print.less";
+@import "../../bower_modules/bootstrap/less/glyphicons.less";
 
 // Core CSS
 @import "../../bower_modules/bootstrap/less/scaffolding.less";
 @import "../../bower_modules/bootstrap/less/type.less";
 @import "../../bower_modules/bootstrap/less/code.less";
 @import "../../bower_modules/bootstrap/less/grid.less";
-@import "../../bower_modules/bootstrap/less/tables.less";
+//@import "../../bower_modules/bootstrap/less/tables.less";
 @import "../../bower_modules/bootstrap/less/forms.less";
 @import "../../bower_modules/bootstrap/less/buttons.less";
 
 // Components
 @import "../../bower_modules/bootstrap/less/component-animations.less";
-@import "../../bower_modules/bootstrap/less/glyphicons.less";
 @import "../../bower_modules/bootstrap/less/dropdowns.less";
 @import "../../bower_modules/bootstrap/less/button-groups.less";
 @import "../../bower_modules/bootstrap/less/input-groups.less";
 @import "../../bower_modules/bootstrap/less/navs.less";
 @import "../../bower_modules/bootstrap/less/navbar.less";
-@import "../../bower_modules/bootstrap/less/breadcrumbs.less";
-@import "../../bower_modules/bootstrap/less/pagination.less";
-@import "../../bower_modules/bootstrap/less/pager.less";
-@import "../../bower_modules/bootstrap/less/labels.less";
-@import "../../bower_modules/bootstrap/less/badges.less";
-@import "../../bower_modules/bootstrap/less/jumbotron.less";
-@import "../../bower_modules/bootstrap/less/thumbnails.less";
-@import "../../bower_modules/bootstrap/less/alerts.less";
-@import "../../bower_modules/bootstrap/less/progress-bars.less";
-@import "../../bower_modules/bootstrap/less/media.less";
-@import "../../bower_modules/bootstrap/less/list-group.less";
-@import "../../bower_modules/bootstrap/less/panels.less";
-@import "../../bower_modules/bootstrap/less/wells.less";
-@import "../../bower_modules/bootstrap/less/close.less";
+//@import "../../bower_modules/bootstrap/less/breadcrumbs.less";
+//@import "../../bower_modules/bootstrap/less/pagination.less";
+//@import "../../bower_modules/bootstrap/less/pager.less";
+//@import "../../bower_modules/bootstrap/less/labels.less";
+//@import "../../bower_modules/bootstrap/less/badges.less";
+//@import "../../bower_modules/bootstrap/less/jumbotron.less";
+//@import "../../bower_modules/bootstrap/less/thumbnails.less";
+//@import "../../bower_modules/bootstrap/less/alerts.less";
+//@import "../../bower_modules/bootstrap/less/progress-bars.less";
+//@import "../../bower_modules/bootstrap/less/media.less";
+//@import "../../bower_modules/bootstrap/less/list-group.less";
+//@import "../../bower_modules/bootstrap/less/panels.less";
+@import "../../bower_modules/bootstrap/less/responsive-embed.less";
+//@import "../../bower_modules/bootstrap/less/wells.less";
+//@import "../../bower_modules/bootstrap/less/close.less";
 
 // Components w/ JavaScript
 @import "../../bower_modules/bootstrap/less/modals.less";
 @import "../../bower_modules/bootstrap/less/tooltip.less";
-@import "../../bower_modules/bootstrap/less/popovers.less";
-@import "../../bower_modules/bootstrap/less/carousel.less";
+//@import "../../bower_modules/bootstrap/less/popovers.less";
+//@import "../../bower_modules/bootstrap/less/carousel.less";
 
 // Utility classes
 @import "../../bower_modules/bootstrap/less/utilities.less";
@@ -53,6 +59,8 @@
 // Bootstrap dialog
 @import "../../bower_modules/bootstrap-dialog/dist/less/bootstrap-dialog.less";
 
+
+
 // remove borders
 @border-radius-base: 0px;
 @border-radius-large: 5px;
@@ -61,131 +69,36 @@
 @modal-title-padding: 8px;
 @modal-inner-padding: 8px;
 
+/* Set default font and header variables */
+
+@font-family-base: Open-sans, Arial;
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open-sans light', Arial
+}
+@font-size-h1: 50px;
+@btn-primary-bg: @blue;
 
 
+/* Bootstrap general visual apperance */
 
-// Mid-Small breakpoint
-
-@screen-ms: 480px;
-@screen-ms-min: @screen-ms;
-@screen-ms-max: (@screen-sm-min - 1);
-
-// Redefined Extra Small max value
-@screen-xs-max-new: (@screen-ms-min - 1);
-
-// Common styles (see make-grid-columns() in bootstrap/mixins/_grid-framework.less)
-
-.col-ms-1,
-.col-ms-2,
-.col-ms-3,
-.col-ms-4,
-.col-ms-5,
-.col-ms-6,
-.col-ms-7,
-.col-ms-8,
-.col-ms-9,
-.col-ms-10,
-.col-ms-11,
-.col-ms-12 {
-    position: relative;
-    // Prevent columns from collapsing when empty
-    min-height: 1px;
-    // Inner gutter via padding
-    padding-left: (@grid-gutter-width / 2);
-    padding-right: (@grid-gutter-width / 2);
+hr {
+  height: 1px;
+  border: 0;
 }
 
-// Misc. class adjustments for col-ms
-
-@media (min-width: @screen-ms) and (max-width: @screen-ms-max) {
-    .container {
-        max-width: @screen-sm - 20px;
-    }
-    .hidden-xs {
-        display: block !important;
-    }
-}
-
-// col-ms grid
-
-@media (min-width: @screen-ms-min) and (max-width: @screen-ms-max) {
-    .make-grid(ms);
-}
-
-// Visibility utilities
-
-.visible-xs, .visible-ms {
-    // set to no display so we have a fresh start
-    .responsive-invisibility;
-}
-
-.visible-xs-block,
-.visible-xs-inline,
-.visible-xs-inline-block,
-.visible-ms-block,
-.visible-ms-inline,
-.visible-ms-inline-block {
-    display: none !important;
-}
-
-@media (max-width: @screen-xs-max-new) {
-    .visible-xs {
-        .responsive-visibility;
-    }
-}
-.visible-xs-block {
-    @media (max-width: @screen-xs-max-new) {
-        display: block !important;
-    }
-}
-.visible-xs-inline {
-    @media (max-width: @screen-xs-max-new) {
-        display: inline !important;
-    }
-}
-.visible-xs-inline-block {
-    @media (max-width: @screen-xs-max-new) {
-        display: inline-block !important;
-    }
-}
-
-@media (min-width: @screen-ms-min) and (max-width: @screen-ms-max) {
-    .visible-ms {
-        .responsive-visibility;
-    }
-}
-.visible-ms-block {
-    @media (min-width: @screen-ms-min) and (max-width: @screen-ms-max) {
-        display: block !important;
-    }
-}
-.visible-ms-inline {
-    @media (min-width: @screen-ms-min) and (max-width: @screen-ms-max) {
-        display: inline !important;
-    }
-}
-.visible-ms-inline-block {
-    @media (min-width: @screen-ms-min) and (max-width: @screen-ms-max) {
-        display: inline-block !important;
-    }
-}
-
-@media (max-width: @screen-xs-max-new) {
-    .hidden-xs {
-        .responsive-invisibility;
-    }
-}
-
-@media (min-width: @screen-ms-min) and (max-width: @screen-ms-max) {
-    .hidden-ms {
-        .responsive-invisibility;
-    }
-}
-
+/* Bootstrap dialog changes */
 
 
 .modal-body {
     padding: 10px 1px 0px 0px;
+}
+
+.modal { 
+    &.bootstrap-dialog {
+        .modal-dialog {
+            z-index:1050;    
+        }
+    }
 }
 
 .modal-header-grey .modal-content .modal-header {
@@ -205,6 +118,17 @@
     padding: 0px 0px 0px 10px;
 }
 
+
+.center-xs
+{
+    @media (max-width: @screen-xs-min) {
+        .text-center()
+    }
+}
+
+
+
+/* Bootstrap Glyphicon changes */
 .glyphicon {
     opacity: 0.40;
 }
@@ -213,14 +137,102 @@
     opacity: 1;
 }
 
+
 .btn-shine-through {
     .button-variant(white, transparent, white);
+}
+
+.btn-shine-through:hover {
+    background-color: white;
+    color: black;
 }
 
 .top-buffer { margin-top: 10px; }
 
 
-@font-family-base: Open-sans light, Verdana, Arial;
-@font-size-h1: 50px;
-@headings-font-weight: 100;
-@btn-primary-bg: @blue;
+
+/* Boostrap nav-bar */
+.navbar {
+    border:0;
+}
+
+.navbar-default {
+    font-family: Open-sans;
+    color: @workspace-navbar-text;
+    padding-right:0px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    border-bottom: 2px solid transparent;
+}
+
+.navbar-default .navbar-collapse {
+    border: 0;
+    border-bottom: 1px solid @grey-background-darker;
+}
+
+.navbar-default .navbar-header {
+    border-bottom: 1px solid @grey-background-darker;
+}
+
+
+// defines an 2px border for selected and hovered items
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li.active > a,
+.navbar-default .navbar-nav > .open > a {
+    @media (min-width: @screen-sm) {
+        border-bottom: 3px solid @blue-light;
+    }
+}
+
+.navbar-default .navbar-nav > li.active > a {
+    font-weight: 900;
+}
+
+// defines a line below the entire navbar
+.navbar-default {
+    @media (min-width: @screen-sm) {
+        .shadow(0px 1px 3px @workspace-navbar-underline);
+    }
+}
+
+// set the brand settings
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: -2px;
+    color: @workspace-navbar-hover;
+}
+
+// sets the background color for the full size navbar and the brand
+.navbar-default,
+.navbar-nav,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li.active > a,
+.navbar-default .navbar-nav > li.active > a:hover {
+    background-color: @workspace-navbar-bg;
+}
+
+// defines the navbar style when collapsed
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li.active > a,
+.navbar-default .navbar-nav > li.active > a:hover {
+    @media (max-width: @screen-sm) {
+        background-color: @workspace-navbar-collapsed-hover;
+    }
+}
+
+
+.navbar-default .navbar-nav > li > .dropdown-menu {
+    background-color: @workspace-navbar-bg;
+}
+
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover {
+    background-color: @workspace-navbar-hover;
+}
+

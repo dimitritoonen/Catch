@@ -1,0 +1,16 @@
+<div class="workspace activity">
+    <div class="row hidden-md hidden-lg">
+        <div class="col-xs-12">
+            <activity-filter params='categories: categories, activityModel: activityModel'></activity-filter>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-7 list-container">
+            <activity-list params="activities: activityModel.Activities"></activity-list>
+        </div>
+        <div class="col-md-5 hidden-sm hidden-ms hidden-xs filter-container">
+            <activity-add></activity-add>
+            <activity-filter params="categories: categories, activityModel: activityModel"></activity-filter>
+        </div>
+    </div>
+</div>

@@ -52,8 +52,10 @@ module.exports = {
     src: [
         src + '/bower_modules/qtip2/jquery.qtip.min.css',
         src + '/bower_modules/font-awesome/css/font-awesome.min.css',
-        src + '/bower_modules/jcrop/css/jquery.Jcrop.min.css'
-      ]
+        src + '/bower_modules/jcrop/css/jquery.Jcrop.min.css',
+        src + '/bower_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+        src + '/bower_modules/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css'
+    ]
   },
   autoprefixer: {
     browsers: [
@@ -84,7 +86,7 @@ module.exports = {
     },
     production: {
       src: dest + '/*.html',
-      dest: production      
+      dest: production
     }
   },
   auth: {
@@ -101,7 +103,8 @@ module.exports = {
     development: {
       vendor: {
         paths: {
-          'require-js': 'bower_modules/requirejs/require'
+          'require-js': 'bower_modules/requirejs/require',
+          'jquery-mockjax': 'bower_modules/jquery-mockjax/jquery.mockjax'
         }
       },
 
@@ -113,15 +116,35 @@ module.exports = {
       dest: dest
     }
   },
+  modernizr: {
+    development: {
+      src: src + '/bower_modules/modernizr/modernizr.js',
+      dest: dest
+    },
+    production: {
+      src: [
+        '!' + src + '/bower_modules/**/*.js',
+        src + '/**/*.js'
+      ],
+      dest: dest + '/modernizr.js'
+    }
+  },
   components: {
     src: src + '/components/**/*.html',
     dest: dest
   },
   images: {
     src: [
-      src + '/images/**/*',
+      src + '/images/**/*.{jpg,jpeg,png,gif}',
       src + '/bower_modules/jcrop/css/*'
-      ],
+    ],
+    dest: dest + '/images/'
+  },
+  svgmin: {
+    src: [
+      '!' + src + '/bower_modules/**/*.svg',
+      src + '/images/**/*.svg'
+    ],
     dest: dest + '/images/'
   },
   fonts: {
@@ -146,7 +169,6 @@ module.exports = {
   // specifies the which files trigger the watch mechanism
   watch: {
     less: [
-      //'!' + src + '/less/vendor/bootstrap.less',
       src + '/less/**/*.less'
     ],
     scripts: src + '/**/*.js',
@@ -165,8 +187,9 @@ module.exports = {
   },
   recess: {
     src: [
-      src + '/less/**/*.less',
-      '!' + src + '/less/vendor/bootstrap.less'
+      '!' + src + '/less/vendor/bootstrap.less',
+      '!' + src + '/less/variables.less',
+      src + '/less/**/*.less'
     ],
     options: {
       noIDs: false
@@ -178,7 +201,7 @@ module.exports = {
       src + '/authentication/**/*.js',
       src + '/app/**/*.js',
       src + '/services/**/*.js'
-      ]
+    ]
   },
 
   /* building, optimization, and add revision for the production build */
@@ -211,38 +234,72 @@ module.exports = {
         include: [
             'requireLib',
             'pages/intro-page/intro-page',
-            'components/login-bar/login-bar',
-            'components/component-container/component-container',
-            'components/component-container/error-box/error-box',
-            'components/forgot-password/forgot-password',
-            'components/forgot-password/reset-password-sent/reset-password-sent'
+            'components/intro-page/login-bar/login-bar',
+            'components/intro-page/component-container/component-container',
+            'components/intro-page/component-container/error-box/error-box',
+            'components/intro-page/forgot-password/forgot-password',
+            'components/intro-page/forgot-password/reset-password-sent/reset-password-sent'
         ],
         insertRequire: ['app/startup'],
         bundles: {
           'account-activated': [
-            'components/activate-account/activate-account',
-            'components/activate-account/account-activated/account-activated'
+            'components/intro-page/activate-account/activate-account',
+            'components/intro-page/activate-account/account-activated/account-activated'
           ],
           'change-password': [
-          'components/change-password/change-password',
-          'components/change-password/password-changed/password-changed'
+          'components/intro-page/change-password/change-password',
+          'components/intro-page/change-password/password-changed/password-changed'
           ],
           'registration-page': [
             'services/auth-service',
             'services/auth-storage',
             'services/chunked-uploader',
-            'components/registration-bar/registration-bar',
-            'components/registration-bar/profile-image-upload/profile-image-upload',
-            'components/registration-bar/wizard-step1/wizard-step1',
-            'components/registration-bar/wizard-step2/wizard-step2',
-            'components/registration-bar/wizard-step3/wizard-step3'
+            'components/intro-page/registration-bar/registration-bar',
+            'components/intro-page/registration-bar/profile-image-upload/profile-image-upload',
+            'components/intro-page/registration-bar/wizard-step1/wizard-step1',
+            'components/intro-page/registration-bar/wizard-step2/wizard-step2',
+            'components/intro-page/registration-bar/wizard-step3/wizard-step3'
           ],
-          'auth-complete': ['authentication/auth-complete']
+          'auth-complete': [
+            'authentication/auth-complete'
+          ],
+          'workspace-page': [
+            'pages/workspace-page/workspace-page',
+            'components/workspace-page/nav-bar/nav-bar',
+            'components/workspace-page/workspace-component-left/profile-bar/profile-bar',
+            'components/workspace-page/workspace-component-left/workspace-component-left',
+            'components/workspace-page/workspace-component-right/workspace-component-right',
+            'components/workspace-page/workspace-component-main/workspace-component-main',
+          ],
+          'dashboard-page': [
+            'pages/workspace-page/dashboard-page/dashboard-page',
+            'components/workspace-page/dashboard-page/interesting-activities/interesting-activities',
+            'components/workspace-page/dashboard-page/activity-thumb/activity-thumb'
+          ],
+          'activities-page': [
+            'pages/workspace-page/activities-page/activities-page',
+            'components/workspace-page/activity-page/activity-filter/activity-filter',
+            'components/workspace-page/activity-page/activity-filter/activity-filter-dropdown/activity-filter-dropdown',
+            'components/workspace-page/activity-page/activity-listitem/activity-listitem',
+            'components/workspace-page/activity-page/activity-list/activity-list',
+            'components/workspace-page/activity-page/activity-add/activity-add',
+            'components/workspace-page/activity-page/activity-filter/participant-slider/participant-slider',
+            'components/workspace-page/activity-page/activity-filter/time-slider/time-slider'
+          ],
+          'notifications-page': [
+            'pages/workspace-page/notifications-page/notifications-page'
+          ],
+          'contacts-page': [
+            'pages/workspace-page/contacts-page/contacts-page'
+          ],
+          'profile-page': [
+            'pages/workspace-page/profile-page/profile-page'
+          ]
         }
       }
     },
     images: {
-      src: dest + '/images/**/*.{jpg,jpeg,png,gif}',
+      src: dest + '/images/**/*.{jpg,jpeg,png,gif,svg}',
       dest: production + '/images',
       options: {
         optimizationLevel: 3,
@@ -251,16 +308,24 @@ module.exports = {
       }
     },
     revision: {
-      src: {
-        base: production
-      },
-      dest: {
-        dest: production,
-        manifest: {
-          name: 'manifest.json',
-          path: production
-        }
+      src: [
+        production + '/**/*.css',
+        production + '/**/*.js',
+        production + '/images/**/*'
+      ],
+      dest: production,
+      manifest: {
+        name: 'manifest.json',
+        path: production
       }
+    },
+    revisionCollect: {
+      src: [
+        '!' + production + '/feed.xml',
+        production + '/manifest.json',
+        production + '/**/*.{html,xml,txt,json,css,js}'
+      ],
+      dest: production
     }
   }
 };
