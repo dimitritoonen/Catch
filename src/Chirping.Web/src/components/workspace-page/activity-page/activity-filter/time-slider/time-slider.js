@@ -9,12 +9,12 @@ define(['knockout', 'text!./time-slider.html', 'bindingHandlers/slider'], functi
     self.beginTime = ko.observable(self.activityModel.Filter.BeginTime());
     self.endTime = ko.observable(self.activityModel.Filter.EndTime());
 
-    var timeSlider;
+    self.slider;
 
     // gets the element upon slider initialization
     self.onSliderInit = function (slider) {
 
-      timeSlider = slider;
+      self.slider = slider;
 
       // update the user interface when sliding
       slider.on('change', function (slider) {
@@ -38,13 +38,21 @@ define(['knockout', 'text!./time-slider.html', 'bindingHandlers/slider'], functi
     
     // set the value of the time slider when the browser is resizing
     $(window).on('resize', function (event) {
-      if (timeSlider !== null) {
+      if (self.slider !== null) {
         
         var t = [params.activityModel.Filter.BeginTime(), params.activityModel.Filter.EndTime()];
 
-        $(timeSlider).slider('setValue', t);
+        $(self.slider).slider('setValue', t);
       }
     });
+  }
+
+  // cleanup event handlers
+  TimeSlider.prototype.dispose = function () {
+    $(window).off('resize');
+
+    $(self.slider).off('change');
+    $(self.slider).off('slideStop');
   }
   
   return { viewModel: TimeSlider, template: templateMarkup };

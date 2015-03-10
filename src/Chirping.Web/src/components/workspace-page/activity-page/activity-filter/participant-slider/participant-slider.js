@@ -6,12 +6,12 @@ define(['knockout', 'text!./participant-slider.html', 'bindingHandlers/slider'],
 
     self.participants = params.activityModel.Filter.Participants;
 
-    var participantSlider;
+    self.slider;
 
     // gets the element upon slider initialization
     self.onSliderInit = function (slider) {
 
-      participantSlider = slider;
+      self.slider = slider;
 
       slider.on('slideStop', function (slider) {
         params.activityModel.Filter.Participants(slider.value)
@@ -20,13 +20,19 @@ define(['knockout', 'text!./participant-slider.html', 'bindingHandlers/slider'],
 
     // set the value of the participant slider when the browser is resizing
     $(window).on('resize', function (event) {
-      if (participantSlider !== null) {
+      if (self.slider !== null) {
         var value = params.activityModel.Filter.Participants();
 
-        $(participantSlider).slider('setValue', value);
+        $(self.slider).slider('setValue', value);
       }
     });
   }
+
+  // clean up event handlers
+  ParticipantSlider.prototype.dispose = function () {
+    $(window).off('resize');
+    $(self.slider).off('slideStop');
+  };
 
   return { viewModel: ParticipantSlider, template: templateMarkup };
 
