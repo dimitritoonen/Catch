@@ -1,5 +1,7 @@
 ﻿#region using directives
 
+using Chirping.Web.Api.Common.Extension;
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -27,7 +29,6 @@ namespace Chirping.Web.Api.Common.Storage
             byte[] originalImageInBytes = Convert.FromBase64String(originalImage);
             byte[] avatarImageInBytes = ResizeImageToAvatar(originalImageInBytes);
 
-            //var uniqueKey = Guid.NewGuid().ToString("N");
             var originalImageFileName = string.Format("{0}.jpg", filename);
             var avatarImageFileName = string.Format("{0}_avatar.jpg", filename);
 
@@ -43,10 +44,11 @@ namespace Chirping.Web.Api.Common.Storage
             {
                 using (var image = System.Drawing.Image.FromStream(stream))
                 {
+                    // resize
                     var bitmap = new Bitmap(image, _avatarSize);
 
-                    ImageConverter converter = new ImageConverter();
-                    return (byte[])converter.ConvertTo(bitmap, typeof(byte[]));
+                    // compress
+                    return bitmap.ToCompressedBytes();
                 }
             }
         }
