@@ -40,9 +40,7 @@ define(['knockout', 'text!./login-bar.html', 'services/auth-service', 'services/
         username: self.username(),
         password: self.password()
       };
-
-      console.log(data);
-
+      
       login.LoginUser(data).done(function () {
         redirectToDashboard();
       }).error(function (data) {

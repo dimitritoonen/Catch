@@ -6,15 +6,15 @@
   ], function ($, mockActivities, mockCategories) {
 
   $.mockjax({
-    url: 'http://localhost:4421/api/activity',
-    responseTime: 30, response: function (filter) {
+    url: 'http://192.168.1.17/Chirping.Web.Api/api/activity',
+    responseTime: 1000, response: function (filter) {
 
       this.responseText = mockActivities.GetActivities(filter);
     }
   });
 
   $.mockjax({
-    url: 'http://localhost:4421/api/category',
+    url: 'http://192.168.1.17/Chirping.Web.Api/api/category',
     responseTime: 30,
     response: function (settings) {
 

@@ -70,31 +70,6 @@ define(['jquery', 'knockout', 'text!./wizard-step1.html', 'app/app.config', 'ser
 
       self.container.updateActiveComponent('login-bar');
     };
-
-
-    //this.callApi = function () {
-
-    //  // If we already have a bearer token, set the Authorization header.
-    //  var headers = {};
-    //  //if (token) {
-    //  //  headers.Authorization = 'Bearer ' + authStorage.GetToken;
-    //  //}
-
-    //  headers.Authorization = 'Bearer ' + authStorage.GetToken();
-
-    //  $.ajax({
-    //    type: 'GET',
-    //    url: 'http://localhost:4421/api/values/1',
-    //    headers: headers
-    //  }).done(function (data) {
-    //    console.log('done');
-    //    console.log(data);
-    //  }).fail(function (data) {
-    //    console.log('error');
-    //    console.log(data)
-    //  });
-
-    //};
   }
   
   return { viewModel: WizardStep1, template: templateMarkup };

@@ -5,6 +5,9 @@ define(['jquery', 'knockout', './router', 'bootstrap', 'validation/ko-validation
       contentType: 'application/json; charset=utf-8'
     });
 
+    // enables cors support in jquery (this is needed for IE9 to work)
+    $.support.cors = true;
+
 
     // Components can be packaged as AMD modules, such as the following:
 

@@ -16,12 +16,12 @@ namespace Chirping.Web.Api.Domain.Tests.User
         {
             // arrange
             var filename = Guid.NewGuid().ToString("N");
-            var path = "http://storage-dev.chirping.nl/profileimages";
+            var path = "http://storage-dev.chirping.nl";
 
             ConfigurationManager.AppSettings["CloudStorage.Url"] = path;
 
-            var expectedFileName = string.Format("{0}/{1}.jpg", path, filename);
-            var expectedAvatar = string.Format("{0}/{1}_avatar.jpg", path, filename);
+            var expectedFileName = string.Format("{0}/profileimages/{1}.jpg", path, filename);
+            var expectedAvatar = string.Format("{0}/profileimages/{1}_avatar.jpg", path, filename);
 
             // act
             var actual = new ProfileImage(filename);

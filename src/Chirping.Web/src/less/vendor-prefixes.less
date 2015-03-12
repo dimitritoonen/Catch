@@ -3,17 +3,18 @@
 //
 
 .transition(@transition) {
-    -webkit-transform: @transition;
+    -webkit-transition: @transition;
+    -ms-transition: @transition;
     -moz-transition: @transition;
     -o-transition: @transition;
     transition: @transition;
 }
 
 .transform(@transform) {
-    transform: @transform;
     -webkit-animation: @transform;
     -moz-animation: @transform;
     -o-animation: @transform;
+    animation: @transform;
 }
 
 .shadow(@shadow) {

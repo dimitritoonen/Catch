@@ -8,14 +8,13 @@ define(['knockout', 'text!./activity-listitem.html', '../category-icon-mapping',
     self.category = params.activity.Category;
     self.participants = params.activity.Participants;
     self.owner = params.activity.Owner;
-    
+        
     var map = categoryMap;
     
     self.iconMap = map.Get(self.category.Code);
     
     // convert datetime format
-    var date = new Date(self.activity.Date);
-    self.timestamp = moment(date).format('D MMMM / HH:mm');
+    self.timestamp = moment(self.activity.Date).format('D MMMM / HH:mm');
    
     self.allowExpand = ko.observable(false);
     self.expandTile = function (data, event) {

@@ -4,7 +4,7 @@
 
     var activities = [
       {
-        Id: 883, Category: { Code: 'sport', Description: 'Sport' }, Date: moment().format('YYYY-MM-DD') + 'T19:00', Location: 'Rotterdam',
+        Id: 883, Category: { Code: 'sport', Description: 'Sport' }, Date: moment().format('YYYY-MM-DD') + 'T20:00:00', Location: 'Rotterdam',
         Owner: { 'Id': '1', 'NickName': 'Dimitri', 'Image': '/Images/profile.jpg', 'ImageAvatar': '/Images/profile_avatar.jpg' },
         Content: 'orem ipsum dolor sit amet, consectetuer adipiscing elit.',
         Participants: [

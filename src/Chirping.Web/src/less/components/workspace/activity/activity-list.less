@@ -10,7 +10,7 @@
 // defines the base namespace for the workspace activity styles
 .workspace {
     &.activity {
-
+        
         @media (min-width: @screen-sm) {
             padding: 10px 10px 0 10px;
         }
@@ -19,7 +19,7 @@
             position: absolute;
             right: 0;
         }*/
-
+        
         .list {
             z-index: 1;
             background-color: white;
@@ -28,6 +28,29 @@
                 border: 1px solid @grey-background-darker;
                 border-radius: @border-radius-base;
             }
+
+            /* white overlay when loading activities */
+            >.loading-overlay {
+                display: none;
+
+                &.show {
+                    display: inline;
+
+                    position: absolute;
+                    left: 15px;
+                    right: 10px;
+                    top: 0;
+                    background-color: white;
+                    opacity: 0.85;
+                    min-height:100%;
+                    z-index: 2;
+
+                    @media (min-width: @screen-sm) {
+                        border: 1px solid @grey-background-darker;
+                        border-radius: @border-radius-base;
+                    }
+                } // show
+            } // loading-overlay
 
             > .header {
                 padding-top: 10px;
@@ -43,6 +66,15 @@
 
             @media (max-width: @screen-md) {
                 padding-right: 15px;
+            }
+
+            .loading-icon {
+                width: 100%;
+                position: absolute;
+                left: 15px;
+                right: 10px;
+                z-index: 10;
+                margin-top: 15px;
             }
         }
 
@@ -60,7 +92,7 @@
         }
 
         .no-activities-found {
-            margin-top: 30px;
+            margin-top: 15px;
             text-align: center;
         }
     }

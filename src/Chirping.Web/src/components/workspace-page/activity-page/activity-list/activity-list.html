@@ -1,5 +1,12 @@
+<!-- ko if: loadingActivites() === true -->
+    <div class="loading-icon text-center">
+        <i class="fa fa-circle-o-notch fa-lg spin icon-blue-lighter"></i>
+    </div>
+<!-- /ko -->
+
 <!-- ko if: activities().length > 0 -->
     <div class="list">
+        <div class="loading-overlay"></div>
         <div class="header" data-bind="css: { 'hide': displayHeader }">
             <h4 data-bind="html: header"></h4>
         </div>
@@ -8,8 +15,9 @@
         </div>
     </div>
 <!-- /ko -->
+
 <!-- ko if: activities().length == 0 -->
-    <div class="no-activities-found">
+    <div class="no-activities-found hide">
         No activities found...
     </div>
 <!-- /ko -->

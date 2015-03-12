@@ -4,7 +4,7 @@
 
   var environmentConfig = {
     development: {
-      baseUrl: 'http://localhost:4421/'
+      baseUrl: 'http://192.168.1.17/Chirping.Web.Api/'
     },
     acceptance: {
       baseUrl: 'http://api-acceptance.chirping.nl/'

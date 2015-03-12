@@ -9,7 +9,7 @@
 
     // map login data to a querystring
     var data = 'grant_type=password&username=' + loginData.username + '&password=' + loginData.password + '&client_id=ChirpingWeb';
-
+    
     return $.ajax({
       type: 'POST',
       url: config.BaseUrl + 'token',

@@ -4,7 +4,20 @@ define(['knockout', 'text!./activity-list.html'], function (ko, templateMarkup) 
     
     var self = this;
     
-    self.activities = params.activities;
+    var model = params.model;
+    self.activities = model.Activities;
+    self.loadingActivites = model.LoadingActivities;
+
+    // display a loading image if activities are loading
+    model.LoadingActivities.subscribe(function (value) {
+      if (value) {
+        $('.loading-overlay').addClass('show');
+        $('.no-activities-found').addClass('hide');
+      } else {
+        $('.loading-overlay').removeClass('show');
+        $('.no-activities-found').removeClass('hide');
+      }
+    });
 
     self.header = params.header;
 

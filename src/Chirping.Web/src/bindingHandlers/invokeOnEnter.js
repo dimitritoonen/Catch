@@ -11,6 +11,9 @@
       $(element).keyup(function (event) {
         if (event.keyCode == enterKey) {
 
+          // needs to blur the DOM element to update the value of the possible bound observable
+          $(element).blur();
+
           // invoke function 'funct()'
           valueAccessor().funct();
         }

@@ -16,15 +16,23 @@
     // defines the marker position of the filter slider
     self.SliderMarkerPosition = ko.observable();
 
+    // Indicates if the model is currently loading activities from the server
+    self.LoadingActivities = ko.observable(false);
     
     var GetActivities = function () {
       
-      var filter = GetFilter();
-      
-      webapi.Get('api/activity', filter).done(function (result) {
+      // indicate that we're loading activities
+      self.LoadingActivities(true);
 
-        self.Activities(result);
-      });
+      var filter = GetFilter();
+            
+      webapi.Get('api/activity', filter)
+        .done(function (result) {
+
+          self.Activities(result);
+          self.LoadingActivities(false);
+
+        }).error(function (result) { self.LoadingActivities(false); });
     }
 
     // get the filter object
