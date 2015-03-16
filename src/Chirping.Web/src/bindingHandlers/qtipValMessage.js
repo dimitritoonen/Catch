@@ -1,4 +1,4 @@
-﻿define(['jquery', 'knockout'], function ($, ko) {
+﻿define(['jquery', 'knockout', 'qtip2'], function ($, ko) {
 
   // bind the QTip2 to the knockout validation
   ko.bindingHandlers.qtipValMessage = {
@@ -41,7 +41,7 @@
   function SetValidationStateControl(elementId, observable, isValid) {
 
     var $element = $('#' + elementId);
-
+    
     if (!isValid) {
 
       $element.qtip({

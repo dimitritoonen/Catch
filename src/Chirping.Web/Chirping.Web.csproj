@@ -104,6 +104,7 @@
     <Content Include="gulp\tasks\production.js" />
     <Content Include="gulp\tasks\acceptance-build\build.js" />
     <Content Include="gulp\tasks\prod-build\build.js" />
+    <Content Include="gulp\utils\string-extender.js" />
     <Content Include="gulp\utils\underscore-extender.js" />
     <Content Include="karma.conf.js" />
     <Content Include="src\app\app.config.js" />
@@ -142,10 +143,10 @@
     <Content Include="src\components\workspace-page\activity-page\activity-add\activity-add.js" />
     <Content Include="src\components\workspace-page\activity-page\activity-filter\time-slider\time-slider.html" />
     <Content Include="src\components\workspace-page\activity-page\activity-filter\time-slider\time-slider.js" />
+    <Content Include="src\components\workspace-page\activity-page\category-dropdown\category-dropdown.js" />
     <Content Include="src\mock_server\mock-categories.js" />
     <Content Include="src\models\activity-filter-model.js" />
-    <Content Include="src\components\workspace-page\activity-page\activity-filter\activity-filter-dropdown\activity-filter-dropdown.html" />
-    <Content Include="src\components\workspace-page\activity-page\activity-filter\activity-filter-dropdown\activity-filter-dropdown.js" />
+    <Content Include="src\components\workspace-page\activity-page\category-dropdown\category-dropdown.html" />
     <Content Include="src\components\workspace-page\activity-page\activity-filter\participant-slider\participant-slider.html" />
     <Content Include="src\components\workspace-page\activity-page\activity-filter\participant-slider\participant-slider.js" />
     <Content Include="src\models\activity-model.js" />
@@ -277,11 +278,28 @@
     <Content Include="src\less\components\workspace\activity\activity-filter.less" />
     <Content Include="src\less\components\workspace\activity\activity-list.less" />
     <Content Include="src\less\components\workspace\activity\activity-listitem.less" />
+    <Content Include="src\less\components\workspace\activity\activity-add.less" />
     <None Include="src\less\styles.less" />
     <Content Include="src\Web.config" />
     <Content Include="src\less\vendor\jcrop.less" />
     <Content Include="src\less\vendor\viewpoints\screen-workspace-right.less" />
     <Content Include="src\less\vendor\bootstrap-slider.less" />
+    <None Include="web.Acceptance.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Production.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Web.Api debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

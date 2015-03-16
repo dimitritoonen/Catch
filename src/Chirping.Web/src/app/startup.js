@@ -60,7 +60,7 @@ define(['jquery', 'knockout', './router', 'bootstrap', 'validation/ko-validation
 
     // workspace-page -> activity-page
     ko.components.register('activity-filter', { require: 'components/workspace-page/activity-page/activity-filter/activity-filter' });
-    ko.components.register('activity-filter-dropdown', { require: 'components/workspace-page/activity-page/activity-filter/activity-filter-dropdown/activity-filter-dropdown' });
+    ko.components.register('category-dropdown', { require: 'components/workspace-page/activity-page/category-dropdown/category-dropdown' });
     ko.components.register('activity-listitem', { require: 'components/workspace-page/activity-page/activity-listitem/activity-listitem' });
     ko.components.register('activity-list', { require: 'components/workspace-page/activity-page/activity-list/activity-list' });
     ko.components.register('activity-add', { require: 'components/workspace-page/activity-page/activity-add/activity-add' });

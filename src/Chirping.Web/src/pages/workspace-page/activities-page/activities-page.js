@@ -5,6 +5,7 @@ define(['knockout', 'text!./activities-page.html', 'services/webapi-service', 'm
     var self = this;
 
     self.activityModel = activityModel;
+    self.categories = ko.observableArray();
 
     webapi.Get('api/category').done(function (result) {
       
@@ -13,8 +14,6 @@ define(['knockout', 'text!./activities-page.html', 'services/webapi-service', 'm
       // add empty item to the beginning of the list to reset
       self.categories.unshift({ 'Code': undefined, 'Description': '' });
     });
-
-    self.categories = ko.observableArray();
   }
 
 

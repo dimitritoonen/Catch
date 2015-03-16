@@ -5,21 +5,12 @@ define(['knockout', 'text!./activity-filter.html', 'moment', 'bindingHandlers/da
     var self = this;
 
     self.activityModel = params.activityModel;
-    
     self.categories = params.categories;
-
-    self.participantList = ko.observableArray([
-      { 'Code': '2', 'Description': '2 participants' },
-      { 'Code': '4', 'Description': '4 participants' },
-      { 'Code': '5', 'Description': '5 participants' },
-      { 'Code': '6', 'Description': '6 participants' },
-      { 'Code': '7', 'Description': '7 participants' },
-      { 'Code': '8', 'Description': '8 participants' },
-      { 'Code': '9', 'Description': 'More' }
-    ]);
+    self.fromPicker, self.tillPicker;
     
-    self.fromPicker;
-    self.tillPicker;
+    self.onCategoryChange = function (category) {
+      self.activityModel.Filter.Category(category);
+    };
 
     // initializes the from picker 
     self.onFromInit = function (picker) {
@@ -40,17 +31,11 @@ define(['knockout', 'text!./activity-filter.html', 'moment', 'bindingHandlers/da
           self.activityModel.Filter.FromDate(e.date.format());
         }
       });
-
-      $(picker).on('dp.hide', function (e) {
-        // unfocus after a date has been chosen
-        $(self.fromPicker).blur();
-      });
     }
 
     self.IsFromDateChanged = function (date) {
       return (date.format("YYYY-MM-DD") === moment(self.activityModel.Filter.FromDate()).format("YYYY-MM-DD"));
     }
-
 
     // initializes the till picker 
     self.onTillInit = function (picker) {
@@ -67,14 +52,9 @@ define(['knockout', 'text!./activity-filter.html', 'moment', 'bindingHandlers/da
            self.activityModel.Filter.TillDate(e.date.format());
          }
        });
-
-       $(picker).on('dp.hide', function (e) {
-         // unfocus after a date has been chosen
-         $(self.tillPicker).blur();
-       });
     }
 
-
+    // scale participant slider
     $(window).on('resize', function () {
       if (self.tillPicker !== undefined) {
         var tillDate = self.activityModel.Filter.TillDate();
@@ -90,16 +70,12 @@ define(['knockout', 'text!./activity-filter.html', 'moment', 'bindingHandlers/da
         $(self.fromPicker).data('DateTimePicker').date(fromDate);
       }
     });
-
   }
 
   // clear event handlers
   ActivityFilter.prototype.dispose = function () {
     $(window).off('resize');
-    $(self.tillPicker).off('db.hide');
     $(self.tillPicker).off('db.change');
-
-    $(self.fromPicker).off('db.hide');
     $(self.fromPicker).off('db.change');
   };
 

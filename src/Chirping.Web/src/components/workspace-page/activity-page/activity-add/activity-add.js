@@ -1,11 +1,47 @@
-define(['knockout', 'text!./activity-add.html'], function(ko, templateMarkup) {
+define(['knockout', 'text!./activity-add.html', 'bindingHandlers/datetimepicker'], function (ko, templateMarkup) {
 
   function ActivityAdd(params) {
-    this.message = ko.observable('Hello from the activity-add component!');
+    
+    var self = this;
+
+    // activity fields
+    self.description = ko.observable().extend({
+      required: true
+    });
+    self.date = ko.observable().extend({
+      required: true
+    });
+    self.time = ko.observable().extend({
+      required: true
+    });
+    self.category = ko.observable().extend({
+      required: true
+    });
+    self.location = ko.observable().extend({
+      required: true
+    });
+
+    self.categories = params.categories;
+    
+    self.onDatePickerChange = function (value) {
+
+      self.date(value.date);
+
+    };
+
+    self.onTimePickerChange = function (value) {
+
+      self.time(value.date);
+
+    };
+
+    self.onCategoryChange = function (category) {
+      
+      self.category(category);
+      
+    };
   }
 
-  // This runs when the component is torn down. Put here any logic necessary to clean up,
-  // for example cancelling setTimeouts or disposing Knockout subscriptions/computeds.
   ActivityAdd.prototype.dispose = function() { };
   
   return { viewModel: ActivityAdd, template: templateMarkup };

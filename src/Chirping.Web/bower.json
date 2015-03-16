@@ -12,7 +12,8 @@
     "eventie": "1.0.5",
     "imagesloaded": "3.1.8",
     "jcrop": "v0.9.12",
-    "jquery": "2.1.1",
+    "jquery": "jquery#~2.1.3",
+    "jquery-legacy": "jquery#1.9.1",
     "jquery-ui": "~1.11.2",
     "js-signals": "1.0.0",
     "hasher": "~1.2.0",
@@ -31,7 +32,7 @@
   },
   "resolutions": {
     "knockout": "~3.3.0",
-    "bootstrap": "3.3.2"
+    "bootstrap": "~3.3.2"
   },
   "devDependencies": {
     "jquery-mockjax": "~1.6.1"

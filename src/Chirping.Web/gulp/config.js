@@ -279,7 +279,7 @@ module.exports = {
           'activities-page': [
             'pages/workspace-page/activities-page/activities-page',
             'components/workspace-page/activity-page/activity-filter/activity-filter',
-            'components/workspace-page/activity-page/activity-filter/activity-filter-dropdown/activity-filter-dropdown',
+            'components/workspace-page/activity-page/category-dropdown/category-dropdown',
             'components/workspace-page/activity-page/activity-listitem/activity-listitem',
             'components/workspace-page/activity-page/activity-list/activity-list',
             'components/workspace-page/activity-page/activity-add/activity-add',
