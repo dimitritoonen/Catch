@@ -4,9 +4,18 @@ define(['knockout', 'text!./participant-slider.html', 'bindingHandlers/slider'],
 
     var self = this;
 
-    self.participants = params.activityModel.Filter.Participants;
-
     self.slider;
+    self.minValue = ko.observable(1);
+    self.participantSelection = params.value;
+    self.showLabel = ko.observable(true);
+
+    if (params.showLabel !== undefined) {
+      self.showLabel(params.showLabel);
+    }
+
+    if (params.minValue !== undefined) {
+      self.minValue(params.minValue);
+    }
 
     // gets the element upon slider initialization
     self.onSliderInit = function (slider) {
@@ -14,16 +23,14 @@ define(['knockout', 'text!./participant-slider.html', 'bindingHandlers/slider'],
       self.slider = slider;
 
       slider.on('slideStop', function (slider) {
-        params.activityModel.Filter.Participants(slider.value)
+        self.participantSelection(slider.value);
       });
     }
 
     // set the value of the participant slider when the browser is resizing
     $(window).on('resize', function (event) {
       if (self.slider !== null) {
-        var value = params.activityModel.Filter.Participants();
-
-        $(self.slider).slider('setValue', value);
+        $(self.slider).slider('setValue', self.participantSelection());
       }
     });
   }

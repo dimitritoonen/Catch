@@ -282,8 +282,10 @@ module.exports = {
             'components/workspace-page/activity-page/category-dropdown/category-dropdown',
             'components/workspace-page/activity-page/activity-listitem/activity-listitem',
             'components/workspace-page/activity-page/activity-list/activity-list',
-            'components/workspace-page/activity-page/activity-add/activity-add',
-            'components/workspace-page/activity-page/activity-filter/participant-slider/participant-slider',
+            'components/workspace-page/activity-page/activity-controls/activity-controls',
+            'components/workspace-page/activity-page/activity-controls/activity-add/activity-add',
+            'components/workspace-page/activity-page/activity-controls/activity-bookmarks/activity-bookmarks',
+            'components/workspace-page/activity-page/participant-slider/participant-slider',
             'components/workspace-page/activity-page/activity-filter/time-slider/time-slider'
           ],
           'notifications-page': [

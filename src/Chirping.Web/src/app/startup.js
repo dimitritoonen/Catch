@@ -63,9 +63,12 @@ define(['jquery', 'knockout', './router', 'bootstrap', 'validation/ko-validation
     ko.components.register('category-dropdown', { require: 'components/workspace-page/activity-page/category-dropdown/category-dropdown' });
     ko.components.register('activity-listitem', { require: 'components/workspace-page/activity-page/activity-listitem/activity-listitem' });
     ko.components.register('activity-list', { require: 'components/workspace-page/activity-page/activity-list/activity-list' });
-    ko.components.register('activity-add', { require: 'components/workspace-page/activity-page/activity-add/activity-add' });
-    ko.components.register('participant-slider', { require: 'components/workspace-page/activity-page/activity-filter/participant-slider/participant-slider' });
+    ko.components.register('activity-controls', { require: 'components/workspace-page/activity-page/activity-controls/activity-controls' });
+    ko.components.register('activity-add', { require: 'components/workspace-page/activity-page/activity-controls/activity-add/activity-add' });
+    ko.components.register('activity-bookmarks', { require: 'components/workspace-page/activity-page/activity-controls/activity-bookmarks/activity-bookmarks' });
+    ko.components.register('participant-slider', { require: 'components/workspace-page/activity-page/participant-slider/participant-slider' });
     ko.components.register('time-slider', { require: 'components/workspace-page/activity-page/activity-filter/time-slider/time-slider' });
+    
 
 
             

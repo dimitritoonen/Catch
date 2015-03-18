@@ -5,11 +5,19 @@ define(['knockout', 'text!./activity-filter.html', 'moment', 'bindingHandlers/da
     var self = this;
 
     self.activityModel = params.activityModel;
-    self.categories = params.categories;
+
+    // initialize category list with empty value
+    self.categories = ko.observableArray([{ 'Code': undefined, 'Description': '' }]);
+    self.categories.push.apply(self.categories, params.categories());
+    
     self.fromPicker, self.tillPicker;
     
     self.onCategoryChange = function (category) {
       self.activityModel.Filter.Category(category);
+    };
+
+    self.onParticipantsChange = function (participants) {
+      params.activityModel.Filter.Participants(participants)
     };
 
     // initializes the from picker 

@@ -1,0 +1,53 @@
+﻿@import "../../../../variables.less";
+
+/*
+    Defines the styles for the activity controls
+*/
+
+.workspace {
+    &.controls {
+        background-color: @grey-background;
+        border: 1px solid @grey-background-darker;
+        border-radius: @border-radius-base;
+        margin-bottom: 10px;
+        font-size: 0.9em;
+
+        >.wrapper {
+            min-height: 65px;
+
+            >.buttons {
+                padding: 10px 10px 32px 10px;
+                display: block;
+                min-height: 25px;
+                text-align:center;
+
+                .text {
+                    padding-left: 10px;
+                    height: 100%;
+                    line-height: 25px;
+                }
+
+                >.add-activity-button {
+                    color: @blue-light;
+                    cursor: pointer;
+                    float: left;
+                }
+
+                >.add-activity-button:hover {
+                    color: @blue !important;
+                }
+
+                >.bookmarks-button {
+                    color: @blue-light;
+                    margin-left: 20px;
+                    cursor: pointer;
+                    float: left;
+                }
+
+                >.bookmarks-button:hover {
+                    color: @blue;
+                }
+            } // buttons
+        }
+    } // controls
+}
