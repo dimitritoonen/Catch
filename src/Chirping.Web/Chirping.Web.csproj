@@ -117,6 +117,7 @@
     <Content Include="src\bindingHandlers\bindingHandlers.js" />
     <Content Include="src\bindingHandlers\datetimepicker.js" />
     <Content Include="src\bindingHandlers\invokeOnEnter.js" />
+    <Content Include="src\bindingHandlers\qtipTooltip.js" />
     <Content Include="src\bindingHandlers\qtipValMessage.js" />
     <Content Include="src\bindingHandlers\slider.js" />
     <Content Include="src\bindingHandlers\tooltip.js" />
@@ -148,10 +149,12 @@
     <Content Include="src\components\workspace-page\activity-page\activity-filter\time-slider\time-slider.html" />
     <Content Include="src\components\workspace-page\activity-page\activity-filter\time-slider\time-slider.js" />
     <Content Include="src\components\workspace-page\activity-page\category-dropdown\category-dropdown.js" />
+    <Content Include="src\components\workspace-page\activity-page\participant-slider\participant-slider.html" />
+    <Content Include="src\extensions\extensionMethods.js" />
+    <Content Include="src\extensions\getByProperty.js" />
     <Content Include="src\mock_server\mock-categories.js" />
     <Content Include="src\models\activity-filter-model.js" />
     <Content Include="src\components\workspace-page\activity-page\category-dropdown\category-dropdown.html" />
-    <Content Include="src\components\workspace-page\activity-page\participant-slider\participant-slider.html" />
     <Content Include="src\components\workspace-page\activity-page\participant-slider\participant-slider.js" />
     <Content Include="src\models\activity-model.js" />
     <Content Include="src\components\workspace-page\activity-page\category-icon-mapping.js" />

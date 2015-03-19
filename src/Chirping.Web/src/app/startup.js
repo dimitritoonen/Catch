@@ -1,4 +1,4 @@
-define(['jquery', 'knockout', './router', 'bootstrap', 'validation/ko-validation-config', 'bindingHandlers/bindingHandlers'],
+define(['jquery', 'knockout', './router', 'bootstrap', 'validation/ko-validation-config', 'bindingHandlers/bindingHandlers', 'extensions/extensionMethods'],
   function ($, ko, router, auth) {
 
     $.ajaxSetup({

@@ -1,0 +1,14 @@
+<div class="text-left">
+    <span data-bind="if: showLabel">Participants:</span><b><span class="workspace-participant-text" data-bind="html: participantSelection()"></span></b>
+</div>
+<input type="text" class="slider"
+        data-bind='
+        slider: {
+            options: {
+                min: minValue(), value: participantSelection()
+            },
+            init: onSliderInit
+        }'
+        data-slider-min="2"
+        data-slider-max="10"
+        data-slider-step="1" />

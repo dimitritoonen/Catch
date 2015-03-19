@@ -1,6 +1,8 @@
 <div class="workspace activity filter">
     <div class="filter-icons text-right">
-        <i class="icon fa fa-sliders fa-lg" data-toggle="collapse" data-target=".filter-container-controls"></i>
+        <i class="icon fa fa-bookmark-o fa-2x"></i>
+        <i class="icon fa fa-sliders fa-2x" data-toggle="collapse" data-target=".filter-container-controls"></i>
+        <i class="icon fa fa-pencil fa-2x"></i>
     </div>
     <div class="filter-container-controls collapse">
         <div class="row">
@@ -14,15 +16,15 @@
             <div class="col-xs-6 padding-bottom">
                 <div class="activity-filter-label">From</div>
                 <input type="text"
-                       data-bind='datetimepicker: {
-                                    options: {
-                                        maxDate: activityModel.Filter.TillDate(),
-                                        showClear: true,
-                                        widgetPositioning: { horizontal: "left", vertical: "auto" }
-                                    },
-                                    init: onFromInit
-                                  }'
-                       class="form-control activity-filter-date" placeholder="From" />
+                        data-bind='datetimepicker: {
+                                options: {
+                                    maxDate: activityModel.Filter.TillDate(),
+                                    showClear: true,
+                                    widgetPositioning: { horizontal: "left", vertical: "auto" }
+                                },
+                                init: onFromInit
+                                }'
+                        class="form-control activity-filter-date" placeholder="From" />
             </div>
             <div class="col-xs-6 padding-bottom">
                 <div class="activity-filter-label">Till</div>
@@ -40,12 +42,12 @@
         </div>
         <div class="row">
             <!--<div class="col-lg-5 col-md-6 col-sm-4 col-ms-3 col-xs-6 padding-bottom">-->
-            <div class="col-xs-12 padding-bottom">
+            <div class="col-xs-12 padding-bottom text-center">
                 <time-slider params="activityModel: activityModel"></time-slider>
             </div>
         </div>
         <div class="row">
-            <div class="workspace-default-slider col-md-12 col-sm-12 col-xs-12">
+            <div class="workspace-default-slider text-center col-md-12 col-sm-12 col-xs-12">
                 <participant-slider params="minValue: 2, value: activityModel.Filter.Participants"></participant-slider>
             </div>
         </div>

@@ -13,43 +13,26 @@ define(['knockout', 'text!./activity-add.html', 'moment', 'bindingHandlers/datet
     self.location = ko.observable().extend({ required: true });
 
     self.categories = params.categories;
-
+    
     // ensures that the time pickers can select all minutes/hours
     self.yesterdaysDate = moment().add(-1, 'days');
 
-    self.onDatePickerChange = function (value) {
+    // store values from datepickers and dropdown
+    self.onDatePickerChange = function (value) { self.date(value.date); };
+    self.onTimePickerChange = function (value) { self.time(value.date); };
+    self.onCategoryChange = function (category) { self.category(category); };
 
-      self.date(value.date);
-
-    };
-
-    self.onTimePickerChange = function (value) {
-
-      self.time(value.date);
-
-    };
-
-    self.onCategoryChange = function (category) {
-
-      self.category(category);
-
-    };
-
-
-    $('#chainAcceptInfoButton').qtip({
-      suppress: false,
-      content: {
-        text: $('#chainAcceptInfoButton').next('.tooltiptext')
-      },
-      show: { event: 'click mouseenter focus' },
-      hide: {
-        event: 'mouseleave focusout leave'
-      },
-      position: { my: 'bottom center', at: 'top center' },
-      style: { classes: 'qtip-bootstrap' }
+    // when control is expanded focus description field
+    $('#addActivityControl').on('shown.bs.collapse', function () {
+      $('#descriptionTextbox').focus();
     });
   }
   
+  // dispose events
+  ActivityAdd.prototype.dispose = function () {
+    $('#addActivityControl').off('shown.bs.collapse');
+  };
+
   return { viewModel: ActivityAdd, template: templateMarkup };
 
 });

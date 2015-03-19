@@ -2,6 +2,7 @@
   './invokeOnEnter',
   './qtipValMessage',
   './tooltip',
+  './qtipTooltip'
 ]
   , function (ko) {
 
