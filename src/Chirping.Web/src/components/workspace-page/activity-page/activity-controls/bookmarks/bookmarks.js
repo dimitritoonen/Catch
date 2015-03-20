@@ -1,4 +1,4 @@
-define(['knockout', 'text!./activity-bookmarks.html'], function(ko, templateMarkup) {
+define(['knockout', 'text!./bookmarks.html'], function(ko, templateMarkup) {
 
   function ActivityBookmarks(params) {
     

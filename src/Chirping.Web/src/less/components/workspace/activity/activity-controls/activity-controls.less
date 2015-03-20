@@ -1,4 +1,5 @@
 ﻿@import "../../../../variables.less";
+@import "../../../../vendor/viewpoints/screen-ms.less";
 
 /*
     Defines the styles for the activity controls
@@ -7,45 +8,63 @@
 .workspace {
     &.controls {
         background-color: @grey-background;
-        border: 1px solid @grey-background-darker;
-        border-radius: @border-radius-base;
-        margin-bottom: 10px;
-        font-size: 0.9em;
+
+        @media (min-width: @screen-sm) {
+            border: 1px solid @grey-background-darker;
+            border-radius: @border-radius-base;
+            margin-bottom: 10px;
+        }
 
         >.wrapper {
-            min-height: 65px;
+            
+            @media (min-width: @screen-sm) { min-height: 65px; }
+            @media (max-width: @screen-sm) { height: 50px; }
+
+             @media (max-width: @screen-sm) { 
+                border-bottom: 1px solid @grey-background-darker;
+            }
 
             >.buttons {
-                padding: 10px 10px 32px 10px;
+                @media (min-width: @screen-sm) { padding: 10px 10px 32px 10px; }
+                @media (max-width: @screen-sm) { padding: 10px 10px 10px 0; }
+
                 display: block;
-                min-height: 25px;
                 text-align:center;
 
-                .text {
+                .text { height: 100%; line-height: 25px; }
+
+                .button { 
+                    cursor: pointer; color: @blue-light;
+
+                    &.large {
+                        min-width: 80px;
+                        margin-left: 20px;
+                        float: left;
+
+                        &.first {
+                            @media (min-width: @screen-md) {
+                                margin-left: 0px !important;
+                            }
+                        }
+                    }
+                }
+                .button:hover { color: @blue !important; }
+
+                // show filter icons when on tablet and smaller
+                .icon { color: @blue-light; cursor: pointer; }
+                .icon:hover { color: @blue;}
+
+                >.small {
+                    margin-right: 10px;
                     padding-left: 10px;
-                    height: 100%;
-                    line-height: 25px;
+                    text-align: justify;
+                    width: 100%;
                 }
-                
-                >.add-activity-button {
-                    color: @blue-light;
-                    cursor: pointer;
-                    float: left;
-                }
-
-                >.add-activity-button:hover {
-                    color: @blue !important;
-                }
-
-                >.bookmarks-button {
-                    color: @blue-light;
-                    margin-left: 20px;
-                    cursor: pointer;
-                    float: left;
-                }
-
-                >.bookmarks-button:hover {
-                    color: @blue;
+                >.small > i { display: inline-block; }
+                >.small:after {
+                    content: ' ';
+                    display: inline-block;
+                    width: 100%;
                 }
             } // buttons
         }

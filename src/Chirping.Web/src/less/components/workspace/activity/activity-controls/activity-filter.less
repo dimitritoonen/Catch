@@ -1,0 +1,59 @@
+﻿@import "../../../../variables.less";
+@import "../../../../vendor-prefixes.less";
+@import "../../../../vendor/viewpoints/screen-ms.less";
+
+/*
+    Style for the activity-filter component on the workspace -> activity page
+*/
+
+.activity-filter-label { padding-bottom: 4px; }
+
+.workspace {
+    &.activity {
+
+        // styles for the filter
+        &.filter {
+            background-color: @grey-background;
+            width: 100%;
+
+            @media (min-width: @screen-sm) {
+                margin-bottom:10px;
+                border-radius: @default-border-radius;
+                border: 1px solid @grey-background-darker;
+            }
+
+            // hide filter controls when on tablet and smaller
+            .filter-container-controls {
+
+                >.padding {
+                    @media (max-width: @screen-sm) {
+                        border-bottom: 1px solid @grey-background-darker;
+                    }
+
+                    @media (max-width: @screen-sm) {
+                        padding: 10px;
+                    }
+
+                    @media (min-width: @screen-sm) {
+                        padding-bottom: 10px;
+                    }
+                }
+
+                .collapse {
+                    display: block !important;
+                    visibility: visible !important;
+                    height:auto !important;
+                }
+
+                @media (min-width: @screen-sm) {
+                    display: block !important;
+                    visibility: visible !important;
+                    height:auto !important;
+               }
+            }
+
+            .participant-slider { margin-top:10px; }
+            .padding-bottom { padding-bottom: 10px; }
+        } // filter
+    }
+}

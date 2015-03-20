@@ -1,6 +1,6 @@
-define(['knockout', 'text!./activity-add.html', 'moment', 'bindingHandlers/datetimepicker', 'qtip2'], function (ko, templateMarkup, moment) {
+define(['knockout', 'text!./add-activity.html', 'moment', 'bindingHandlers/datetimepicker', 'qtip2'], function (ko, templateMarkup, moment) {
 
-  function ActivityAdd(params) {
+  function AddActivity(params) {
 
     var self = this;
 
@@ -29,10 +29,10 @@ define(['knockout', 'text!./activity-add.html', 'moment', 'bindingHandlers/datet
   }
   
   // dispose events
-  ActivityAdd.prototype.dispose = function () {
+  AddActivity.prototype.dispose = function () {
     $('#addActivityControl').off('shown.bs.collapse');
   };
 
-  return { viewModel: ActivityAdd, template: templateMarkup };
+  return { viewModel: AddActivity, template: templateMarkup };
 
 });

@@ -5,6 +5,7 @@ define(['knockout', 'text!./activity-controls.html'], function (ko, templateMark
     var self = this;
 
     self.categories = params.categories;
+    self.activityModel = params.activityModel;
 
   }
     

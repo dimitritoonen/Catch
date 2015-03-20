@@ -59,15 +59,16 @@ define(['jquery', 'knockout', './router', 'bootstrap', 'validation/ko-validation
     ko.components.register('activity-thumb', { require: 'components/workspace-page/dashboard-page/activity-thumb/activity-thumb' });
 
     // workspace-page -> activity-page
-    ko.components.register('activity-filter', { require: 'components/workspace-page/activity-page/activity-filter/activity-filter' });
-    ko.components.register('category-dropdown', { require: 'components/workspace-page/activity-page/category-dropdown/category-dropdown' });
     ko.components.register('activity-listitem', { require: 'components/workspace-page/activity-page/activity-listitem/activity-listitem' });
     ko.components.register('activity-list', { require: 'components/workspace-page/activity-page/activity-list/activity-list' });
     ko.components.register('activity-controls', { require: 'components/workspace-page/activity-page/activity-controls/activity-controls' });
-    ko.components.register('activity-add', { require: 'components/workspace-page/activity-page/activity-controls/activity-add/activity-add' });
-    ko.components.register('activity-bookmarks', { require: 'components/workspace-page/activity-page/activity-controls/activity-bookmarks/activity-bookmarks' });
-    ko.components.register('participant-slider', { require: 'components/workspace-page/activity-page/participant-slider/participant-slider' });
-    ko.components.register('time-slider', { require: 'components/workspace-page/activity-page/activity-filter/time-slider/time-slider' });
+    ko.components.register('activity-filter', { require: 'components/workspace-page/activity-page/activity-controls/activity-filter/activity-filter' });
+    ko.components.register('add-activity', { require: 'components/workspace-page/activity-page/activity-controls/add-activity/add-activity' });
+    ko.components.register('activity-bookmarks', { require: 'components/workspace-page/activity-page/activity-controls/bookmarks/bookmarks' });
+
+    ko.components.register('category-dropdown', { require: 'components/common/category-dropdown/category-dropdown' });
+    ko.components.register('participant-slider', { require: 'components/common/participant-slider/participant-slider' });
+    ko.components.register('time-slider', { require: 'components/common/time-slider/time-slider' });
     
 
 

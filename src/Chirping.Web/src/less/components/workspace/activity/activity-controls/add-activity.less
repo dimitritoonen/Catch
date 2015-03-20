@@ -1,0 +1,88 @@
+﻿@import "../../../../variables.less";
+
+/*
+    Defines the styles for the add activity controls
+*/
+.workspace {
+    &.activity {
+        &.add {
+            font-size: 0.9em;
+
+            >.padding {
+                clear: both;
+
+                @media (max-width: @screen-sm) {
+                    border-bottom: 1px solid @grey-background-darker;
+                }
+                
+                >.spacer {
+                    height: 30px;
+                    padding: 7px 0 0 0;
+
+                    >.line {
+                        background-color: @grey-background-darker;
+                        height: 1px !important;
+                    }
+                } // spacer
+
+                >.form-horizontal {
+                    >.add-activity-when {
+                        .form-inline {
+                            margin-left: 0;
+                            margin-right: 0;
+                        }
+
+                        .glyphicon { right: 0; }
+                
+                        .form-group{
+                            margin-left: 0;
+                            margin-right: 0;
+                        }
+                    }
+                } // form-horizontal
+
+            } // controls-wrapper
+
+            >.add-activity-button {
+                border-bottom-left-radius: @border-radius-base;
+                border-bottom-right-radius: @border-radius-base;
+                padding: 15px 15px 15px 10px;
+                background-color: white;
+                height: 60px !important;
+
+                >.pull-right {
+                    >.btn {
+                        width: 75px;
+                    }
+                }
+
+                >.pull-left {
+                    line-height: 10px;
+
+                    >.fa-question-circle {
+                        margin-left: 20px;
+                        padding-top: 9px;
+                        cursor: pointer;
+                    }
+                }
+
+                label {
+                    display: block;
+                    padding-left: 15px;
+                    text-indent: -15px;
+                    padding-top: 7px;
+                }
+
+                input {
+                    width: 13px;
+                    height: 13px;
+                    padding: 0;
+                    margin:0;
+                    vertical-align: bottom;
+                    position: relative;
+                    *overflow: hidden;
+                }
+            } // add-activity-button
+        } // padding
+    } // controls
+}

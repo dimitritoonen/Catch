@@ -4,10 +4,8 @@ define(['knockout', 'text!./time-slider.html', 'bindingHandlers/slider'], functi
     
     var self = this;
 
-    self.activityModel = params.activityModel;
-
-    self.beginTime = ko.observable(self.activityModel.Filter.BeginTime());
-    self.endTime = ko.observable(self.activityModel.Filter.EndTime());
+    self.beginTime = params.beginTime;
+    self.endTime = params.endTime;
 
     self.slider;
 
@@ -30,8 +28,8 @@ define(['knockout', 'text!./time-slider.html', 'bindingHandlers/slider'], functi
         var beginTime = slider.value[0];
         var endTime = slider.value[1];
 
-        params.activityModel.Filter.BeginTime(beginTime);
-        params.activityModel.Filter.EndTime(endTime);
+        self.beginTime(beginTime);
+        self.endTime(endTime);
       });
     }
 
@@ -39,8 +37,8 @@ define(['knockout', 'text!./time-slider.html', 'bindingHandlers/slider'], functi
     // set the value of the time slider when the browser is resizing
     $(window).on('resize', function (event) {
       if (self.slider !== null) {
-        
-        var t = [params.activityModel.Filter.BeginTime(), params.activityModel.Filter.EndTime()];
+
+        var t = [self.beginTime(), self.endTime()];
 
         $(self.slider).slider('setValue', t);
       }
