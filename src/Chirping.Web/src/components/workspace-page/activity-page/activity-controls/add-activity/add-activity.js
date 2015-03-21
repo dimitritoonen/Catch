@@ -1,8 +1,11 @@
-define(['knockout', 'text!./add-activity.html', 'moment', 'bindingHandlers/datetimepicker', 'qtip2'], function (ko, templateMarkup, moment) {
+define(['knockout', 'text!./add-activity.html', 'moment', 'viewport', 'bindingHandlers/datetimepicker', 'qtip2'],
+  function (ko, templateMarkup, moment, viewport) {
 
   function AddActivity(params) {
 
     var self = this;
+
+    self.shouldShow = ko.observable(viewport.is.largerThan('sm'));
 
     // activity fields
     self.description = ko.observable().extend({ required: true });

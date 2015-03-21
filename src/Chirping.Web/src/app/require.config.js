@@ -19,12 +19,15 @@ var require = {
     'text': 'bower_modules/requirejs-text/text',
     'qtip2': 'bower_modules/qtip2/jquery.qtip.min',
     'jcrop': 'bower_modules/jcrop/js/jquery.Jcrop.min',
-    'bootstrap-slider': 'bower_modules/seiyria-bootstrap-slider/dist/bootstrap-slider.min'
+    'bootstrap-slider': 'bower_modules/seiyria-bootstrap-slider/dist/bootstrap-slider.min',
+    'bootstrap-toolkit': 'vendor-scripts/bootstrap-toolkit',
+    'viewport' : 'vendor-scripts/bootstrap-toolkit-wrapper'
   },
   shim: {
     'bootstrap': { deps: ['jquery'] },
     'qtip2': { deps: ['jquery'] },
-    'bootstrap-slider': { deps: ['jquery'] }
+    'bootstrap-slider': { deps: ['jquery'] },
+    'viewport': { deps: ['jquery', 'bootstrap-toolkit'] }
   }
   //,urlArgs: 'bust=' + (new Date()).getTime()
 };

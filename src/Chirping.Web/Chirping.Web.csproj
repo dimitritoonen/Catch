@@ -140,11 +140,13 @@
     <Content Include="src\components\intro-page\registration-bar\registration-bar.html" />
     <Content Include="src\components\intro-page\forgot-password\reset-password-sent\reset-password-sent.html" />
     <Content Include="src\components\intro-page\forgot-password\reset-password-sent\reset-password-sent.js" />
+    <Content Include="src\components\workspace-page\activity-page\activity-controls\activity-controls.html" />
+    <Content Include="src\components\workspace-page\activity-page\activity-controls\add-activity-mobile\add-activity-mobile.html" />
+    <Content Include="src\components\workspace-page\activity-page\activity-controls\add-activity-mobile\add-activity-mobile.js" />
     <Content Include="src\components\workspace-page\activity-page\activity-controls\add-activity\add-activity.html" />
     <Content Include="src\components\workspace-page\activity-page\activity-controls\add-activity\add-activity.js" />
     <Content Include="src\components\workspace-page\activity-page\activity-controls\bookmarks\bookmarks.html" />
     <Content Include="src\components\workspace-page\activity-page\activity-controls\bookmarks\bookmarks.js" />
-    <Content Include="src\components\workspace-page\activity-page\activity-controls\activity-controls.html" />
     <Content Include="src\components\workspace-page\activity-page\activity-controls\activity-controls.js" />
     <Content Include="src\components\common\time-slider\time-slider.html" />
     <Content Include="src\components\common\time-slider\time-slider.js" />
@@ -234,6 +236,8 @@
     <Content Include="src\services\auth-storage.js" />
     <Content Include="src\services\chunked-uploader.js" />
     <Content Include="src\services\login-service.js" />
+    <Content Include="src\vendor-scripts\bootstrap-toolkit-wrapper.js" />
+    <Content Include="src\vendor-scripts\bootstrap-toolkit.js" />
     <Content Include="test\components\category-icon-mapping.js" />
     <Content Include="test\index.html" />
     <Content Include="test\models\activity-model.js" />
