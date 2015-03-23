@@ -2,8 +2,10 @@
     <button class="btn btn-default dropdown-toggle activity-dropdown-button" type="button"
             data-toggle="dropdown" aria-expanded="true" data-bind="attr: { tabindex: tabIndex }">
 
+        <!-- ko if: selectedItem().length > 0 -->
         <!-- ko with: selectedItem -->
         <span data-bind="text: Description"></span>
+        <!-- /ko -->
         <!-- /ko -->
 
         <span class="caret"></span>

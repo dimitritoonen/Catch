@@ -1,45 +1,43 @@
 <div class="workspace controls">
-    <div class="wrapper">
-        <div class="buttons">
-            <!-- ko if: showLargeButtons -->
-            <div class="hidden-xs hidden-ms">
-                <div class="button large first" data-toggle="collapse" data-target=".activity .add">
-                    <div class="icon">
-                        <i class="fa fa-plus fa-2x"></i>
-                    </div>
-                    <div class="text">Add activity</div>
+    <div class="buttons">
+        <!-- ko if: showLargeButtons -->
+        <div class="hidden-xs hidden-ms">
+            <div class="button large first" data-toggle="collapse" data-target=".activity .add">
+                <div class="icon">
+                    <i class="fa fa-plus fa-2x"></i>
                 </div>
-                <div class="button large" data-toggle="collapse" data-target=".bookmarks">
-                    <div class="icon">
-                        <i class="fa fa-bookmark fa-2x"></i>
-                    </div>
-                    <div class="text">Bookmarks</div>
-                </div>
-                <div class="visible-sm button large" data-toggle="collapse" data-target=".filter-container-controls">
-                    <div class="icon">
-                        <i class="fa fa-sliders fa-2x"></i>
-                    </div>
-                    <div class="text">Filters</div>
-                </div>
-                <div class="visible-sm button large" data-toggle="collapse" data-target=".maps">
-                    <div class="icon">
-                        <i class="fa fa-map-marker fa-2x"></i>
-                    </div>
-                    <div class="text">Maps</div>
-                </div>
+                <div class="text">Add activity</div>
             </div>
-            <!-- /ko -->
-
-            <div class="small visible-xs visible-ms">
-                <i class="button icon fa fa-map-marker fa-2x"></i>
-                <i class="button icon fa fa-bookmark-o fa-2x"></i>
-                <i class="button icon fa fa-sliders fa-2x" data-toggle="collapse" data-target=".filter-container-controls"></i>
-                <i class="button icon fa fa-pencil fa-2x" data-toggle="collapse" data-target=".activity .add"></i>
+            <div class="button large" data-toggle="collapse" data-target=".bookmarks">
+                <div class="icon">
+                    <i class="fa fa-bookmark fa-2x"></i>
+                </div>
+                <div class="text">Bookmarks</div>
+            </div>
+            <div class="visible-sm button large" data-toggle="collapse" data-target=".filter-container-controls">
+                <div class="icon">
+                    <i class="fa fa-sliders fa-2x"></i>
+                </div>
+                <div class="text">Filters</div>
+            </div>
+            <div class="visible-sm button large" data-toggle="collapse" data-target=".maps">
+                <div class="icon">
+                    <i class="fa fa-map-marker fa-2x"></i>
+                </div>
+                <div class="text">Maps</div>
             </div>
         </div>
-    </div> <!-- /wrapper -->
+        <!-- /ko -->
+
+        <div class="small visible-xs visible-ms">
+            <i class="button icon fa fa-map-marker fa-2x"></i>
+            <i class="button icon fa fa-bookmark-o fa-2x"></i>
+            <i class="button icon fa fa-sliders fa-2x" data-toggle="collapse" data-target=".filter-container-controls"></i>
+            <a href="#Workspace/Activities/Add"><i class="button icon fa fa-pencil fa-2x"></i></a>
+        </div>
+
+    </div> <!-- /buttons -->
 
     <add-activity params="categories: categories"></add-activity>
-    <add-activity-mobile params="categories: categories"></add-activity-mobile>
 </div>
 <activity-filter params="categories: categories, activityModel: activityModel"></activity-filter>

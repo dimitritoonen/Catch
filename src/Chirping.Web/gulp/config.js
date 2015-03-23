@@ -282,11 +282,16 @@ module.exports = {
             'components/workspace-page/activity-page/activity-list/activity-list',
             'components/workspace-page/activity-page/activity-controls/activity-controls',
             'components/workspace-page/activity-page/activity-controls/activity-filter/activity-filter',
-            'components/workspace-page/activity-page/activity-controls/add-activity-mobile/add-activity-mobile',
             'components/workspace-page/activity-page/activity-controls/bookmarks/bookmarks',
             'components/common/category-dropdown/category-dropdown',
             'components/common/participant-slider/participant-slider',
             'components/common/time-slider/time-slider'
+          ],
+          'add-activity-mobile': [
+            'components/workspace-page/activity-page/add-activity-mobile/activity-add-description/activity-add-description',
+            'components/workspace-page/activity-page/add-activity-mobile/activity-add-category/activity-add-category',
+            'components/workspace-page/activity-page/add-activity-mobile/activity-add-location/activity-add-location',
+            'components/workspace-page/activity-page/add-activity-mobile/activity-add-participants/activity-add-participants'
           ],
           'add-activity': [
             'components/workspace-page/activity-page/activity-controls/add-activity/add-activity',

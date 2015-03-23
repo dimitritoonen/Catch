@@ -71,13 +71,21 @@ define(['jquery',
     ko.components.register('activity-controls', { require: 'components/workspace-page/activity-page/activity-controls/activity-controls' });
     ko.components.register('activity-filter', { require: 'components/workspace-page/activity-page/activity-controls/activity-filter/activity-filter' });
     ko.components.register('add-activity', { require: 'components/workspace-page/activity-page/activity-controls/add-activity/add-activity' });
-    ko.components.register('add-activity-mobile', { require: 'components/workspace-page/activity-page/activity-controls/add-activity-mobile/add-activity-mobile' });
     ko.components.register('activity-bookmarks', { require: 'components/workspace-page/activity-page/activity-controls/bookmarks/bookmarks' });
 
     ko.components.register('category-dropdown', { require: 'components/common/category-dropdown/category-dropdown' });
     ko.components.register('participant-slider', { require: 'components/common/participant-slider/participant-slider' });
     ko.components.register('time-slider', { require: 'components/common/time-slider/time-slider' });
-            
+
+    // workspace-page -> activity-page -> add-activity-mobile
+    ko.components.register('activity-add-category', { require: 'components/workspace-page/activity-page/add-activity-mobile/activity-add-category/activity-add-category' });
+    ko.components.register('activity-add-description', { require: 'components/workspace-page/activity-page/add-activity-mobile/activity-add-description/activity-add-description' });
+    ko.components.register('activity-add-location', { require: 'components/workspace-page/activity-page/add-activity-mobile/activity-add-location/activity-add-location' });
+    ko.components.register('activity-add-participants', { require: 'components/workspace-page/activity-page/add-activity-mobile/activity-add-participants/activity-add-participants' });
+
+    
+
+
 
     // [Scaffolded component registrations will be inserted here. To retain this feature, don't remove this comment.]
     

@@ -141,8 +141,6 @@
     <Content Include="src\components\intro-page\forgot-password\reset-password-sent\reset-password-sent.html" />
     <Content Include="src\components\intro-page\forgot-password\reset-password-sent\reset-password-sent.js" />
     <Content Include="src\components\workspace-page\activity-page\activity-controls\activity-controls.html" />
-    <Content Include="src\components\workspace-page\activity-page\activity-controls\add-activity-mobile\add-activity-mobile.html" />
-    <Content Include="src\components\workspace-page\activity-page\activity-controls\add-activity-mobile\add-activity-mobile.js" />
     <Content Include="src\components\workspace-page\activity-page\activity-controls\add-activity\add-activity.html" />
     <Content Include="src\components\workspace-page\activity-page\activity-controls\add-activity\add-activity.js" />
     <Content Include="src\components\workspace-page\activity-page\activity-controls\bookmarks\bookmarks.html" />
@@ -152,6 +150,15 @@
     <Content Include="src\components\common\time-slider\time-slider.js" />
     <Content Include="src\components\common\category-dropdown\category-dropdown.js" />
     <Content Include="src\components\common\participant-slider\participant-slider.html" />
+    <Content Include="src\components\workspace-page\activity-page\add-activity-mobile\activity-add-location\activity-add-location.html" />
+    <Content Include="src\components\workspace-page\activity-page\add-activity-mobile\activity-add-location\activity-add-location.js" />
+    <Content Include="src\components\workspace-page\activity-page\add-activity-mobile\activity-add-participants\activity-add-participants.html" />
+    <Content Include="src\components\workspace-page\activity-page\add-activity-mobile\activity-add-participants\activity-add-participants.js" />
+    <Content Include="src\components\workspace-page\activity-page\add-activity-mobile\add-activity-model.js" />
+    <Content Include="src\components\workspace-page\activity-page\add-activity-mobile\activity-add-category\activity-add-category.html" />
+    <Content Include="src\components\workspace-page\activity-page\add-activity-mobile\activity-add-category\activity-add-category.js" />
+    <Content Include="src\components\workspace-page\activity-page\add-activity-mobile\activity-add-description\activity-add-description.html" />
+    <Content Include="src\components\workspace-page\activity-page\add-activity-mobile\activity-add-description\activity-add-description.js" />
     <Content Include="src\extensions\extensionMethods.js" />
     <Content Include="src\extensions\getByProperty.js" />
     <Content Include="src\mock_server\mock-categories.js" />
@@ -159,7 +166,7 @@
     <Content Include="src\components\common\category-dropdown\category-dropdown.html" />
     <Content Include="src\components\common\participant-slider\participant-slider.js" />
     <Content Include="src\models\activity-model.js" />
-    <Content Include="src\components\workspace-page\activity-page\category-icon-mapping.js" />
+    <Content Include="src\models\category-icon-mapping.js" />
     <Content Include="src\components\workspace-page\dashboard-page\activity-thumb\activity-thumb.html" />
     <Content Include="src\components\workspace-page\dashboard-page\activity-thumb\activity-thumb.js" />
     <Content Include="src\components\workspace-page\dashboard-page\interesting-activities\interesting-activities.html" />
@@ -293,6 +300,7 @@
     <Content Include="src\less\components\workspace\activity\activity-controls\add-activity.less" />
     <Content Include="src\less\components\common\category-dropdown.less" />
     <Content Include="src\less\components\common\participant-slider.less" />
+    <Content Include="src\less\components\workspace\activity\add-activity-mobile.less" />
     <None Include="src\less\styles.less" />
     <Content Include="src\Web.config" />
     <Content Include="src\less\vendor\jcrop.less" />

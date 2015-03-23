@@ -19,7 +19,7 @@
                 <div class="col-xs-12 col-sm-10">
                     <div class="form-inline">
                         <div class="form-group has-feedback" data-bind="validationElement: date">
-                            <input type="text" id="dateTextbox" tabindex="2"
+                            <input type="text" id="dateTextbox" tabindex="2" style="width: 130px"
                                     data-bind='qtipValMessage: date,
                                     datetimepicker: {
                                     options: {
@@ -30,9 +30,9 @@
                                     class="form-control" placeholder="Date" />
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         </div>
-                        <div class="form-group has-feedback pull-right" data-bind="validationElement: time">
-                            <input type="text" id="timeTextbox" tabindex="3"
-                                    data-bind='qtipValMessage: time,
+                        <div class="form-group has-feedback" data-bind="validationElement: time">
+                            <input type="text" id="timeTextbox" tabindex="3" style="width: 93px"
+                                   data-bind='qtipValMessage: time,
                                     datetimepicker: {
                                     options: {
                                         minDate: yesterdaysDate,
@@ -41,7 +41,7 @@
                                     },
                                     change: onTimePickerChange
                                     }'
-                                    class="form-control" placeholder="Time" />
+                                   class="form-control" placeholder="Time" />
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         </div>
                     </div>

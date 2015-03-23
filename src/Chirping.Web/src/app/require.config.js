@@ -21,7 +21,8 @@ var require = {
     'jcrop': 'bower_modules/jcrop/js/jquery.Jcrop.min',
     'bootstrap-slider': 'bower_modules/seiyria-bootstrap-slider/dist/bootstrap-slider.min',
     'bootstrap-toolkit': 'vendor-scripts/bootstrap-toolkit',
-    'viewport' : 'vendor-scripts/bootstrap-toolkit-wrapper'
+    'viewport': 'vendor-scripts/bootstrap-toolkit-wrapper',
+    'category-mapping': 'models/category-icon-mapping'
   },
   shim: {
     'bootstrap': { deps: ['jquery'] },

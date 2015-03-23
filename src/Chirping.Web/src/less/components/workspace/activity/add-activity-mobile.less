@@ -1,0 +1,91 @@
+﻿@import "../../../variables.less";
+
+/*
+    Defines the styles for the add activity mobile
+*/
+
+.workspace { 
+    &.activity { 
+        &.mobile {
+            &.add {
+                >.header {
+                    margin-top: 15px;
+                }
+
+                .label {
+                    text-align: center;
+                    font-size: 1.4em;
+                    padding-bottom: 5px;
+                }
+
+                >.content {
+                    padding-top: 35px;
+                    width: 100%;
+                    
+                    >.description {
+
+                        padding-top: 20px;
+
+                        .btn {
+                            font-size: 1.4em;
+                            width: 150px;
+
+                            >.content {
+                                padding-top: 5px;
+                                color: @blue-light;
+                            }
+                        }
+
+                    } // description
+                    
+                    >.location {
+                        padding-top: 20px;
+                        
+                        .form-control {
+                            height: 50px;
+                        }
+                    }
+
+                    >.participants {
+                        padding-top: 30px;
+                        width: 90%
+                    } // participants
+
+                    >.categories {
+
+                        width: 100%;
+
+                        >.btn { 
+                            height: 45px;                        
+                            >i.fa { 
+                                color: @blue-light;
+                                float: left;
+                            }
+
+                            >.text {
+                                line-height: 25px;
+                            }
+                        } // btn
+                    } // categories
+
+                    >.when {
+                        padding-top: 5px;
+                    }
+                }
+
+                >.buttons {
+
+                    position: fixed;
+                    bottom: 0;
+                    width: 100% !important;
+
+                    .btn {
+                        font-size: 1.8em;
+                        height: 55px;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

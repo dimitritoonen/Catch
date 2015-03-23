@@ -1,4 +1,4 @@
-﻿define(['jquery', 'knockout', 'components/workspace-page/activity-page/category-icon-mapping'], function ($, ko, catmap) {
+﻿define(['jquery', 'knockout', 'models/category-icon-mapping'], function ($, ko, catmap) {
 
   describe('activity model - ', function () {
 

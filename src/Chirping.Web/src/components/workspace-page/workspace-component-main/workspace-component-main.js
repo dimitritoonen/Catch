@@ -7,10 +7,6 @@ define(['knockout', 'text!./workspace-component-main.html'], function (ko, templ
     
     self.route = params.route;
   }
-
-  WorkspaceMain.prototype.dispose = function () {
-    //
-  };
   
   return { viewModel: WorkspaceMain, template: templateMarkup };
 

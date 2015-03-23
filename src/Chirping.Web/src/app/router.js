@@ -1,4 +1,4 @@
-define(['knockout', 'crossroads', 'hasher', 'services/auth-service', './app.config'], function (ko, crossroads, hasher, auth, appConfig) {
+define(['knockout', 'crossroads', 'hasher', 'services/auth-service', './app.config', 'viewport'], function (ko, crossroads, hasher, auth, appConfig, viewport) {
   
   // return CrossroadsJS routing combined with Hasher for history enabled browsing
   return new Router({
@@ -15,7 +15,13 @@ define(['knockout', 'crossroads', 'hasher', 'services/auth-service', './app.conf
         { url: 'Workspace/Activities', params: { page: 'workspace-page', subPage: 'activities-page' } },
         { url: 'Workspace/Notifications', params: { page: 'workspace-page', subPage: 'notifications-page' } },
         { url: 'Workspace/Contacts', params: { page: 'workspace-page', subPage: 'contacts-page' } },
-        { url: 'Workspace/Profile', params: { page: 'workspace-page', subPage: 'profile-page' } }
+        { url: 'Workspace/Profile', params: { page: 'workspace-page', subPage: 'profile-page' } },
+
+        // add activity mobile
+        { url: 'Workspace/Activities/Add', params: { page: 'workspace-page', subPage: 'activity-add-category', mobileOnly: true, redirectPage: 'Workspace/Activities' } },
+        { url: 'Workspace/Activities/Add/Description', params: { page: 'workspace-page', subPage: 'activity-add-description', mobileOnly: true, redirectPage: 'Workspace/Activities' } },
+        { url: 'Workspace/Activities/Add/Participants', params: { page: 'workspace-page', subPage: 'activity-add-participants', mobileOnly: true, redirectPage: 'Workspace/Activities' } },
+        { url: 'Workspace/Activities/Add/Location', params: { page: 'workspace-page', subPage: 'activity-add-location', mobileOnly: true, redirectPage: 'Workspace/Activities' } }
     ]
   });
 
@@ -37,31 +43,33 @@ define(['knockout', 'crossroads', 'hasher', 'services/auth-service', './app.conf
 
       // check if the user is authenticated and redirect if not
       crossroads.routed.add(AuthenticateUser);
+
+      // redirect when route is for mobile navigation only
+      crossroads.routed.add(AllowMobileViewport);
     });
 
     activateCrossroads();
   }
-
-
+    
     
   function AddRouteToCrossroads(route) {
-
+    
     crossroads.addRoute(route.url,
 
       // handler for processing matching routes
       // updates the currentSubRoute by default, and only updates the currentRoute when navigating from a different page.
       // This prevents the main pages from flickering when navigating between sub pages.
       function (requestParams) {
+        
+        // extend the page params with the subPage        
+        ko.utils.extend(route.params, { subRoute: self.currentSubRoute });
+
+        // extend the requestParams with route parameters
+        ko.utils.extend(requestParams, route.params);
 
         SetSubPage(route);
-        
-        if (NavigateToDifferentPage(route.params.page)) {
-          
-          // extend the page params with the subPage        
-          ko.utils.extend(route.params, { subRoute: self.currentSubRoute });
 
-          // extend the requestParams with route parameters
-          ko.utils.extend(requestParams, route.params);
+        if (NavigateToDifferentPage(route.params.page)) {
 
           self.currentRoute(requestParams);
         }
@@ -74,13 +82,11 @@ define(['knockout', 'crossroads', 'hasher', 'services/auth-service', './app.conf
     }
   }
 
-
   // returns a boolean value indicating that the user browsed from a different page
   function NavigateToDifferentPage(page) {
     return (self.currentRoute() == undefined ||
       self.currentRoute().page !== page);
   }
-
 
   // activate Crossroads JS client side routing functionality (with Hasher)
   function activateCrossroads() {
@@ -98,6 +104,7 @@ define(['knockout', 'crossroads', 'hasher', 'services/auth-service', './app.conf
     hasher.init();
   }
 
+  // check if the user is authenticated and redirect if not
   function AuthenticateUser(request, data) {
     
     var environment = '/*@echo NODE_ENV*/';
@@ -115,7 +122,20 @@ define(['knockout', 'crossroads', 'hasher', 'services/auth-service', './app.conf
     }
   }
 
+  // redirect when route is for mobile navigation only
+  function AllowMobileViewport(request, data) {
+    if (data.params[0].mobileOnly) {
+      if (viewport.is.largerThan('ms')) {
+        Redirect(data.params[0].redirectPage);
+      }
+    }
+  }
+
   function RedirectToHomepage() {
-    window.location.replace('#' + appConfig.HOMEPAGE);
+    Redirect(appConfig.HOMEPAGE);
+  }
+
+  function Redirect(page) {
+    window.location.replace('#' + page);
   }
 });

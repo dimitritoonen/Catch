@@ -1,0 +1,20 @@
+<!-- ko if: model.shouldShow -->
+<div class="workspace activity mobile add">
+    <div class="header row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10 text-center">
+            <h2>What is the activity about?</h2>
+        </div>
+        <div class="col-xs-1"></div>
+    </div>
+    <div class="content">
+        <div class="categories btn-group-vertical" role="group"
+             data-bind="foreach: categories">
+            <div class="btn btn-default" data-bind="click: $parent.categoryClicked">
+                <i class="fa fa-2x" data-bind="css: $parent.ResolveCategoryIcon(Code)"></i>
+                <span class="text" data-bind="html: Description"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /ko -->

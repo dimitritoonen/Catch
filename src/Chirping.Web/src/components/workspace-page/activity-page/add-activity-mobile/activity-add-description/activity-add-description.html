@@ -1,0 +1,39 @@
+<!-- ko if: model.shouldShow -->
+<div class="workspace activity mobile add">
+    <div class="header row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10 text-center">
+            <h2>Describe your activity..</h2>
+        </div>
+        <div class="col-xs-1"></div>
+    </div>
+    <div class="content">
+        <div class="form-group">
+            <div class="has-feedback" data-bind="validationElement: model.description">
+                <textarea id="descriptionTextbox" tabindex="1"
+                          data-bind="value: model.description, qtipValMessage: model.description"
+                          class="form-control" rows="4" maxlength="250" placeholder="Activity description"></textarea>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="description row">
+            <div class="label col-xs-12">When?</div>
+            <div class="col-xs-12 text-center">
+                <div class="btn-group btn-group-lg" role="group">
+                    <button class="btn btn-default">
+                        <div class="header">Date</div>
+                        <div class="content">23 March 2015</div>
+                    </button>
+                    <button class="btn btn-default">
+                        <div class="header">Time</div>
+                        <div class="content">20:00</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="buttons">
+        <button class="btn btn-primary" data-bind="click: model.nextStep">Next</button>
+    </div>
+</div>
+<!-- /ko -->

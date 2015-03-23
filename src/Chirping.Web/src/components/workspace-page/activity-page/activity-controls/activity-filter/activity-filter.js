@@ -10,6 +10,8 @@ define(['knockout', 'text!./activity-filter.html', 'moment', 'bindingHandlers/da
     self.categories = ko.observableArray([{ 'Code': undefined, 'Description': '' }]);
     self.categories.push.apply(self.categories, params.categories());
     
+    console.log(params.categories());
+    
     self.fromPicker, self.tillPicker;
     
     self.onCategoryChange = function (category) {

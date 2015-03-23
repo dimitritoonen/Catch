@@ -1,4 +1,4 @@
-define(['knockout', 'text!./activity-listitem.html', '../category-icon-mapping', 'moment'], function (ko, templateMarkup, categoryMap, moment) {
+define(['knockout', 'text!./activity-listitem.html', 'category-mapping', 'moment'], function (ko, templateMarkup, categoryMap, moment) {
 
   function ActivityListitem(params) {
        
