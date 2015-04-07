@@ -307,6 +307,7 @@
     <Content Include="src\less\vendor\viewpoints\screen-workspace-right.less" />
     <Content Include="src\less\vendor\bootstrap-slider.less" />
     <Content Include="src\less\vendor\qtip2.less" />
+    <Content Include="src\less\vendor\datetimepicker.less" />
     <None Include="web.Acceptance.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

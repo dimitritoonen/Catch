@@ -16,22 +16,23 @@
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
             </div>
         </div>
-        <div class="description row">
-            <div class="label col-xs-12">When?</div>
-            <div class="col-xs-12 text-center">
-                <div class="btn-group btn-group-lg" role="group">
-                    <button class="btn btn-default">
-                        <div class="header">Date</div>
-                        <div class="content">23 March 2015</div>
-                    </button>
-                    <button class="btn btn-default">
-                        <div class="header">Time</div>
-                        <div class="content">20:00</div>
-                    </button>
+        <div id="datetimePickert"></div>
+            <div class="description row">
+                <div class="label col-xs-12">When?</div>
+                <div class="col-xs-12 text-center">
+                    <div class="btn-group btn-group-lg" role="group">
+                        <button class="btn btn-default" data-bind="click: displayDateDialog">
+                            <div class="header">Date</div>
+                            <div class="content" data-bind="html: model.date"></div>
+                        </button>
+                        <button class="btn btn-default">
+                            <div class="header">Time</div>
+                            <div class="content" data-bind="html: model.time"></div>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     <div class="buttons">
         <button class="btn btn-primary" data-bind="click: model.nextStep">Next</button>
     </div>

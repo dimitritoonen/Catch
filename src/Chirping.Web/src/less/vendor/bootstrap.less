@@ -102,7 +102,41 @@ hr {
 }
 
 .modal-header-grey .modal-content .modal-header {
-   background-color:#eaeaea;
+    background-color:#eaeaea;
+}
+
+
+.datetimepicker-modal .modal-dialog .modal-content {
+    max-width: 340px;
+}
+
+.modal-content {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.large-title .modal-content .modal-header {
+    height: 50px;
+}
+
+.large-title .modal-content .modal-header .bootstrap-dialog-title {
+    padding: 3px 0 0 6px;
+    font-size: 1.4em;
+}
+
+.no-rounded-border .modal-content .modal-header,
+.no-rounded-border .modal-content .modal-footer,
+.no-rounded-border .modal-content {
+    border-radius: 0 !important;
+}
+
+.modal-header {
+    padding-right: 5px;
+}
+
+.bootstrap-dialog-close-button {
+    line-height: 20px !important;
+    bottom: 5px;
 }
 
 .bootstrap-dialog .bootstrap-dialog-title {
@@ -110,8 +144,15 @@ hr {
 }
 
 .close {
-    color: #000; 
+    color: #000;
     opacity: 1;
+    border: 0;
+    background-color: transparent;
+}
+
+.large-title .close {
+    padding: 8px 6px 0 0;
+    font-size: 1.4em;
 }
 
 .modal-body-text {

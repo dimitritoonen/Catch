@@ -25,14 +25,15 @@
     "requirejs": "~2.1.16",
     "requirejs-text": "~2.0.10",
     "font-awesome": "~4.2.0",
-    "eonasdan-bootstrap-datetimepicker": "~4.0.0",
+    "eonasdan-bootstrap-datetimepicker": "~4.7.14",
     "moment": "~2.9.0",
     "modernizr": "~2.8.3",
     "seiyria-bootstrap-slider": "~4.4.2"
   },
   "resolutions": {
     "knockout": "~3.3.0",
-    "bootstrap": "~3.3.2"
+    "bootstrap": "~3.3.2",
+    "eonasdan-bootstrap-datetimepicker": "~4.7.14"
   },
   "devDependencies": {
     "jquery-mockjax": "~1.6.1"

@@ -23,8 +23,8 @@
     self.category = ko.observable();
     self.description = ko.observable();
     self.location = ko.observable();
-    self.date = ko.observable();
-    self.time = ko.observable();
+    self.date = ko.observable('Select Date');
+    self.time = ko.observable('Select Time');
     self.participants = ko.observable(8);
 
         
@@ -39,8 +39,8 @@
       if (self.currentStep() === steps.length)
         return;
 
-      self.currentStep(self.currentStep() + 1);
-      window.location.href = steps[self.currentStep()].url;
+      var nextStep = self.currentStep() + 1;
+      window.location.href = steps[nextStep].url;
     }
 
     // goes a step back
