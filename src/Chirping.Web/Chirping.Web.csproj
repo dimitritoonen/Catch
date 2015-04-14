@@ -150,6 +150,7 @@
     <Content Include="src\components\common\time-slider\time-slider.js" />
     <Content Include="src\components\common\category-dropdown\category-dropdown.js" />
     <Content Include="src\components\common\participant-slider\participant-slider.html" />
+    <Content Include="src\components\workspace-page\activity-page\add-activity-mobile\activity-add-description\activity-add-description.js" />
     <Content Include="src\components\workspace-page\activity-page\add-activity-mobile\activity-add-location\activity-add-location.html" />
     <Content Include="src\components\workspace-page\activity-page\add-activity-mobile\activity-add-location\activity-add-location.js" />
     <Content Include="src\components\workspace-page\activity-page\add-activity-mobile\activity-add-participants\activity-add-participants.html" />
@@ -158,7 +159,6 @@
     <Content Include="src\components\workspace-page\activity-page\add-activity-mobile\activity-add-category\activity-add-category.html" />
     <Content Include="src\components\workspace-page\activity-page\add-activity-mobile\activity-add-category\activity-add-category.js" />
     <Content Include="src\components\workspace-page\activity-page\add-activity-mobile\activity-add-description\activity-add-description.html" />
-    <Content Include="src\components\workspace-page\activity-page\add-activity-mobile\activity-add-description\activity-add-description.js" />
     <Content Include="src\extensions\extensionMethods.js" />
     <Content Include="src\extensions\getByProperty.js" />
     <Content Include="src\mock_server\mock-categories.js" />
