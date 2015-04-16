@@ -300,7 +300,7 @@
     <Content Include="src\less\components\workspace\activity\activity-controls\add-activity.less" />
     <Content Include="src\less\components\common\category-dropdown.less" />
     <Content Include="src\less\components\common\participant-slider.less" />
-    <Content Include="src\less\components\workspace\activity\add-activity-mobile.less" />
+    <Content Include="src\less\components\workspace\activity\add-activity\add-activity-mobile.less" />
     <None Include="src\less\styles.less" />
     <Content Include="src\Web.config" />
     <Content Include="src\less\vendor\jcrop.less" />

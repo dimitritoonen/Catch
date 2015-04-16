@@ -21,10 +21,10 @@
 
     // fields
     self.category = ko.observable();
-    self.description = ko.observable();
+    self.description = ko.observable().extend({ required: true });;
     self.location = ko.observable();
-    self.date = ko.observable('Select Date');
-    self.time = ko.observable('Select Time');
+    self.date = ko.observable().extend({ required: true });;
+    self.time = ko.observable().extend({ required: true });;
     self.participants = ko.observable(8);
 
         

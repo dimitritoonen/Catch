@@ -9,7 +9,7 @@
       var $element = $(element);
       var local = ko.utils.unwrapObservable(valueAccessor());
       var options = {};
-      
+
       ko.utils.extend(options, ko.bindingHandlers.datetimepicker.options);
       ko.utils.extend(options, local.options);
 

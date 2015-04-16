@@ -1,4 +1,4 @@
-﻿@import "../../../variables.less";
+﻿@import "../../../../variables.less";
 
 /*
     Defines the styles for the add activity mobile
@@ -84,6 +84,12 @@
                         font-size: 1.6em;
                         height: 50px;
                         width: 100%;
+
+                        &.grayed-out {
+                            background-color: @blue-light !important;
+                            color: @grey-background-light;
+                            cursor: default;
+                        }
                     }
                 }
             }

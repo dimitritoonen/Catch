@@ -90,7 +90,7 @@ hr {
 
 
 .modal-body {
-    padding: 10px 1px 0px 0px;
+    padding: 10px 0px 0px 0px;
 }
 
 .modal { 
@@ -106,8 +106,12 @@ hr {
 }
 
 
-.datetimepicker-modal .modal-dialog .modal-content {
+.datepicker-modal .modal-dialog .modal-content {
     max-width: 340px;
+}
+
+.timepicker-modal .modal-dialog .modal-content {
+    max-width: 250px;
 }
 
 .modal-content {
@@ -142,6 +146,27 @@ hr {
 .bootstrap-dialog .bootstrap-dialog-title {
     color: #000;
 }
+
+
+.modal {
+    .modal-footer {
+        padding: 0;
+        border: 0 !important;
+ 
+        .bootstrap-dialog-footer-buttons {
+            
+            padding-top: 5px;
+
+            .btn-modal {
+                width: 100%;
+                height: 50px;
+                border: 0;
+                border-top: 1px solid @grey-background-dark;
+            }
+        }
+    }
+}
+
 
 .close {
     color: #000;

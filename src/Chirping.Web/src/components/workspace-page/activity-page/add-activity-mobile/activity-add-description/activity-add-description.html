@@ -20,21 +20,35 @@
             <div class="description row">
                 <div class="label col-xs-12">When?</div>
                 <div class="col-xs-12 text-center">
-                    <div class="btn-group btn-group-lg" role="group">
-                        <button class="btn btn-default" data-bind="click: displayDateDialog">
+                    <div class="btn-group btn-group-lg" role="group" data-bind="with: model">
+                        <button class="btn btn-default" data-bind="click: $parent.displayDateDialog">
                             <div class="header">Date</div>
-                            <div class="content" data-bind="html: model.date"></div>
+
+                            <!-- ko if: date() !== undefined -->
+                            <div class="content" data-bind="html: date().format('YYYY-MMM-DD')"></div>
+                            <!-- /ko -->
+
+                            <!-- ko if: date() === undefined -->
+                            <div class="content">Select Date</div>
+                            <!-- /ko -->
                         </button>
-                        <button class="btn btn-default">
+                        <button class="btn btn-default" data-bind="click: $parent.displayTimeDialog">
                             <div class="header">Time</div>
-                            <div class="content" data-bind="html: model.time"></div>
+
+                            <!-- ko if: time() !== undefined -->
+                            <div class="content" data-bind="html: time().format('HH:mm')"></div>
+                            <!-- /ko -->
+                            
+                            <!-- ko if: time() === undefined -->
+                            <div class="content">Select Time</div>
+                            <!-- /ko -->
                         </button>
                     </div>
                 </div>
             </div>
         </div>
     <div class="buttons">
-        <button class="btn btn-primary" data-bind="click: model.nextStep">Next</button>
+        <button id="nextStep" class="btn btn-primary" data-bind="click: model.nextStep">Next</button>
     </div>
 </div>
 <!-- /ko -->
