@@ -7,6 +7,7 @@
     init: function (element, valueAccessor) {
 
       var local = ko.utils.unwrapObservable(valueAccessor());
+
       var options = {};
 
       ko.utils.extend(options, ko.bindingHandlers.qtipTooltip.options);

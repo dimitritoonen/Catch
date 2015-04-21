@@ -8,8 +8,6 @@ define(['knockout', 'text!./category-dropdown.html', 'services/webapi-service'],
   
     self.tabIndex = params.tabIndex;
 
-    //console.log(params.categories());
-
     // select default category
     var selectedItem = self.categories.GetByProperty(params.selectedItem);
     self.selectedItem(selectedItem);

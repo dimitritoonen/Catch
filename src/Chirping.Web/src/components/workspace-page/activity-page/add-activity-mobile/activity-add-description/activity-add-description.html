@@ -1,4 +1,4 @@
-<!-- ko if: model.shouldShow -->
+<!-- ko if: model.shouldShowMobile -->
 <div class="workspace activity mobile add">
     <div class="header row">
         <div class="col-xs-1"></div>
@@ -48,7 +48,7 @@
             </div>
         </div>
     <div class="buttons">
-        <button id="nextStep" class="btn btn-primary" data-bind="click: model.nextStep">Next</button>
+        <button id="nextStep" class="btn btn-primary" data-bind="click: wizard.nextStep">Next</button>
     </div>
 </div>
 <!-- /ko -->

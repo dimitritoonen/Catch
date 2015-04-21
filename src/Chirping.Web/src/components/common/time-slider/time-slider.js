@@ -33,21 +33,22 @@ define(['knockout', 'text!./time-slider.html', 'bindingHandlers/slider'], functi
       });
     }
 
-    
     // set the value of the time slider when the browser is resizing
-    $(window).on('resize', function (event) {
+    $(window).on('resize', self.resizer);
+
+    self.resizer = function (event) {
       if (self.slider !== null) {
 
         var t = [self.beginTime(), self.endTime()];
 
         $(self.slider).slider('setValue', t);
       }
-    });
+    }
   }
 
   // cleanup event handlers
   TimeSlider.prototype.dispose = function () {
-    $(window).off('resize');
+    $(window).off('resize', this.resizer);
 
     $(self.slider).off('change');
     $(self.slider).off('slideStop');

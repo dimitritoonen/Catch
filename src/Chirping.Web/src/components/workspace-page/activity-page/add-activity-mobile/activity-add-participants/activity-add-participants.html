@@ -1,4 +1,4 @@
-<!-- ko if: model.shouldShow -->
+<!-- ko if: model.shouldShowMobile -->
 <div class="workspace activity mobile add">
     <div class="header row">
         <div class="col-xs-1"></div>
@@ -10,10 +10,27 @@
     <div class="content">
         <div class="participants center-block">
             <participant-slider params="value: model.participants"></participant-slider>
+            <div class="chain-accept center-block">
+                <div class="pull-left">
+                    <label>
+                        <input type="checkbox" data-bind="checked: model.chainaccept" />
+                        Chain accept
+                    </label>
+                </div>
+                <div class="pull-right">
+                    <i id="chainAcceptMobileInfo" class="fa fa-question-circle fa-lg icon-blue-lighter"
+                       data-bind='qtipTooltip: { content: { text: $("#chainAcceptMobileInfo").next(".tooltipText") },
+                                                position: { my: "top center", at: "bottom center" }
+                                               }'></i>
+                    <div class="tooltipText">
+                        <b>Chain accept</b> allows the last accepted participant to accept the next one
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="buttons">
-        <button class="btn btn-primary" data-bind="click: model.nextStep">Next</button>
+        <button class="btn btn-primary" data-bind="click: wizard.nextStep">Next</button>
     </div>
 </div>
 <!-- /ko -->

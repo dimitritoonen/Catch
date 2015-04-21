@@ -28,16 +28,18 @@ define(['knockout', 'text!./participant-slider.html', 'bindingHandlers/slider'],
     }
 
     // set the value of the participant slider when the browser is resizing
-    $(window).on('resize', function (event) {
+    $(window).on('resize', self.resizer);
+
+    self.resizer = function (event) {
       if (self.slider !== null) {
         $(self.slider).slider('setValue', self.participantSelection());
       }
-    });
+    }
   }
 
   // clean up event handlers
   ParticipantSlider.prototype.dispose = function () {
-    $(window).off('resize');
+    $(window).off('resize', this.resizer);
     $(self.slider).off('slideStop');
   };
 

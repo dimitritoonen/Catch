@@ -1,29 +1,32 @@
-define(['knockout', 'text!./add-activity.html', 'moment', 'viewport', 'bindingHandlers/datetimepicker', 'qtip2'],
-  function (ko, templateMarkup, moment, viewport) {
+define(['knockout', 'text!./add-activity.html', 'moment', 'viewport', 'models/add-activity-model', 'bindingHandlers/datetimepicker', 'qtip2'],
+  function (ko, templateMarkup, moment, viewport, model) {
 
   function AddActivity(params) {
 
     var self = this;
-
-    self.shouldShow = ko.observable(viewport.is.largerThan('sm'));
-
-    // activity fields
-    self.description = ko.observable().extend({ required: true });
-    self.date = ko.observable().extend({ required: true });
-    self.time = ko.observable().extend({ required: true });
-    self.category = ko.observable().extend({ required: true });
-    self.participants = ko.observable(7);
-    self.location = ko.observable().extend({ required: true });
-
-    self.categories = params.categories;
     
+    self.disposables = [];
+    var controls = params.controls;
+
+    self.shouldShow = ko.observable(viewport.is.largerThan('ms'));
+    self.model = model;
+
+    self.disposables.push(viewport.currentViewpoint.subscribe(function (value) {
+
+      if (viewport.is.smallerThan('sm')) {
+        $('#addActivityControl').collapse('hide');
+      }
+
+      self.shouldShow(!viewport.is.smallerThan('sm'));
+    }));
+
     // ensures that the time pickers can select all minutes/hours
     self.yesterdaysDate = moment().add(-1, 'days');
 
     // store values from datepickers and dropdown
-    self.onDatePickerChange = function (value) { self.date(value.date); };
-    self.onTimePickerChange = function (value) { self.time(value.date); };
-    self.onCategoryChange = function (category) { self.category(category); };
+    self.onDatePickerChange = function (value) { model.date(value.date); };
+    self.onTimePickerChange = function (value) { model.time(value.date); };
+    self.onCategoryChange = function (category) { model.category(category); };
 
     // when control is expanded focus description field
     $('#addActivityControl').on('shown.bs.collapse', function () {
@@ -34,6 +37,10 @@ define(['knockout', 'text!./add-activity.html', 'moment', 'viewport', 'bindingHa
   // dispose events
   AddActivity.prototype.dispose = function () {
     $('#addActivityControl').off('shown.bs.collapse');
+
+    ko.utils.arrayForEach(this.disposables, function (item) {
+      item.dispose();
+    });
   };
 
   return { viewModel: AddActivity, template: templateMarkup };

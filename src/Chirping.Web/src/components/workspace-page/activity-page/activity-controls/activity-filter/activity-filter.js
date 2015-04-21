@@ -9,9 +9,7 @@ define(['knockout', 'text!./activity-filter.html', 'moment', 'bindingHandlers/da
     // initialize category list with empty value
     self.categories = ko.observableArray([{ 'Code': undefined, 'Description': '' }]);
     self.categories.push.apply(self.categories, params.categories());
-    
-    console.log(params.categories());
-    
+        
     self.fromPicker, self.tillPicker;
     
     self.onCategoryChange = function (category) {
@@ -65,7 +63,9 @@ define(['knockout', 'text!./activity-filter.html', 'moment', 'bindingHandlers/da
     }
 
     // scale participant slider
-    $(window).on('resize', function () {
+    $(window).on('filter.resize', self.resizer);
+
+    self.resizer = function () {
       if (self.tillPicker !== undefined) {
         var tillDate = self.activityModel.Filter.TillDate();
 
@@ -79,12 +79,13 @@ define(['knockout', 'text!./activity-filter.html', 'moment', 'bindingHandlers/da
         fromDate = (fromDate === undefined ? null : fromDate);
         $(self.fromPicker).data('DateTimePicker').date(fromDate);
       }
-    });
+    }
   }
 
   // clear event handlers
   ActivityFilter.prototype.dispose = function () {
-    $(window).off('resize');
+    $(window).off('filter.resize', this.resizer);
+
     $(self.tillPicker).off('db.change');
     $(self.fromPicker).off('db.change');
   };

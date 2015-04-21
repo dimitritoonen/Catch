@@ -1,7 +1,9 @@
-define(['knockout', 'text!./activity-add-description.html', '../add-activity-model', 'moment', 'bootstrap-dialog', 'datetimepicker'],
-  function (ko, templateMarkup, model, moment, bootstrapDialog, datetimepicker) {
+define(['knockout', 'text!./activity-add-description.html', '../add-activity-wizard', 'models/add-activity-model', 'moment', 'bootstrap-dialog', 'datetimepicker'],
+  function (ko, templateMarkup, wizard, model, moment, bootstrapDialog, datetimepicker) {
 
     function ActivityAddDescription(params) {
+
+      wizard.arePreviousStepsValid(2);
 
       var self = this;
 
@@ -9,7 +11,8 @@ define(['knockout', 'text!./activity-add-description.html', '../add-activity-mod
 
       self.disposables = [];
       self.model = model;
-      self.model.currentStep(2); // set step (also used when hitting the back button)
+      self.wizard = wizard;
+      wizard.currentStep(2); // set step (also used when hitting the back button)
 
       var validationGroup = ko.validatedObservable({
         date: self.model.date,
@@ -25,6 +28,11 @@ define(['knockout', 'text!./activity-add-description.html', '../add-activity-mod
           $('#nextStep').attr('disabled', 'disabled');
         }
       }
+
+      // disable/enable the add-button while entering the location
+      $('#descriptionTextbox').on('keyup', function (key) {
+        toggleNextButton(validationGroup.isValid());
+      });
 
       self.disposables.push(validationGroup.isValid.subscribe(function (valid) {
         toggleNextButton(valid);
@@ -117,6 +125,9 @@ define(['knockout', 'text!./activity-add-description.html', '../add-activity-mod
       ko.utils.arrayForEach(this.disposables, function (item) {
         item.dispose();
       });
+
+      // dispose the model
+      model.dispose();
     };
 
     return { viewModel: ActivityAddDescription, template: templateMarkup };

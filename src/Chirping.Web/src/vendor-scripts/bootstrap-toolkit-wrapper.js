@@ -4,7 +4,7 @@
   note: extended the toolkit with the custom ms-viewpoint
 */
 
-define(['jquery'], function ($) {
+define(['jquery', 'knockout'], function ($, ko) {
 
   var viewpoint = ResponsiveBootstrapToolkit;
 
@@ -37,6 +37,18 @@ define(['jquery'], function ($) {
 
     return (current.order < order);
   }
+
+  // define knockout observable to indicate when a viewpoint has been changed
+  viewpoint.currentViewpoint = ko.observable(viewpoint.current());
+
+  // Execute code only when document has been loaded fully
+  $(document).ready(function () {
+    $(window).on('resize', function () {
+      viewpoint.changed(function () {
+        viewpoint.currentViewpoint(viewpoint.current());
+      })
+    });
+  });
 
   return viewpoint;
 

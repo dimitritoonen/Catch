@@ -10,19 +10,17 @@ define(['knockout', 'text!./activity-controls.html', 'viewport'], function (ko, 
     
     self.showLargeButtons = ko.observable(viewport.is.largerThan('ms'));
 
-    $(window).on('resize', function () {
-      viewport.changed(function () {
-
-        var showButton = viewport.is.largerThan('ms');
-
-        self.showLargeButtons(showButton);
-      })
-    });
+    self.disposables = [];
+    self.disposables.push(viewport.currentViewpoint.subscribe(function (value) {
+      self.showLargeButtons(viewport.is.largerThan('ms'));
+    }));
   }
   
   // cleans up events
   ActivityControls.prototype.dispose = function () {
-    $(window).off('resize');
+    ko.utils.arrayForEach(this.disposables, function (item) {
+      item.dispose();
+    });
   }
 
   return { viewModel: ActivityControls, template: templateMarkup };
