@@ -31,7 +31,7 @@ namespace Chirping.Web.Api.Controllers
 
 
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public HttpResponseMessage Post(AddActivityBindingModel model)
         {
             _processor.Add(model);

@@ -6,12 +6,7 @@
   // returns the result of an jquery ajax GET result
   apiService.Get = function (url, data) {
 
-    var token = authStorage.GetToken();
-    var headers = {};
-
-    if (token) {
-      headers.Authorization = 'Bearer ' + token;
-    }
+    var headers = GetHeaders();
     
     return $.ajax({
       type: 'GET',
@@ -24,13 +19,29 @@
   // returns the result of an jquery ajax POST result
   apiService.Post = function (url, data) {
 
+    var headers = GetHeaders();
+
+    console.log(headers);
+
     return $.ajax({
       type: 'POST',
       url: config.BaseUrl + url,
-      data: JSON.stringify(data)
+      data: JSON.stringify(data),
+      headers: headers
     });
 
   };
+
+  function GetHeaders() {
+    var token = authStorage.GetToken();
+    var headers = {};
+
+    if (token) {
+      headers.Authorization = 'Bearer ' + token;
+    }
+
+    return headers;
+  }
 
   return apiService;
 

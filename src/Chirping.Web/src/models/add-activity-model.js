@@ -28,6 +28,9 @@
     if (self.categories().length === 0) {
       webapi.Get('api/category').done(function (result) {
         self.categories(result);
+
+        // set the default value
+        self.category(result[0]);
       });
     }
 
@@ -40,26 +43,32 @@
       participants: self.participants,
       chainaccept: self.chainaccept
     });
-
+    
     // add the activity to the back-end
-    self.addActivity = function (data) {
+    self.addActivity = function () {
 
       var result = ko.validation.group(self, { deep: true });
 
       if (!self.isValid()) {
-        console.log('fix stuff');
         result.showAllMessages(true);
-
         return;
       }
 
-      //if (validationGroup.isValid) {
-      //  //webapi.Post('api/activity', data).done(function (result) {
+      if (validationGroup.isValid) {
 
-      //  console.log('post to back-end');
+        // build the data for the post
+        var data = {
+          Category: self.category(),
+          Date: self.date().format('YYYY-MM-DD') + ' ' + self.time().format('HH:mm'),
+          Location: self.location(),
+          Content: self.description(),
+          ProfileId: 42,
+          MaxParticipants: self.participants(),
+          ChainAccept: self.chainaccept()
+        };
 
-      //  //});
-      //}
+        return webapi.Post('api/activity', data);
+      }
     };
 
     // resets the model to it's initial state

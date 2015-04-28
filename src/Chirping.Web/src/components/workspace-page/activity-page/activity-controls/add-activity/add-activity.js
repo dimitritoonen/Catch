@@ -1,12 +1,12 @@
-define(['jquery', 'knockout', 'text!./add-activity.html', 'moment', 'viewport', 'models/add-activity-model', 'bindingHandlers/datetimepicker', 'qtip2'],
-  function ($, ko, templateMarkup, moment, viewport, model) {
+define(['knockout', 'text!./add-activity.html', 'moment', 'viewport', 'models/add-activity-model', 'toastr', 'bindingHandlers/datetimepicker', 'qtip2'],
+  function (ko, templateMarkup, moment, viewport, model, toastr) {
 
   function AddActivity(params) {
 
     var self = this;
     
     self.id = params.id;
-
+    
     defineUniqueIdentifiersFor('descriptionTextbox', 'dateTextbox', 'timeTextbox', 'locationTextbox')
 
     // define a unique identifier for the html controls
@@ -26,11 +26,15 @@ define(['jquery', 'knockout', 'text!./add-activity.html', 'moment', 'viewport', 
     self.disposables.push(viewport.currentViewpoint.subscribe(function (value) {
 
       if (viewport.is.smallerThan('sm')) {
-        $('#addActivityControl').collapse('hide');
+        collapseControl();
       }
 
       self.shouldShow(!viewport.is.smallerThan('sm'));
     }));
+
+    var collapseControl = function () {
+      $('.activity .add').collapse('toggle');
+    }
 
     // ensures that the time pickers can select all minutes/hours
     self.yesterdaysDate = moment().add(-1, 'days');
@@ -44,6 +48,26 @@ define(['jquery', 'knockout', 'text!./add-activity.html', 'moment', 'viewport', 
     $('#addActivityControl').on('shown.bs.collapse', function () {
       $('#descriptionTextbox').focus();
     });
+
+    // serve the activity details to the web api
+    self.addActivity = function () {
+
+      model.addActivity().done(function () {
+        collapseControl();
+        
+        toastr["info"](
+          "You've just created activity for " +
+          model.date().format("YYYY-MMM-DD") + " " +
+          model.time().format("HH:mm") + " at " +
+          model.location(),
+          "Activity created");
+
+      }).error(function () {
+        collapseControl();
+
+        toastr["error"]("Something went wrong. Please try again at a later time");
+      });
+    }
   }
   
   // dispose events

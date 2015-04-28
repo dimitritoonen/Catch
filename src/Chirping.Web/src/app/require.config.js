@@ -22,7 +22,8 @@ var require = {
     'bootstrap-slider': 'bower_modules/seiyria-bootstrap-slider/dist/bootstrap-slider.min',
     'bootstrap-toolkit': 'vendor-scripts/bootstrap-toolkit',
     'viewport': 'vendor-scripts/bootstrap-toolkit-wrapper',
-    'category-mapping': 'models/category-icon-mapping'
+    'category-mapping': 'models/category-icon-mapping',
+    'toastr': 'bower_modules/toastr/toastr.min'
   },
   shim: {
     'bootstrap': { deps: ['jquery'] },

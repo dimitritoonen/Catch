@@ -4,11 +4,11 @@ define(['knockout', 'text!./activity-controls.html', 'viewport'], function (ko, 
 
     var miliseconds = 10;
     var self = this;
-    
+
     self.id = params.id;
     self.categories = params.categories;
     self.activityModel = params.activityModel;
-    
+
     self.showLargeButtons = ko.observable(viewport.is.largerThan('ms'));
 
     self.disposables = [];

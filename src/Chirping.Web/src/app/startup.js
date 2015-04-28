@@ -1,12 +1,13 @@
 define(['jquery',
   'knockout',
   './router',
+  'toastr',
   'bootstrap',
   'validation/ko-validation-config',
   'bindingHandlers/bindingHandlers',
   'extensions/extensionMethods'],
 
-  function ($, ko, router, auth) {
+  function ($, ko, router, toastr) {
 
     $.ajaxSetup({
       contentType: 'application/json; charset=utf-8'
@@ -15,6 +16,10 @@ define(['jquery',
     // enables cors support in jquery (this is needed for IE9 to work)
     $.support.cors = true;
 
+    // setup toastr defaults
+    toastr.options = {
+      hideDuration: '5000'
+    };
 
     // Components can be packaged as AMD modules, such as the following:
 
