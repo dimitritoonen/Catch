@@ -20,10 +20,12 @@ namespace Chirping.Web.Api.Common.Data.Entities
         }
 
         [Key]
-        [Required]
         public override int Id { get; set; }
 
-        [Required]
+        [Column("Category_Id")]
+        public int CategoryId { get; set; }
+
+        [ForeignKey("CategoryId")]
         public virtual CategoryEntity Category { get; set; }
 
         [Required]
@@ -36,7 +38,6 @@ namespace Chirping.Web.Api.Common.Data.Entities
         [Column("Profile_Id")]
         public int ProfileId { get; set; }
 
-        [Required]
         [ForeignKey("ProfileId")]
         public virtual ProfileEntity Owner { get; set; }
 
@@ -44,10 +45,11 @@ namespace Chirping.Web.Api.Common.Data.Entities
         [MaxLength(250)]
         public string ContentText { get; set; }
 
-        [Required]
         public virtual ICollection<ProfileEntity> Participants { get; set; }
 
         [Required]
         public int MaxParticipants { get; set; }
+
+        public bool ChainAccept { get; set; }
     }
 }

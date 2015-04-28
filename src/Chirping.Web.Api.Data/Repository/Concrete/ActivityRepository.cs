@@ -2,6 +2,7 @@
 
 using Chirping.Web.Api.Common.Data.Entities;
 using Chirping.Web.Api.Common.Domain;
+using Chirping.Web.Api.Common.Exceptions;
 using Chirping.Web.Api.Data.Context;
 using Chirping.Web.Api.Data.Repository.Abstract;
 using Chirping.Web.Api.Domain;
@@ -83,6 +84,21 @@ namespace Chirping.Web.Api.Data.Repository.Concrete
             return predicate;
         }
 
+
+        public override void Add(Activity activity)
+        {
+            var entity = ToDataEntity(activity);
+
+            try
+            {
+                this.Context.Activities.Add(entity);
+                this.Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new AddActivityException(entity, ex);
+            }
+        }
         
 
         #region domain object to/from data entity implementations
@@ -92,21 +108,14 @@ namespace Chirping.Web.Api.Data.Repository.Concrete
             ActivityEntity entity = new ActivityEntity();
 
             entity.Id = domainModel.Id;
-            entity.Category = new CategoryEntity
-            {
-                Id = domainModel.Category.Id,
-                Code = domainModel.Category.Code,
-                Description = domainModel.Category.Description
-            };
+            entity.CategoryId = domainModel.Category.Id;
             entity.Date = domainModel.Date;
             entity.Location = domainModel.Location;
-            entity.Owner = new ProfileEntity
-            {
-                Id = domainModel.Owner.Id
-            };
+            entity.ProfileId = domainModel.Owner.Id;
             entity.ContentText = domainModel.ContentText;
             entity.Participants = GetParticipantsFromDomainModel(domainModel);
             entity.MaxParticipants = domainModel.MaxParticipants;
+            entity.ChainAccept = domainModel.ChainAccept;
 
             return entity;
         }
@@ -148,7 +157,8 @@ namespace Chirping.Web.Api.Data.Repository.Concrete
                 },
                 ContentText = dataEntity.ContentText,
                 Participants = GetParticipantsFromEntity(dataEntity),
-                MaxParticipants = dataEntity.MaxParticipants
+                MaxParticipants = dataEntity.MaxParticipants,
+                ChainAccept = dataEntity.ChainAccept
             };
         }
 

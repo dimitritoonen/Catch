@@ -198,10 +198,12 @@
     <Compile Include="ActionFilters\ValidateModelStateAttribute.cs" />
     <Compile Include="App_Start\AutoMapperConfigurator.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="AutoMapperConfigurators\AddActivityBindingModelToActivity.cs" />
     <Compile Include="AutoMapperConfigurators\ActivityToActivityBindingModel.cs" />
     <Compile Include="AutoMapperConfigurators\FilterBindingModelToFilterDomain.cs" />
     <Compile Include="AutoMapperConfigurators\RegisterExternalUserToAccountUserMapping.cs" />
     <Compile Include="AutoMapperConfigurators\TypeConverter\BetweenTimeTypeConverter.cs" />
+    <Compile Include="AutoMapperConfigurators\TypeConverter\ProfileImageTypeConverter.cs" />
     <Compile Include="AutoMapperConfigurators\TypeConverter\TimeFrameTypeConverter.cs" />
     <Compile Include="BindingModels\Account\ChangePasswordBindingModel.cs" />
     <Compile Include="BindingModels\Account\ConfirmEmailBindingModel.cs" />
@@ -213,6 +215,7 @@
     <Compile Include="BindingModels\Account\RegisterProfileBindingModel.cs" />
     <Compile Include="BindingModels\Account\ResetPasswordBindingModel.cs" />
     <Compile Include="BindingModels\Activity\ActivityBindingModel.cs" />
+    <Compile Include="BindingModels\Activity\AddActivityBindingModel.cs" />
     <Compile Include="BindingModels\Activity\BetweenTimeBindingModel.cs" />
     <Compile Include="BindingModels\Activity\CategoryBindingModel.cs" />
     <Compile Include="BindingModels\Activity\FilterBindingModel.cs" />

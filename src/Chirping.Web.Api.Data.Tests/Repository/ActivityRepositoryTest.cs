@@ -248,7 +248,7 @@ namespace Chirping.Web.Api.Data.Tests.Repository
             // arrange
             int expectedId = 2;
             var contextMock = GetMockedChirpingContext();
-            var repository = new ActivityRepository(contextMock);
+            var repository = new ActivityRepository(contextMock.Object);
 
             // set up filter
             var filter = new Filter();
@@ -267,7 +267,7 @@ namespace Chirping.Web.Api.Data.Tests.Repository
         {
             // arrange
             var contextMock = GetMockedChirpingContext();
-            var repository = new ActivityRepository(contextMock);
+            var repository = new ActivityRepository(contextMock.Object);
             
             // set up filter
             var filter = new Filter();
@@ -287,7 +287,7 @@ namespace Chirping.Web.Api.Data.Tests.Repository
         {
             // arrange
             var contextMock = GetMockedChirpingContext();
-            var repository = new ActivityRepository(contextMock);
+            var repository = new ActivityRepository(contextMock.Object);
 
             // set up filter
             var filter = new Filter();
@@ -308,7 +308,7 @@ namespace Chirping.Web.Api.Data.Tests.Repository
         {
             // arrange
             var contextMock = GetMockedChirpingContext();
-            var repository = new ActivityRepository(contextMock);
+            var repository = new ActivityRepository(contextMock.Object);
 
             // set up filter
             var filter = new Filter();
@@ -444,6 +444,28 @@ namespace Chirping.Web.Api.Data.Tests.Repository
                 new ProfileEntity { Id = 6, NickName = "David", Age = 35, City = "Rotterdam", Gender = "Male" }
             };
         }
+        
+        #endregion
+
+        #region can add activity
+
+        [TestMethod]
+        public void Can_Add_Activity()
+        {
+            // arrange
+            var context = GetMockedChirpingContext();
+            var repo = new ActivityRepository(context.Object);
+            var actual = GetDomainModel();
+
+            // act
+            repo.Add(actual);
+
+            // assert
+            context.Verify(mock => mock.SaveChanges(), Times.Once);
+        }
+
+        #endregion
+
 
         private Mock<IDbSet<ActivityEntity>> GetActivityDbSetMock(IQueryable<ActivityEntity> data)
         {
@@ -456,7 +478,7 @@ namespace Chirping.Web.Api.Data.Tests.Repository
             return dbSetMock;
         }
 
-        private ChirpingContext GetMockedChirpingContext()
+        private Mock<ChirpingContext> GetMockedChirpingContext()
         {
             // get all activities
             IQueryable<ActivityEntity> data = GetActivities();
@@ -469,9 +491,9 @@ namespace Chirping.Web.Api.Data.Tests.Repository
             contextMock.Setup(x => x.Activities)
                 .Returns(dbSetMock.Object);
 
-            return contextMock.Object;
-        }
+            contextMock.Setup(x => x.SaveChanges());
 
-        #endregion
+            return contextMock;
+        }
     }
 }

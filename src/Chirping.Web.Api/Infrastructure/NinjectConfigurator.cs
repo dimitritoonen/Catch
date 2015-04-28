@@ -73,6 +73,10 @@ namespace Chirping.Web.Api.Infrastructure
             #region activity mappings
 
             kernel.Bind<IAutoMapperTypeConfigurator>()
+                .To<AddActivityBindingModelToActivity>()
+                .InSingletonScope();
+
+            kernel.Bind<IAutoMapperTypeConfigurator>()
                 .To<ActivityToActivityBindingModel>()
                 .InSingletonScope();
 

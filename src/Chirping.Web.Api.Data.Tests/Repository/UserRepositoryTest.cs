@@ -1,5 +1,7 @@
 ﻿#region using directives
 
+using Chirping.Web.Api.Common.Data.Entities;
+using Chirping.Web.Api.Common.Domain;
 using Chirping.Web.Api.Data.Entities;
 using Chirping.Web.Api.Data.Repository;
 using Chirping.Web.Api.Domain;
@@ -14,10 +16,15 @@ namespace Chirping.Web.Api.Data.Tests.Repository
     {
         #region private members
 
+        // user members
         private string _name = "John Doe";
         private string _email = "johndoe@Chirping.com";
         private string _age = "25 - 35";
         private string _interestedIn = "Female";
+
+        // profile members
+        private string _profileImage = "2e34128971d5456ebeda2d40a792454e";
+        private string _profileImageAvatar = "2e34128971d5456ebeda2d40a792454e_avatar.jpg";
 
         #endregion
 
@@ -41,6 +48,28 @@ namespace Chirping.Web.Api.Data.Tests.Repository
         }
 
         [TestMethod]
+        public void Can_Map_Profile_Entity_To_Domain()
+        {
+            // arrange
+            var repository = new UserRepository();
+            Profile expected = GetProfileDomainModel();
+            ProfileEntity entity = GetProfileEntity();
+
+            // act
+            PrivateObject repo = new PrivateObject(repository);
+            Profile actual = (Profile)repo.Invoke("ToProfileDomainModel", entity);
+
+            // assert
+            Assert.AreEqual<int>(expected.Id, actual.Id);
+            Assert.AreEqual<int>(expected.Age, actual.Age);
+            Assert.AreEqual<string>(expected.City, actual.City);
+            Assert.AreEqual<string>(expected.Gender, actual.Gender);
+            Assert.AreEqual<string>(expected.NickName, actual.NickName);
+            Assert.AreEqual<string>(expected.ProfileImage.FileName, actual.ProfileImage.FileName);
+            Assert.AreEqual<string>(expected.ProfileImage.AvatarFileName, actual.ProfileImage.AvatarFileName);
+        }
+        
+        [TestMethod]
         public void Can_Map_Domain_To_Entity()
         {
             // arrange
@@ -59,6 +88,30 @@ namespace Chirping.Web.Api.Data.Tests.Repository
             Assert.AreEqual<string>(actual.Email, expected.Email);
         }
 
+        [TestMethod]
+        public void Can_Map_Profile_Domain_To_Entity()
+        {
+            // arrange
+            var repository = new UserRepository();
+            Profile profile = GetProfileDomainModel();
+            ProfileEntity expected = GetProfileEntity();
+
+            // act
+            PrivateObject repo = new PrivateObject(repository);
+            ProfileEntity actual = (ProfileEntity)repo.Invoke("ToProfileDataEntity", profile);
+
+            // assert
+            Assert.AreEqual<int>(expected.Age, actual.Age);
+            Assert.AreEqual<string>(expected.City, actual.City);
+            Assert.AreEqual<string>(expected.Gender, actual.Gender);
+            Assert.AreEqual<int>(expected.Id, actual.Id);
+            Assert.AreEqual<string>(expected.NickName, actual.NickName);
+
+            var profileImage = string.Format("/profileimages/{0}.jpg", expected.ProfileImage);
+            Assert.AreEqual<string>(profileImage, actual.ProfileImage);
+        }
+
+
         #region Getting operators
 
         private User GetDomainModel()
@@ -74,6 +127,32 @@ namespace Chirping.Web.Api.Data.Tests.Repository
                 Age = _age,
                 Email = _email,
                 InterestedIn = _interestedIn
+            };
+        }
+
+
+        private Profile GetProfileDomainModel()
+        {
+            return new Profile(99)
+            {
+                Age = 31,
+                City = "Hendrik-Ido-Ambacht",
+                Gender = "Male",
+                NickName = "Dimitri",
+                ProfileImage = new ProfileImage(_profileImage)
+            };
+        }
+
+        private ProfileEntity GetProfileEntity()
+        {
+            return new ProfileEntity()
+            {
+                Id = 99,
+                Age = 31,
+                City = "Hendrik-Ido-Ambacht",
+                Gender = "Male",
+                NickName = "Dimitri",
+                ProfileImage = _profileImage
             };
         }
 

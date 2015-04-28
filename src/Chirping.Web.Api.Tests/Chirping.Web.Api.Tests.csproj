@@ -108,6 +108,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Processors\AccountProcessorTest.cs" />
+    <Compile Include="Processors\ActivityProcessorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\ProfileImageTest.cs" />
   </ItemGroup>
@@ -123,6 +124,10 @@
     <ProjectReference Include="..\Chirping.Web.Api.Data\Chirping.Web.Api.Data.csproj">
       <Project>{84f1518b-0825-4921-aa2f-fa87643c3a2b}</Project>
       <Name>Chirping.Web.Api.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chirping.Web.Api.Domain\Chirping.Web.Api.Domain.csproj">
+      <Project>{60ff8476-0a01-4969-9040-45b4c2b06d1d}</Project>
+      <Name>Chirping.Web.Api.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Chirping.Web.Api\Chirping.Web.Api.csproj">
       <Project>{82f1b0e8-62a4-49fd-bf26-2fb8b1466bf1}</Project>

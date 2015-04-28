@@ -31,6 +31,37 @@
       });
     }
 
+    var validationGroup = ko.validatedObservable({
+      category: self.category,
+      description: self.description,
+      location: self.location,
+      date: self.date,
+      time: self.time,
+      participants: self.participants,
+      chainaccept: self.chainaccept
+    });
+
+    // add the activity to the back-end
+    self.addActivity = function (data) {
+
+      var result = ko.validation.group(self, { deep: true });
+
+      if (!self.isValid()) {
+        console.log('fix stuff');
+        result.showAllMessages(true);
+
+        return;
+      }
+
+      //if (validationGroup.isValid) {
+      //  //webapi.Post('api/activity', data).done(function (result) {
+
+      //  console.log('post to back-end');
+
+      //  //});
+      //}
+    };
+
     // resets the model to it's initial state
     self.reset = function () {
       self.category(undefined);

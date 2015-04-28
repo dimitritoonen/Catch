@@ -12,6 +12,8 @@ namespace Chirping.Web.Api.BindingModels.Activity
 {
     public class ProfileBindingModel
     {
+        public int Id { get; set; }
+
         [Required]
         [Display(Name = "Nick name")]
         public string NickName { get; set; }

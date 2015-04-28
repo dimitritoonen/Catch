@@ -13,5 +13,6 @@ namespace Chirping.Web.Api.Processors.Interfaces
     public interface IActivityProcessor
     {
         IEnumerable<ActivityBindingModel> GetActivities(FilterBindingModel filter);
+        void Add(AddActivityBindingModel activity);
     }
 }

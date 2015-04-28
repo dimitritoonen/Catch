@@ -4,6 +4,7 @@ define(['knockout', 'text!./activity-filter.html', 'moment', 'bindingHandlers/da
 
     var self = this;
 
+    self.id = params.id;
     self.activityModel = params.activityModel;
 
     // initialize category list with empty value

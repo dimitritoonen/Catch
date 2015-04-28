@@ -22,7 +22,8 @@ namespace Chirping.Web.Api.AutoMapperConfigurators
                 .ForMember(dest => dest.Content, opt => opt.MapFrom(src => src.ContentText))
                 .ForMember(dest => dest.Owner, opt => opt.MapFrom(src => src.Owner))
                 .ForMember(dest => dest.Participants, opt => opt.MapFrom(src => src.Participants))
-                .ForMember(dest => dest.MaxParticipants, opt => opt.MapFrom(src => src.MaxParticipants));
+                .ForMember(dest => dest.MaxParticipants, opt => opt.MapFrom(src => src.MaxParticipants))
+                .ForMember(dest => dest.ChainAccept, opt => opt.MapFrom(src => src.ChainAccept));
 
             Mapper.CreateMap<Category, CategoryBindingModel>();
 

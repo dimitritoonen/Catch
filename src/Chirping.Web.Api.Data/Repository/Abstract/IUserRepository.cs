@@ -1,11 +1,10 @@
-﻿using Chirping.Web.Api.Common.Repository;
+﻿#region using directives
+
+using Chirping.Web.Api.Common.Domain;
+using Chirping.Web.Api.Common.Repository;
 using Chirping.Web.Api.Domain;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+#endregion
 
 namespace Chirping.Web.Api.Data.Repository
 {
@@ -13,5 +12,6 @@ namespace Chirping.Web.Api.Data.Repository
     {
         bool EmailAddressInUse(string emailAddress);
         bool NicknameInUse(string nickname);
+        Profile GetProfileById(int profileId);
     }
 }

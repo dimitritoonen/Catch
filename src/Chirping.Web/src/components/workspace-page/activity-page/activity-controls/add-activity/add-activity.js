@@ -1,10 +1,22 @@
-define(['knockout', 'text!./add-activity.html', 'moment', 'viewport', 'models/add-activity-model', 'bindingHandlers/datetimepicker', 'qtip2'],
-  function (ko, templateMarkup, moment, viewport, model) {
+define(['jquery', 'knockout', 'text!./add-activity.html', 'moment', 'viewport', 'models/add-activity-model', 'bindingHandlers/datetimepicker', 'qtip2'],
+  function ($, ko, templateMarkup, moment, viewport, model) {
 
   function AddActivity(params) {
 
     var self = this;
     
+    self.id = params.id;
+
+    defineUniqueIdentifiersFor('descriptionTextbox', 'dateTextbox', 'timeTextbox', 'locationTextbox')
+
+    // define a unique identifier for the html controls
+    function defineUniqueIdentifiersFor () {
+      for (var i = 0; i < arguments.length; i++) {
+        var $element = $('#' + arguments[i]);
+        $element.attr('id', self.id + '_' + $element.attr('id'));
+      }
+    }
+
     self.disposables = [];
     var controls = params.controls;
 

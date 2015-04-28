@@ -129,6 +129,14 @@
     <Compile Include="Migrations\201503052019022_InitialCreate.Designer.cs">
       <DependentUpon>201503052019022_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504221844522_Add_ChainAccept_To_Activity.cs" />
+    <Compile Include="Migrations\201504221844522_Add_ChainAccept_To_Activity.Designer.cs">
+      <DependentUpon>201504221844522_Add_ChainAccept_To_Activity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504280944462_Add_Index_To_ProfileId_UserAccountEntity.cs" />
+    <Compile Include="Migrations\201504280944462_Add_Index_To_ProfileId_UserAccountEntity.Designer.cs">
+      <DependentUpon>201504280944462_Add_Index_To_ProfileId_UserAccountEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository\Abstract\AbstractRepository.cs" />
     <Compile Include="Repository\Abstract\IActivityRepository.cs" />
@@ -163,6 +171,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201503052019022_InitialCreate.resx">
       <DependentUpon>201503052019022_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504221844522_Add_ChainAccept_To_Activity.resx">
+      <DependentUpon>201504221844522_Add_ChainAccept_To_Activity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504280944462_Add_Index_To_ProfileId_UserAccountEntity.resx">
+      <DependentUpon>201504280944462_Add_Index_To_ProfileId_UserAccountEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

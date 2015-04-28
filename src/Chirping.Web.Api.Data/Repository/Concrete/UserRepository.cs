@@ -1,6 +1,8 @@
 ﻿#region using directives
 
 using Chirping.Web.Api.Common.Data;
+using Chirping.Web.Api.Common.Data.Entities;
+using Chirping.Web.Api.Common.Domain;
 using Chirping.Web.Api.Data.Context;
 using Chirping.Web.Api.Data.Entities;
 using Chirping.Web.Api.Domain;
@@ -30,6 +32,21 @@ namespace Chirping.Web.Api.Data.Repository
             return (user != null);
         }
 
+        public Profile GetProfileById(int profileId)
+        {
+            ProfileEntity profile = this.Context.Users
+                .Where(user => user.ProfileId == profileId)
+                .Select(x => x.Profile)
+                .FirstOrDefault();
+
+            if (profile == null)
+            {
+                return null;
+            }
+
+            return ToProfileDomainModel(profile);
+        }
+
         #region Mapping operators
 
         protected override UserEntity ToDataEntity(User domainModel)
@@ -44,6 +61,20 @@ namespace Chirping.Web.Api.Data.Repository
             };
         }
 
+        private ProfileEntity ToProfileDataEntity(Profile profile)
+        {
+            return new ProfileEntity
+            {
+                Id = profile.Id,
+                City = profile.City,
+                Age = profile.Age,
+                Gender = profile.Gender,
+                NickName = profile.NickName,
+                ProfileImage = profile.ProfileImage.FileName
+            };
+        }
+
+
         protected override User ToDomainModel(UserEntity dataEntity)
         {
             return new User(dataEntity.Name, 
@@ -51,6 +82,18 @@ namespace Chirping.Web.Api.Data.Repository
                 dataEntity.Age, 
                 dataEntity.InterestedIn,
                 dataEntity.ProfileImage);
+        }
+
+        private Profile ToProfileDomainModel(ProfileEntity dataEntity)
+        {
+            return new Profile(dataEntity.Id)
+            {
+                City = dataEntity.City,
+                Age = dataEntity.Age,
+                Gender = dataEntity.Gender,
+                NickName = dataEntity.NickName,
+                ProfileImage = new ProfileImage(dataEntity.ProfileImage)
+            };
         }
 
         #endregion

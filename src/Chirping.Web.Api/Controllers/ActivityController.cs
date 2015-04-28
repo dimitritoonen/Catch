@@ -28,5 +28,18 @@ namespace Chirping.Web.Api.Controllers
         {
             return _processor.GetActivities(filter);
         }
+
+
+        [HttpPost]
+        //[Authorize]
+        public HttpResponseMessage Post(AddActivityBindingModel model)
+        {
+            _processor.Add(model);
+
+            return new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.Created
+            };
+        }
     }
 }

@@ -15,6 +15,7 @@ namespace Chirping.Web.Api.Common.Data.Entities
     public class UserAccountEntity : IdentityUser
     {
         [Column("Profile_Id")]
+        [Index(IsUnique = true)]
         public int ProfileId { get; set; }
 
         [Required]
