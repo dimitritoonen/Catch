@@ -9,6 +9,9 @@ define(['knockout', 'text!./activity-add-description.html', '../add-activity-wiz
 
       var dateDialog, timeDialog;
 
+      // auto-focus description textbox
+      $('#descriptionTextbox').focus();
+
       self.disposables = [];
       self.model = model;
       self.wizard = wizard;

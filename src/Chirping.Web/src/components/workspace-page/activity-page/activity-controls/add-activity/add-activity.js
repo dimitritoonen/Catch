@@ -1,5 +1,5 @@
-define(['knockout', 'text!./add-activity.html', 'moment', 'viewport', 'models/add-activity-model', 'toastr', 'bindingHandlers/datetimepicker', 'qtip2'],
-  function (ko, templateMarkup, moment, viewport, model, toastr) {
+define(['knockout', 'text!./add-activity.html', 'moment', 'viewport', 'models/add-activity-model', 'bindingHandlers/datetimepicker', 'qtip2'],
+  function (ko, templateMarkup, moment, viewport, model) {
 
   function AddActivity(params) {
 
@@ -7,15 +7,30 @@ define(['knockout', 'text!./add-activity.html', 'moment', 'viewport', 'models/ad
     
     self.id = params.id;
     
-    defineUniqueIdentifiersFor('descriptionTextbox', 'dateTextbox', 'timeTextbox', 'locationTextbox')
+    var formFields = [];
 
+    defineUniqueIdentifiersFor('descriptionTextbox', 'dateTextbox', 'timeTextbox', 'locationTextbox')
+    
     // define a unique identifier for the html controls
     function defineUniqueIdentifiersFor () {
       for (var i = 0; i < arguments.length; i++) {
         var $element = $('#' + arguments[i]);
-        $element.attr('id', self.id + '_' + $element.attr('id'));
+        var uniqueId = self.id + '_' + $element.attr('id');
+
+        $element.attr('id', uniqueId);
+        formFields.push({ code: arguments[i], id: uniqueId });
       }
     }
+    
+    var getFormFieldId = function (code) {
+      for (var i = 0; i < Object.keys(formFields).length; i++) {
+        if (formFields[i].code === code) {
+          return formFields[i].id;
+        }
+      }
+
+      return null;
+    };
 
     self.disposables = [];
     var controls = params.controls;
@@ -49,24 +64,20 @@ define(['knockout', 'text!./add-activity.html', 'moment', 'viewport', 'models/ad
       $('#descriptionTextbox').focus();
     });
 
+   
     // serve the activity details to the web api
     self.addActivity = function () {
 
-      model.addActivity().done(function () {
-        collapseControl();
+      var isValid = model.addActivity();
+
+      if (isValid) {
+        //collapseControl();
+
+        //$('.form-group').removeClass('has-error has-feedback');
         
-        toastr["info"](
-          "You've just created activity for " +
-          model.date().format("YYYY-MMM-DD") + " " +
-          model.time().format("HH:mm") + " at " +
-          model.location(),
-          "Activity created");
-
-      }).error(function () {
-        collapseControl();
-
-        toastr["error"]("Something went wrong. Please try again at a later time");
-      });
+        //console.log($('*[data-orig-title]').attr('data-orig-title'));
+        console.log($('#' + getFormFieldId('descriptionTextbox')).parent().data('[orig-title]'));
+      }
     }
   }
   

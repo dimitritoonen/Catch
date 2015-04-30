@@ -130,7 +130,7 @@
       
       // filter activites based on chosen filter
       return ko.utils.arrayFilter(activities, function (item) {
-        
+
         var itemDate = moment(item.Date).format('');
 
         if (filter.date.fromDate !== undefined) {
@@ -152,6 +152,11 @@
 
       return activities;
     };
+
+
+    this.AddActivity = function (data) {
+      activities.push(data);
+    }
   }
 
   return new MockActivities();

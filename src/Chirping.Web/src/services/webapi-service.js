@@ -21,8 +21,6 @@
 
     var headers = GetHeaders();
 
-    console.log(headers);
-
     return $.ajax({
       type: 'POST',
       url: config.BaseUrl + url,

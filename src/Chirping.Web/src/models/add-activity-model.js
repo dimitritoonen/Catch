@@ -1,4 +1,4 @@
-﻿define(['knockout', 'viewport', 'services/webapi-service'], function (ko, viewport, webapi) {
+﻿define(['knockout', 'viewport', 'services/webapi-service', 'toastr'], function (ko, viewport, webapi, toastr) {
   
   function AddActivityModel() {
 
@@ -11,9 +11,9 @@
     self.disposables.push(viewport.currentViewpoint.subscribe(function (value) {
       self.shouldShowMobile(viewport.is.smallerThan('sm'));
 
-      if (viewport.is.largerThan('ms')) {
-        console.log('larger');
-      }
+      //if (viewport.is.largerThan('ms')) {
+      //  console.log('larger');
+      //}
     }));
     
     // fields
@@ -25,12 +25,13 @@
     self.participants = ko.observable(8);
     self.chainaccept = ko.observable(false);
     
+    // retrieve categories if category list is empty
     if (self.categories().length === 0) {
       webapi.Get('api/category').done(function (result) {
         self.categories(result);
 
         // set the default value
-        self.category(result[0]);
+        self.category(self.categories()[0]);
       });
     }
 
@@ -51,30 +52,45 @@
 
       if (!self.isValid()) {
         result.showAllMessages(true);
-        return;
+        return false;
       }
 
       if (validationGroup.isValid) {
 
         // build the data for the post
-        var data = {
-          Category: self.category(),
-          Date: self.date().format('YYYY-MM-DD') + ' ' + self.time().format('HH:mm'),
-          Location: self.location(),
-          Content: self.description(),
-          ProfileId: 42,
-          MaxParticipants: self.participants(),
-          ChainAccept: self.chainaccept()
-        };
+        var data = getModelData();
 
-        return webapi.Post('api/activity', data);
+        webapi.Post('api/activity', data).done(function () {
+
+          toastr["info"]("You've just created activity for " +
+          self.date().format("YYYY-MMM-DD") + " " + self.time().format("HH:mm") + " at " + self.location(),
+          "Activity created");
+
+          resetModel();
+        }).error(function () {
+          toastr["error"]("Something went wrong. Please try again at a later time");
+
+          resetModel();
+        });
+
+        return true;
       }
     };
 
-    // resets the model to it's initial state
-    self.reset = function () {
-      self.category(undefined);
+    var getModelData = function () {
+      return {
+        Category: self.category(),
+        Date: self.date().format('YYYY-MM-DD') + ' ' + self.time().format('HH:mm'),
+        Location: self.location(),
+        Content: self.description(),
+        ProfileId: 42,
+        MaxParticipants: self.participants(),
+        ChainAccept: self.chainaccept()
+      };
+    }
 
+    // resets the model to it's initial state
+    var resetModel = function () {
       self.description(undefined);
       self.description.isModified(false);
 
@@ -88,7 +104,8 @@
       self.time.isModified(false);
 
       self.participants(8);
-      self.chainaccept(false);
+
+      self.category(self.categories()[0]);
     }
   }
 

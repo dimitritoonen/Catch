@@ -13,10 +13,6 @@
 
     self.currentStep = ko.observable(1);
 
-    self.currentStep.subscribe(function (step) {
-      console.log(steps[step].url);
-    });
-
     // advances to the next step
     self.nextStep = function () {
       if (self.currentStep() === steps.length)
@@ -44,7 +40,6 @@
       
       // reset all steps
       for (var i = 1; i < Object.keys(steps).length; i++) {
-        console.log(steps[i]);
         steps[i].valid = false;
       }
     }

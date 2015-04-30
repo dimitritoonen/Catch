@@ -6,6 +6,9 @@ define(['knockout', 'text!./activity-add-location.html', '../add-activity-wizard
 
     var self = this;
 
+    // auto-focus location textbox
+    $('#locationTextbox').focus();
+
     self.model = model;
     wizard.currentStep(4); // set step (also used when hitting the back button)
 
@@ -29,16 +32,18 @@ define(['knockout', 'text!./activity-add-location.html', '../add-activity-wizard
 
     self.saveActivity = function () {
       if (!self.model.location.isValid()) {
-        console.log('Invalid boy');
         return;
       }
 
-      console.log('redirect?');
       // add activity and redirect to activity list
+      model.addActivity();
 
-      // reset the wizard and model
+      redirectToActivitiesList();
+    }
+
+    var redirectToActivitiesList = function () {
+      // reset the wizard
       wizard.reset();
-      model.reset();
 
       // redirect after activity creation
       window.location.href = '#Workspace/Activities';
