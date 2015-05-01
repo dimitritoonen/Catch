@@ -4,21 +4,27 @@ define(['knockout', 'text!./category-dropdown.html', 'services/webapi-service'],
     var self = this;
 
     self.selectedItem = ko.observable();
+
     self.categories = params.categories;
   
     self.tabIndex = params.tabIndex;
     
+    self.disposables = [];
+
     // select default category
     var selectedItem = self.categories.GetByProperty(params.selectedItem);
     self.selectedItem(selectedItem);
-        
-    self.subscription = self.selectedItem.subscribe(function () {
+    
+    self.disposables.push(self.selectedItem.subscribe(function (value) {
       params.change(self.selectedItem());
-    });
+    }));
   }
 
   CategoryDropdown.prototype.dispose = function () {
-    this.subscription.dispose();
+    // dispose all subscriptions
+    ko.utils.arrayForEach(this.disposables, function (item) {
+      item.dispose();
+    });
   };
   
   return { viewModel: CategoryDropdown, template: templateMarkup };

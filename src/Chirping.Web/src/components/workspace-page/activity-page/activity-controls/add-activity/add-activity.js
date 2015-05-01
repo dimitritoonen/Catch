@@ -4,10 +4,12 @@ define(['knockout', 'text!./add-activity.html', 'moment', 'viewport', 'models/ad
   function AddActivity(params) {
 
     var self = this;
-    
+    var controls = params.controls;
+
+    self.disposables = [];
     self.id = params.id;
-    
-    var formFields = [];
+    self.shouldShow = ko.observable(viewport.is.largerThan('ms'));
+    self.model = model;
 
     defineUniqueIdentifiersFor('descriptionTextbox', 'dateTextbox', 'timeTextbox', 'locationTextbox')
     
@@ -18,26 +20,10 @@ define(['knockout', 'text!./add-activity.html', 'moment', 'viewport', 'models/ad
         var uniqueId = self.id + '_' + $element.attr('id');
 
         $element.attr('id', uniqueId);
-        formFields.push({ code: arguments[i], id: uniqueId });
       }
     }
     
-    var getFormFieldId = function (code) {
-      for (var i = 0; i < Object.keys(formFields).length; i++) {
-        if (formFields[i].code === code) {
-          return formFields[i].id;
-        }
-      }
-
-      return null;
-    };
-
-    self.disposables = [];
-    var controls = params.controls;
-
-    self.shouldShow = ko.observable(viewport.is.largerThan('ms'));
-    self.model = model;
-
+    // collapse control on changing viewport
     self.disposables.push(viewport.currentViewpoint.subscribe(function (value) {
 
       if (viewport.is.smallerThan('sm')) {
@@ -54,16 +40,35 @@ define(['knockout', 'text!./add-activity.html', 'moment', 'viewport', 'models/ad
     // ensures that the time pickers can select all minutes/hours
     self.yesterdaysDate = moment().add(-1, 'days');
 
+    var datePickerElement, timePickerElement;
+
     // store values from datepickers and dropdown
+    self.onDatePickerInitialize = function ($element) { datePickerElement = $element; };
+    self.onTimePickerInitialize = function ($element) { timePickerElement = $element; };
+
     self.onDatePickerChange = function (value) { model.date(value.date); };
     self.onTimePickerChange = function (value) { model.time(value.date); };
+
     self.onCategoryChange = function (category) { model.category(category); };
+
+    // reset the date picker
+    self.disposables.push(model.date.subscribe(function (value) {
+      if (value === undefined) {
+        datePickerElement.data('DateTimePicker').clear();
+      }
+    }));
+
+    // reset the time picker
+    self.disposables.push(model.time.subscribe(function (value) {
+      if (value === undefined) {
+        timePickerElement.data('DateTimePicker').clear();
+      }
+    }));
 
     // when control is expanded focus description field
     $('#addActivityControl').on('shown.bs.collapse', function () {
       $('#descriptionTextbox').focus();
     });
-
    
     // serve the activity details to the web api
     self.addActivity = function () {
@@ -72,11 +77,6 @@ define(['knockout', 'text!./add-activity.html', 'moment', 'viewport', 'models/ad
 
       if (isValid) {
         //collapseControl();
-
-        //$('.form-group').removeClass('has-error has-feedback');
-        
-        //console.log($('*[data-orig-title]').attr('data-orig-title'));
-        console.log($('#' + getFormFieldId('descriptionTextbox')).parent().data('[orig-title]'));
       }
     }
   }

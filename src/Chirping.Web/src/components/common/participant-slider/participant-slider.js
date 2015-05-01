@@ -9,6 +9,13 @@ define(['knockout', 'text!./participant-slider.html', 'bindingHandlers/slider'],
     self.participantSelection = params.value;
     self.showLabel = ko.observable(true);
 
+    self.disposables = [];
+
+    // change the slider if the observable changes
+    self.disposables.push(self.participantSelection.subscribe(function (value) {
+      $(self.slider).slider('setValue', value);
+    }));
+
     if (params.showLabel !== undefined) {
       self.showLabel(params.showLabel);
     }
@@ -41,6 +48,11 @@ define(['knockout', 'text!./participant-slider.html', 'bindingHandlers/slider'],
   ParticipantSlider.prototype.dispose = function () {
     $(window).off('resize', this.resizer);
     $(self.slider).off('slideStop');
+
+    // clear all subscriptions
+    ko.utils.arrayForEach(this.disposables, function (item) {
+      item.dispose();
+    });
   };
 
   return { viewModel: ParticipantSlider, template: templateMarkup };

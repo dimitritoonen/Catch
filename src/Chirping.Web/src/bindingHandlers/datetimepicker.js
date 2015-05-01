@@ -14,7 +14,7 @@
       ko.utils.extend(options, local.options);
 
       var picker = $element.datetimepicker(options);
-
+      
       // automatically unfocus after a date has been chosen
       $element.on('dp.hide', function (e) {
         $element.blur();

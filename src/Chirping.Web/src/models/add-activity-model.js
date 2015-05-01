@@ -91,21 +91,20 @@
 
     // resets the model to it's initial state
     var resetModel = function () {
+      // set the viewmodel fields to initialize values
       self.description(undefined);
-      self.description.isModified(false);
-
       self.location(undefined);
-      self.location.isModified(false);
-
       self.date(undefined);
-      self.date.isModified(false);
-
       self.time(undefined);
-      self.time.isModified(false);
-
       self.participants(8);
-
       self.category(self.categories()[0]);
+      self.chainaccept(false);
+
+      // reset the knockout validation
+      self.description.isModified(false);
+      self.location.isModified(false);
+      self.date.isModified(false);
+      self.time.isModified(false);
     }
   }
 

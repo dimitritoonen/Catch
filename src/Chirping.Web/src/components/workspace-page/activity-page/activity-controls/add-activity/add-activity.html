@@ -25,7 +25,8 @@
                                     options: {
                                         widgetPositioning: { horizontal: "left", vertical: "auto" }
                                     },
-                                    change: onDatePickerChange
+                                        change: onDatePickerChange,
+                                        init: onDatePickerInitialize
                                     }'
                                    class="form-control" placeholder="Date" />
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
@@ -39,7 +40,8 @@
                                         format: "HH:mm",
                                         widgetPositioning: { horizontal: "right", vertical: "auto" }
                                     },
-                                    change: onTimePickerChange
+                                        change: onTimePickerChange,
+                                        init: onTimePickerInitialize
                                     }'
                                    class="form-control" placeholder="Time" />
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
