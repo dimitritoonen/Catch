@@ -1,5 +1,5 @@
 <!-- ko if: shouldShow -->
-<div id="addActivityControl" class="workspace activity add collapse in hidden-xs hidden-ms">
+<div id="addActivityControl" class="workspace activity add collapse hidden-xs hidden-ms">
     <div class="padding">
         <div class="hidden-xs hidden-ms spacer col-sm-12">
             <div class="line"></div>
@@ -52,7 +52,7 @@
             <div class="form-group">
                 <label class="col-sm-2 controls-label">Category</label>
                 <div class="col-sm-6">
-                    <category-dropdown params='categories: model.categories, tabIndex: 4, change: onCategoryChange'></category-dropdown>
+                    <category-dropdown params='categories: model.categories, tabIndex: 4, shouldInitialize: model.resetCategory, change: onCategoryChange'></category-dropdown>
                 </div>
                 <div class="col-sm-4"></div>
             </div>

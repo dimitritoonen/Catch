@@ -76,7 +76,7 @@ define(['knockout', 'text!./add-activity.html', 'moment', 'viewport', 'models/ad
       var isValid = model.addActivity();
 
       if (isValid) {
-        //collapseControl();
+        collapseControl();
       }
     }
   }

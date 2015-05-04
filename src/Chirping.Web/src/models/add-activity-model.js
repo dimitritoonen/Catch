@@ -24,6 +24,8 @@
     self.time = ko.observable().extend({ required: true });
     self.participants = ko.observable(8);
     self.chainaccept = ko.observable(false);
+
+    self.resetCategory = ko.observable(false);
     
     // retrieve categories if category list is empty
     if (self.categories().length === 0) {
@@ -98,6 +100,7 @@
       self.time(undefined);
       self.participants(8);
       self.category(self.categories()[0]);
+      self.resetCategory(true);
       self.chainaccept(false);
 
       // reset the knockout validation
